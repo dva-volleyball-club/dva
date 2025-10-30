@@ -30,18 +30,6 @@ const playersData = {
             avatar: "images/players/middle/MinhHieu.webp"
         },
         {
-            id: 3,
-            name: "Trịnh Văn Huy",
-            number: 5,
-            position: "Outside Hitter",
-            height: "178cm",
-            reachHeight: "300cm",
-            address: "Nam Định",
-            born: "2002",
-            age: 23,
-            avatar: "images/players/middle/TrinhVanHuy.webp"
-        },
-        {
             id: 4,
             name: "Hà Xuân Quân",
             number: 27,
@@ -172,18 +160,6 @@ const playersData = {
             born: "2005",
             age: 21,
             avatar: "images/players/middle/HaiNam.webp"
-        },
-        {
-            id: 23,
-            name: "Đồng Hữu Hiếu",
-            number: 22,
-            position: "Outside Hitter",
-            height: "178cm",
-            reachHeight: "320cm",
-            address: "Hải Dương",
-            born: "1997",
-            age: 26,
-            avatar: "images/players/middle/HuuHieu.webp"
         }
     ],
     junior: [

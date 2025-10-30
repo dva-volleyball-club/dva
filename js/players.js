@@ -160,7 +160,19 @@ const playersData = {
             born: "2005",
             age: 21,
             avatar: "images/players/middle/HaiNam.webp"
-        }
+        },
+        {
+            id: 23,
+            name: "Đỗ Xuân Đạt",
+            number: 4,
+            position: "Outside Hitter",
+            height: "183cm",
+            reachHeight: "330cm",
+            address: "Thanh Hoá",
+            born: "2004",
+            age: 21,
+            avatar: "images/players/middle/DoXuanDat.png"
+        },
     ],
     junior: [
         {

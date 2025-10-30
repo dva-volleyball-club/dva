@@ -171,7 +171,7 @@ const playersData = {
             address: "Thanh Hoá",
             born: "2004",
             age: 21,
-            avatar: "images/players/middle/DoXuanDat.png"
+            avatar: "images/players/middle/DoXuanDatt.png"
         },
     ],
     junior: [

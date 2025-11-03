@@ -1,0 +1,887 @@
+/* ===== DVA INFORMATION MODULE - FULLY SCOPED STYLES ===== */
+/* D:\dva\DVA-Volleyball-Website\assets\css\modules\information.css */
+
+/* ✅ CRITICAL: All styles scoped within .dva-information to prevent global conflicts */
+
+.dva-information {
+    background: var(--syncsoft-dark);
+    min-height: 100vh;
+    /* REMOVED: Custom padding-top - uses global .main-content padding */
+}
+
+/* ===== HERO SECTION ===== */
+
+.dva-information .info-hero {
+    position: relative;
+    padding: 40px 0;
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--syncsoft-dark) 0%, var(--syncsoft-dark-light) 100%);
+}
+
+.dva-information .hero-bg-effects {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+}
+
+.dva-information .hero-grid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 60px 60px;
+    opacity: 0.4;
+}
+
+.dva-information .hero-orb-1 {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(255, 107, 53, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    top: -100px;
+    right: -100px;
+    filter: blur(60px);
+}
+
+.dva-information .hero-orb-2 {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(0, 102, 255, 0.08) 0%, transparent 70%);
+    border-radius: 50%;
+    bottom: -80px;
+    left: -80px;
+    filter: blur(40px);
+}
+
+.dva-information .hero-content {
+    /* SCOPED: Use container system instead of manual width */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    position: relative;
+    z-index: 2;
+}
+
+.dva-information .hero-text {
+    flex: 1;
+    max-width: 600px;
+}
+
+.dva-information .hero-title {
+    margin: 0 0 20px 0;
+    position: relative;
+}
+
+.dva-information .title-gradient {
+    font-size: 3.5rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--dva-primary) 0%, var(--dva-primary-light) 50%, var(--syncsoft-primary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+}
+
+.dva-information .title-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, var(--dva-primary) 0%, var(--syncsoft-primary) 100%);
+    filter: blur(20px);
+    opacity: 0.3;
+    z-index: -1;
+}
+
+.dva-information .hero-description {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: var(--syncsoft-gray);
+    margin: 0;
+    max-width: 500px;
+}
+
+.dva-information .hero-images {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.dva-information .court-image, 
+.dva-information .ball-image {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: var(--transition-smooth);
+}
+
+.dva-information .court-image:hover, 
+.dva-information .ball-image:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(255, 107, 53, 0.2);
+}
+
+.dva-information .court-img, 
+.dva-information .ball-img {
+    width: 200px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 16px;
+    border: 2px solid rgba(255, 107, 53, 0.3);
+}
+
+.dva-information .image-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+    color: white;
+    padding: 16px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+/* ===== SECTION STYLES ===== */
+
+.dva-information .section-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.dva-information .section-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--syncsoft-white);
+    margin: 0 0 12px 0;
+}
+
+.dva-information .section-subtitle {
+    font-size: 1.1rem;
+    color: var(--syncsoft-gray);
+    margin: 0;
+}
+
+/* ===== SCHEDULE SECTION ===== */
+
+.dva-information .schedule-section {
+    padding: 60px 0;
+}
+
+.dva-information .schedule-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    /* SCOPED: Remove manual container - use .container class in HTML */
+}
+
+.dva-information .schedule-card {
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 24px;
+    transition: var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
+}
+
+.dva-information .schedule-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+    transition: left 0.8s ease;
+}
+
+.dva-information .schedule-card:hover::before {
+    left: 100%;
+}
+
+.dva-information .schedule-card:hover {
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.06) 100%);
+    border-color: rgba(255, 107, 53, 0.3);
+    transform: translateY(-8px);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.3);
+}
+
+.dva-information .day-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.dva-information .day-name {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--syncsoft-white);
+}
+
+.dva-information .level-badge {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.dva-information .level-badge.middle {
+    background: linear-gradient(135deg, #FF6B35, #FF8A65);
+    color: white;
+}
+
+.dva-information .level-badge.junior {
+    background: linear-gradient(135deg, #0066FF, #4A90E2);
+    color: white;
+}
+
+.dva-information .time-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.dva-information .time {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--dva-primary);
+}
+
+.dva-information .duration {
+    font-size: 0.9rem;
+    color: var(--syncsoft-gray);
+}
+
+/* ===== CLUB INFO SECTION ===== */
+
+.dva-information .club-info-section {
+    padding: 60px 0;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.dva-information .info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    /* SCOPED: Remove manual container - use .container class in HTML */
+}
+
+.dva-information .info-card {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 24px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    transition: var(--transition-smooth);
+}
+
+.dva-information .info-card:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 107, 53, 0.3);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 32px rgba(255, 107, 53, 0.15);
+}
+
+.dva-information .info-icon {
+    font-size: 2.5rem;
+    flex-shrink: 0;
+}
+
+.dva-information .info-content h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--syncsoft-white);
+    margin: 0 0 8px 0;
+}
+
+.dva-information .info-value {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--dva-primary);
+    margin: 0 0 4px 0;
+}
+
+.dva-information .info-desc {
+    font-size: 0.9rem;
+    color: var(--syncsoft-gray);
+    margin: 0;
+}
+
+/* ===== REQUIREMENTS SECTION ===== */
+
+.dva-information .requirements-section {
+    padding: 60px 0;
+}
+
+.dva-information .requirements-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.dva-information .req-tab {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 24px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    color: var(--syncsoft-gray);
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.dva-information .req-tab:hover,
+.dva-information .req-tab.active {
+    background: rgba(255, 107, 53, 0.15);
+    border-color: rgba(255, 107, 53, 0.3);
+    color: var(--syncsoft-white);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(255, 107, 53, 0.2);
+}
+
+.dva-information .tab-icon {
+    font-size: 1.5rem;
+}
+
+.dva-information .tab-text {
+    font-weight: 600;
+}
+
+.dva-information .requirements-content {
+    /* SCOPED: Remove manual container - use .container class in HTML */
+}
+
+.dva-information .req-content {
+    display: none;
+}
+
+.dva-information .req-content.active {
+    display: block;
+}
+
+.dva-information .req-categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+}
+
+.dva-information .req-category {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 24px;
+    transition: var(--transition-smooth);
+}
+
+.dva-information .req-category:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 107, 53, 0.3);
+}
+
+.dva-information .req-category h4 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--dva-primary);
+    margin: 0 0 16px 0;
+}
+
+.dva-information .req-category ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.dva-information .req-category li {
+    padding: 8px 0;
+    color: var(--syncsoft-gray);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    position: relative;
+    padding-left: 24px;
+}
+
+.dva-information .req-category li:before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--dva-primary);
+    font-weight: 600;
+}
+
+.dva-information .req-category li:last-child {
+    border-bottom: none;
+}
+
+/* Technical Skills Specific Styles */
+
+.dva-information .technical-skills {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.dva-information .skill-category {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 24px;
+}
+
+.dva-information .skill-category h4 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--dva-primary); /* ✅ DVA Orange - Highly Visible */
+    margin: 0 0 24px 0;
+    text-align: center;
+}
+
+.dva-information .skill-details {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.dva-information .skill-item {
+    background: rgba(255, 255, 255, 0.03); /* ✅ Subtle background separation */
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 16px;
+}
+
+.dva-information .skill-item h5 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--syncsoft-white); /* ✅ Pure White - Maximum Contrast */
+    margin: 0 0 12px 0;
+    background: rgba(255, 107, 53, 0.1); /* ✅ Subtle highlight background */
+    padding: 8px 12px;
+    border-radius: 8px;
+    border-left: 3px solid var(--dva-primary);
+}
+.dva-information .skill-item ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.dva-information .skill-item li {
+    padding: 10px 0;
+    color: rgba(255, 255, 255, 0.9); /* ✅ High contrast white */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    position: relative;
+    padding-left: 28px;
+    line-height: 1.5;
+    font-size: 0.95rem;
+}
+
+.dva-information .skill-item li:before {
+    content: '▶'; /* ✅ Better bullet point */
+    position: absolute;
+    left: 0;
+    color: var(--dva-primary); /* ✅ DVA Orange bullets */
+    font-weight: 700;
+    font-size: 0.8rem;
+}
+
+.dva-information .skill-item li:last-child {
+    border-bottom: none;
+}
+.dva-information .skill-criteria {
+    background: rgba(255, 107, 53, 0.15); /* ✅ More visible background */
+    border: 1px solid rgba(255, 107, 53, 0.4); /* ✅ Stronger border */
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.dva-information .skill-criteria strong {
+    color: #FFD700; /* ✅ Gold color for emphasis */
+    font-size: 1.05rem;
+    font-weight: 700;
+    display: block;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.dva-information .skill-criteria ul {
+    list-style: none;
+    padding: 0;
+    margin: 8px 0 0 0;
+}
+
+.dva-information .skill-criteria li {
+    padding: 8px 0;
+    color: rgba(255, 255, 255, 0.95); /* ✅ High contrast */
+    border-bottom: 1px solid rgba(255, 107, 53, 0.2);
+    position: relative;
+    padding-left: 24px;
+    font-weight: 500;
+}
+/* ✅ ENHANCED: Hover effects for better interaction */
+.dva-information .skill-item:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 107, 53, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.dva-information .skill-criteria:hover {
+    background: rgba(255, 107, 53, 0.2);
+    border-color: rgba(255, 107, 53, 0.5);
+}
+.dva-information .skill-criteria li:before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #4CAF50; /* ✅ Green checkmarks */
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+.dva-information .skill-criteria li:last-child {
+    border-bottom: none;
+}
+/* Important Note */
+
+.dva-information .important-note {
+    display: flex;
+    gap: 16px;
+    background: rgba(255, 206, 84, 0.1);
+    border: 1px solid rgba(255, 206, 84, 0.3);
+    border-radius: 16px;
+    padding: 24px;
+    margin-top: 40px;
+}
+
+.dva-information .note-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+}
+
+.dva-information .note-content h4 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #FFD700;
+    margin: 0 0 12px 0;
+}
+
+.dva-information .note-content p {
+    color: var(--syncsoft-gray);
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* ===== CONTACT SECTION - UPDATED VERSION ===== */
+
+.dva-information .contact-section {
+    padding: 60px 0;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.3), rgba(255, 107, 53, 0.05));
+}
+
+.dva-information .contact-card {
+    max-width: 700px;
+    margin: 0 auto;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    padding: 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.dva-information .contact-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 107, 53, 0.05), transparent);
+    transition: left 0.8s ease;
+}
+
+.dva-information .contact-card:hover::before {
+    left: 100%;
+}
+
+.dva-information .contact-info {
+    margin-bottom: 32px;
+}
+
+.dva-information .contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 24px;
+    text-align: left;
+}
+
+.dva-information .contact-icon {
+    font-size: 3rem;
+    flex-shrink: 0;
+    margin-top: 8px;
+}
+
+.dva-information .contact-details h4 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--syncsoft-white);
+    margin: 0 0 12px 0;
+    line-height: 1.2;
+}
+
+.dva-information .contact-details p {
+    margin: 8px 0;
+    color: var(--syncsoft-gray);
+    line-height: 1.6;
+}
+
+.dva-information .contact-details strong {
+    color: var(--dva-primary);
+    font-weight: 700;
+}
+
+/* Contact Features */
+.dva-information .contact-features {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.dva-information .feature-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    justify-content: center;
+    padding: 8px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 8px;
+    transition: var(--transition-smooth);
+}
+
+.dva-information .feature-item:hover {
+    background: rgba(255, 107, 53, 0.1);
+    transform: translateX(4px);
+}
+
+.dva-information .feature-icon {
+    color: #4CAF50;
+    font-weight: 700;
+}
+
+.dva-information .feature-text {
+    color: var(--syncsoft-gray);
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+/* Register Button - Enhanced */
+.dva-information .contact-actions {
+    margin-bottom: 24px;
+}
+
+.dva-information .register-btn {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 20px 40px;
+    background: linear-gradient(135deg, var(--dva-primary) 0%, #FF8A65 100%);
+    border-radius: 16px;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
+    min-width: 240px;
+    box-shadow: 0 8px 32px rgba(255, 107, 53, 0.3);
+}
+
+.dva-information .register-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.6s ease;
+}
+
+.dva-information .register-btn:hover::before {
+    left: 100%;
+}
+
+.dva-information .register-btn:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 16px 48px rgba(255, 107, 53, 0.4);
+    background: linear-gradient(135deg, #FF8A65 0%, var(--dva-primary) 100%);
+}
+
+.dva-information .btn-content {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.dva-information .btn-icon {
+    font-size: 1.5rem;
+}
+
+.dva-information .btn-text {
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.dva-information .btn-subtitle {
+    font-size: 0.85rem;
+    font-weight: 500;
+    opacity: 0.9;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Contact Note */
+.dva-information .contact-note {
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dva-information .contact-note p {
+    margin: 0;
+    color: var(--syncsoft-gray);
+    font-size: 0.9rem;
+}
+
+.dva-information .contact-note strong {
+    color: var(--dva-primary);
+}
+
+/* Button Animation Effect */
+@keyframes dva-info-pulse-register {
+    0% {
+        box-shadow: 0 8px 32px rgba(255, 107, 53, 0.3);
+    }
+    50% {
+        box-shadow: 0 12px 40px rgba(255, 107, 53, 0.5);
+    }
+    100% {
+        box-shadow: 0 8px 32px rgba(255, 107, 53, 0.3);
+    }
+}
+
+.dva-information .register-btn {
+    animation: dva-info-pulse-register 3s ease-in-out infinite;
+}
+
+.dva-information .register-btn:hover {
+    animation: none;
+}
+
+/* ===== RESPONSIVE DESIGN - FULLY SCOPED ===== */
+
+@media (max-width: 1024px) {
+    .dva-information .hero-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 40px;
+    }
+    
+    .dva-information .hero-images {
+        flex-direction: row;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .dva-information .skill-category {
+        padding: 20px 16px;
+    }
+    
+    .dva-information .skill-item {
+        padding: 16px;
+    }
+    
+    .dva-information .skill-item h5 {
+        font-size: 1rem;
+        padding: 6px 10px;
+    }
+    
+    .dva-information .skill-item li,
+    .dva-information .skill-criteria li {
+        font-size: 0.9rem;
+        padding: 8px 0;
+        padding-left: 24px;
+    }
+    
+    .dva-information .skill-criteria {
+        padding: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .dva-information .skill-category h4 {
+        font-size: 1.2rem;
+    }
+    
+    .dva-information .skill-item h5 {
+        font-size: 0.95rem;
+    }
+    
+    .dva-information .skill-item li,
+    .dva-information .skill-criteria li {
+        font-size: 0.85rem;
+        padding-left: 20px;
+    }
+}
+/* ✅ INFORMATION TABS CSS FIX */
+.req-tab {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.req-tab:hover {
+    opacity: 0.8;
+}
+
+.req-tab.active {
+    background-color: rgba(255, 107, 53, 0.2);
+    border-color: rgba(255, 107, 53, 0.6);
+    color: white;
+}
+
+.req-content {
+    display: none;
+}
+
+.req-content.active {
+    display: block;
+}

@@ -1,0 +1,208 @@
+<!-- D:\dva\DVA-Volleyball-Website\index.html -->
+<!DOCTYPE html>
+<html lang="vi">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>DVA Volleyball Club - Excellence in Every Spike</title>
+        <link rel="icon" type="image/png" href="assets/images/logo/dva.png">
+
+        <!-- Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+            rel="stylesheet">
+
+        <!-- CSS Files - CORRECT ORDER -->
+        <link rel="stylesheet" href="assets/css/themes/vnl-colors.css">
+        <link rel="stylesheet" href="assets/css/themes/dva-theme.css">
+        <link rel="stylesheet" href="assets/css/main.css">
+
+        <!-- Component CSS -->
+        <link rel="stylesheet" href="assets/css/components/header.css">
+        <link rel="stylesheet" href="assets/css/components/footer.css">
+        <link rel="stylesheet" href="assets/css/components/navigation.css">
+        <link rel="stylesheet" href="assets/css/components/cards.css">
+        <link rel="stylesheet" href="assets/css/components/pagination.css">
+        <link rel="stylesheet" href="assets/css/components/modal.css">
+        <link rel="stylesheet" href="assets/css/components/buttons.css">
+
+        <!-- Module CSS - LOAD DYNAMICALLY BY ROUTER -->
+        <link rel="stylesheet" href="assets/css/modules/home.css"
+            id="module-css">
+        <!-- RANKING CSS -->
+        <link rel="stylesheet" href="assets/css/modules/ranking.css"
+            id="ranking-css">
+        <!-- TOURNAMENT CSS - ADDED FOR PROPER STYLING -->
+        <link rel="stylesheet" href="assets/css/modules/tournament.css"
+            id="tournament-css">
+        <!-- INFORMATION CSS -->
+        <link rel="stylesheet" href="assets/css/modules/information.css"
+            id="information-css">
+        <!-- REGISTER CSS -->
+        <link rel="stylesheet" href="assets/css/modules/register.css"
+            id="register-css">
+        <!-- Services CSS -->
+        <link rel="stylesheet" href="assets/css/modules/services.css"
+            id="services-css">
+        <!-- NEWS CSS -->
+        <link rel="stylesheet" href="assets/css/modules/news.css"
+            id="news-css">
+        <!-- CONTACT US -->
+        <link rel="stylesheet" href="assets/css/modules/contact.css"
+            id="contact-css">
+
+        <!-- Meta tags -->
+        <meta name="description"
+            content="DVA Volleyball Club - Nơi hội tụ đam mê bóng chuyền. Excellence in Every Spike.">
+        <meta name="keywords"
+            content="DVA, Volleyball, Bóng chuyền, Tournament, Ranking, Players">
+        <meta name="author" content="DVA Volleyball Club">
+
+        <!-- Favicon -->
+        <link rel="icon" href="assets/images/logo/favicon.ico"
+            type="image/x-icon">
+        <link rel="apple-touch-icon" href="assets/images/logo/dva-logo.png">
+
+        <!-- Preload critical resources for better performance -->
+        <link rel="preload" href="assets/css/components/header.css" as="style">
+        <link rel="stylesheet" href="assets/css/components/footer.css">
+        <link rel="preload" href="assets/css/themes/dva-theme.css" as="style">
+        <link rel="preload" href="assets/js/main.js" as="script">
+        <link rel="preload" href="assets/js/data/tournament.js" as="script">
+        <link rel="preload" href="assets/js/modules/tournament.js" as="script">
+    </head>
+    <body class="dva-body">
+
+        <!-- Header sẽ được load bằng JavaScript -->
+        <div id="header-container"></div>
+
+        <!-- Main Content -->
+        <main id="main-content" class="main-content">
+            <div class="loading-container">
+                <iv class="loading-spinner">
+                    d
+                </iv>
+            </div>
+        </main>
+
+        <!-- Footer sẽ được load bằng JavaScript -->
+        <div id="footer-container"></div>
+
+        <!-- JavaScript Files - OPTIMIZED CORRECT ORDER FOR MIME TYPE FIX -->
+
+        <!-- 1. Utilities first -->
+        <script src="assets/js/utils/helpers.js"
+            type="text/javascript"></script>
+
+        <!-- 2. Configuration -->
+        <script src="assets/js/data/config.js" type="text/javascript"></script>
+
+        <!-- 3. Data files BEFORE modules that use them -->
+        <script src="assets/js/data/players.js" type="text/javascript"></script>
+        <script src="assets/js/data/teams.js" type="text/javascript"></script>
+        <script src="assets/js/data/rankings.js"
+            type="text/javascript"></script>
+        <!-- TOURNAMENT DATA - CRITICAL: LOAD BEFORE TOURNAMENT MODULE -->
+        <script src="assets/js/data/tournament.js"
+            type="text/javascript"></script>
+        <!-- Add to existing data files section -->
+        <script src="assets/js/data/news.js" type="text/javascript"></script>
+
+        <!-- Add to existing modules section -->
+        <script src="assets/js/modules/news.js" type="text/javascript"></script>
+
+        <!-- Add to existing modules section -->
+        <script src="assets/js/modules/register.js"
+            type="text/javascript"></script>
+
+        <!-- Services Module -->
+        <script src="assets/js/modules/services.js"
+            type="text/javascript"></script>
+
+        <!-- 4. Components -->
+        <script src="assets/js/components/header.js"
+            type="text/javascript"></script>
+        <script src="assets/js/components/footer.js"
+            type="text/javascript"></script>
+
+        <!-- 5. Router -->
+        <script src="assets/js/router.js" type="text/javascript"></script>
+
+        <!-- 6. Modules AFTER data files -->
+        <script src="assets/js/modules/home.js" type="text/javascript"></script>
+        <script src="assets/js/modules/ranking.js"
+            type="text/javascript"></script>
+        <!-- TOURNAMENT MODULE - AFTER TOURNAMENT DATA -->
+        <script src="assets/js/modules/tournament.js"
+            type="text/javascript"></script>
+
+        <!-- Contact Module -->
+        <script src="assets/js/modules/contact.js"
+            type="text/javascript"></script>
+
+        <!-- 7. Main app - LAST -->
+        <script src="assets/js/main.js" type="text/javascript"></script>
+
+        <!-- Error Recovery Script - In case of MIME type issues -->
+        <script type="text/javascript">
+            // MIME Type Error Recovery
+            window.addEventListener('error', function(e) {
+                if (e.message && e.message.includes('MIME type')) {
+                    console.warn('⚠️ MIME type error detected:', e.filename);
+                    console.log('🔄 Attempting to reload page...');
+                    
+                    // Try to reload once after a short delay
+                    if (!window.mimeErrorReloadAttempted) {
+                        window.mimeErrorReloadAttempted = true;
+                        setTimeout(() => {
+                            location.reload();
+                        }, 2000);
+                    }
+                }
+            });
+
+            // Ensure tournament initialization
+            document.addEventListener('DOMContentLoaded', function() {
+                console.log('📄 DOM Content Loaded');
+                
+                // Check if we're on tournament page
+                setTimeout(() => {
+                    const hash = window.location.hash;
+                    if (hash.includes('#/tournament')) {
+                        console.log('🏆 Tournament page detected on load');
+                        
+                        // Dispatch event to ensure initialization
+                        document.dispatchEvent(new CustomEvent('navigationChange', {
+                            detail: { page: 'tournament' }
+                        }));
+                    }
+                }, 500);
+            });
+
+            // Additional check for tournament module
+            window.addEventListener('load', function() {
+                console.log('📱 Window fully loaded');
+                
+                // Debug information
+                console.log('🐛 Debug Info:', {
+                    currentHash: window.location.hash,
+                    tournamentData: !!window.tournamentData,
+                    tournamentModule: !!window.TournamentModule,
+                    tournamentInstance: !!window.tournamentModuleInstance
+                });
+
+                // Force tournament initialization if needed
+                if (window.location.hash.includes('#/tournament')) {
+                    setTimeout(() => {
+                        if (!window.tournamentModuleInstance && window.TournamentModule) {
+                            console.log('🔄 Force initializing tournament module...');
+                            window.tournamentModuleInstance = new window.TournamentModule();
+                        }
+                    }, 1000);
+                }
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,473 @@
+<div class="players-module syncsoft-module dva-players">
+    <!-- Simple Header -->
+    <div class="players-header"
+        style="padding: 100px 0 60px 0; background: linear-gradient(135deg, #0A0E1A 0%, #1A1F2E 100%); text-align: center;">
+        <div class="container"
+            style="max-width: 1200px; margin: 0 auto; padding: 0 24px;">
+            <h1
+                style="font-size: 3rem; font-weight: 900; color: white; margin-bottom: 16px; background: linear-gradient(135deg, #FF6B35 0%, #FF8A65 50%, #0066FF 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">DVA
+                Players</h1>
+            <p style="font-size: 1.2rem; color: #8B949E; margin: 0;">Meet our
+                talented volleyball athletes from around the world</p>
+        </div>
+    </div>
+
+    <!-- Team Selection - UPDATED BUTTONS ORDER -->
+    <div class="team-selection"
+        style="padding: 40px 0; background: rgba(0, 0, 0, 0.2); border-bottom: 1px solid rgba(255, 255, 255, 0.08);">
+        <div class="container"
+            style="max-width: 1200px; margin: 0 auto; padding: 0 24px;">
+            <div class="team-tabs"
+                style="display: flex; justify-content: center; gap: 24px; max-width: 600px; margin: 0 auto;">
+
+                <!-- ✅ ADVANCED TEAM BUTTON - NOW FIRST & ACTIVE BY DEFAULT -->
+                <button class="team-tab active" data-team="advanced"
+                    id="advanced-team-btn"
+                    style="display: flex; align-items: center; gap: 16px; padding: 20px 32px; 
+                background: rgba(255, 107, 53, 0.15); border: 1px solid rgba(255, 107, 53, 0.3); 
+                border-radius: 16px; color: white; cursor: pointer; transition: all 0.3s ease; min-width: 200px;">
+                    <span style="font-size: 2rem;">🌟</span>
+                    <div>
+                        <div
+                            style="font-size: 1.1rem; font-weight: 700;">Advanced
+                            Team</div>
+                        <div style="font-size: 0.85rem; opacity: 0.7;">Elite
+                            Division</div>
+                    </div>
+                </button>
+
+                <!-- ✅ MIDDLE TEAM BUTTON - NOW SECOND & INACTIVE BY DEFAULT -->
+                <button class="team-tab" data-team="middle" id="middle-team-btn"
+                    style="display: flex; align-items: center; gap: 16px; padding: 20px 32px; 
+                background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); 
+                border-radius: 16px; color: #8B949E; cursor: pointer; transition: all 0.3s ease; min-width: 200px;">
+                    <span style="font-size: 2rem;">⚡</span>
+                    <div>
+                        <div style="font-size: 1.1rem; font-weight: 700;">Middle
+                            Team</div>
+                        <div
+                            style="font-size: 0.85rem; opacity: 0.7;">Professional
+                            Division</div>
+                    </div>
+                </button>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Search and Filters -->
+    <div class="players-filters"
+        style="background: rgba(0, 0, 0, 0.3); padding: 30px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.08);">
+        <div class="container"
+            style="max-width: 1200px; margin: 0 auto; padding: 0 24px;">
+            <!-- Enhanced Search Bar -->
+            <div
+                style="display: flex; justify-content: center; margin-bottom: 20px;">
+                <div style="position: relative; max-width: 400px; width: 100%;">
+                    <input type="text"
+                        id="player-search"
+                        placeholder="Search players by name, position, address..."
+                        style="
+                   width: 100%; padding: 16px 50px 16px 48px; 
+                   background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); 
+                   border-radius: 50px; color: white; font-size: 16px; backdrop-filter: blur(20px);
+                   transition: all 0.3s ease;
+               ">
+                    <svg
+                        style="position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: #8B949E;"
+                        width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8" />
+                        <path d="M21 21l-4.35-4.35" />
+                    </svg>
+
+                    <!-- Clear Search Button -->
+                    <button id="search-clear" type="button" style="
+            position: absolute; right: 16px; top: 50%; transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.1); border: none; border-radius: 50%;
+            width: 28px; height: 28px; display: none; align-items: center; justify-content: center;
+            color: #8B949E; cursor: pointer; transition: all 0.3s ease;
+        ">
+                        <svg width="14" height="14" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Filters - FIXED OPTION VALUES -->
+            <div
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px; margin-bottom: 20px;">
+                <!-- Position Filter -->
+                <select title="Positions" id="position-filter"
+                    style="padding: 12px 16px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 12px; color: white; cursor: pointer;">
+                    <option value>All Positions</option>
+                    <option value="Setter">Setter</option>
+                    <option value="Outside Hitter">Outside Hitter</option>
+                    <option value="Middle Blocker">Middle Blocker</option>
+                    <option value="Opposite Hitter">Opposite Hitter</option>
+                    <option value="Opposite">Opposite</option>
+                    <option value="Libero">Libero</option>
+                </select>
+
+                <!-- Height Filter -->
+                <select title="Heights" id="height-filter"
+                    style="padding: 12px 16px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 12px; color: white; cursor: pointer;">
+                    <option value>All Heights</option>
+                    <option value="160-170">160-170cm</option>
+                    <option value="170-175">170-175cm</option>
+                    <option value="175-180">175-180cm</option>
+                    <option value="180+">180cm+</option>
+                </select>
+
+                <!-- Country Filter -->
+                <select title="Countries" id="country-filter"
+                    style="padding: 12px 16px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 12px; color: white; cursor: pointer;">
+                    <option value>All Countries</option>
+                    <option value="Vietnam">🇻🇳 Vietnam</option>
+                    <option value="Russia">🇷🇺 Russia</option>
+                    <option value="Korea">🇰🇷 Korea</option>
+                    <option value="Kazakhstan">🇰🇿 Kazakhstan</option>
+                    <option value="India">🇮🇳 India</option>
+                </select>
+
+                <!-- Sort Filter -->
+                <select title="Sort By" id="sort-filter"
+                    style="padding: 12px 16px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 12px; color: white; cursor: pointer;">
+                    <option value="name">Name (A-Z)</option>
+                    <option value="name-desc">Name (Z-A)</option>
+                    <option value="number">Number (Low-High)</option>
+                    <option value="number-desc">Number (High-Low)</option>
+                    <option value="height">Height (Short-Tall)</option>
+                    <option value="height-desc">Height (Tall-Short)</option>
+                    <option value="age">Age (Young-Old)</option>
+                    <option value="age-desc">Age (Old-Young)</option>
+                </select>
+            </div>
+
+            <!-- Reset and Results -->
+            <div
+                style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+                <button id="reset-filters" style="
+                    padding: 12px 20px; background: rgba(255, 255, 255, 0.08); 
+                    border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 12px; 
+                    color: #8B949E; cursor: pointer; transition: all 0.3s ease;
+                ">Reset Filters</button>
+                <div style="color: #8B949E; font-size: 14px;">
+                    <span id="results-count"
+                        style="color: #FF6B35; font-weight: 700;">0</span>
+                    players found
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Players Content -->
+    <div class="players-content" style="padding: 60px 0 80px 0;">
+        <div class="container"
+            style="max-width: 1200px; margin: 0 auto; padding: 0 24px;">
+            <!-- Loading State -->
+            <div id="players-loading" style="
+                display: flex; flex-direction: column; align-items: center; 
+                justify-content: center; padding: 60px 20px;
+            ">
+                <div style="width: 48px; height: 48px; margin-bottom: 16px;">
+                    <div style="
+                        width: 100%; height: 100%; border: 3px solid rgba(255, 107, 53, 0.2); 
+                        border-left-color: #FF6B35; border-radius: 50%; 
+                        animation: spin 1s linear infinite;
+                    "></div>
+                </div>
+                <p style="font-size: 16px; color: #8B949E; margin: 0;">Loading
+                    players...</p>
+            </div>
+
+            <!-- Players Grid -->
+            <div id="players-grid" class="players-grid" style="
+                display: grid; 
+                grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); 
+                gap: 24px; 
+                opacity: 0; 
+                transform: translateY(20px); 
+                transition: all 0.6s ease;
+            ">
+                <!-- Players cards will be inserted here by JavaScript -->
+            </div>
+
+            <!-- Empty State -->
+            <div id="players-empty" style="
+                display: none; text-align: center; padding: 80px 20px; color: white;
+            ">
+                <div
+                    style="font-size: 4rem; margin-bottom: 20px; opacity: 0.5;">🔍</div>
+                <h3
+                    style="font-size: 1.5rem; font-weight: 700; margin: 0 0 12px 0;">No
+                    Players Found</h3>
+                <p
+                    style="font-size: 1rem; color: #8B949E; margin: 0 0 20px 0;">Try
+                    adjusting your search criteria or filters.</p>
+                <button onclick="window.playersModule?.resetFilters()" style="
+                    padding: 12px 24px; background: linear-gradient(135deg, #FF6B35 0%, #FF8A65 100%); 
+                    border: none; border-radius: 12px; color: white; font-weight: 600; cursor: pointer;
+                ">Reset Filters</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.players-grid.visible {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
+.team-tab:hover,
+.team-tab.active {
+    background: rgba(255, 107, 53, 0.15) !important;
+    border-color: rgba(255, 107, 53, 0.3) !important;
+    color: white !important;
+}
+
+.team-tab:hover {
+    transform: translateY(-2px);
+}
+
+/* SEARCH INPUT STYLES */
+#player-search {
+    transition: all 0.3s ease !important;
+}
+
+#player-search:focus {
+    outline: none !important;
+    border-color: #FF6B35 !important;
+    box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1) !important;
+    background: rgba(255, 255, 255, 0.12) !important;
+}
+
+#player-search:hover {
+    background: rgba(255, 255, 255, 0.10) !important;
+}
+
+/* SEARCH CLEAR BUTTON */
+#search-clear {
+    transition: all 0.3s ease !important;
+}
+
+#search-clear:hover {
+    background: rgba(255, 255, 255, 0.2) !important;
+    color: white !important;
+    transform: translateY(-50%) scale(1.1) !important;
+}
+
+/* SELECT DROPDOWN COMPREHENSIVE FIXES */
+select[id$="-filter"] {
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    appearance: none !important;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,0.7)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e") !important;
+    background-repeat: no-repeat !important;
+    background-position: right 12px center !important;
+    background-size: 16px !important;
+    padding-right: 40px !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    background-color: rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    border-radius: 12px !important;
+    color: white !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    padding: 12px 40px 12px 16px !important;
+}
+
+select[id$="-filter"]:hover {
+    background-color: rgba(255, 255, 255, 0.12) !important;
+    border-color: rgba(255, 255, 255, 0.25) !important;
+    transform: translateY(-1px) !important;
+}
+
+select[id$="-filter"]:focus {
+    outline: none !important;
+    border-color: #FF6B35 !important;
+    box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.15) !important;
+    background-color: rgba(255, 255, 255, 0.15) !important;
+    transform: translateY(-1px) !important;
+}
+
+select[id$="-filter"]:active {
+    transform: translateY(0px) !important;
+}
+
+/* SELECT OPTIONS STYLING */
+select[id$="-filter"] option {
+    background-color: #1A1F2E !important;
+    color: white !important;
+    padding: 12px 16px !important;
+    border: none !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    line-height: 1.4 !important;
+}
+
+select[id$="-filter"] option:hover {
+    background-color: rgba(255, 107, 53, 0.2) !important;
+}
+
+select[id$="-filter"] option:checked,
+select[id$="-filter"] option:selected {
+    background-color: rgba(255, 107, 53, 0.4) !important;
+    color: white !important;
+}
+
+/* RESET BUTTON STYLES */
+#reset-filters {
+    transition: all 0.3s ease !important;
+    cursor: pointer !important;
+}
+
+#reset-filters:hover {
+    background: rgba(255, 255, 255, 0.15) !important;
+    color: white !important;
+    border-color: rgba(255, 107, 53, 0.3) !important;
+    transform: translateY(-1px) !important;
+}
+
+#reset-filters:active {
+    transform: translateY(0px) !important;
+}
+
+/* ENHANCED AVATAR HOVER EFFECTS */
+.player-card:hover .player-avatar {
+    transform: scale(1.05) !important;
+    border-color: rgba(255, 107, 53, 0.4) !important;
+}
+
+.player-card:hover .avatar-overlay {
+    opacity: 1 !important;
+}
+
+.player-card:hover .player-avatar-wrapper {
+    box-shadow: 0 12px 48px rgba(255, 107, 53, 0.3) !important;
+}
+
+.player-card:hover .player-number {
+    transform: scale(1.1) !important;
+    box-shadow: 0 6px 20px rgba(255, 107, 53, 0.6) !important;
+}
+
+/* SMOOTH TRANSITIONS FOR ALL ELEMENTS */
+.player-avatar-wrapper,
+.player-avatar,
+.avatar-overlay,
+.player-number {
+    transition: all 0.3s ease !important;
+}
+
+/* FILTER CONTAINER ENHANCEMENTS */
+.players-filters {
+    -webkit-backdrop-filter: blur(15px) !important;
+    backdrop-filter: blur(15px) !important;
+}
+
+/* MOBILE RESPONSIVE FIXES */
+@media (max-width: 768px) {
+    select[id$="-filter"] {
+        padding: 10px 36px 10px 14px !important;
+        font-size: 13px !important;
+        background-size: 14px !important;
+        background-position: right 10px center !important;
+        padding-right: 36px !important;
+    }
+    
+    #player-search {
+        padding: 14px 44px 14px 44px !important;
+        font-size: 15px !important;
+    }
+    
+    #reset-filters {
+        padding: 10px 16px !important;
+        font-size: 13px !important;
+    }
+}
+
+/* CUSTOM SCROLLBAR FOR SELECT DROPDOWNS */
+select[id$="-filter"] {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 107, 53, 0.5) rgba(255, 255, 255, 0.1);
+}
+
+select[id$="-filter"]::-webkit-scrollbar {
+    width: 6px;
+}
+
+select[id$="-filter"]::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+}
+
+select[id$="-filter"]::-webkit-scrollbar-thumb {
+    background: rgba(255, 107, 53, 0.5);
+    border-radius: 3px;
+}
+
+select[id$="-filter"]::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 107, 53, 0.7);
+}
+
+/* LOADING STATE ENHANCEMENTS */
+.players-loading .spinner-circle {
+    border-left-color: #FF6B35 !important;
+}
+
+/* RESULTS COUNT STYLING */
+#results-count {
+    font-weight: 700 !important;
+    color: #FF6B35 !important;
+    text-shadow: 0 0 10px rgba(255, 107, 53, 0.3) !important;
+}
+
+/* FILTER FOCUS STATES WITH BETTER VISIBILITY */
+select[id$="-filter"]:focus-visible {
+    outline: 2px solid #FF6B35 !important;
+    outline-offset: 2px !important;
+}
+
+#player-search:focus-visible {
+    outline: 2px solid #FF6B35 !important;
+    outline-offset: 2px !important;
+}
+
+/* ENHANCED VISUAL FEEDBACK */
+.filter-group:hover select {
+    border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+/* BETTER SELECT ARROW POSITIONING */
+select[id$="-filter"] {
+    background-position: calc(100% - 12px) center !important;
+}
+
+/* FIX FOR WEBKIT SELECT STYLING */
+select[id$="-filter"]::-ms-expand {
+    display: none !important;
+}
+
+/* ENHANCED FOCUS RING */
+select[id$="-filter"]:focus {
+    box-shadow: 
+        0 0 0 3px rgba(255, 107, 53, 0.15),
+        0 4px 12px rgba(0, 0, 0, 0.15) !important;
+}
+
+#player-search:focus {
+    box-shadow: 
+        0 0 0 3px rgba(255, 107, 53, 0.1),
+        0 4px 12px rgba(0, 0, 0, 0.15) !important;
+}
+</style>

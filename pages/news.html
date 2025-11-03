@@ -1,0 +1,102 @@
+<!-- DVA News Page - Consistent Structure -->
+<div class="dva-news">
+
+    <!-- Hero Section -->
+    <section class="news-hero">
+        <div class="hero-bg-effects">
+            <div class="hero-grid"></div>
+            <div class="hero-orb-1"></div>
+            <div class="hero-orb-2"></div>
+        </div>
+
+        <div class="container">
+            <div class="hero-content animate-on-scroll">
+                <h1 class="hero-title">📰 DVA News</h1>
+                <p class="hero-description">
+                    Cập nhật tin tức mới nhất về hoạt động câu lạc bộ, giải đấu,
+                    và những thành tựu của đại gia đình DVA Volleyball
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search Section -->
+    <section class="news-search-section">
+        <div class="container">
+            <div class="news-search-container animate-on-scroll">
+                <div class="search-box">
+                    <span class="search-icon">🔍</span>
+                    <input
+                        type="text"
+                        class="news-search-input"
+                        placeholder="Tìm kiếm tin tức theo tiêu đề, nội dung, thể loại..."
+                        autocomplete="off" />
+                    <button class="search-clear-btn" title="Xóa tìm kiếm">
+                        ✕
+                    </button>
+                </div>
+                <div class="search-results-count"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Content Section -->
+    <section class="news-content-section">
+        <div class="container">
+            <!-- News Grid - Will be populated by JavaScript -->
+            <div class="news-grid">
+                <!-- News cards will be dynamically inserted here -->
+                <div class="loading-placeholder">
+                    <div class="loading-spinner">
+                        <div class="spinner-circle"></div>
+                        <p>Đang tải tin tức...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pagination -->
+            <div class="news-pagination">
+                <!-- Pagination buttons will be dynamically inserted here -->
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<style>
+    /* Loading Spinner Styles */
+    .loading-placeholder {
+        grid-column: 1 / -1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 200px;
+        color: var(--syncsoft-gray);
+    }
+
+    .loading-spinner {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+    }
+
+    .spinner-circle {
+        width: 40px;
+        height: 40px;
+        border: 3px solid rgba(255, 107, 53, 0.2);
+        border-left: 3px solid var(--dva-primary);
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    .loading-placeholder p {
+        margin: 0;
+        font-weight: 500;
+    }
+</style>

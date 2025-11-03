@@ -1,0 +1,1119 @@
+/* ===== DVA NEWS MODULE - FULLY SCOPED STYLES ===== */
+/* D:\dva\DVA-Volleyball-Website\assets\css\modules\news.css */
+
+/* ✅ CRITICAL: All styles scoped within .dva-news to prevent global conflicts */
+
+.dva-news {
+    background: var(--syncsoft-dark);
+    min-height: 100vh;
+    /* Uses global .main-content padding */
+}
+
+/* ===== HERO SECTION ===== */
+
+.dva-news .news-hero {
+    position: relative;
+    padding: 60px 0;
+    background: linear-gradient(135deg, var(--syncsoft-dark) 0%, var(--syncsoft-dark-light) 100%);
+    overflow: hidden;
+}
+
+.dva-news .hero-bg-effects {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+}
+
+.dva-news .hero-grid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 60px 60px;
+    opacity: 0.4;
+}
+
+.dva-news .hero-orb-1 {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(255, 107, 53, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    top: -100px;
+    right: -100px;
+    filter: blur(60px);
+}
+
+.dva-news .hero-orb-2 {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(0, 102, 255, 0.08) 0%, transparent 70%);
+    border-radius: 50%;
+    bottom: -80px;
+    left: -80px;
+    filter: blur(40px);
+}
+
+.dva-news .hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+
+.dva-news .hero-title {
+    font-size: 3.5rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--dva-primary) 0%, var(--dva-primary-light) 50%, var(--syncsoft-primary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    margin: 0 0 20px 0;
+}
+
+.dva-news .hero-description {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: var(--syncsoft-gray);
+    max-width: 600px;
+    margin: 0 auto 40px auto;
+}
+
+/* ===== SEARCH SECTION ===== */
+
+.dva-news .news-search-section {
+    padding: 40px 0;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.dva-news .news-search-container {
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.dva-news .search-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+    padding: 4px;
+    transition: var(--transition-smooth);
+}
+
+.dva-news .search-box:focus-within {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 107, 53, 0.4);
+    box-shadow: 0 0 20px rgba(255, 107, 53, 0.2);
+}
+
+.dva-news .search-icon {
+    padding: 16px 20px;
+    color: var(--dva-primary);
+    font-size: 1.2rem;
+}
+
+.dva-news .news-search-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--syncsoft-white);
+    font-size: 1rem;
+    padding: 16px 0;
+    placeholder-color: rgba(255, 255, 255, 0.5);
+}
+
+.dva-news .news-search-input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.dva-news .search-clear-btn {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: rgba(255, 107, 53, 0.2);
+    border: none;
+    border-radius: 8px;
+    color: var(--dva-primary);
+    cursor: pointer;
+    margin-right: 12px;
+    transition: var(--transition-smooth);
+}
+
+.dva-news .search-clear-btn:hover {
+    background: rgba(255, 107, 53, 0.3);
+    transform: scale(1.1);
+}
+
+.dva-news .search-results-count {
+    display: none;
+    text-align: center;
+    margin-top: 16px;
+    color: var(--syncsoft-gray);
+    font-size: 0.9rem;
+}
+
+/* ===== NEWS GRID ===== */
+
+.dva-news .news-content-section {
+    padding: 60px 0;
+}
+
+.dva-news .news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    gap: 32px;
+    margin-bottom: 60px;
+}
+
+.dva-news .news-card {
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: var(--transition-smooth);
+    cursor: pointer;
+    position: relative;
+}
+
+.dva-news .news-card:hover {
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.06) 100%);
+    border-color: rgba(255, 107, 53, 0.3);
+    transform: translateY(-8px);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.3);
+}
+
+.dva-news .news-card.featured {
+    border-color: rgba(255, 107, 53, 0.4);
+    background: linear-gradient(145deg, rgba(255, 107, 53, 0.08) 0%, rgba(255, 255, 255, 0.04) 100%);
+}
+
+.dva-news .news-card.featured::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--dva-primary), #FFD700);
+}
+
+.dva-news .news-card-image {
+    position: relative;
+    height: 240px;
+    overflow: hidden;
+}
+
+.dva-news .news-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.dva-news .news-card:hover .news-card-image img {
+    transform: scale(1.05);
+}
+
+.dva-news .news-card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 20px;
+}
+
+.dva-news .news-category {
+    background: rgba(255, 107, 53, 0.9);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.dva-news .featured-badge {
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    color: var(--syncsoft-dark);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.dva-news .news-card-content {
+    padding: 24px;
+}
+
+.dva-news .news-meta {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+}
+
+.dva-news .news-meta span {
+    color: var(--syncsoft-gray);
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.dva-news .news-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--syncsoft-white);
+    line-height: 1.3;
+    margin: 0 0 12px 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.dva-news .news-excerpt {
+    color: var(--syncsoft-gray);
+    line-height: 1.6;
+    margin: 0 0 16px 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.dva-news .news-location {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--syncsoft-gray);
+    font-size: 0.9rem;
+    margin-bottom: 16px;
+}
+
+.dva-news .location-icon {
+    color: var(--dva-primary);
+}
+
+.dva-news .news-tags {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.dva-news .news-tag {
+    background: rgba(0, 102, 255, 0.15);
+    color: #4A90E2;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    border: 1px solid rgba(0, 102, 255, 0.2);
+}
+
+.dva-news .news-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dva-news .news-author {
+    color: var(--syncsoft-gray);
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.dva-news .read-more-btn {
+    background: linear-gradient(135deg, var(--dva-primary), #FF8A65);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.dva-news .read-more-btn:hover {
+    background: linear-gradient(135deg, #FF8A65, var(--dva-primary));
+    transform: translateX(4px);
+    box-shadow: 0 4px 12px rgba(255, 107, 53, 0.4);
+}
+
+.dva-news .btn-arrow {
+    transition: transform 0.3s ease;
+}
+
+.dva-news .read-more-btn:hover .btn-arrow {
+    transform: translateX(2px);
+}
+
+/* ===== PAGINATION ===== */
+
+.dva-news .news-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.dva-news .pagination-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--syncsoft-white);
+    padding: 12px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    font-weight: 500;
+}
+
+.dva-news .pagination-btn:hover:not(.disabled) {
+    background: rgba(255, 107, 53, 0.15);
+    border-color: rgba(255, 107, 53, 0.3);
+    color: white;
+}
+
+.dva-news .pagination-btn.active {
+    background: var(--dva-primary);
+    border-color: var(--dva-primary);
+    color: white;
+}
+
+.dva-news .pagination-btn.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.dva-news .pagination-dots {
+    color: var(--syncsoft-gray);
+    padding: 0 8px;
+}
+
+/* ===== EMPTY STATE ===== */
+
+.dva-news .empty-state {
+    text-align: center;
+    padding: 80px 20px;
+    color: var(--syncsoft-gray);
+}
+
+.dva-news .empty-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+}
+
+.dva-news .empty-state h3 {
+    color: var(--syncsoft-white);
+    font-size: 1.5rem;
+    margin: 0 0 12px 0;
+}
+
+.dva-news .empty-state p {
+    margin: 0 0 24px 0;
+    line-height: 1.6;
+}
+
+.dva-news .clear-search-btn {
+    background: var(--dva-primary);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.dva-news .clear-search-btn:hover {
+    background: #FF8A65;
+    transform: translateY(-2px);
+}
+
+/* ===== ANIMATIONS ===== */
+
+.dva-news .animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dva-news .animate-on-scroll.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+
+@media (max-width: 1024px) {
+    .dva-news .news-grid {
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 24px;
+    }
+}
+
+@media (max-width: 768px) {
+    .dva-news .hero-title {
+        font-size: 2.8rem;
+    }
+    
+    .dva-news .hero-description {
+        font-size: 1.1rem;
+    }
+    
+    .dva-news .news-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .dva-news .news-card-content {
+        padding: 20px;
+    }
+    
+    .dva-news .news-meta {
+        gap: 12px;
+    }
+    
+    .dva-news .news-meta span {
+        font-size: 0.8rem;
+    }
+    
+    .dva-news .news-title {
+        font-size: 1.2rem;
+    }
+    
+    .dva-news .pagination-btn {
+        padding: 10px 12px;
+        font-size: 0.9rem;
+    }
+    
+    .dva-news .search-box {
+        margin: 0 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .dva-news .hero-title {
+        font-size: 2.2rem;
+    }
+    
+    .dva-news .news-card-image {
+        height: 200px;
+    }
+    
+    .dva-news .news-card-content {
+        padding: 16px;
+    }
+    
+    .dva-news .news-footer {
+        flex-direction: column;
+        gap: 12px;
+        align-items: flex-start;
+    }
+    
+    .dva-news .read-more-btn {
+        align-self: flex-end;
+    }
+    
+    .dva-news .news-meta {
+        flex-direction: column;
+        gap: 8px;
+    }
+}
+
+/* ===== LOADING STATES ===== */
+
+.dva-news .news-card.loading {
+    pointer-events: none;
+}
+
+.dva-news .news-card.loading .news-card-image {
+    background: linear-gradient(90deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0.1) 100%);
+    background-size: 200% 100%;
+    animation: dva-news-shimmer 1.5s ease-in-out infinite;
+}
+
+@keyframes dva-news-shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+/* ===== END OF SCOPED NEWS CSS ===== */
+
+/* 🚀 ===== ENHANCED NEWS MODAL STYLES - FULL SCROLL + CLOSE BUTTON ===== */
+
+.news-modal-overlay {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    background: rgba(0, 0, 0, 0.85) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    z-index: 99999 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 20px !important;
+    box-sizing: border-box !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    overflow: hidden !important;
+}
+
+.news-modal-overlay.show {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+.news-modal-overlay.closing {
+    opacity: 0 !important;
+    transform: scale(0.95) !important;
+}
+
+/* 🎯 MODAL CONTAINER - FULL HEIGHT WITH SCROLL */
+.news-modal-container {
+    background: linear-gradient(145deg, rgba(26, 31, 46, 0.95) 0%, rgba(10, 14, 26, 0.95) 100%) !important;
+    border: 2px solid rgba(255, 255, 255, 0.15) !important;
+    border-radius: 24px !important;
+    max-width: 900px !important;
+    width: 100% !important;
+    max-height: 90vh !important;
+    height: auto !important;
+    overflow: hidden !important;
+    transform: translateY(50px) scale(0.9) !important;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    box-shadow: 0 32px 64px rgba(0, 0, 0, 0.5), 
+                0 16px 32px rgba(255, 107, 53, 0.1) !important;
+    position: relative !important;
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+.news-modal-overlay.show .news-modal-container {
+    transform: translateY(0) scale(1) !important;
+}
+
+/* 🎯 MODAL CONTENT - FULL SCROLLABLE */
+.news-modal-content {
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100% !important;
+    max-height: 90vh !important;
+    overflow: hidden !important;
+}
+
+/* 🎯 ENHANCED MODAL HEADER - STICKY */
+.news-modal-header {
+    position: sticky !important;
+    top: 0 !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 20px 28px !important;
+    background: rgba(26, 31, 46, 0.98) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    backdrop-filter: blur(20px) !important;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1) !important;
+    z-index: 10 !important;
+    flex-shrink: 0 !important;
+}
+
+.modal-header-left {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+}
+
+.news-modal-category {
+    background: linear-gradient(135deg, #FF6B35, #FF8A65) !important;
+    color: white !important;
+    padding: 8px 16px !important;
+    border-radius: 20px !important;
+    font-size: 0.85rem !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3) !important;
+}
+
+.modal-featured-badge {
+    background: linear-gradient(135deg, #FFD700, #FFA500) !important;
+    color: #1a1a1a !important;
+    padding: 6px 12px !important;
+    border-radius: 20px !important;
+    font-size: 0.8rem !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+}
+
+/* 🚀 FIXED CLOSE BUTTON - CHỈ 1 DẤU X */
+.news-modal-close {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 44px !important;
+    height: 44px !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+    border: 2px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: 50% !important;
+    color: white !important;
+    cursor: pointer !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    font-size: 18px !important;
+    font-weight: 700 !important;
+    position: relative !important;
+    text-align: center !important;
+}
+
+/* 🔧 FIX: CHỈ 1 DẤU X - KHÔNG DUPLICATE */
+.news-modal-close::before {
+    content: '✕' !important;
+    display: block !important;
+    line-height: 1 !important;
+    font-size: 18px !important;
+}
+
+/* 🚫 ẨN TẤT CẢ CÁC PSEUDO ELEMENTS KHÁC */
+.news-modal-close::after {
+    display: none !important;
+    content: none !important;
+}
+
+/* 🚫 ẨN TẤT CẢ NOI DUNG BÊN TRONG */
+.news-modal-close * {
+    display: none !important;
+}
+
+.news-modal-close:hover {
+    background: rgba(255, 107, 53, 0.2) !important;
+    border-color: rgba(255, 107, 53, 0.5) !important;
+    transform: scale(1.1) rotate(90deg) !important;
+    box-shadow: 0 8px 20px rgba(255, 107, 53, 0.3) !important;
+}
+
+/* 🚫 HIDE ALL OTHER CLOSE BUTTONS */
+.modal-close,
+.close-btn:not(.modal-action-btn),
+.modal-header-close,
+.close-icon,
+button.close:not(.news-modal-close),
+.btn-close,
+.modal-x,
+.modal-dismiss {
+    display: none !important;
+}
+
+/* 🎯 MODAL HERO IMAGE */
+.news-modal-hero {
+    position: relative !important;
+    height: 300px !important;
+    overflow: hidden !important;
+    flex-shrink: 0 !important;
+}
+
+.modal-hero-image {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    transition: transform 0.6s ease !important;
+}
+
+.modal-image-overlay {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background: linear-gradient(transparent 40%, rgba(0, 0, 0, 0.8) 100%) !important;
+}
+
+/* 🚀 MODAL BODY - FULL SCROLLABLE CONTENT */
+.news-modal-body {
+    flex: 1 !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    padding: 0 !important;
+    /* 🎯 CRITICAL: Enable smooth scrolling */
+    scroll-behavior: smooth !important;
+    /* 🎯 CRITICAL: Custom scrollbar styling */
+}
+
+/* 🎯 ENHANCED SCROLLBAR FOR MODAL BODY */
+.news-modal-body::-webkit-scrollbar {
+    width: 8px !important;
+}
+
+.news-modal-body::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border-radius: 4px !important;
+}
+
+.news-modal-body::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #FF6B35, #0066FF) !important;
+    border-radius: 4px !important;
+    transition: background 0.3s ease !important;
+}
+
+.news-modal-body::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #0066FF, #FF6B35) !important;
+}
+
+/* Firefox scrollbar styling */
+.news-modal-body {
+    scrollbar-width: thin !important;
+    scrollbar-color: #FF6B35 rgba(255, 255, 255, 0.1) !important;
+}
+
+/* 🎯 MODAL TITLE SECTION */
+.modal-title-section {
+    padding: 32px 32px 24px 32px !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    background: rgba(0, 0, 0, 0.1) !important;
+}
+
+.modal-title {
+    font-size: 2.4rem !important;
+    font-weight: 900 !important;
+    color: white !important;
+    line-height: 1.2 !important;
+    margin: 0 0 24px 0 !important;
+    background: linear-gradient(135deg, #FF6B35 0%, white 50%, #0066FF 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+}
+
+.modal-meta-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) !important;
+    gap: 16px !important;
+}
+
+.modal-meta-item {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    padding: 14px 18px !important;
+    background: rgba(255, 255, 255, 0.06) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 12px !important;
+    transition: all 0.3s ease !important;
+}
+
+.modal-meta-item:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border-color: rgba(255, 107, 53, 0.3) !important;
+    transform: translateY(-2px) !important;
+}
+
+.meta-icon {
+    font-size: 1.2rem !important;
+    color: #FF6B35 !important;
+    flex-shrink: 0 !important;
+}
+
+.meta-text {
+    color: #e0e0e0 !important;
+    font-size: 0.95rem !important;
+    font-weight: 500 !important;
+}
+
+/* 🎯 MODAL CONTENT SECTION */
+.modal-content-section {
+    padding: 32px !important;
+    background: rgba(0, 0, 0, 0.05) !important;
+}
+
+.modal-article-content {
+    color: #e0e0e0 !important;
+    line-height: 1.8 !important;
+    font-size: 1.1rem !important;
+    margin-bottom: 32px !important;
+}
+
+.modal-article-content p {
+    margin: 0 0 24px 0 !important;
+    color: #e0e0e0 !important;
+}
+
+.modal-article-content p:last-child {
+    margin-bottom: 0 !important;
+}
+
+/* 🎯 MODAL TAGS SECTION */
+.modal-tags-section {
+    padding: 24px 0 0 0 !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.modal-tags-section h4 {
+    color: white !important;
+    font-size: 1.1rem !important;
+    font-weight: 600 !important;
+    margin: 0 0 16px 0 !important;
+}
+
+.modal-tags {
+    display: flex !important;
+    gap: 12px !important;
+    flex-wrap: wrap !important;
+}
+
+.modal-tag {
+    background: rgba(0, 102, 255, 0.15) !important;
+    color: #4A90E2 !important;
+    padding: 10px 18px !important;
+    border-radius: 20px !important;
+    font-size: 0.9rem !important;
+    font-weight: 500 !important;
+    border: 1px solid rgba(0, 102, 255, 0.2) !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+}
+
+.modal-tag:hover {
+    background: rgba(0, 102, 255, 0.25) !important;
+    border-color: rgba(0, 102, 255, 0.4) !important;
+    transform: translateY(-2px) !important;
+}
+
+/* 🎯 ENHANCED MODAL FOOTER */
+.news-modal-footer {
+    padding: 28px 32px !important;
+    border-top: 2px solid rgba(255, 255, 255, 0.1) !important;
+    background: rgba(26, 31, 46, 0.9) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    backdrop-filter: blur(10px) !important;
+    flex-shrink: 0 !important;
+}
+
+.modal-actions {
+    display: flex !important;
+    gap: 16px !important;
+    justify-content: center !important;
+    flex-wrap: wrap !important;
+}
+
+.modal-action-btn {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    padding: 14px 24px !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: 2px solid rgba(255, 255, 255, 0.15) !important;
+    border-radius: 16px !important;
+    color: white !important;
+    cursor: pointer !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    font-weight: 600 !important;
+    font-size: 0.95rem !important;
+    text-decoration: none !important;
+}
+
+.modal-action-btn:hover {
+    background: rgba(255, 107, 53, 0.15) !important;
+    border-color: rgba(255, 107, 53, 0.4) !important;
+    transform: translateY(-3px) !important;
+    box-shadow: 0 8px 25px rgba(255, 107, 53, 0.2) !important;
+}
+
+.modal-action-btn.close-btn {
+    background: linear-gradient(135deg, #FF6B35, #FF8A65) !important;
+    border-color: #FF6B35 !important;
+    color: white !important;
+}
+
+.modal-action-btn.close-btn:hover {
+    background: linear-gradient(135deg, #FF8A65, #FF6B35) !important;
+    transform: translateY(-3px) scale(1.05) !important;
+    box-shadow: 0 12px 30px rgba(255, 107, 53, 0.4) !important;
+}
+
+.modal-action-btn.home-btn {
+    background: linear-gradient(135deg, #0066FF, #4A90E2) !important;
+    border-color: #0066FF !important;
+}
+
+.modal-action-btn.home-btn:hover {
+    background: linear-gradient(135deg, #4A90E2, #0066FF) !important;
+    box-shadow: 0 12px 30px rgba(0, 102, 255, 0.3) !important;
+}
+
+.btn-icon {
+    font-size: 1.1rem !important;
+    flex-shrink: 0 !important;
+}
+
+.btn-text {
+    font-size: 0.95rem !important;
+}
+
+/* 🎯 TOAST NOTIFICATION */
+.news-toast {
+    position: fixed !important;
+    bottom: 30px !important;
+    left: 50% !important;
+    transform: translateX(-50%) translateY(100px) !important;
+    background: linear-gradient(135deg, #FF6B35, #FF8A65) !important;
+    color: white !important;
+    padding: 16px 28px !important;
+    border-radius: 50px !important;
+    font-weight: 600 !important;
+    z-index: 100000 !important;
+    box-shadow: 0 12px 40px rgba(255, 107, 53, 0.4) !important;
+    opacity: 0 !important;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+.news-toast.show {
+    opacity: 1 !important;
+    transform: translateX(-50%) translateY(0) !important;
+}
+
+/* 🎯 RESPONSIVE MODAL */
+
+@media (max-width: 768px) {
+    .news-modal-overlay {
+        padding: 10px !important;
+        align-items: flex-start !important;
+        padding-top: 20px !important;
+    }
+    
+    .news-modal-container {
+        max-height: 95vh !important;
+        border-radius: 20px !important;
+        margin-top: 10px !important;
+    }
+    
+    .news-modal-hero {
+        height: 220px !important;
+    }
+    
+    .modal-title {
+        font-size: 2rem !important;
+    }
+    
+    .modal-title-section,
+    .modal-content-section,
+    .news-modal-footer {
+        padding: 24px 20px !important;
+    }
+    
+    .news-modal-header {
+        padding: 16px 20px !important;
+    }
+    
+    .modal-meta-grid {
+        grid-template-columns: 1fr !important;
+        gap: 12px !important;
+    }
+    
+    .modal-actions {
+        flex-direction: column !important;
+        gap: 12px !important;
+    }
+    
+    .modal-action-btn {
+        width: 100% !important;
+        justify-content: center !important;
+    }
+    
+    .news-modal-close {
+        width: 40px !important;
+        height: 40px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .modal-title {
+        font-size: 1.7rem !important;
+    }
+    
+    .modal-title-section,
+    .modal-content-section {
+        padding: 20px 16px !important;
+    }
+    
+    .news-modal-header {
+        padding: 14px 16px !important;
+    }
+    
+    .modal-article-content {
+        font-size: 1rem !important;
+        line-height: 1.7 !important;
+    }
+    
+    .news-modal-hero {
+        height: 180px !important;
+    }
+}
+
+/* 🎯 MODAL ANIMATION KEYFRAMES */
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(50px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes modalSlideOut {
+    from {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(50px) scale(0.9);
+    }
+}
+
+/* 🎯 BODY SCROLL LOCK WHEN MODAL IS OPEN */
+body.modal-open {
+    overflow: hidden !important;
+    height: 100vh !important;
+}
+
+/* 🚀 ===== END ENHANCED NEWS MODAL STYLES ===== */

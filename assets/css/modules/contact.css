@@ -1,0 +1,1086 @@
+/**
+ * DVA Contact Module - Volleyball Team Communication
+ * Path: assets/css/modules/contact.css
+ */
+
+/* ===== CONTACT CONTAINER ===== */
+.dva-contact {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f0f23 100%);
+    color: white;
+    overflow-x: hidden;
+    padding-top: 80px;
+}
+
+/* ===== HERO SECTION ===== */
+.dva-contact .contact-hero {
+    padding: 80px 0 60px 0;
+    text-align: center;
+    position: relative;
+}
+
+.dva-contact .contact-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, rgba(255, 107, 53, 0.15) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.dva-contact .hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+    padding: 0 20px;
+}
+
+.dva-contact .hero-title {
+    font-size: 4rem;
+    font-weight: 900;
+    margin-bottom: 24px;
+    background: linear-gradient(135deg, #FF6B35 0%, #FF8A65 50%, #0066FF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.2;
+}
+
+.dva-contact .hero-subtitle {
+    font-size: 1.4rem;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 40px;
+    line-height: 1.6;
+}
+
+.dva-contact .hero-highlights {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.dva-contact .highlight-badge {
+    display: inline-block;
+    padding: 12px 24px;
+    background: rgba(255, 107, 53, 0.2);
+    border: 2px solid rgba(255, 107, 53, 0.3);
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 1rem;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.dva-contact .highlight-badge:hover {
+    background: rgba(255, 107, 53, 0.3);
+    border-color: rgba(255, 107, 53, 0.5);
+    transform: translateY(-2px);
+}
+
+/* ===== MAIN CONTAINER ===== */
+.dva-contact .contact-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px 80px 20px;
+}
+
+/* ===== SECTION HEADERS ===== */
+.dva-contact .section-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.dva-contact .section-title {
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: white;
+    margin-bottom: 16px;
+}
+
+.dva-contact .section-subtitle {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.6;
+}
+
+/* ===== INTRO SECTION ===== */
+.dva-contact .intro-section {
+    margin-bottom: 80px;
+}
+
+.dva-contact .intro-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: white;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.dva-contact .intro-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 32px;
+}
+
+.dva-contact .intro-item {
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 32px 24px;
+    text-align: center;
+    transition: all 0.3s ease;
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+}
+
+.dva-contact .intro-item:hover {
+    transform: translateY(-8px);
+    border-color: rgba(255, 107, 53, 0.3);
+    box-shadow: 0 20px 40px rgba(255, 107, 53, 0.2);
+}
+
+.dva-contact .intro-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.dva-contact .intro-item h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #FF6B35;
+    margin-bottom: 16px;
+}
+
+.dva-contact .intro-item p {
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+/* ===== FORM SECTION ===== */
+.dva-contact .form-section {
+    margin-bottom: 80px;
+}
+
+.dva-contact .form-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.dva-contact .form-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 16px;
+}
+
+.dva-contact .form-subtitle {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.6;
+}
+
+.dva-contact .form-container {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+}
+
+/* Contact Form */
+.dva-contact .contact-form {
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    padding: 40px;
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+}
+
+.dva-contact .form-section-header {
+    margin: 32px 0 24px 0;
+    padding-bottom: 16px;
+    border-bottom: 2px solid rgba(255, 107, 53, 0.2);
+}
+
+.dva-contact .form-section-header:first-child {
+    margin-top: 0;
+}
+
+.dva-contact .form-section-header h3 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #FF6B35;
+    margin: 0;
+}
+
+.dva-contact .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 24px;
+}
+
+.dva-contact .form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.dva-contact .form-group.full-width {
+    grid-column: span 2;
+}
+
+.dva-contact .form-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+}
+
+.dva-contact .label-icon {
+    font-size: 1.1rem;
+}
+
+.dva-contact .form-input,
+.dva-contact .form-select,
+.dva-contact .form-textarea {
+    width: 100%;
+    padding: 16px 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    color: white;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}
+
+.dva-contact .form-input:focus,
+.dva-contact .form-select:focus,
+.dva-contact .form-textarea:focus {
+    outline: none;
+    border-color: rgba(255, 107, 53, 0.5);
+    background: rgba(255, 107, 53, 0.1);
+    box-shadow: 0 0 0 4px rgba(255, 107, 53, 0.1);
+}
+
+.dva-contact .form-input::placeholder,
+.dva-contact .form-textarea::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.dva-contact .form-select {
+    cursor: pointer;
+}
+
+.dva-contact .form-select option {
+    background: #1a1a2e;
+    color: white;
+}
+
+.dva-contact .form-textarea {
+    resize: vertical;
+    min-height: 120px;
+    font-family: inherit;
+    line-height: 1.5;
+}
+
+/* Submit Section */
+.dva-contact .form-submit-section {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.dva-contact .form-note {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 32px;
+    padding: 16px 24px;
+    background: rgba(0, 102, 255, 0.1);
+    border: 1px solid rgba(0, 102, 255, 0.2);
+    border-radius: 12px;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}
+
+.dva-contact .note-icon {
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.dva-contact .form-note p {
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+.dva-contact .submit-btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 18px 48px;
+    background: linear-gradient(135deg, #FF6B35 0%, #FF8A65 100%);
+    border: none;
+    border-radius: 50px;
+    color: white;
+    font-weight: 700;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 32px rgba(255, 107, 53, 0.3);
+    min-width: 200px;
+    justify-content: center;
+}
+
+.dva-contact .submit-btn:hover {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 12px 48px rgba(255, 107, 53, 0.4);
+}
+
+.dva-contact .submit-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.dva-contact .btn-loading {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.dva-contact .loading-spinner {
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-left: 2px solid white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Success Message */
+.dva-contact .success-message {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(145deg, rgba(16, 185, 129, 0.15) 0%, rgba(52, 211, 153, 0.15) 100%);
+    border: 2px solid rgba(16, 185, 129, 0.3);
+    border-radius: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+}
+
+.dva-contact .success-content {
+    text-align: center;
+    padding: 40px;
+}
+
+.dva-contact .success-icon {
+    font-size: 4rem;
+    margin-bottom: 24px;
+    display: block;
+}
+
+.dva-contact .success-content h3 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #10B981;
+    margin-bottom: 16px;
+}
+
+.dva-contact .success-content p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 32px;
+}
+
+.dva-contact .new-message-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 32px;
+    background: linear-gradient(135deg, #10B981, #34D399);
+    border: none;
+    border-radius: 25px;
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dva-contact .new-message-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(16, 185, 129, 0.4);
+}
+
+/* ===== DIRECT CONTACT SECTION ===== */
+.dva-contact .direct-contact-section {
+    margin-bottom: 80px;
+}
+
+.dva-contact .contact-methods {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+}
+
+.dva-contact .contact-method {
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 32px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: all 0.3s ease;
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+}
+
+.dva-contact .contact-method:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255, 107, 53, 0.3);
+    box-shadow: 0 12px 32px rgba(255, 107, 53, 0.2);
+}
+
+.dva-contact .method-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.dva-contact .method-info h3 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #FF6B35;
+    margin-bottom: 8px;
+}
+
+.dva-contact .method-info p {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 4px;
+}
+
+.dva-contact .method-note {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 24px;
+    display: block;
+}
+
+.dva-contact .method-btn {
+    padding: 12px 24px;
+    background: linear-gradient(135deg, #0066FF, #4F9CFF);
+    border: none;
+    border-radius: 25px;
+    color: white;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 120px;
+}
+
+.dva-contact .method-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 102, 255, 0.4);
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+    .dva-contact {
+        padding-top: 60px;
+    }
+    
+    .dva-contact .hero-title {
+        font-size: 2.8rem;
+    }
+    
+    .dva-contact .section-title {
+        font-size: 2.2rem;
+    }
+    
+    .dva-contact .contact-container {
+        padding: 0 16px 60px 16px;
+    }
+    
+    .dva-contact .hero-highlights {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .dva-contact .intro-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .dva-contact .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .dva-contact .contact-form {
+        padding: 24px;
+    }
+    
+    .dva-contact .contact-methods {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .dva-contact .hero-title {
+        font-size: 2.2rem;
+    }
+    
+    .dva-contact .section-title {
+        font-size: 1.8rem;
+    }
+    
+    .dva-contact .contact-container {
+        padding: 0 12px 40px 12px;
+    }
+    
+    .dva-contact .contact-form {
+        padding: 20px;
+    }
+    
+    .dva-contact .submit-btn {
+        padding: 16px 32px;
+        font-size: 1.1rem;
+    }
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.dva-contact .animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dva-contact .animate-on-scroll.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Form Validation States */
+.dva-contact .form-input.error,
+.dva-contact .form-select.error,
+.dva-contact .form-textarea.error {
+    border-color: #EF4444;
+    background: rgba(239, 68, 68, 0.1);
+}
+
+.dva-contact .form-input.success,
+.dva-contact .form-select.success,
+.dva-contact .form-textarea.success {
+    border-color: #10B981;
+    background: rgba(16, 185, 129, 0.1);
+}
+/* ===== DVA PERFECT FIT SUCCESS OVERLAY ===== */
+.dva-contact .dva-success-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        135deg, 
+        rgba(26, 26, 46, 0.95) 0%, 
+        rgba(22, 33, 62, 0.95) 50%, 
+        rgba(15, 15, 35, 0.95) 100%
+    );
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    animation: overlayFadeIn 0.4s ease-out forwards;
+}
+
+@keyframes overlayFadeIn {
+    to { opacity: 1; }
+}
+
+@keyframes overlayFadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+/* ===== PERFECT FIT SUCCESS CARD ===== */
+.dva-contact .dva-success-card {
+    background: linear-gradient(
+        145deg,
+        rgba(255, 255, 255, 0.12) 0%,
+        rgba(255, 255, 255, 0.08) 50%,
+        rgba(255, 255, 255, 0.04) 100%
+    );
+    border: 2px solid rgba(255, 107, 53, 0.3);
+    border-radius: 24px;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 
+        0 20px 50px rgba(0, 0, 0, 0.3),
+        0 0 0 1px rgba(255, 255, 255, 0.1),
+        0 0 30px rgba(255, 107, 53, 0.2);
+    max-width: 420px;
+    width: 100%;
+    position: relative;
+    transform: scale(0.8) translateY(30px);
+    animation: cardSlideIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s forwards;
+}
+
+@keyframes cardSlideIn {
+    to { 
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* ===== SUCCESS HEADER SECTION ===== */
+.dva-contact .success-animation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 32px 20px;
+    position: relative;
+    background: linear-gradient(
+        135deg, 
+        rgba(255, 107, 53, 0.08) 0%, 
+        rgba(0, 102, 255, 0.08) 100%
+    );
+    border-radius: 24px 24px 0 0;
+}
+
+.dva-contact .volleyball-bounce {
+    font-size: 2.5rem;
+    margin-bottom: 16px;
+    animation: volleyballBounce 2s ease-in-out infinite;
+    filter: drop-shadow(0 8px 16px rgba(255, 107, 53, 0.3));
+}
+
+@keyframes volleyballBounce {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    25% { transform: translateY(-10px) rotate(90deg); }
+    50% { transform: translateY(-2px) rotate(180deg); }
+    75% { transform: translateY(-6px) rotate(270deg); }
+}
+
+/* ✅ FIXED: Checkmark positioning */
+.dva-contact .success-checkmark {
+    position: relative;
+    width: 70px;
+    height: 70px;
+    z-index: 2; /* ✅ Ensure checkmark is above other elements */
+}
+
+.dva-contact .checkmark-circle,
+.dva-contact .checkmark {
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.dva-contact .checkmark-circle-path {
+    stroke: #FF6B35;
+    stroke-width: 3;
+    stroke-dasharray: 220;
+    stroke-dashoffset: 220;
+    animation: checkmarkCircle 1s ease-in-out 0.5s forwards;
+}
+
+.dva-contact .checkmark-path {
+    stroke: #10B981;
+    stroke-width: 4;
+    stroke-linecap: round;
+    stroke-dasharray: 25;
+    stroke-dashoffset: 25;
+    animation: checkmarkPath 0.8s ease-in-out 0.8s forwards;
+}
+
+@keyframes checkmarkCircle {
+    to { stroke-dashoffset: 0; }
+}
+
+@keyframes checkmarkPath {
+    to { stroke-dashoffset: 0; }
+}
+
+/* ===== COMPACT SUCCESS CONTENT ===== */
+.dva-contact .success-content-enhanced {
+    padding: 0 32px 30px;
+    text-align: center;
+}
+
+.dva-contact .success-title {
+    font-size: 1.7rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #FF6B35, #0066FF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 12px;
+    line-height: 1.2;
+}
+
+.dva-contact .success-subtitle {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 24px;
+    line-height: 1.4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.dva-contact .success-emoji {
+    animation: sparkle 2s ease-in-out infinite alternate;
+}
+
+@keyframes sparkle {
+    0% { transform: scale(1) rotate(0deg); opacity: 0.8; }
+    100% { transform: scale(1.2) rotate(180deg); opacity: 1; }
+}
+
+/* ===== SIMPLIFIED SUCCESS DETAILS ===== */
+.dva-contact .success-details {
+    background: linear-gradient(135deg, rgba(0, 102, 255, 0.12), rgba(255, 107, 53, 0.12));
+    border-radius: 16px;
+    padding: 16px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(255, 107, 53, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.dva-contact .success-detail-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.dva-contact .success-detail-item:last-child {
+    margin-bottom: 0;
+}
+
+.dva-contact .detail-icon {
+    font-size: 1.2rem;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #FF6B35, #0066FF);
+    border-radius: 10px;
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(255, 107, 53, 0.2);
+}
+
+.dva-contact .detail-text {
+    flex: 1;
+    text-align: left;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.4;
+}
+
+.dva-contact .detail-text strong {
+    color: #FF6B35;
+    font-weight: 600;
+}
+
+/* ===== COMPACT SUCCESS STATS ===== */
+.dva-contact .success-stats {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 16px;
+    margin-bottom: 24px;
+    border: 1px solid rgba(0, 102, 255, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.dva-contact .stat-item {
+    text-align: center;
+    flex: 1;
+}
+
+.dva-contact .stat-number {
+    font-size: 1.4rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #FF6B35, #0066FF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.1;
+    margin-bottom: 4px;
+}
+
+.dva-contact .stat-label {
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.dva-contact .stat-divider {
+    width: 1px;
+    height: 25px;
+    background: linear-gradient(to bottom, transparent, rgba(0, 102, 255, 0.3), transparent);
+    margin: 0 12px;
+}
+
+/* ✅ NEW: MAIN ACTION BUTTONS - REMOVED SOCIAL SECTION */
+.dva-contact .success-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.dva-contact .action-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px 20px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.dva-contact .action-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.dva-contact .action-btn:hover::before {
+    left: 100%;
+}
+
+/* ✅ NEW: Close/New Message Button */
+.dva-contact .action-btn.close {
+    background: linear-gradient(135deg, #FF6B35, #FF8A65);
+    color: white;
+    box-shadow: 0 6px 20px rgba(255, 107, 53, 0.3);
+}
+
+.dva-contact .action-btn.close:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
+}
+
+/* ✅ NEW: Home Button */
+.dva-contact .action-btn.home {
+    background: linear-gradient(135deg, #0066FF, #4F9CFF);
+    color: white;
+    box-shadow: 0 6px 20px rgba(0, 102, 255, 0.3);
+}
+
+.dva-contact .action-btn.home:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 8px 25px rgba(0, 102, 255, 0.4);
+}
+
+.dva-contact .btn-icon {
+    font-size: 1.1rem;
+}
+
+/* ✅ REMOVED: Social section, close button on top */
+
+/* ===== MOBILE OPTIMIZATIONS ===== */
+@media (max-width: 768px) {
+    .dva-contact .dva-success-card {
+        margin: 15px;
+        max-width: 100%;
+        border-radius: 20px;
+    }
+
+    .dva-contact .success-animation {
+        padding: 24px 24px 16px;
+    }
+
+    .dva-contact .volleyball-bounce {
+        font-size: 2.2rem;
+        margin-bottom: 12px;
+    }
+
+    .dva-contact .success-checkmark {
+        width: 60px;
+        height: 60px;
+    }
+
+    .dva-contact .checkmark-circle,
+    .dva-contact .checkmark {
+        width: 60px;
+        height: 60px;
+    }
+
+    .dva-contact .success-content-enhanced {
+        padding: 0 24px 24px;
+    }
+
+    .dva-contact .success-title {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+    }
+
+    .dva-contact .success-subtitle {
+        font-size: 0.95rem;
+        margin-bottom: 20px;
+    }
+
+    .dva-contact .success-details,
+    .dva-contact .success-stats {
+        padding: 14px;
+        margin-bottom: 16px;
+    }
+
+    .dva-contact .detail-icon {
+        width: 28px;
+        height: 28px;
+        font-size: 1.1rem;
+    }
+
+    .dva-contact .detail-text {
+        font-size: 0.8rem;
+    }
+
+    .dva-contact .stat-number {
+        font-size: 1.2rem;
+    }
+
+    .dva-contact .stat-label {
+        font-size: 0.65rem;
+    }
+
+    .dva-contact .success-actions {
+        gap: 10px;
+    }
+
+    .dva-contact .action-btn {
+        padding: 12px 16px;
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .dva-contact .dva-success-overlay {
+        padding: 12px;
+    }
+
+    .dva-contact .success-stats {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .dva-contact .stat-divider {
+        width: 60px;
+        height: 1px;
+        background: linear-gradient(to right, transparent, rgba(0, 102, 255, 0.3), transparent);
+        margin: 0;
+    }
+
+    .dva-contact .success-title {
+        font-size: 1.3rem;
+    }
+
+    .dva-contact .success-subtitle {
+        font-size: 0.9rem;
+        flex-direction: column;
+        gap: 4px;
+    }
+}
+
+/* ===== PERFORMANCE & REDUCED MOTION ===== */
+@media (prefers-reduced-motion: reduce) {
+    .dva-contact .dva-success-card,
+    .dva-contact .volleyball-bounce,
+    .dva-contact .success-emoji,
+    .dva-contact .checkmark-circle-path,
+    .dva-contact .checkmark-path {
+        animation: none;
+    }
+
+    .dva-contact .dva-success-card {
+        transform: none;
+        opacity: 1;
+    }
+}
+/* ===== FORM SUBMISSION PREVENTION ===== */
+.dva-contact .contact-form {
+    /* Prevent default form submission behaviors */
+    action: none;
+}
+
+.dva-contact .contact-form[action="javascript:void(0)"] {
+    /* Ensure secure form handling */
+    pointer-events: auto;
+}

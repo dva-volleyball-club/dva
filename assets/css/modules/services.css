@@ -1,0 +1,911 @@
+/**
+ * DVA Services Module - Volleyball Court Rental
+ * Path: assets/css/modules/services.css
+ */
+
+/* ===== SERVICES CONTAINER ===== */
+.dva-services {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f0f23 100%);
+    color: white;
+    overflow-x: hidden;
+    padding-top: 80px;
+}
+
+/* ===== HERO SECTION ===== */
+.dva-services .services-hero {
+    padding: 80px 0 60px 0;
+    text-align: center;
+    position: relative;
+}
+
+.dva-services .services-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, rgba(255, 107, 53, 0.15) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.dva-services .hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+    padding: 0 20px;
+}
+
+.dva-services .hero-title {
+    font-size: 4rem;
+    font-weight: 900;
+    margin-bottom: 24px;
+    background: linear-gradient(135deg, #FF6B35 0%, #FF8A65 50%, #0066FF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.2;
+}
+
+.dva-services .hero-subtitle {
+    font-size: 1.4rem;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 40px;
+    line-height: 1.6;
+}
+
+.dva-services .hero-highlights {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.dva-services .highlight-badge {
+    display: inline-block;
+    padding: 12px 24px;
+    background: rgba(255, 107, 53, 0.2);
+    border: 2px solid rgba(255, 107, 53, 0.3);
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 1rem;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.dva-services .highlight-badge:hover {
+    background: rgba(255, 107, 53, 0.3);
+    border-color: rgba(255, 107, 53, 0.5);
+    transform: translateY(-2px);
+}
+
+/* ===== SERVICES CONTAINER ===== */
+.dva-services .services-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px 80px 20px;
+}
+
+/* ===== SECTION HEADERS ===== */
+.dva-services .section-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.dva-services .section-title {
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: white;
+    margin-bottom: 16px;
+}
+
+.dva-services .section-subtitle {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.6;
+}
+
+/* ===== COURT INFO SECTION ===== */
+.dva-services .court-info-section {
+    margin-bottom: 80px;
+}
+
+.dva-services .court-overview {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+}
+
+/* Court Gallery */
+.dva-services .court-gallery {
+    display: grid;
+    gap: 20px;
+}
+
+.dva-services .gallery-main {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    aspect-ratio: 16/10;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+
+.dva-services .gallery-main img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.dva-services .gallery-main:hover img {
+    transform: scale(1.05);
+}
+
+.dva-services .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+.dva-services .gallery-item {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    aspect-ratio: 16/12;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.dva-services .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.dva-services .gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+/* Image Placeholders */
+.dva-services .image-placeholder,
+.dva-services .avatar-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255, 107, 53, 0.2), rgba(0, 102, 255, 0.2));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    gap: 8px;
+}
+
+.dva-services .placeholder-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.dva-services .placeholder-icon {
+    font-size: 2.5rem;
+}
+
+.dva-services .placeholder-text {
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.dva-services .avatar-placeholder {
+    border-radius: 50%;
+    font-size: 1.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #FF6B35, #FF8A65);
+}
+
+/* Court Details */
+.dva-services .court-details {
+    padding: 40px;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+}
+
+.dva-services .court-features {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.dva-services .feature-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.dva-services .feature-icon {
+    font-size: 2.5rem;
+    flex-shrink: 0;
+    margin-top: 8px;
+}
+
+.dva-services .feature-content h3 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #FF6B35;
+    margin-bottom: 8px;
+}
+
+.dva-services .feature-content p {
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+/* ===== PRICING SECTION ===== */
+.dva-services .pricing-section {
+    margin-bottom: 80px;
+}
+
+.dva-services .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
+}
+
+.dva-services .pricing-card {
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    padding: 40px 32px;
+    position: relative;
+    overflow: hidden;
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dva-services .pricing-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(255, 107, 53, 0.3);
+    box-shadow: 0 20px 60px rgba(255, 107, 53, 0.2);
+}
+
+.dva-services .pricing-card.featured {
+    border-color: rgba(255, 107, 53, 0.4);
+    background: linear-gradient(145deg, rgba(255, 107, 53, 0.1) 0%, rgba(255, 107, 53, 0.05) 100%);
+}
+
+.dva-services .pricing-card.premium {
+    border-color: rgba(0, 102, 255, 0.4);
+    background: linear-gradient(145deg, rgba(0, 102, 255, 0.1) 0%, rgba(0, 102, 255, 0.05) 100%);
+}
+
+/* Pricing Header */
+.dva-services .pricing-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+}
+
+.dva-services .pricing-icon {
+    font-size: 2.5rem;
+}
+
+.dva-services .pricing-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white;
+    margin: 0;
+}
+
+.dva-services .pricing-badge {
+    background: linear-gradient(135deg, #FF6B35, #FF8A65);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.dva-services .pricing-discount {
+    background: linear-gradient(135deg, #10B981, #34D399);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.dva-services .pricing-special {
+    background: linear-gradient(135deg, #0066FF, #4F9CFF);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+/* Pricing Amount */
+.dva-services .pricing-amount {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.dva-services .pricing-amount .price {
+    font-size: 3rem;
+    font-weight: 900;
+    color: #FF6B35;
+}
+
+.dva-services .pricing-amount .currency {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #FF6B35;
+}
+
+.dva-services .pricing-amount .unit {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.dva-services .pricing-amount .price-text {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #0066FF;
+}
+
+/* Pricing Features */
+.dva-services .pricing-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 32px 0;
+}
+
+.dva-services .pricing-features li {
+    padding: 12px 0;
+    color: rgba(255, 255, 255, 0.9);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.dva-services .pricing-features li:last-child {
+    border-bottom: none;
+}
+
+/* Pricing Buttons */
+.dva-services .pricing-btn {
+    width: 100%;
+    padding: 16px 24px;
+    border: none;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.dva-services .pricing-btn.primary {
+    background: linear-gradient(135deg, #FF6B35 0%, #FF8A65 100%);
+    color: white;
+}
+
+.dva-services .pricing-btn.secondary {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.dva-services .pricing-btn.premium-btn {
+    background: linear-gradient(135deg, #0066FF 0%, #4F9CFF 100%);
+    color: white;
+}
+
+.dva-services .pricing-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(255, 107, 53, 0.4);
+}
+
+/* ===== SCHEDULE SECTION ===== */
+.dva-services .schedule-section {
+    margin-bottom: 80px;
+}
+
+.dva-services .schedule-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 32px;
+    margin-bottom: 40px;
+}
+
+.dva-services .schedule-card {
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 32px 24px;
+    text-align: center;
+    transition: all 0.3s ease;
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+}
+
+.dva-services .schedule-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(255, 107, 53, 0.3);
+    box-shadow: 0 20px 40px rgba(255, 107, 53, 0.2);
+}
+
+.dva-services .schedule-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.dva-services .schedule-icon {
+    font-size: 1.8rem;
+}
+
+.dva-services .schedule-days {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #FF6B35;
+}
+
+.dva-services .schedule-time {
+    font-size: 2rem;
+    font-weight: 800;
+    color: white;
+    margin-bottom: 12px;
+}
+
+.dva-services .schedule-status {
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.dva-services .schedule-status.available {
+    background: linear-gradient(135deg, #10B981, #34D399);
+    color: white;
+}
+
+.dva-services .schedule-note {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+}
+
+.dva-services .schedule-notice {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 24px 32px;
+    background: rgba(255, 107, 53, 0.1);
+    border: 2px solid rgba(255, 107, 53, 0.2);
+    border-radius: 16px;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}
+
+.dva-services .notice-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+}
+
+.dva-services .notice-content h4 {
+    color: #FF6B35;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.dva-services .notice-content p {
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* ===== CONTACT SECTION ===== */
+.dva-services .contact-section {
+    margin-bottom: 80px;
+}
+
+.dva-services .contact-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 60px;
+    align-items: start;
+}
+
+/* Contact Info */
+.dva-services .contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.dva-services .contact-card {
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 32px;
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+}
+
+.dva-services .contact-card.main {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.dva-services .contact-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    box-shadow: 0 8px 24px rgba(255, 107, 53, 0.3);
+}
+
+.dva-services .contact-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.dva-services .contact-details h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 8px;
+}
+
+.dva-services .contact-details p {
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 16px;
+}
+
+.dva-services .contact-phone {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.dva-services .phone-icon {
+    font-size: 1.2rem;
+}
+
+.dva-services .phone-number {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #FF6B35;
+}
+
+.dva-services .phone-label {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+}
+
+/* Contact Buttons */
+.dva-services .contact-buttons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+.dva-services .contact-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 16px 20px;
+    border: 2px solid;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.dva-services .contact-btn.phone {
+    background: linear-gradient(135deg, #10B981, #34D399);
+    border-color: #10B981;
+    color: white;
+}
+
+.dva-services .contact-btn.zalo {
+    background: linear-gradient(135deg, #0084FF, #00A8FF);
+    border-color: #0084FF;
+    color: white;
+}
+
+.dva-services .contact-btn.facebook {
+    background: linear-gradient(135deg, #1877F2, #42A5F5);
+    border-color: #1877F2;
+    color: white;
+}
+
+.dva-services .contact-btn.instagram {
+    background: linear-gradient(135deg, #E4405F, #F56565);
+    border-color: #E4405F;
+    color: white;
+}
+
+.dva-services .contact-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+/* Location Info */
+.dva-services .location-info {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.dva-services .location-card,
+.dva-services .hours-card {
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 24px;
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+}
+
+.dva-services .location-header,
+.dva-services .hours-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.dva-services .location-icon,
+.dva-services .hours-icon {
+    font-size: 1.5rem;
+}
+
+.dva-services .location-header h4,
+.dva-services .hours-header h4 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #FF6B35;
+    margin: 0;
+}
+
+.dva-services .location-address,
+.dva-services .hours-time {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 8px;
+}
+
+.dva-services .location-note,
+.dva-services .hours-note {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+/* ===== BOOKING CTA ===== */
+.dva-services .booking-cta {
+    background: linear-gradient(135deg, rgba(255, 107, 53, 0.15) 0%, rgba(0, 102, 255, 0.15) 100%);
+    border: 2px solid rgba(255, 107, 53, 0.2);
+    border-radius: 24px;
+    padding: 60px 40px;
+    text-align: center;
+}
+
+.dva-services .cta-content {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.dva-services .cta-text h2 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: white;
+    margin-bottom: 16px;
+}
+
+.dva-services .cta-text p {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+    margin-bottom: 16px;
+}
+
+.dva-services .cta-actions {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 32px;
+}
+
+.dva-services .cta-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 20px 32px;
+    border: none;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.dva-services .cta-btn.primary {
+    background: linear-gradient(135deg, #FF6B35 0%, #FF8A65 100%);
+    color: white;
+    box-shadow: 0 8px 32px rgba(255, 107, 53, 0.3);
+}
+
+.dva-services .cta-btn.secondary {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.dva-services .cta-btn:hover {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 12px 48px rgba(255, 107, 53, 0.4);
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 1024px) {
+    .dva-services .court-overview,
+    .dva-services .contact-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .dva-services .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .dva-services .pricing-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .dva-services .contact-buttons {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .dva-services {
+        padding-top: 60px;
+    }
+    
+    .dva-services .hero-title {
+        font-size: 2.8rem;
+    }
+    
+    .dva-services .section-title {
+        font-size: 2.2rem;
+    }
+    
+    .dva-services .services-container {
+        padding: 0 16px 60px 16px;
+    }
+    
+    .dva-services .hero-highlights {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .dva-services .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .dva-services .pricing-grid,
+    .dva-services .schedule-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .dva-services .contact-card.main {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .dva-services .cta-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .dva-services .schedule-notice {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .dva-services .notice-icon {
+        margin-bottom: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .dva-services .hero-title {
+        font-size: 2.2rem;
+    }
+    
+    .dva-services .section-title {
+        font-size: 1.8rem;
+    }
+    
+    .dva-services .services-container {
+        padding: 0 12px 40px 12px;
+    }
+    
+    .dva-services .court-details,
+    .dva-services .pricing-card,
+    .dva-services .contact-card {
+        padding: 24px 20px;
+    }
+    
+    .dva-services .pricing-amount .price {
+        font-size: 2.5rem;
+    }
+    
+    .dva-services .cta-text h2 {
+        font-size: 2rem;
+    }
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.dva-services .animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dva-services .animate-on-scroll.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+}

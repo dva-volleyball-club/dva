@@ -1,0 +1,439 @@
+/* D:\dva\DVA-Volleyball-Website\assets\css\main.css */
+/* PREVENT RESPONSIVE CONFLICTS */
+body {
+    width: 100vw !important;
+    max-width: 100vw !important;
+    overflow-x: hidden !important;
+}
+
+.syncsoft-module {
+    width: 100% !important;
+    max-width: none !important;
+    min-width: auto !important;
+}
+
+/* DVA Volleyball - Main CSS với Loading */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body.dva-body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    color: var(--gray-800, #1F2937);
+    background: linear-gradient(135deg, #FFFFFF 0%, var(--gray-50, #F9FAFB) 100%);
+    overflow-x: hidden;
+}
+
+/* Skip Link cho Accessibility */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: var(--dva-orange, #FF6B35);
+    color: white;
+    padding: 8px 16px;
+    text-decoration: none;
+    border-radius: 4px;
+    z-index: 10001;
+    font-weight: 600;
+    transition: top 0.3s ease;
+}
+
+.skip-link:focus {
+    top: 6px;
+}
+
+/* Main Content Layout - STANDARDIZED PADDING */
+.main-content {
+    min-height: 100vh;
+    padding-top: 72px; /* FIXED: Match header height exactly */
+    position: relative;
+}
+
+/* Loading Container */
+.loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60vh;
+    width: 100%;
+}
+
+.loading-spinner {
+    text-align: center;
+    padding: 2rem;
+}
+
+.spinner-circle {
+    width: 50px;
+    height: 50px;
+    margin: 0 auto 1rem;
+    border: 4px solid rgba(255, 107, 53, 0.2);
+    border-left: 4px solid var(--dva-orange, #FF6B35);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loading-text {
+    font-size: 18px;
+    color: var(--dva-orange, #FF6B35);
+    font-weight: 600;
+    margin: 0;
+}
+
+/* Container System - STANDARDIZED */
+.container {
+    max-width: 1200px; /* STANDARDIZED: Match header container */
+    margin: 0 auto;
+    padding: 0 24px; /* STANDARDIZED: Match header padding */
+}
+
+.container-sm {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 0 24px; /* STANDARDIZED */
+}
+
+.container-lg {
+    max-width: 1200px; /* STANDARDIZED */
+    margin: 0 auto;
+    padding: 0 24px; /* STANDARDIZED */
+}
+
+/* Utility Classes */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.d-none { display: none !important; }
+.d-block { display: block !important; }
+.d-flex { display: flex !important; }
+.d-grid { display: grid !important; }
+
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.items-center { align-items: center; }
+
+.w-full { width: 100%; }
+.h-full { height: 100%; }
+
+/* Margin/Padding Utilities */
+.m-0 { margin: 0; }
+.mt-1 { margin-top: 0.5rem; }
+.mt-2 { margin-top: 1rem; }
+.mt-3 { margin-top: 1.5rem; }
+.mt-4 { margin-top: 2rem; }
+.mb-1 { margin-bottom: 0.5rem; }
+.mb-2 { margin-bottom: 1rem; }
+.mb-3 { margin-bottom: 1.5rem; }
+.mb-4 { margin-bottom: 2rem; }
+
+.p-1 { padding: 0.5rem; }
+.p-2 { padding: 1rem; }
+.p-3 { padding: 1.5rem; }
+.p-4 { padding: 2rem; }
+
+/* Section Spacing */
+.section {
+    padding: 4rem 0;
+}
+
+.section-sm {
+    padding: 2rem 0;
+}
+
+.section-lg {
+    padding: 6rem 0;
+}
+
+/* Responsive Design - STANDARDIZED */
+@media (max-width: 1024px) {
+    .container,
+    .container-sm,
+    .container-lg {
+        padding: 0 20px; /* STANDARDIZED */
+    }
+}
+
+@media (max-width: 768px) {
+    .container,
+    .container-sm,
+    .container-lg {
+        padding: 0 16px; /* STANDARDIZED: Match header responsive padding */
+    }
+    
+    .main-content {
+        padding-top: 64px; /* FIXED: Match header mobile height exactly */
+    }
+    
+    .section {
+        padding: 3rem 0;
+    }
+    
+    .section-lg {
+        padding: 4rem 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .container,
+    .container-sm,
+    .container-lg {
+        padding: 0 16px; /* STANDARDIZED */
+    }
+    
+    .section {
+        padding: 2rem 0;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .loading-container,
+    .loading-spinner {
+        display: none;
+    }
+    
+    body {
+        background: white;
+    }
+}
+
+/* ===== ROUTER LOADING & ERROR STATES ===== */
+
+.route-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+    padding: 40px 20px;
+}
+
+.route-loading .loading-spinner {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 20px;
+}
+
+.route-loading .spinner-circle {
+    width: 100%;
+    height: 100%;
+    border: 3px solid rgba(255, 107, 53, 0.2);
+    border-left-color: var(--dva-primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.route-loading .loading-text {
+    font-size: 16px;
+    color: var(--syncsoft-gray);
+    margin: 0;
+}
+
+.route-error,
+.route-404 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.route-error .error-icon,
+.route-404 .error-icon {
+    font-size: 4rem;
+    margin-bottom: 24px;
+    opacity: 0.8;
+}
+
+.route-error h2,
+.route-404 h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--syncsoft-white);
+    margin: 0 0 16px 0;
+}
+
+.route-error p,
+.route-404 p {
+    font-size: 16px;
+    color: var(--syncsoft-gray);
+    margin: 0 0 12px 0;
+    max-width: 500px;
+    line-height: 1.5;
+}
+
+.error-details {
+    background: rgba(255, 107, 53, 0.1);
+    border: 1px solid rgba(255, 107, 53, 0.3);
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-family: monospace;
+    font-size: 14px;
+    color: var(--dva-primary);
+    margin-top: 20px !important;
+}
+
+.retry-btn,
+.home-btn {
+    margin-top: 24px;
+    padding: 12px 24px;
+    background: var(--dva-gradient);
+    border: none;
+    border-radius: 12px;
+    color: white;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    box-shadow: 0 4px 16px rgba(255, 107, 53, 0.3);
+}
+
+.retry-btn:hover,
+.home-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
+}
+
+/* =============================================================================
+   GLOBAL SMOOTH PAGE TRANSITIONS - NO WHITE FLASH
+   ============================================================================= */
+
+/* Prevent white background flash */
+html, body {
+    background: #0A0E1A !important; /* Dark background always */
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/* Smooth page container */
+#app, .app-container, main {
+    background: linear-gradient(135deg, #0A0E1A 0%, #1A1F2E 50%, #0A0E1A 100%);
+    min-height: 100vh;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Page transition overlay */
+.page-transition-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #0A0E1A 0%, #1A1F2E 50%, #0A0E1A 100%);
+    z-index: 9999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.page-transition-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+/* Loading animation */
+.page-transition-overlay .loading-spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.page-transition-overlay .spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(255, 107, 53, 0.2);
+    border-left: 3px solid #FF6B35;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.page-transition-overlay .loading-text {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Page content fade transitions */
+.page-content {
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.page-content.loading {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.page-content.loaded {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Specific module containers - ADDED INFORMATION */
+.dva-home, 
+.dva-players, 
+.dva-contact, 
+.dva-about, 
+.dva-information, 
+.dva-tournament, 
+.dva-ranking {
+    background: linear-gradient(135deg, #0A0E1A 0%, #1A1F2E 50%, #0A0E1A 100%) !important;
+    min-height: 100vh;
+    opacity: 1;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.dva-home.page-entering,
+.dva-players.page-entering,
+.dva-contact.page-entering,
+.dva-about.page-entering,
+.dva-information.page-entering,
+.dva-tournament.page-entering,
+.dva-ranking.page-entering {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+/* Header and Footer stay consistent */
+header, footer {
+    background: rgba(26, 31, 46, 0.95) !important;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    z-index: 1000;
+}
+
+/* Prevent flash during navigation */
+.navigation-loading body {
+    overflow: hidden;
+}
+
+/* Smooth scroll behavior */
+html {
+    scroll-behavior: smooth;
+}

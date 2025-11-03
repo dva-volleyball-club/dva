@@ -1,0 +1,22 @@
+/* VNL 2025 FIVB Color Palette */
+:root {
+    /* VNL 2025 Primary Colors */
+    --vnl-primary-blue: #1E3A8A;
+    --vnl-light-blue: #3B82F6;
+    --vnl-accent-blue: #60A5FA;
+    
+    --vnl-primary-red: #DC2626;
+    --vnl-light-red: #EF4444;
+    --vnl-accent-red: #F87171;
+    
+    /* VNL Neutral Colors */
+    --vnl-white: #FFFFFF;
+    --vnl-gray-light: #F8FAFC;
+    --vnl-gray-medium: #64748B;
+    --vnl-gray-dark: #1E293B;
+    
+    /* VNL Gradients */
+    --vnl-blue-gradient: linear-gradient(135deg, #1E3A8A 0%, #3B82F6 100%);
+    --vnl-red-gradient: linear-gradient(135deg, #DC2626 0%, #EF4444 100%);
+    --vnl-mixed-gradient: linear-gradient(90deg, #1E3A8A 0%, #3B82F6 50%, #DC2626 100%);
+}

@@ -1,0 +1,1034 @@
+/**
+ * DVA Volleyball Ranking Module - BEAUTIFUL RANKINGS UI
+ */
+
+/* =============================================================================
+   BASE STYLES
+   ============================================================================= */
+
+.dva-ranking {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0A0E1A 0%, #1A1F2E 50%, #0A0E1A 100%);
+    color: white;
+    overflow-x: hidden;
+}
+
+.dva-ranking .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* =============================================================================
+   HERO SECTION
+   ============================================================================= */
+
+.ranking-hero {
+    padding: 100px 0 80px 0;
+    text-align: center;
+    position: relative;
+}
+
+.ranking-title {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 900;
+    margin-bottom: 24px;
+    line-height: 1.1;
+}
+
+.title-gradient {
+    background: linear-gradient(135deg, #FF6B35 0%, #FF8A65 30%, #0066FF 70%, #00AAFF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.ranking-description {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    color: rgba(255, 255, 255, 0.8);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* =============================================================================
+   DIVISION TABS
+   ============================================================================= */
+
+.ranking-tabs-section {
+    margin-bottom: 60px;
+    display: flex;
+    justify-content: center;
+}
+
+.ranking-tabs {
+    display: flex;
+    gap: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 8px;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.ranking-tab {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 24px;
+    background: transparent;
+    border: none;
+    border-radius: 12px;
+    color: rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.ranking-tab:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: white;
+}
+
+.ranking-tab.active {
+    background: rgba(255, 107, 53, 0.2);
+    border: 1px solid rgba(255, 107, 53, 0.4);
+    color: white;
+}
+
+.tab-icon {
+    font-size: 1.5rem;
+}
+
+.tab-name {
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.tab-desc {
+    font-size: 0.85rem;
+    opacity: 0.8;
+}
+
+/* =============================================================================
+   POSITION FILTER
+   ============================================================================= */
+
+.position-filter {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.position-btn {
+    padding: 8px 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.position-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+.position-btn.active {
+    background: rgba(255, 107, 53, 0.2);
+    border-color: rgba(255, 107, 53, 0.5);
+    color: #FF6B35;
+}
+
+/* =============================================================================
+   RANKINGS GRID
+   ============================================================================= */
+
+.rankings-grid {
+    min-height: 400px;
+    transition: opacity 0.3s ease;
+}
+
+/* All Positions Overview */
+.positions-overview {
+    width: 100%;
+}
+
+.division-header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 24px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.division-title {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 12px;
+}
+
+.division-stats {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.positions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+}
+
+/* Position Column */
+.position-column {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 24px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.position-column:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+}
+
+.position-column-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.position-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: white;
+}
+
+.position-column-title h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin: 0 0 4px 0;
+}
+
+.position-subtitle {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.position-players {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+/* Compact Player Card */
+.compact-player-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.compact-player-card:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateX(4px);
+}
+
+.rank-badge {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: white;
+    flex-shrink: 0;
+}
+
+.player-compact-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+}
+
+.player-compact-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.compact-avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.player-compact-details {
+    flex: 1;
+}
+
+.player-compact-name {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 2px;
+}
+
+.player-compact-meta {
+    display: flex;
+    gap: 8px;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.player-score {
+    color: #FFD700;
+}
+
+.view-all-btn {
+    width: 100%;
+    padding: 10px;
+    background: transparent;
+    border: 1px solid rgba(255, 107, 53, 0.4);
+    border-radius: 8px;
+    color: #FF6B35;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.view-all-btn:hover {
+    background: rgba(255, 107, 53, 0.1);
+}
+
+/* Single Position View */
+.single-position-view {
+    width: 100%;
+}
+
+.position-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+    padding: 24px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+}
+
+.position-title {
+    font-size: 2rem;
+    font-weight: 800;
+    margin: 0 0 8px 0;
+}
+
+.position-subtitle {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.position-count {
+    font-size: 2rem;
+    font-weight: 800;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.position-rankings {
+    display: grid;
+    gap: 20px;
+}
+
+/* Ranking Card */
+.ranking-card {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 24px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    transition: all 0.3s ease;
+}
+
+.ranking-card:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.ranking-card.medal-1 {
+    border-color: rgba(255, 215, 0, 0.5);
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+}
+
+.ranking-card.medal-2 {
+    border-color: rgba(192, 192, 192, 0.5);
+    background: linear-gradient(135deg, rgba(192, 192, 192, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+}
+
+.ranking-card.medal-3 {
+    border-color: rgba(205, 127, 50, 0.5);
+    background: linear-gradient(135deg, rgba(205, 127, 50, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+}
+
+.ranking-position {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    min-width: 80px;
+}
+
+.rank-number {
+    font-size: 2rem;
+    line-height: 1;
+}
+
+.rank-label {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: 600;
+}
+
+.ranking-player-info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex: 1;
+}
+
+.ranking-player-avatar {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.ranking-avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.player-ranking-number {
+    position: absolute;
+    bottom: -4px;
+    right: -4px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: white;
+    border: 2px solid #1A1F2E;
+}
+
+.ranking-player-details {
+    flex: 1;
+}
+
+.ranking-player-name {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin: 0 0 8px 0;
+    color: white;
+}
+
+.ranking-player-position {
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 12px;
+}
+
+.ranking-player-score {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.score-label {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: 500;
+}
+
+.score-bar {
+    position: relative;
+    width: 200px;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.score-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.3s ease;
+}
+
+.score-text {
+    position: absolute;
+    right: 8px;
+    top: -24px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #FFD700;
+}
+
+/* =============================================================================
+   STATISTICS SECTION
+   ============================================================================= */
+
+.ranking-stats {
+    margin: 80px 0 40px 0;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 24px;
+}
+
+.stat-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 24px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+    background: rgba(255, 107, 53, 0.1);
+    border-color: rgba(255, 107, 53, 0.3);
+    transform: translateY(-2px);
+}
+
+.stat-icon {
+    font-size: 2rem;
+}
+
+.stat-number {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #FF6B35;
+    line-height: 1;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* =============================================================================
+   LOADING & EMPTY STATES
+   ============================================================================= */
+
+.rankings-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 60px;
+}
+
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(255, 107, 53, 0.2);
+    border-left: 3px solid #FF6B35;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.loading-text {
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 600;
+}
+
+.rankings-empty {
+    text-align: center;
+    padding: 60px;
+}
+
+.empty-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+}
+
+/* =============================================================================
+   RESPONSIVE DESIGN
+   ============================================================================= */
+
+@media (max-width: 1024px) {
+    .positions-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+    }
+    
+    .ranking-card {
+        flex-direction: column;
+        text-align: center;
+        gap: 16px;
+    }
+    
+    .ranking-player-info {
+        flex-direction: column;
+        gap: 16px;
+    }
+    
+    .score-bar {
+        width: 160px;
+    }
+}
+
+@media (max-width: 768px) {
+    .dva-ranking .container {
+        padding: 0 16px;
+    }
+    
+    .ranking-tabs {
+        flex-direction: column;
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+    
+    .position-filter {
+        gap: 8px;
+    }
+    
+    .position-btn {
+        font-size: 0.8rem;
+        padding: 6px 12px;
+    }
+    
+    .positions-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .position-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 16px;
+    }
+    
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .ranking-hero {
+        padding: 60px 0 40px 0;
+    }
+    
+    .compact-player-card {
+        padding: 8px;
+        gap: 8px;
+    }
+    
+    .player-compact-avatar {
+        width: 32px;
+        height: 32px;
+    }
+    
+    .ranking-card {
+        padding: 16px;
+    }
+    
+    .ranking-player-avatar {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .score-bar {
+        width: 120px;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Additional styles for ranking cards */
+.rankings-loading-brief {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding: 40px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.loading-spinner-small {
+    width: 30px;
+    height: 30px;
+    border: 2px solid rgba(255, 107, 53, 0.2);
+    border-left: 2px solid #FF6B35;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.positions-overview {
+    width: 100%;
+}
+
+.division-header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+}
+
+.division-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.positions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.position-column {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 20px;
+    transition: all 0.3s ease;
+}
+
+.position-column:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-2px);
+}
+
+.position-column-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.position-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: white;
+}
+
+.position-players {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.compact-player-card {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.compact-player-card:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.rank-badge {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    color: white;
+    font-weight: 700;
+}
+
+.player-compact-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.compact-avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.player-compact-name {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: white;
+}
+
+.player-compact-meta {
+    display: flex;
+    gap: 6px;
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.view-all-btn {
+    width: 100%;
+    padding: 8px;
+    background: transparent;
+    border: 1px solid rgba(255, 107, 53, 0.4);
+    border-radius: 6px;
+    color: #FF6B35;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.view-all-btn:hover {
+    background: rgba(255, 107, 53, 0.1);
+}
+
+/* Single Position View */
+.single-position-view {
+    width: 100%;
+}
+
+.position-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+}
+
+.position-rankings {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.ranking-card {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.ranking-card:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-2px);
+}
+
+.ranking-card.medal-1 {
+    border-color: rgba(255, 215, 0, 0.5);
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+}
+
+.ranking-position {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    min-width: 60px;
+}
+
+.rank-number {
+    font-size: 1.5rem;
+}
+
+.ranking-player-info {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex: 1;
+}
+
+.ranking-player-avatar {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.ranking-avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.player-ranking-number {
+    position: absolute;
+    bottom: -4px;
+    right: -4px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: white;
+    border: 2px solid #1A1F2E;
+}
+
+.ranking-player-name {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 0 0 6px 0;
+    color: white;
+}
+
+.ranking-player-position {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.score-bar {
+    position: relative;
+    width: 150px;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.score-fill {
+    height: 100%;
+    border-radius: 3px;
+    transition: width 0.3s ease;
+}
+
+.score-text {
+    position: absolute;
+    right: 4px;
+    top: -20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #FFD700;
+}
+
+@media (max-width: 768px) {
+    .positions-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .ranking-card {
+        flex-direction: column;
+        text-align: center;
+        gap: 12px;
+    }
+    
+    .ranking-player-info {
+        flex-direction: column;
+        gap: 12px;
+    }
+}
+
+/* =============================================================================
+   ANIMATIONS
+   ============================================================================= */
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Fade in animation for cards */
+.ranking-card,
+.position-column,
+.compact-player-card {
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Stagger animation for multiple cards */
+.position-column:nth-child(1) { animation-delay: 0.1s; }
+.position-column:nth-child(2) { animation-delay: 0.2s; }
+.position-column:nth-child(3) { animation-delay: 0.3s; }
+.position-column:nth-child(4) { animation-delay: 0.4s; }
+.position-column:nth-child(5) { animation-delay: 0.5s; }
+
+.ranking-card:nth-child(1) { animation-delay: 0.1s; }
+.ranking-card:nth-child(2) { animation-delay: 0.2s; }
+.ranking-card:nth-child(3) { animation-delay: 0.3s; }
+.ranking-card:nth-child(4) { animation-delay: 0.4s; }
+.ranking-card:nth-child(5) { animation-delay: 0.5s; }

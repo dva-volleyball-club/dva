@@ -1,0 +1,205 @@
+<div class="dva-register">
+
+    <!-- Hero Section -->
+    <section class="register-hero">
+        <div class="hero-bg-effects">
+            <div class="hero-grid"></div>
+            <div class="hero-orb-1"></div>
+            <div class="hero-orb-2"></div>
+        </div>
+
+        <div class="container">
+            <div class="hero-content animate-on-scroll">
+                <h1 class="hero-title">🏐 Join DVA Volleyball</h1>
+                <p class="hero-description">
+                    Become part of DVA Volleyball Club! Register today and start
+                    your journey
+                    with one of the most competitive volleyball teams in
+                    Vietnam.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Form Section -->
+    <section class="contact-forms">
+        <div class="container">
+            <div class="form-container">
+                <!-- Registration Form -->
+                <form class="contact-form active" id="registration-form"
+                    data-form="registration">
+                    <div class="form-header">
+                        <h3>Form Đăng Ký</h3>
+                        <p>Join DVA Volleyball Club - Register today!</p>
+                    </div>
+
+                    <div class="form-grid">
+                        <!-- Full Name -->
+                        <div class="form-group">
+                            <label for="reg-fullname">Họ và Tên *</label>
+                            <input type="text" id="reg-fullname" name="fullname"
+                                required
+                                placeholder="Nhập họ và tên của bạn">
+                        </div>
+
+                        <!-- Position -->
+                        <div class="form-group">
+                            <label for="reg-position">Vị trí *</label>
+                            <select id="reg-position" name="position" required>
+                                <option value>Chọn vị trí sở trường của bạn trên
+                                    sân bóng</option>
+                                <option value="outside-hitter">Outside Hitter
+                                    (Chủ Công)</option>
+                                <option value="middle-blocker">Middle
+                                    Blocker(Phụ Công)</option>
+                                <option value="opposite">Opposite Hitter(Đối
+                                    Chuyền)</option>
+                                <option value="setter">Setter(Chuyền 2)</option>
+                                <option value="libero">Libero</option>
+                            </select>
+                        </div>
+
+                        <!-- Birth Year -->
+                        <div class="form-group">
+                            <label for="reg-birthyear">Năm sinh *</label>
+                            <input type="number" id="reg-birthyear"
+                                name="birthyear" required
+                                min="1960" max="2015" placeholder="2002">
+                        </div>
+
+                        <!-- Hometown -->
+                        <div class="form-group">
+                            <label for="reg-hometown">Quê quán *</label>
+                            <input type="text" id="reg-hometown" name="hometown"
+                                required
+                                placeholder="Hà Nội, Việt Nam">
+                        </div>
+
+                        <!-- Jersey Number -->
+                        <div class="form-group">
+                            <label for="reg-jersey">Số áo yêu thích *</label>
+                            <input type="number" id="reg-jersey" name="jersey"
+                                required
+                                min="1" max="99" placeholder="1-99">
+                        </div>
+
+                        <!-- Height -->
+                        <div class="form-group">
+                            <label for="reg-height">Chiều cao (cm) *</label>
+                            <input type="number" id="reg-height" name="height"
+                                required
+                                min="150" max="220" placeholder="175">
+                        </div>
+
+                        <!-- Weight -->
+                        <div class="form-group">
+                            <label for="reg-weight">Cân nặng (kg) *</label>
+                            <input type="number" id="reg-weight" name="weight"
+                                required
+                                min="40" max="150" placeholder="65">
+                        </div>
+
+                        <!-- Phone Number -->
+                        <div class="form-group">
+                            <label for="reg-phone">Số điện thoại (Zalo)
+                                *</label>
+                            <input type="tel" id="reg-phone" name="phone"
+                                required
+                                placeholder="0768 299 329">
+                        </div>
+
+                        <!-- Gender -->
+                        <div class="form-group">
+                            <label for="reg-gender">Giới tính *</label>
+                            <select id="reg-gender" name="gender" required>
+                                <option value>Chọn giới tính</option>
+                                <option value="male">Nam</option>
+                                <option value="female">Nữ</option>
+                            </select>
+                        </div>
+
+                        <!-- Spike Reach -->
+                        <div class="form-group">
+                            <label for="reg-spike-reach">Độ cao bật đà (cm)
+                                *</label>
+                            <input type="number" id="reg-spike-reach"
+                                name="spikereach" required
+                                min="200" max="380" placeholder="Ví dụ : 310">
+                            <small class="form-help">Độ cao từ mặt đất đến đầu
+                                ngón tay khi bật nhảy để đập bóng</small>
+                        </div>
+
+                        <!-- Block Reach -->
+                        <div class="form-group">
+                            <label for="reg-block-reach">Độ cao chắn bóng (cm)
+                                *</label>
+                            <input type="number" id="reg-block-reach"
+                                name="blockreach" required
+                                min="240" max="340" placeholder="Ví dụ : 300">
+                            <small class="form-help">Độ cao từ mặt đất đến đầu
+                                ngón tay khi bật nhảy để chắn bóng</small>
+                        </div>
+
+                        <!-- Rotation Experience -->
+                        <div class="form-group">
+                            <label for="reg-rotation">Đổi cầu *</label>
+                            <select id="reg-rotation" name="rotation" required>
+                                <option value>Chọn hệ thống đổi cầu bạn hay
+                                    dùng</option>
+                                <option value="4-2">4-2 Rotation System (Đổi cầu
+                                    4-2)</option>
+                                <option value="5-1">5-1 Rotation System (Đổi cầu
+                                    5-1)</option>
+                                <option value="6-2">6-2 Rotation System (Đổi cầu
+                                    6-2)</option>
+                                <option value="all">All Systems (Tất cả các hệ
+                                    thống)</option>
+                                <option value="none">No Experience (Chưa có kinh
+                                    nghiệm đổi cầu)</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-user-plus"></i>
+                        Xác nhận đăng ký
+                    </button>
+                </form>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Modal -->
+    <div id="registration-success-modal" class="success-modal">
+        <div class="success-modal-overlay" onclick="closeSuccessModal()"></div>
+        <div class="success-modal-content">
+            <div class="success-icon">
+                <div class="success-checkmark">
+                    <div class="success-checkmark-circle"></div>
+                    <div class="success-checkmark-stem"></div>
+                    <div class="success-checkmark-kick"></div>
+                </div>
+            </div>
+            <h3 class="success-title">Registration Successful! 🎉</h3>
+            <div class="success-message">
+                Thank you for registering with DVA Volleyball Club!<br>
+                Our team will review your application and contact you soon.
+            </div>
+            <div class="success-actions">
+                <button class="success-btn primary"
+                    onclick="closeSuccessModal()">
+                    Continue Exploring
+                </button>
+                <button class="success-btn secondary" onclick="goToHomePage()">
+                    Go to Home
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div id="toast-container" class="toast-container"></div>
+
+</div>

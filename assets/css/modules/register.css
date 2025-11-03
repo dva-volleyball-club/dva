@@ -1,0 +1,647 @@
+/* ===== DVA REGISTER MODULE - FULLY SCOPED STYLES ===== */
+/* D:\dva\DVA-Volleyball-Website\assets\css\modules\register.css */
+
+/* ✅ CRITICAL: All styles scoped within .dva-register to prevent global conflicts */
+
+.dva-register {
+    background: var(--syncsoft-dark);
+    min-height: 100vh;
+}
+
+/* ===== HERO SECTION ===== */
+
+.dva-register .register-hero {
+    position: relative;
+    padding: 80px 0;
+    background: linear-gradient(135deg, var(--syncsoft-dark) 0%, var(--syncsoft-dark-light) 100%);
+    overflow: hidden;
+}
+
+.dva-register .hero-bg-effects {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+}
+
+.dva-register .hero-grid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 60px 60px;
+    opacity: 0.4;
+}
+
+.dva-register .hero-orb-1 {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(255, 107, 53, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    top: -100px;
+    right: -100px;
+    filter: blur(60px);
+}
+
+.dva-register .hero-orb-2 {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(0, 102, 255, 0.08) 0%, transparent 70%);
+    border-radius: 50%;
+    bottom: -80px;
+    left: -80px;
+    filter: blur(40px);
+}
+
+.dva-register .hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+
+.dva-register .hero-title {
+    font-size: 3.5rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--dva-primary) 0%, var(--dva-primary-light) 50%, var(--syncsoft-primary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    margin: 0 0 20px 0;
+}
+
+.dva-register .hero-description {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: var(--syncsoft-gray);
+    max-width: 600px;
+    margin: 0 auto 40px auto;
+}
+
+/* ===== FORM SECTION ===== */
+
+.dva-register .contact-forms {
+    padding: 80px 0;
+    background: var(--syncsoft-dark);
+}
+
+.dva-register .form-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.dva-register .contact-form {
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    padding: 40px;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.3);
+}
+
+.dva-register .form-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.dva-register .form-header h3 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--syncsoft-white);
+    margin: 0 0 12px 0;
+    background: linear-gradient(135deg, var(--dva-primary), var(--syncsoft-primary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.dva-register .form-header p {
+    color: var(--syncsoft-gray);
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+.dva-register .form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    margin-bottom: 40px;
+}
+
+.dva-register .form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.dva-register .form-group label {
+    color: var(--syncsoft-white);
+    font-weight: 600;
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+}
+
+.dva-register .form-group input,
+.dva-register .form-group select {
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 14px 16px;
+    color: var(--syncsoft-white);
+    font-size: 1rem;
+    transition: var(--transition-smooth);
+}
+
+.dva-register .form-group input:focus,
+.dva-register .form-group select:focus {
+    outline: none;
+    border-color: rgba(255, 107, 53, 0.5);
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 20px rgba(255, 107, 53, 0.2);
+}
+
+.dva-register .form-group input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.dva-register .form-group select option {
+    background: var(--syncsoft-dark);
+    color: var(--syncsoft-white);
+}
+
+.dva-register .form-help {
+    color: var(--syncsoft-gray);
+    font-size: 0.85rem;
+    margin-top: 4px;
+    font-style: italic;
+}
+
+.dva-register .submit-btn {
+    width: 100%;
+    background: linear-gradient(135deg, var(--dva-primary), #FF8A65);
+    color: white;
+    border: none;
+    padding: 18px 32px;
+    border-radius: 16px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.dva-register .submit-btn:hover {
+    background: linear-gradient(135deg, #FF8A65, var(--dva-primary));
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(255, 107, 53, 0.4);
+}
+
+.dva-register .submit-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* ===== FORM VALIDATION STYLES ===== */
+
+.dva-register .form-group.error input,
+.dva-register .form-group.error select {
+    border-color: #e74c3c !important;
+    background-color: rgba(231, 76, 60, 0.1) !important;
+}
+
+.dva-register .form-group.success input,
+.dva-register .form-group.success select {
+    border-color: #27ae60 !important;
+    background-color: rgba(39, 174, 96, 0.1) !important;
+}
+
+.dva-register .error-message {
+    color: #e74c3c;
+    font-size: 0.85rem;
+    margin-top: 5px;
+    font-weight: 500;
+    display: block;
+}
+
+.dva-register .form-message {
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    font-weight: 500;
+    display: none;
+    animation: slideDown 0.3s ease;
+}
+
+.dva-register .form-message.show {
+    display: block;
+}
+
+.dva-register .form-message.success {
+    background-color: rgba(39, 174, 96, 0.1);
+    border: 1px solid rgba(39, 174, 96, 0.3);
+    color: #27ae60;
+}
+
+.dva-register .form-message.error {
+    background-color: rgba(231, 76, 60, 0.1);
+    border: 1px solid rgba(231, 76, 60, 0.3);
+    color: #e74c3c;
+}
+
+/* ===== SUCCESS MODAL ===== */
+
+.dva-register .success-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dva-register .success-modal.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.dva-register .success-modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+}
+
+.dva-register .success-modal-content {
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 24px;
+    padding: 40px;
+    text-align: center;
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 32px 64px rgba(0, 0, 0, 0.4);
+    transform: translateY(30px) scale(0.9);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dva-register .success-modal.show .success-modal-content {
+    transform: translateY(0) scale(1);
+}
+
+.dva-register .success-icon {
+    margin-bottom: 24px;
+}
+
+.dva-register .success-checkmark {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: block;
+    stroke-width: 3;
+    stroke: #27ae60;
+    stroke-miterlimit: 10;
+    margin: 0 auto 20px auto;
+    position: relative;
+    background: rgba(39, 174, 96, 0.1);
+    border: 3px solid #27ae60;
+}
+
+.dva-register .success-checkmark-circle {
+    stroke-dasharray: 166;
+    stroke-dashoffset: 166;
+    stroke-width: 3;
+    stroke-miterlimit: 10;
+    stroke: #27ae60;
+    fill: none;
+    animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+}
+
+.dva-register .success-checkmark-stem {
+    transform-origin: 50% 50%;
+    stroke-dasharray: 48;
+    stroke-dashoffset: 48;
+    animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+}
+
+.dva-register .success-checkmark-kick {
+    transform-origin: 50% 50%;
+    stroke-dasharray: 23;
+    stroke-dashoffset: 23;
+    animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.9s forwards;
+}
+
+.dva-register .success-title {
+    color: var(--syncsoft-white);
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin: 0 0 16px 0;
+}
+
+.dva-register .success-message {
+    color: var(--syncsoft-gray);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin: 0 0 32px 0;
+}
+
+.dva-register .success-actions {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.dva-register .success-btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    font-size: 0.95rem;
+}
+
+.dva-register .success-btn.primary {
+    background: linear-gradient(135deg, var(--dva-primary), #FF8A65);
+    color: white;
+}
+
+.dva-register .success-btn.secondary {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--syncsoft-white);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.dva-register .success-btn:hover {
+    transform: translateY(-2px);
+}
+
+.dva-register .success-btn.primary:hover {
+    box-shadow: 0 8px 24px rgba(255, 107, 53, 0.4);
+}
+
+.dva-register .success-btn.secondary:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* ===== TOAST NOTIFICATIONS ===== */
+
+.dva-register .toast-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 10001;
+    pointer-events: none;
+}
+
+.dva-register .toast-notification {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 10px;
+    min-width: 300px;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    pointer-events: auto;
+    transform: translateX(400px);
+    animation: toastSlideIn 0.3s ease forwards;
+}
+
+.dva-register .toast-notification.success {
+    border-left: 4px solid #27ae60;
+}
+
+.dva-register .toast-notification.error {
+    border-left: 4px solid #e74c3c;
+}
+
+.dva-register .toast-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    color: white;
+}
+
+.dva-register .toast-notification.success .toast-icon {
+    background: #27ae60;
+}
+
+.dva-register .toast-notification.error .toast-icon {
+    background: #e74c3c;
+}
+
+.dva-register .toast-content {
+    flex: 1;
+}
+
+.dva-register .toast-title {
+    color: var(--syncsoft-white);
+    font-weight: 600;
+    margin-bottom: 2px;
+    font-size: 0.9rem;
+}
+
+.dva-register .toast-message {
+    color: var(--syncsoft-gray);
+    font-size: 0.85rem;
+    line-height: 1.4;
+}
+
+.dva-register .toast-close {
+    background: none;
+    border: none;
+    color: var(--syncsoft-gray);
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 4px;
+    transition: var(--transition-smooth);
+}
+
+.dva-register .toast-close:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--syncsoft-white);
+}
+
+/* ===== ANIMATIONS ===== */
+
+.dva-register .animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dva-register .animate-on-scroll.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes stroke {
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes toastSlideIn {
+    from {
+        transform: translateX(400px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes toastSlideOut {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(400px);
+        opacity: 0;
+    }
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+
+@media (max-width: 768px) {
+    .dva-register .hero-title {
+        font-size: 2.8rem;
+    }
+    
+    .dva-register .hero-description {
+        font-size: 1.1rem;
+    }
+    
+    .dva-register .form-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .dva-register .contact-form {
+        padding: 30px 20px;
+    }
+    
+    .dva-register .form-header h3 {
+        font-size: 1.8rem;
+    }
+    
+    .dva-register .success-modal-content {
+        padding: 30px 20px;
+    }
+    
+    .dva-register .success-actions {
+        flex-direction: column;
+    }
+    
+    .dva-register .success-btn {
+        width: 100%;
+    }
+    
+    .dva-register .toast-container {
+        left: 10px;
+        right: 10px;
+        top: 10px;
+    }
+    
+    .dva-register .toast-notification {
+        min-width: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .dva-register .hero-title {
+        font-size: 2.2rem;
+    }
+    
+    .dva-register .register-hero {
+        padding: 60px 0;
+    }
+    
+    .dva-register .contact-forms {
+        padding: 60px 0;
+    }
+}
+
+/* ===== END OF SCOPED REGISTER CSS ===== */
+/* ===== ENHANCED FIELD STYLES ===== */
+
+.dva-register .form-group select[name="skillLevel"],
+.dva-register .form-group select[name="experienceDuration"] {
+    background: linear-gradient(145deg, rgba(255, 107, 53, 0.05), rgba(0, 102, 255, 0.05));
+    border-color: rgba(255, 107, 53, 0.2);
+}
+
+.dva-register .form-group select[name="skillLevel"]:focus,
+.dva-register .form-group select[name="experienceDuration"]:focus {
+    border-color: rgba(255, 107, 53, 0.6);
+    box-shadow: 0 0 20px rgba(255, 107, 53, 0.3);
+}
+
+/* Skill level specific styling */
+.dva-register .form-group select[name="skillLevel"] option[value="expert"] {
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    color: #1a1a1a;
+    font-weight: bold;
+}
+
+.dva-register .form-group select[name="skillLevel"] option[value="advanced"] {
+    background: rgba(0, 102, 255, 0.1);
+    color: #0066FF;
+    font-weight: 600;
+}
+
+.dva-register .form-group select[name="skillLevel"] option[value="intermediate"] {
+    background: rgba(255, 107, 53, 0.1);
+    color: #FF6B35;
+    font-weight: 500;
+}

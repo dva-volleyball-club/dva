@@ -1,0 +1,422 @@
+/* SyncSoft-inspired DVA Theme */
+/* D:\dva\DVA-Volleyball-Website\assets\css\themes\dva-theme.css */
+
+:root {
+    /* DVA Colors - SyncSoft Style */
+    --dva-primary: #FF6B35;
+    --dva-primary-dark: #E65100;
+    --dva-primary-light: #FF8A65;
+    --dva-secondary: #1E3A8A;
+    --dva-accent: #00D4AA;
+    
+    /* SyncSoft Dark Theme */
+    --syncsoft-dark: #0A0E1A;
+    --syncsoft-dark-light: #1A1F2E;
+    --syncsoft-gray: #8B949E;
+    --syncsoft-white: #FFFFFF;
+    --syncsoft-primary: #0066FF;
+    --syncsoft-secondary: #00D4AA;
+    
+    /* Glass Effects */
+    --glass-bg: rgba(255, 255, 255, 0.08);
+    --glass-border: rgba(255, 255, 255, 0.12);
+    --glass-backdrop: blur(20px);
+    
+    /* Typography */
+    --font-primary: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
+    --font-mono: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', monospace;
+    
+    /* STANDARDIZED TRANSITIONS */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    
+    /* STANDARDIZED GRADIENTS */
+    --primary-gradient: linear-gradient(135deg, var(--syncsoft-primary) 0%, var(--syncsoft-secondary) 100%);
+    --dva-gradient: linear-gradient(135deg, var(--dva-primary) 0%, var(--dva-primary-light) 100%);
+}
+
+/* Global Body */
+body.dva-body {
+    font-family: var(--font-primary);
+    background: var(--syncsoft-dark);
+    color: var(--syncsoft-white);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Main Content - CONSISTENT HEADER SPACING */
+.main-content {
+    padding-top: 72px; /* MATCHES HEADER HEIGHT EXACTLY */
+    min-height: 100vh;
+}
+
+/* Loading Spinner - SyncSoft Style */
+.loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: var(--syncsoft-dark);
+}
+
+.loading-spinner {
+    text-align: center;
+}
+
+.spinner-circle {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 24px;
+    border: 3px solid rgba(0, 102, 255, 0.2);
+    border-left: 3px solid var(--syncsoft-primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.loading-text {
+    font-size: 16px;
+    color: var(--syncsoft-gray);
+    font-weight: 500;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Utility Classes - SyncSoft Style */
+.glass-effect {
+    background: var(--glass-bg);
+    -webkit-backdrop-filter: var(--glass-backdrop);
+    backdrop-filter: var(--glass-backdrop);
+    border: 1px solid var(--glass-border);
+}
+
+.text-gradient {
+    background: linear-gradient(135deg, var(--syncsoft-primary), var(--syncsoft-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.btn-modern {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 14px;
+    transition: var(--transition-smooth);
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background: var(--primary-gradient);
+    color: var(--syncsoft-white);
+    box-shadow: 0 8px 32px rgba(0, 102, 255, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(0, 102, 255, 0.4);
+}
+
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: var(--syncsoft-white);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.25);
+}
+
+/* STANDARDIZED CONTAINER SYSTEM */
+.container {
+    max-width: 1200px; /* MATCHES HEADER CONTAINER */
+    margin: 0 auto;
+    padding: 0 24px; /* MATCHES HEADER PADDING */
+}
+
+.container-sm {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.container-md {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.container-lg {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.container-xl {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* STANDARDIZED RESPONSIVE BREAKPOINTS */
+@media (max-width: 1024px) {
+    .container,
+    .container-sm,
+    .container-md,
+    .container-lg,
+    .container-xl {
+        padding: 0 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container,
+    .container-sm,
+    .container-md,
+    .container-lg,
+    .container-xl {
+        padding: 0 16px; /* MATCHES HEADER MOBILE PADDING */
+    }
+    
+    .main-content {
+        padding-top: 64px; /* MATCHES HEADER MOBILE HEIGHT */
+    }
+}
+
+@media (max-width: 480px) {
+    .container,
+    .container-sm,
+    .container-md,
+    .container-lg,
+    .container-xl {
+        padding: 0 16px;
+    }
+}
+
+/* ENHANCED UTILITY CLASSES */
+.section-padding {
+    padding: 60px 0;
+}
+
+.section-padding-sm {
+    padding: 40px 0;
+}
+
+.section-padding-lg {
+    padding: 80px 0;
+}
+
+.section-padding-xl {
+    padding: 100px 0;
+}
+
+/* RESPONSIVE SECTION PADDING */
+@media (max-width: 768px) {
+    .section-padding {
+        padding: 40px 0;
+    }
+    
+    .section-padding-sm {
+        padding: 30px 0;
+    }
+    
+    .section-padding-lg {
+        padding: 60px 0;
+    }
+    
+    .section-padding-xl {
+        padding: 80px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .section-padding {
+        padding: 30px 0;
+    }
+    
+    .section-padding-sm {
+        padding: 20px 0;
+    }
+    
+    .section-padding-lg {
+        padding: 40px 0;
+    }
+    
+    .section-padding-xl {
+        padding: 60px 0;
+    }
+}
+
+/* ENHANCED BUTTON STYLES */
+.btn-dva {
+    background: var(--dva-gradient);
+    color: var(--syncsoft-white);
+    box-shadow: 0 8px 32px rgba(255, 107, 53, 0.3);
+}
+
+.btn-dva:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(255, 107, 53, 0.4);
+    background: linear-gradient(135deg, var(--dva-primary-light) 0%, var(--dva-primary) 100%);
+}
+
+.btn-glass {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    color: var(--syncsoft-white);
+    backdrop-filter: var(--glass-backdrop);
+    -webkit-backdrop-filter: var(--glass-backdrop);
+}
+
+.btn-glass:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+/* SCROLLBAR STYLING */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--syncsoft-dark-light);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* SELECTION STYLING */
+::selection {
+    background: rgba(0, 102, 255, 0.3);
+    color: var(--syncsoft-white);
+}
+
+::-moz-selection {
+    background: rgba(0, 102, 255, 0.3);
+    color: var(--syncsoft-white);
+}
+
+/* FOCUS STATES */
+*:focus {
+    outline: 2px solid var(--syncsoft-primary);
+    outline-offset: 2px;
+}
+
+.btn-modern:focus,
+.btn-primary:focus,
+.btn-secondary:focus,
+.btn-dva:focus,
+.btn-glass:focus {
+    outline: 2px solid var(--syncsoft-primary);
+    outline-offset: 4px;
+}
+
+/* TEXT UTILITIES */
+.text-dva {
+    color: var(--dva-primary);
+}
+
+.text-accent {
+    color: var(--dva-accent);
+}
+
+.text-muted {
+    color: var(--syncsoft-gray);
+}
+
+.text-white {
+    color: var(--syncsoft-white);
+}
+
+/* BACKGROUND UTILITIES */
+.bg-glass {
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-backdrop);
+    -webkit-backdrop-filter: var(--glass-backdrop);
+    border: 1px solid var(--glass-border);
+}
+
+.bg-dark {
+    background: var(--syncsoft-dark);
+}
+
+.bg-dark-light {
+    background: var(--syncsoft-dark-light);
+}
+
+.bg-gradient-primary {
+    background: var(--primary-gradient);
+}
+
+.bg-gradient-dva {
+    background: var(--dva-gradient);
+}
+
+/* ACCESSIBILITY ENHANCEMENTS */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+@media (prefers-contrast: high) {
+    :root {
+        --syncsoft-gray: #FFFFFF;
+        --glass-border: rgba(255, 255, 255, 0.5);
+    }
+    
+    .btn-modern,
+    .btn-primary,
+    .btn-secondary,
+    .btn-dva,
+    .btn-glass {
+        border: 2px solid var(--syncsoft-white);
+    }
+}
+
+/* PRINT STYLES */
+@media print {
+    .main-content {
+        padding-top: 0;
+    }
+    
+    .btn-modern,
+    .btn-primary,
+    .btn-secondary,
+    .btn-dva,
+    .btn-glass {
+        background: none !important;
+        border: 1px solid #000 !important;
+        color: #000 !important;
+        box-shadow: none !important;
+    }
+    
+    .glass-effect,
+    .bg-glass {
+        background: #FFFFFF !important;
+        border: 1px solid #000 !important;
+    }
+}

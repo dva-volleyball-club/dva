@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="vi">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>404 - Trang không tìm thấy | DVA Volleyball</title>
+
+        <!-- ✅ CSS PATHS FOR 404 PAGE -->
+        <link rel="stylesheet" href="/dva/assets/css/main.css">
+        <link rel="stylesheet" href="/dva/assets/css/themes/dva-theme.css">
+        <link rel="stylesheet" href="/dva/assets/css/themes/vnl-colors.css">
+
+        <!-- ✅ CUSTOM 404 CSS -->
+        <style>
+        .error-404-container {
+            min-height: 100vh;
+            background: var(--syncsoft-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .error-404-content {
+            text-align: center;
+            max-width: 600px;
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 60px 40px;
+            -webkit-backdrop-filter: blur(20px);
+            backdrop-filter: blur(20px);
+        }
+        
+        .error-404-number {
+            font-size: 8rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #FF6B35 0%, #0066FF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            margin: 0 0 20px 0;
+        }
+        
+        .error-404-title {
+            color: white;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 0 0 16px 0;
+        }
+        
+        .error-404-description {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin: 0 0 40px 0;
+        }
+        
+        .error-404-actions {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .error-404-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 32px;
+            border-radius: 16px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-home {
+            background: linear-gradient(135deg, #FF6B35, #FF8A65);
+            color: white;
+        }
+        
+        .btn-home:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 107, 53, 0.4);
+        }
+        
+        .btn-back {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .btn-back:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+        
+        .error-404-volleyball {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+        
+        @media (max-width: 768px) {
+            .error-404-content {
+                padding: 40px 20px;
+            }
+            
+            .error-404-number {
+                font-size: 6rem;
+            }
+            
+            .error-404-title {
+                font-size: 2rem;
+            }
+            
+            .error-404-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .error-404-btn {
+                width: 100%;
+                max-width: 280px;
+            }
+        }
+    </style>
+    </head>
+    <body>
+        <div class="error-404-container">
+            <div class="error-404-content">
+                <div class="error-404-volleyball">🏐</div>
+                <h1 class="error-404-number">404</h1>
+                <h2 class="error-404-title">Trang không tìm thấy</h2>
+                <p class="error-404-description">
+                    Xin lỗi! Trang bạn đang tìm kiếm không tồn tại hoặc đã được
+                    di chuyển.
+                    Hãy quay về trang chủ hoặc sử dụng menu điều hướng để tìm
+                    nội dung bạn cần.
+                </p>
+
+                <div class="error-404-actions">
+                    <a href="/dva/" class="error-404-btn btn-home">
+                        🏠 Về trang chủ
+                    </a>
+                    <button onclick="history.back()"
+                        class="error-404-btn btn-back">
+                        ← Quay lại
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ✅ REDIRECT SCRIPT FOR SPA -->
+        <script>
+        // Auto-redirect to home if needed
+        setTimeout(() => {
+            if (window.location.pathname !== '/dva/') {
+                console.log('🔄 Redirecting to home...');
+                // Uncomment below line for auto-redirect after 5 seconds
+                // window.location.href = '/dva/';
+            }
+        }, 5000);
+        
+        // Track 404 errors (optional)
+        console.warn('404 Error:', window.location.href);
+    </script>
+    </body>
+</html>

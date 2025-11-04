@@ -12,13 +12,15 @@ class DVARouter {
         this.defaultRoute = 'home';
         this.basePath = '';
         this.loadedModules = new Set();
-        this.activeCSS = new Set(); // TRACK ACTIVE CSS FILES
+        this.activeCSS = new Set();
+        this.cssLoadPromises = new Map(); // TRACK CSS LOAD STATUS
+        this.isNavigating = false; // PREVENT DOUBLE NAVIGATION
         
         this.init();
     }
 
     init() {
-        // Define routes (keeping your existing routes)
+        // Define routes
         this.routes = {
             '': { 
                 module: 'home',
@@ -97,7 +99,7 @@ class DVARouter {
                 file: 'pages/tournament.html',
                 css: 'assets/css/modules/tournament.css',
                 js: 'assets/js/modules/tournament.js',
-                data: ['assets/js/data/tournaments.js'],
+                data: ['assets/js/data/tournaments.js'], // ✅ FIXED
                 subRoutes: ['standings', 'results', 'awards']
             },
             'tournament/standings': { 
@@ -106,7 +108,7 @@ class DVARouter {
                 file: 'pages/tournament.html',
                 css: 'assets/css/modules/tournament.css',
                 js: 'assets/js/modules/tournament.js',
-                data: ['assets/js/data/tournaments.js'],
+                data: ['assets/js/data/tournaments.js'], // ✅ FIXED
                 section: 'standings'
             },
             'tournament/results': { 
@@ -115,7 +117,7 @@ class DVARouter {
                 file: 'pages/tournament.html',
                 css: 'assets/css/modules/tournament.css',
                 js: 'assets/js/modules/tournament.js',
-                data: ['assets/js/data/tournaments.js'],
+                data: ['assets/js/data/tournaments.js'], // ✅ FIXED
                 section: 'results'
             },
             'tournament/awards': { 
@@ -124,7 +126,7 @@ class DVARouter {
                 file: 'pages/tournament.html',
                 css: 'assets/css/modules/tournament.css',
                 js: 'assets/js/modules/tournament.js',
-                data: ['assets/js/data/tournaments.js'],
+                data: ['assets/js/data/tournaments.js'], // ✅ FIXED
                 section: 'awards'
             },
             'information': { 
@@ -150,10 +152,11 @@ class DVARouter {
                 js: 'assets/js/modules/register.js'
             },
             'services': {
+                module: 'services',
                 title: 'Services - DVA Volleyball Court Rental',
                 description: 'Dịch vụ cho thuê sân bóng chuyền chuyên nghiệp DVA. Giá 550.000đ/h, sân indoor, bóng Mikasa V200W.',
                 keywords: 'dva volleyball, thuê sân bóng chuyền, sân indoor, mikasa, 155 trường chinh',
-                content: 'pages/services.html',
+                file: 'pages/services.html',
                 css: 'assets/css/modules/services.css'
             },
             'contact': { 
@@ -169,7 +172,7 @@ class DVARouter {
         this.setupEventListeners();
         this.handleInitialRoute();
         
-        console.log('🔄 DVA Router initialized with CSS management');
+        console.log('🔄 DVA Router initialized (FIXED VERSION)');
     }
 
     setupEventListeners() {
@@ -191,7 +194,6 @@ class DVARouter {
                 if (link.hasAttribute('data-division')) {
                     const division = link.getAttribute('data-division');
                     path = `ranking/${division}`;
-                    console.log('🏆 Division tab clicked:', division);
                 }
                 // Get path from data-page attribute (header format)
                 else if (link.hasAttribute('data-page')) {
@@ -208,14 +210,15 @@ class DVARouter {
                     }
                 }
                 
-                console.log('🔗 Navigation click detected:', path);
                 this.navigate(path);
             }
         });
 
         // Handle hash change events (fallback)
         window.addEventListener('hashchange', () => {
-            this.handleRoute(this.getCurrentPath(), false);
+            if (!this.isNavigating) {
+                this.handleRoute(this.getCurrentPath(), false);
+            }
         });
 
         console.log('✅ Router event listeners setup complete');
@@ -228,73 +231,85 @@ class DVARouter {
     }
 
     getCurrentPath() {
-        // Try to get path from hash first (current setup)
+        // Try to get path from hash first
         const hash = window.location.hash;
         if (hash) {
             return hash.substring(2); // Remove #/
         }
         
-        // Try to get path from pathname (for future clean URLs)
+        // Try to get path from pathname
         const pathname = window.location.pathname;
         if (pathname && pathname !== '/' && pathname !== '/index.html') {
-            return pathname.substring(1); // Remove leading /
+            return pathname.substring(1);
         }
         
         return '';
     }
 
     navigate(path) {
+        // ✅ PREVENT DOUBLE NAVIGATION
+        if (this.isNavigating) {
+            console.log('⏸️ Navigation in progress, ignoring...');
+            return;
+        }
+        
         console.log(`🧭 Navigating to: ${path}`);
         
         // Clean path
-        const cleanPath = path.replace(/^\/+/, ''); // Remove leading slashes
+        const cleanPath = path.replace(/^\/+/, '');
         
-        // Update URL - use hash for now, but clean format
+        // Update URL
         window.history.pushState({}, '', `#/${cleanPath}`);
         
         // Handle route
         this.handleRoute(cleanPath, true);
     }
 
-    
-
     async handleRoute(path, addToHistory = true) {
-        console.log(`📍 Handling route: ${path}`);
-        
-        // Clean path
-        path = path || this.defaultRoute;
-        const parts = path.split('/');
-        const mainRoute = parts[0];
-        const subRoute = parts[1];
-        
-        // Get route config
-        let routeConfig = this.routes[path]; // Try full path first
-        if (!routeConfig) {
-            routeConfig = this.routes[mainRoute]; // Fallback to main route
-        }
-        
-        if (!routeConfig) {
-            console.warn(`❌ Route not found: ${path}`);
-            this.handle404();
+        // ✅ PREVENT RACE CONDITIONS
+        if (this.isNavigating) {
+            console.log('⏸️ Already navigating, please wait...');
             return;
         }
-
-        // Update current route
-        this.currentRoute = mainRoute;
-        this.currentSubRoute = subRoute || '';
         
-        // Update page title
-        document.title = routeConfig.title;
+        this.isNavigating = true;
         
-        // Update active navigation
-        this.updateActiveNavigation(mainRoute);
-        
-        // Show loading state
-        this.showLoading(true);
+        console.log(`📍 Handling route: ${path}`);
         
         try {
-            // CLEANUP PREVIOUS MODULE CSS - CRITICAL FIX!
-            this.cleanupPreviousModule(mainRoute);
+            // Clean path
+            path = path || this.defaultRoute;
+            const parts = path.split('/');
+            const mainRoute = parts[0];
+            const subRoute = parts[1];
+            
+            // Get route config
+            let routeConfig = this.routes[path];
+            if (!routeConfig) {
+                routeConfig = this.routes[mainRoute];
+            }
+            
+            if (!routeConfig) {
+                console.warn(`❌ Route not found: ${path}`);
+                this.handle404();
+                return;
+            }
+
+            // Update current route
+            this.currentRoute = mainRoute;
+            this.currentSubRoute = subRoute || '';
+            
+            // Update page title
+            document.title = routeConfig.title;
+            
+            // Update active navigation
+            this.updateActiveNavigation(mainRoute);
+            
+            // Show loading state
+            this.showLoading(true);
+            
+            // ✅ CLEANUP BEFORE LOADING NEW CONTENT
+            await this.cleanupPreviousModule(mainRoute);
             
             // Load data files first
             if (routeConfig.data) {
@@ -304,48 +319,11 @@ class DVARouter {
             // Load route content
             await this.loadRouteContent(routeConfig);
             
+            // ✅ WAIT FOR CONTENT TO BE READY
+            await this.waitForContentReady();
+            
             // DISPATCH NAVIGATION EVENT
-            document.dispatchEvent(new CustomEvent('navigationChange', {
-                detail: { 
-                    page: mainRoute,
-                    subRoute: subRoute,
-                    fullPath: path,
-                    url: window.location.href,
-                    division: routeConfig.division,
-                    team: routeConfig.team
-                }
-            }));
-            
-            // Handle sub-route specific logic
-            if (routeConfig.module === 'ranking' && subRoute) {
-                setTimeout(() => {
-                    document.dispatchEvent(new CustomEvent('rankingDivisionRoute', {
-                        detail: { 
-                            division: subRoute,
-                            fullPath: path
-                        }
-                    }));
-                }, 200);
-            }
-            
-            if (routeConfig.module === 'tournament' && subRoute) {
-                setTimeout(() => {
-                    document.dispatchEvent(new CustomEvent('tournamentSectionRoute', {
-                        detail: { 
-                            section: subRoute,
-                            fullPath: path
-                        }
-                    }));
-                }, 200);
-            }
-            
-            if (routeConfig.module === 'players' && subRoute) {
-                setTimeout(() => {
-                    document.dispatchEvent(new CustomEvent('playerTeamRoute', {
-                        detail: { team: subRoute }
-                    }));
-                }, 200);
-            }
+            this.dispatchNavigationEvents(mainRoute, subRoute, path, routeConfig);
             
             // Hide loading state
             this.showLoading(false);
@@ -355,38 +333,107 @@ class DVARouter {
         } catch (error) {
             console.error(`❌ Error loading route ${path}:`, error);
             this.showError(error);
+        } finally {
+            // ✅ RELEASE NAVIGATION LOCK
+            this.isNavigating = false;
         }
     }
-    
 
-    // FIXED: Cleanup Previous Module CSS - CONSISTENT APPROACH
-    cleanupPreviousModule(newModule) {
+    // ✅ NEW: Wait for content to be ready
+    async waitForContentReady() {
+        return new Promise(resolve => {
+            // Wait for DOM to update
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    resolve();
+                });
+            });
+        });
+    }
+
+    // ✅ IMPROVED: Dispatch events with proper timing
+    dispatchNavigationEvents(mainRoute, subRoute, path, routeConfig) {
+        // Main navigation event
+        document.dispatchEvent(new CustomEvent('navigationChange', {
+            detail: { 
+                page: mainRoute,
+                subRoute: subRoute,
+                fullPath: path,
+                url: window.location.href,
+                division: routeConfig.division,
+                team: routeConfig.team
+            }
+        }));
+        
+        // ✅ FIXED: Proper delays for sub-route events
+        if (routeConfig.module === 'ranking' && subRoute) {
+            setTimeout(() => {
+                document.dispatchEvent(new CustomEvent('rankingDivisionRoute', {
+                    detail: { 
+                        division: subRoute,
+                        fullPath: path
+                    }
+                }));
+            }, 300); // Increased delay
+        }
+        
+        if (routeConfig.module === 'tournament' && subRoute) {
+            setTimeout(() => {
+                document.dispatchEvent(new CustomEvent('tournamentSectionRoute', {
+                    detail: { 
+                        section: subRoute,
+                        fullPath: path
+                    }
+                }));
+            }, 300); // Increased delay
+        }
+        
+        if (routeConfig.module === 'players' && subRoute) {
+            setTimeout(() => {
+                document.dispatchEvent(new CustomEvent('playerTeamRoute', {
+                    detail: { team: subRoute }
+                }));
+            }, 300); // Increased delay
+        }
+    }
+
+    // ✅ IMPROVED: Better cleanup with promises
+    async cleanupPreviousModule(newModule) {
         console.log(`🧹 Cleaning up CSS before loading ${newModule}...`);
         
-        // Remove all module-specific CSS except the new one - CONSISTENT CLEANUP
-        const moduleCSS = ['home', 'players', 'ranking', 'tournament', 'information', 'news', 'register', 'contact'];
+        // Wait for any pending CSS loads to complete
+        await Promise.all(Array.from(this.cssLoadPromises.values()));
         
-        moduleCSS.forEach(module => {
+        // Remove all module-specific CSS except the new one
+        const moduleCSS = ['home', 'players', 'ranking', 'tournament', 'information', 'news', 'register', 'contact', 'services'];
+        
+        const removePromises = moduleCSS.map(module => {
             if (module !== newModule) {
                 const cssId = `${module}-css`;
                 const existingCSS = document.getElementById(cssId);
                 if (existingCSS) {
-                    console.log(`🗑️ Removing ${module} CSS`);
-                    existingCSS.remove();
-                    this.activeCSS.delete(cssId);
+                    return new Promise(resolve => {
+                        console.log(`🗑️ Removing ${module} CSS`);
+                        existingCSS.remove();
+                        this.activeCSS.delete(cssId);
+                        this.cssLoadPromises.delete(cssId);
+                        // Small delay to ensure removal
+                        setTimeout(resolve, 50);
+                    });
                 }
             }
+            return Promise.resolve();
         });
 
-        // Cleanup previous module instances
+        await Promise.all(removePromises);
+
+        // Cleanup module instances
         this.cleanupModuleInstances(newModule);
         
         console.log(`✅ Previous module cleanup completed for ${newModule}`);
     }
 
-    // ENHANCED: Cleanup Module Instances - ALL MODULES
     cleanupModuleInstances(newModule) {
-        // Cleanup all module instances if switching away
         const moduleInstances = {
             'players': 'playersModule',
             'tournament': 'tournamentModuleInstance', 
@@ -395,14 +442,19 @@ class DVARouter {
             'home': 'homeModuleInstance',
             'news': 'newsModuleInstance',
             'register': 'registerModuleInstance',
-            'contact': 'contactModuleInstance'
+            'contact': 'contactModuleInstance',
+            'services': 'servicesModuleInstance'
         };
 
         Object.entries(moduleInstances).forEach(([module, instanceName]) => {
             if (module !== newModule && window[instanceName]) {
                 console.log(`🧹 Cleaning up ${module} module instance`);
                 if (typeof window[instanceName].cleanup === 'function') {
-                    window[instanceName].cleanup();
+                    try {
+                        window[instanceName].cleanup();
+                    } catch (error) {
+                        console.warn(`⚠️ Cleanup error for ${module}:`, error);
+                    }
                 }
                 window[instanceName] = null;
             }
@@ -410,7 +462,9 @@ class DVARouter {
     }
 
     async loadDataFiles(dataFiles) {
-        const promises = dataFiles.map(dataFile => this.loadJS(dataFile, `data-${dataFile.split('/').pop()}`));
+        const promises = dataFiles.map(dataFile => 
+            this.loadJS(dataFile, `data-${dataFile.split('/').pop()}`)
+        );
         await Promise.all(promises);
         console.log('✅ Data files loaded:', dataFiles);
     }
@@ -420,162 +474,116 @@ class DVARouter {
         
         console.log(`📥 Loading content for ${module}...`);
         
-        // Load CSS first (with consistent namespace)
+        // Load CSS first
         if (css) {
-            await this.loadCSS(css, `${module}-css`);
+            const cssPromise = this.loadCSS(css, `${module}-css`);
+            this.cssLoadPromises.set(`${module}-css`, cssPromise);
+            await cssPromise;
             this.activeCSS.add(`${module}-css`);
         }
         
-        // Load HTML content with fallback
+        // Load HTML content
         await this.loadHTMLWithFallback(file, module);
         
-        // Load JavaScript module (if exists and not already loaded)
+        // Load JavaScript module
         if (js && !this.loadedModules.has(module)) {
             await this.loadJS(js, `${module}-js`);
             this.loadedModules.add(module);
         }
         
-        // Scroll to top
+        // Scroll to top smoothly
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // CONSISTENT CSS loading with conflict detection
-        async loadCSS(cssPath, id) {
-    return new Promise((resolve, reject) => {
-        // Xóa CSS cũ nếu có
-        const existingCSS = document.getElementById(id);
-        if (existingCSS) {
-            existingCSS.remove();
-            console.log(`🗑️ Removed old CSS: ${id}`);
-        }
-        
-        console.log(`🎨 Loading CSS: ${cssPath}`);
-        
-        // MIME TYPE FIX: Validate first
-        const testUrl = `${cssPath}?v=${Date.now()}`;
-        
-        fetch(testUrl, { method: 'HEAD' })
-            .then(response => {
-                const contentType = response.headers.get('content-type');
-                console.log(`📋 ${cssPath} - Status: ${response.status}, MIME: ${contentType}`);
+    // ✅ IMPROVED: Better CSS loading with error handling
+    async loadCSS(cssPath, id) {
+        return new Promise((resolve, reject) => {
+            // Remove old CSS if exists
+            const existingCSS = document.getElementById(id);
+            if (existingCSS) {
+                existingCSS.remove();
+                console.log(`🗑️ Removed old CSS: ${id}`);
+            }
+            
+            console.log(`🎨 Loading CSS: ${cssPath}`);
+            
+            const testUrl = `${cssPath}?v=${Date.now()}`;
+            
+            const link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.href = testUrl;
+            link.id = id;
+            link.setAttribute('data-module', id.replace('-css', ''));
+            link.setAttribute('data-type', 'module-css');
+            link.setAttribute('data-loaded-at', new Date().toISOString());
+            
+            let timeout;
+            
+            link.onload = () => {
+                clearTimeout(timeout);
+                console.log(`✅ CSS loaded successfully: ${cssPath}`);
+                resolve();
+            };
+            
+            link.onerror = (error) => {
+                clearTimeout(timeout);
+                console.error(`❌ CSS link error for ${cssPath}:`, error);
                 
-                if (!response.ok) {
-                    throw new Error(`File not found: ${response.status}`);
-                }
-                
-                // WARNING for unexpected MIME types but continue
-                if (contentType && contentType.includes('text/html')) {
-                    console.warn(`⚠️ HTML MIME type detected for CSS: ${cssPath}`);
-                    console.warn(`🔧 This indicates Live Server configuration issue`);
-                }
-                
-                // Proceed with CSS loading regardless of MIME type
-                const link = document.createElement('link');
-                link.rel = 'stylesheet';
-                link.href = testUrl;
-                link.id = id;
-                
-                // ENHANCED data attributes
-                link.setAttribute('data-module', id.replace('-css', ''));
-                link.setAttribute('data-type', 'module-css');
-                link.setAttribute('data-loaded-at', new Date().toISOString());
-                link.setAttribute('data-mime-validated', 'true');
-                
-                link.onload = () => {
-                    console.log(`✅ CSS loaded successfully: ${cssPath}`);
-                    
-                    // Verify CSS actually loaded
-                    setTimeout(() => {
-                        const computedStyles = window.getComputedStyle(document.body);
-                        console.log(`🎨 CSS verification for ${id}:`, {
-                            sheets: document.styleSheets.length,
-                            linkExists: !!document.getElementById(id)
-                        });
-                    }, 100);
-                    
-                    resolve();
-                };
-                
-                link.onerror = (error) => {
-                    console.error(`❌ CSS link error for ${cssPath}:`, error);
-                    
-                    // FALLBACK: Try inline CSS loading
-                    this.loadCSSFallback(cssPath, id)
-                        .then(resolve)
-                        .catch(() => resolve()); // Don't fail the whole route
-                };
-                
-                // ENHANCED insertion logic
-                const insertionPoint = this.findBestCSSInsertionPoint();
-                if (insertionPoint) {
-                    document.head.insertBefore(link, insertionPoint);
-                } else {
-                    document.head.appendChild(link);
-                }
-                
-            })
-            .catch(error => {
-                console.error(`❌ CSS validation failed for ${cssPath}:`, error);
-                
-                // TRY FALLBACK METHOD
+                // Try fallback
                 this.loadCSSFallback(cssPath, id)
                     .then(resolve)
-                    .catch(() => resolve()); // Don't block navigation
-            });
-    });
-}
-
-// NEW: Fallback CSS loading method
-async loadCSSFallback(cssPath, id) {
-    try {
-        console.log(`🚨 Fallback CSS loading: ${cssPath}`);
-        
-        const response = await fetch(cssPath);
-        let cssText = await response.text();
-        
-        // If we got HTML instead of CSS, try to extract or skip
-        if (cssText.includes('<!DOCTYPE html>') || cssText.includes('<html>')) {
-            console.error(`❌ Got HTML instead of CSS for: ${cssPath}`);
-            throw new Error('HTML response instead of CSS');
-        }
-        
-        // Create inline style element
-        const style = document.createElement('style');
-        style.id = id;
-        style.setAttribute('data-module', id.replace('-css', ''));
-        style.setAttribute('data-type', 'module-css-inline');
-        style.setAttribute('data-loaded-at', new Date().toISOString());
-        style.setAttribute('data-fallback-load', 'true');
-        style.textContent = cssText;
-        
-        document.head.appendChild(style);
-        console.log(`✅ Fallback CSS loaded: ${cssPath}`);
-        
-        return Promise.resolve();
-    } catch (error) {
-        console.error(`❌ Fallback CSS failed: ${cssPath}`, error);
-        return Promise.reject(error);
+                    .catch(() => {
+                        console.warn(`⚠️ CSS fallback also failed, continuing anyway...`);
+                        resolve(); // Don't block navigation
+                    });
+            };
+            
+            // ✅ TIMEOUT FOR CSS LOAD
+            timeout = setTimeout(() => {
+                console.warn(`⏱️ CSS load timeout for ${cssPath}, using fallback...`);
+                this.loadCSSFallback(cssPath, id)
+                    .then(resolve)
+                    .catch(() => resolve());
+            }, 5000);
+            
+            document.head.appendChild(link);
+        });
     }
-}
 
-// NEW: Find best insertion point for CSS
-findBestCSSInsertionPoint() {
-    // Try to insert before component CSS
-    const componentCSS = document.querySelector('link[href*="components/"]');
-    if (componentCSS) return componentCSS;
-    
-    // Try to insert before the last CSS link
-    const allCSS = document.querySelectorAll('link[rel="stylesheet"]');
-    if (allCSS.length > 0) return allCSS[allCSS.length - 1].nextSibling;
-    
-    // Insert before first script tag
-    const firstScript = document.querySelector('script');
-    return firstScript;
-}
-
+    // ✅ IMPROVED: Fallback CSS loading
+    async loadCSSFallback(cssPath, id) {
+        try {
+            console.log(`🚨 Fallback CSS loading: ${cssPath}`);
+            
+            const response = await fetch(cssPath);
+            let cssText = await response.text();
+            
+            // Check if we got HTML instead
+            if (cssText.includes('<!DOCTYPE html>') || cssText.includes('<html>')) {
+                console.error(`❌ Got HTML instead of CSS for: ${cssPath}`);
+                throw new Error('HTML response instead of CSS');
+            }
+            
+            // Create inline style
+            const style = document.createElement('style');
+            style.id = id;
+            style.setAttribute('data-module', id.replace('-css', ''));
+            style.setAttribute('data-type', 'module-css-inline');
+            style.setAttribute('data-fallback-load', 'true');
+            style.textContent = cssText;
+            
+            document.head.appendChild(style);
+            console.log(`✅ Fallback CSS loaded: ${cssPath}`);
+            
+            return Promise.resolve();
+        } catch (error) {
+            console.error(`❌ Fallback CSS failed: ${cssPath}`, error);
+            return Promise.reject(error);
+        }
+    }
 
     async loadJS(jsPath, id) {
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve) => {
             if (document.getElementById(id)) {
                 resolve();
                 return;
@@ -587,17 +595,27 @@ findBestCSSInsertionPoint() {
             script.src = `${jsPath}?v=${Date.now()}`;
             script.id = id;
             script.defer = true;
-            script.type = 'text/javascript'; // Explicit MIME type
+            script.type = 'text/javascript';
+            
+            let timeout;
             
             script.onload = () => {
+                clearTimeout(timeout);
                 console.log(`✅ JS loaded: ${jsPath}`);
                 resolve();
             };
             
             script.onerror = () => {
+                clearTimeout(timeout);
                 console.warn(`⚠️ JS failed to load: ${jsPath}`);
-                resolve(); // Don't fail the whole route for missing JS
+                resolve(); // Don't fail the route
             };
+            
+            // ✅ TIMEOUT FOR JS LOAD
+            timeout = setTimeout(() => {
+                console.warn(`⏱️ JS load timeout for ${jsPath}`);
+                resolve();
+            }, 10000);
             
             document.head.appendChild(script);
         });
@@ -605,9 +623,9 @@ findBestCSSInsertionPoint() {
 
     async loadHTMLWithFallback(filePath, module) {
         try {
-            console.log(`📄 Trying to load HTML: ${filePath}`);
+            console.log(`📄 Loading HTML: ${filePath}`);
             
-            const response = await fetch(filePath);
+            const response = await fetch(`${filePath}?v=${Date.now()}`);
             
             if (!response.ok) {
                 throw new Error(`HTTP ${response.status}: ${response.statusText}`);
@@ -615,22 +633,20 @@ findBestCSSInsertionPoint() {
             
             const html = await response.text();
             
-            // Insert content into main container
             const mainContent = document.getElementById('main-content');
             if (mainContent) {
                 mainContent.innerHTML = html;
-                console.log(`✅ HTML loaded from file: ${filePath}`);
+                console.log(`✅ HTML loaded: ${filePath}`);
             } else {
                 throw new Error('Main content container not found');
             }
             
         } catch (error) {
-            console.warn(`⚠️ HTML file not found, using fallback content for ${module}:`, error.message);
+            console.warn(`⚠️ HTML file not found, using fallback for ${module}:`, error.message);
             this.loadFallbackContent(module);
         }
     }
 
-    // ENHANCED: Consistent fallback content with module initialization
     loadFallbackContent(module) {
         const mainContent = document.getElementById('main-content');
         if (!mainContent) {
@@ -638,82 +654,45 @@ findBestCSSInsertionPoint() {
             return;
         }
 
-        let content = '';
+        const fallbackContent = {
+            'home': this.getHomeContent(),
+            'players': this.getPlayersContent(),
+            'ranking': this.getRankingContent(),
+            'tournament': this.getTournamentContent(),
+            'information': this.getInformationContent(),
+            'news': this.getNewsContent(),
+            'register': this.getRegisterContent(),
+            'services': this.getServicesContent(),
+            'contact': this.getContactContent()
+        };
 
-        switch (module) {
-            case 'home':
-                content = this.getHomeContent();
-                break;
-            case 'players':
-                content = this.getPlayersContent();
-                break;
-            case 'ranking':
-                content = this.getRankingContent();
-                break;
-            case 'tournament':
-                content = this.getTournamentContent();
-                break;
-            case 'information':
-                content = this.getInformationContent();
-                break;
-            case 'news':
-                content = this.getNewsContent();
-                break;
-            case 'register':
-                content = this.getRegisterContent();
-                break;
-            case 'services':
-                content = this.getServicesContent();
-                break;
-            case 'contact':
-                content = this.getContactContent();
-                break;
-            default:
-                content = this.get404Content();
-        }
-
-        mainContent.innerHTML = content;
+        mainContent.innerHTML = fallbackContent[module] || this.get404Content();
         console.log(`✅ Fallback content loaded for ${module}`);
         
-        // ENHANCED: Module initialization after content loaded
-        setTimeout(() => {
-            this.initializeFallbackModule(module);
-        }, 300);
+        // Initialize module after short delay
+        setTimeout(() => this.initializeFallbackModule(module), 200);
     }
 
-    // NEW: Initialize modules after fallback content loaded
     initializeFallbackModule(module) {
-        const moduleClasses = {
-            'information': 'InformationModule',
-            'tournament': 'TournamentModule',
-            'players': 'PlayersModule',
-            'ranking': 'RankingModule',
-            'home': 'HomeModule',
-            'news': 'NewsModule',
-            'register': 'RegisterModule',
-            'contact': 'ContactModule'
+        const moduleConfig = {
+            'information': { class: 'InformationModule', instance: 'informationModuleInstance' },
+            'tournament': { class: 'TournamentModule', instance: 'tournamentModuleInstance' },
+            'players': { class: 'PlayersModule', instance: 'playersModuleInstance' },
+            'ranking': { class: 'RankingModule', instance: 'rankingModuleInstance' },
+            'home': { class: 'HomeModule', instance: 'homeModuleInstance' },
+            'news': { class: 'NewsModule', instance: 'newsModuleInstance' },
+            'register': { class: 'RegisterModule', instance: 'registerModuleInstance' },
+            'contact': { class: 'ContactModule', instance: 'contactModuleInstance' },
+            'services': { class: 'ServicesModule', instance: 'servicesModuleInstance' }
         };
 
-        const instanceNames = {
-            'information': 'informationModuleInstance',
-            'tournament': 'tournamentModuleInstance',
-            'players': 'playersModuleInstance',
-            'ranking': 'rankingModuleInstance',
-            'home': 'homeModuleInstance',
-            'news': 'newsModuleInstance',
-            'register': 'registerModuleInstance',
-            'contact': 'contactModuleInstance'
-        };
-
-        const className = moduleClasses[module];
-        const instanceName = instanceNames[module];
-
-        if (className && window[className] && !window[instanceName]) {
-            console.log(`🚀 Initializing ${module} module from fallback...`);
+        const config = moduleConfig[module];
+        if (config && window[config.class] && !window[config.instance]) {
+            console.log(`🚀 Initializing ${module} module...`);
             try {
-                window[instanceName] = new window[className]();
+                window[config.instance] = new window[config.class]();
             } catch (error) {
-                console.warn(`⚠️ Failed to initialize ${module} module:`, error);
+                console.warn(`⚠️ Failed to initialize ${module}:`, error);
             }
         }
     }

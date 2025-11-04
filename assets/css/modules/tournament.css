@@ -423,17 +423,30 @@
 
 .matches-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 24px;
+    justify-content: center;
+    align-items: start;
+    /* ✅ Max columns to prevent cards from becoming too wide */
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .match-card {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 16px;
-    padding: 20px;
+    padding: 24px;
     transition: all 0.3s ease;
     box-sizing: border-box;
+    /* ✅ Max width to prevent overstretching */
+    max-width: 450px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 280px;
 }
 
 .match-card:hover {
@@ -446,114 +459,206 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 16px;
-    padding-bottom: 12px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    flex-shrink: 0;
 }
 
 .match-stage {
-    font-size: 0.9rem;
-    font-weight: 600;
+    font-size: 1rem;
+    font-weight: 700;
     color: #FF6B35;
     text-transform: uppercase;
+    letter-spacing: 0.5px;
+    /* ✅ Add background for better visibility */
+    background: rgba(255, 107, 53, 0.15);
+    padding: 4px 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 107, 53, 0.3);
 }
 
 .match-date {
-    font-size: 0.8rem;
-    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 500;
+    /* ✅ Better date styling */
+    background: rgba(255, 255, 255, 0.05);
+    padding: 4px 8px;
+    border-radius: 6px;
 }
 
 .match-teams {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    margin-bottom: 16px;
+    justify-content: center;
+    margin-bottom: 20px;
+    gap: 16px;
+    flex: 1;
 }
 
 .match-team {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 12px;
     flex: 1;
-    min-width: 0;
+    max-width: 140px;
+    /* ✅ Better team alignment */
+    justify-content: center;
+}
+.match-team:first-child {
+    justify-content: flex-end;
+}
+
+.match-team:last-child {
+    justify-content: flex-start;
 }
 
 .match-team.winner {
-    color: #FFD700;
+     color: #FFD700;
     font-weight: 700;
+    /* ✅ Winner glow effect */
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
 }
 
 .team-logo-small {
-    width: 32px;
-    height: 32px;
+    width: 36px;
+    height: 36px;
     border-radius: 50%;
     object-fit: cover;
     flex-shrink: 0;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+}
+.match-team.winner .team-logo-small {
+    border-color: rgba(255, 215, 0, 0.6);
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
 }
 
 .team-name-short {
     font-weight: 600;
-    font-size: 0.9rem;
+    font-size: 1rem;
     word-wrap: break-word;
+    text-align: center;
+    flex: 1;
+    /* ✅ Ensure text doesn't overflow */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .team-score {
-    font-size: 1.2rem;
-    font-weight: 700;
-    min-width: 20px;
+    font-size: 1.5rem;
+    font-weight: 800;
+    min-width: 30px;
     text-align: center;
     flex-shrink: 0;
+    /* ✅ Better score styling */
+    background: rgba(255, 255, 255, 0.1);
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
-
+.match-team.winner .team-score {
+    background: rgba(255, 215, 0, 0.2);
+    border-color: rgba(255, 215, 0, 0.4);
+    color: #FFD700;
+}
 .match-vs {
-    font-size: 0.8rem;
-    color: rgba(255, 255, 255, 0.5);
-    padding: 0 16px;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.6);
+    padding: 8px 12px;
     flex-shrink: 0;
+    font-weight: 600;
+    /* ✅ Better VS styling */
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .match-details {
-    font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.7);
-    line-height: 1.5;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+    text-align: center;
+    /* ✅ Better details container */
+    background: rgba(255, 255, 255, 0.03);
+    padding: 16px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    margin-bottom: 16px;
+    flex-shrink: 0;
 }
 
 .sets-score {
-    margin-bottom: 4px;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
 }
 
 .match-mvp {
-    font-weight: 600;
+    font-weight: 700;
     color: #FFD700;
+    /* ✅ MVP highlight */
+    background: rgba(255, 215, 0, 0.1);
+    padding: 4px 8px;
+    border-radius: 6px;
+    display: inline-block;
+    margin-top: 4px;
 }
 
 .match-status {
     text-align: center;
+    margin-top: auto;
+    flex-shrink: 0;
 }
 
 .status-badge {
-    padding: 4px 12px;
-    border-radius: 12px;
-    font-size: 0.8rem;
-    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 700;
     text-transform: uppercase;
+    letter-spacing: 0.5px;
+    /* ✅ Better badge styling */
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
 }
 
 .status-badge.completed {
-    background: rgba(34, 197, 94, 0.2);
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.2), rgba(34, 197, 94, 0.1));
     color: #22C55E;
+    border-color: rgba(34, 197, 94, 0.3);
 }
 
 .status-badge.ongoing {
-    background: rgba(251, 191, 36, 0.2);
+    background: linear-gradient(135deg, rgba(251, 191, 36, 0.2), rgba(251, 191, 36, 0.1));
     color: #FBBF24;
+    border-color: rgba(251, 191, 36, 0.3);
+    /* ✅ Pulse animation for ongoing matches */
+    animation: pulse 2s infinite;
 }
 
 .status-badge.upcoming {
-    background: rgba(107, 114, 128, 0.2);
+    background: linear-gradient(135deg, rgba(107, 114, 128, 0.2), rgba(107, 114, 128, 0.1));
     color: #9CA3AF;
+    border-color: rgba(107, 114, 128, 0.3);
 }
-
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.05);
+        opacity: 0.8;
+    }
+}
 /* =============================================================================
    AWARDS SECTION - FIXED SPACING
    ============================================================================= */
@@ -1647,53 +1752,133 @@
 }
 
 @media (max-width: 768px) {
-    .dva-tournament .container {
-        padding: 0 16px;
-    }
-    
-    .team-awards-grid {
-        padding: 30px 15px 60px 15px;
-        gap: 30px;
-        margin: 50px auto 100px auto;
-    }
-    
-    .team-award-card {
-        width: 300px !important;
-        min-height: 400px;
-        padding: 20px 15px 25px 15px;
-    }
-    
-    .team-award-card[data-rank="1"] {
-        width: 320px !important;
-        min-height: 420px;
-    }
-    
-    .team-award-card[data-rank="3"] {
-        min-height: 420px;
-    }
-    
-    .award-team-logo {
-        width: 75px !important;
-        height: 75px !important;
-    }
-    
-    .team-award-card[data-rank="1"] .award-team-logo {
-        width: 85px !important;
-        height: 85px !important;
-    }
-    
-    .individual-awards-grid {
+    .matches-grid {
         grid-template-columns: 1fr;
-        margin-top: 60px;
+        gap: 20px;
     }
     
-    .award-player {
-        flex-direction: column;
-        text-align: center;
-        gap: 15px;
+    .match-card {
+        max-width: 100%;
+        margin: 0;
+        padding: 18px;
+    }
+    
+    .match-teams {
+        gap: 12px;
+    }
+    
+    .match-team {
+        max-width: 120px;
+    }
+    
+    .team-name-short {
+        font-size: 0.9rem;
+    }
+    
+    .team-score {
+        font-size: 1.2rem;
+        padding: 6px 8px;
+    }
+    
+    .match-vs {
+        width: 32px;
+        height: 32px;
+        font-size: 0.8rem;
     }
 }
-
+@media (max-width: 450px) {
+    .stage-header {
+        flex-direction: column !important;
+        gap: 8px !important;
+        padding: 12px 16px !important;
+    }
+    
+    .stage-title {
+        font-size: 1.2rem !important;
+        text-align: center !important;
+    }
+    
+    .matches-grid {
+        grid-template-columns: 1fr !important;
+        gap: 12px !important;
+    }
+    
+    .match-card {
+        padding: 16px 12px !important;
+        min-height: auto !important;
+        max-width: 100% !important;
+    }
+    
+    .match-header {
+        flex-direction: column !important;
+        gap: 8px !important;
+        text-align: center !important;
+        margin-bottom: 16px !important;
+    }
+    
+    .match-stage {
+        font-size: 0.85rem !important;
+        padding: 6px 10px !important;
+    }
+    
+    .match-date {
+        font-size: 0.75rem !important;
+        padding: 4px 6px !important;
+    }
+    
+    .match-teams {
+        flex-direction: column !important;
+        gap: 12px !important;
+        margin-bottom: 16px !important;
+    }
+    
+    .match-team {
+        justify-content: center !important;
+        gap: 8px !important;
+        max-width: 100% !important;
+    }
+    
+    .team-logo-small {
+        width: 28px !important;
+        height: 28px !important;
+    }
+    
+    .team-name-short {
+        font-size: 0.8rem !important;
+        white-space: normal !important;
+        text-align: center !important;
+    }
+    
+    .team-score {
+        font-size: 1rem !important;
+        padding: 4px 8px !important;
+    }
+    
+    .match-vs {
+        display: none !important;
+    }
+    
+    .match-details {
+        font-size: 0.8rem !important;
+        text-align: center !important;
+        padding: 12px !important;
+        margin-bottom: 12px !important;
+    }
+    
+    .sets-score {
+        margin-bottom: 6px !important;
+    }
+    
+    .match-mvp {
+        font-size: 0.75rem !important;
+        padding: 3px 6px !important;
+    }
+    
+    .status-badge {
+        padding: 6px 12px !important;
+        font-size: 0.75rem !important;
+    }
+}
 @media (max-width: 480px) {
     .team-awards-grid {
         padding: 25px 10px 50px 10px;
@@ -1713,5 +1898,38 @@
     
     .individual-awards-grid {
         margin-top: 50px;
+    }
+}
+@media (max-width: 375px) {
+    .match-card {
+        padding: 14px 10px !important;
+    }
+    
+    .match-details {
+        padding: 10px !important;
+    }
+    
+    .team-name-short {
+        font-size: 0.75rem !important;
+    }
+    
+    .team-score {
+        font-size: 0.9rem !important;
+    }
+}
+
+/* ✅ EXTRA SMALL: 320px and below */
+@media (max-width: 320px) {
+    .match-card {
+        padding: 12px 8px !important;
+    }
+    
+    .match-header {
+        padding-bottom: 12px !important;
+    }
+    
+    .match-details {
+        padding: 8px !important;
+        font-size: 0.75rem !important;
     }
 }

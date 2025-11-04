@@ -68,38 +68,90 @@ static kazakhstan() {
         <rect x="0" y="0" width="1.5" height="18" fill="#FEC50C"/>
         <g fill="#FEC50C">
             <rect x="1.5" y="1" width="1" height="1"/>
-            <rect x="1.5" y="4" width="1" height="1"/>
-            <rect x="1.5" y="7" width="1" height="1"/>
-            <rect x="1.5" y="10" width="1" height="1"/>
-            <rect x="1.5" y="13" width="1" height="1"/>
+            <rect x="1.5" y="3.5" width="1" height="1"/>
+            <rect x="1.5" y="6" width="1" height="1"/>
+            <rect x="1.5" y="8.5" width="1" height="1"/>
+            <rect x="1.5" y="11" width="1" height="1"/>
+            <rect x="1.5" y="13.5" width="1" height="1"/>
             <rect x="1.5" y="16" width="1" height="1"/>
         </g>
         
         <!-- Sun with 32 rays -->
-        <circle cx="12" cy="7" r="2.5" fill="#FEC50C"/>
+        <circle cx="12" cy="6.5" r="2" fill="#FEC50C"/>
         <g fill="#FEC50C">
-            <!-- 8 main rays -->
-            <polygon points="12,2.5 12.2,4.2 11.8,4.2"/>
-            <polygon points="12,11.5 12.2,9.8 11.8,9.8"/>
-            <polygon points="7.5,7 9.2,7.2 9.2,6.8"/>
-            <polygon points="16.5,7 14.8,7.2 14.8,6.8"/>
-            <polygon points="8.8,3.8 10.2,5.2 9.8,5.6"/>
-            <polygon points="15.2,10.2 13.8,8.8 14.2,8.4"/>
-            <polygon points="15.2,3.8 13.8,5.2 14.2,5.6"/>
-            <polygon points="8.8,10.2 10.2,8.8 9.8,8.4"/>
+            <!-- 32 rays in 8 directions, 4 per direction -->
+            <!-- Top -->
+            <rect x="11.8" y="2.5" width="0.4" height="2" rx="0.2"/>
+            <rect x="11.7" y="2.8" width="0.6" height="1.5" rx="0.2" opacity="0.8"/>
+            <!-- Top-right -->
+            <rect x="13.2" y="3.2" width="0.4" height="1.8" rx="0.2" transform="rotate(45 13.4 4.1)"/>
+            <rect x="13.5" y="3.5" width="0.5" height="1.5" rx="0.2" transform="rotate(45 13.75 4.25)" opacity="0.8"/>
+            <!-- Right -->
+            <rect x="16" y="6.3" width="2" height="0.4" rx="0.2"/>
+            <rect x="15.7" y="6.2" width="1.5" height="0.6" rx="0.2" opacity="0.8"/>
+            <!-- Bottom-right -->
+            <rect x="14.4" y="8.5" width="0.4" height="1.8" rx="0.2" transform="rotate(135 14.6 9.4)"/>
+            <rect x="14.2" y="8.8" width="0.5" height="1.5" rx="0.2" transform="rotate(135 14.45 9.55)" opacity="0.8"/>
+            <!-- Bottom -->
+            <rect x="11.8" y="10" width="0.4" height="2" rx="0.2"/>
+            <rect x="11.7" y="10.2" width="0.6" height="1.5" rx="0.2" opacity="0.8"/>
+            <!-- Bottom-left -->
+            <rect x="9.4" y="8.5" width="0.4" height="1.8" rx="0.2" transform="rotate(-135 9.6 9.4)"/>
+            <rect x="9.3" y="8.8" width="0.5" height="1.5" rx="0.2" transform="rotate(-135 9.55 9.55)" opacity="0.8"/>
+            <!-- Left -->
+            <rect x="6" y="6.3" width="2" height="0.4" rx="0.2"/>
+            <rect x="6.3" y="6.2" width="1.5" height="0.6" rx="0.2" opacity="0.8"/>
+            <!-- Top-left -->
+            <rect x="9.4" y="3.2" width="0.4" height="1.8" rx="0.2" transform="rotate(-45 9.6 4.1)"/>
+            <rect x="9" y="3.5" width="0.5" height="1.5" rx="0.2" transform="rotate(-45 9.25 4.25)" opacity="0.8"/>
         </g>
         
-        <!-- Steppe Eagle -->
-        <g fill="#FEC50C" transform="translate(12, 12)">
-            <!-- Wings -->
-            <path d="M -3,0 Q -2.5,-0.5 -1.5,-0.3 L -2,0.5 Z"/>
-            <path d="M 3,0 Q 2.5,-0.5 1.5,-0.3 L 2,0.5 Z"/>
-            <!-- Body -->
-            <ellipse cx="0" cy="0.3" rx="1" ry="0.7"/>
-            <!-- Head -->
-            <circle cx="0" cy="-0.5" r="0.4"/>
-            <!-- Tail feathers -->
-            <path d="M -0.5,0.8 L -0.6,1.8 L -0.3,1.5 L 0,1.8 L 0.3,1.5 L 0.6,1.8 L 0.5,0.8 Z"/>
+        <!-- Steppe Eagle (large, clear wings) -->
+        <g fill="#FEC50C" stroke="#FEC50C" stroke-width="0.1">
+            <!-- LEFT WING (large, detailed) -->
+            <path d="M 6,11 Q 7,10 8.5,10.5 Q 9.5,10.3 10.5,11 L 10,12.5 Q 9,12 8,12.2 Q 7,12.5 6,13 Z" 
+                  fill="#FEC50C" stroke="#D4A017" stroke-width="0.15"/>
+            <!-- Wing feathers left -->
+            <path d="M 6.5,11.5 L 7,13" stroke="#D4A017" stroke-width="0.2" fill="none"/>
+            <path d="M 7.5,11.3 L 8,12.8" stroke="#D4A017" stroke-width="0.2" fill="none"/>
+            <path d="M 8.5,11.2 L 9,12.6" stroke="#D4A017" stroke-width="0.2" fill="none"/>
+            
+            <!-- RIGHT WING (large, detailed) -->
+            <path d="M 18,11 Q 17,10 15.5,10.5 Q 14.5,10.3 13.5,11 L 14,12.5 Q 15,12 16,12.2 Q 17,12.5 18,13 Z" 
+                  fill="#FEC50C" stroke="#D4A017" stroke-width="0.15"/>
+            <!-- Wing feathers right -->
+            <path d="M 17.5,11.5 L 17,13" stroke="#D4A017" stroke-width="0.2" fill="none"/>
+            <path d="M 16.5,11.3 L 16,12.8" stroke="#D4A017" stroke-width="0.2" fill="none"/>
+            <path d="M 15.5,11.2 L 15,12.6" stroke="#D4A017" stroke-width="0.2" fill="none"/>
+            
+            <!-- BODY (vertical, centered) -->
+            <ellipse cx="12" cy="12" rx="1.2" ry="1.8" fill="#FEC50C"/>
+            
+            <!-- HEAD -->
+            <circle cx="12" cy="10" r="0.7" fill="#FEC50C"/>
+            
+            <!-- BEAK -->
+            <path d="M 12,9.8 L 12.5,10 L 12,10.2 Z" fill="#D4A017"/>
+            
+            <!-- EYE -->
+            <circle cx="12.3" cy="9.9" r="0.1" fill="#1a1a1a"/>
+            
+            <!-- TAIL FEATHERS (spread fan) -->
+            <path d="M 11,13.5 L 10.5,15.5 L 11,15 L 11.4,15.3 L 11.7,14.8 L 12,15.3 L 12.3,14.8 L 12.6,15.3 L 13,15 L 13.5,15.5 L 13,13.5 Z" 
+                  fill="#FEC50C" stroke="#D4A017" stroke-width="0.1"/>
+            
+            <!-- Tail feather details -->
+            <line x1="11.2" y1="13.8" x2="10.7" y2="15.2" stroke="#D4A017" stroke-width="0.15"/>
+            <line x1="11.7" y1="13.8" x2="11.5" y2="15" stroke="#D4A017" stroke-width="0.15"/>
+            <line x1="12" y1="13.8" x2="12" y2="15.2" stroke="#D4A017" stroke-width="0.15"/>
+            <line x1="12.3" y1="13.8" x2="12.5" y2="15" stroke="#D4A017" stroke-width="0.15"/>
+            <line x1="12.8" y1="13.8" x2="13.3" y2="15.2" stroke="#D4A017" stroke-width="0.15"/>
+            
+            <!-- Wing pattern decorations -->
+            <circle cx="8" cy="11.5" r="0.3" fill="#D4A017" opacity="0.5"/>
+            <circle cx="9.5" cy="11.2" r="0.25" fill="#D4A017" opacity="0.5"/>
+            <circle cx="16" cy="11.5" r="0.3" fill="#D4A017" opacity="0.5"/>
+            <circle cx="14.5" cy="11.2" r="0.25" fill="#D4A017" opacity="0.5"/>
         </g>
     </svg>`;
 }
@@ -1294,8 +1346,8 @@ class PlayersModule {
                         border-radius: 12px; 
                         border: 1px solid rgba(255, 255, 255, 0.05);
                     ">
-                        <span style="font-size: 0.7rem; font-weight: 500; color: #8B949E; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px;">Age</span>
-                        <span style="font-size: 0.95rem; font-weight: 700; color: white;">${player.age}</span>
+                        <span style="font-size: 0.7rem; font-weight: 500; color: #8B949E; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px;">Joined Year</span>
+                        <span style="font-size: 0.95rem; font-weight: 700; color: white;">${player.joinedYear}</span>
                     </div>
                     <div class="stat-item" style="
                         display: flex; 

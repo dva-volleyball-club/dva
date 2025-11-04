@@ -60,36 +60,36 @@ class HeaderComponent {
 
                     <nav class="nav-modern" role="navigation">
                         <div class="nav-glass-container">
-                            <a href="#/home" class="nav-item-modern active" data-page="home">
+                            <a href="/home" class="nav-item-modern active" data-page="home">
                                 <span class="nav-text">Home</span>
                                 <div class="nav-indicator"></div>
                             </a>
-                            <a href="#/ranking" class="nav-item-modern" data-page="ranking">
+                            <a href="/ranking" class="nav-item-modern" data-page="ranking">
                                 <span class="nav-text">Ranking</span>
                                 <div class="nav-indicator"></div>
                             </a>
-                            <a href="#/tournament" class="nav-item-modern" data-page="tournament">
+                            <a href="/tournament" class="nav-item-modern" data-page="tournament">
                                 <span class="nav-text">Tournament</span>
                                 <div class="nav-indicator"></div>
                             </a>
-                            <a href="#/players/advanced" class="nav-item-modern" data-page="players">
+                            <a href="/players/advanced" class="nav-item-modern" data-page="players">
                                 <span class="nav-text">Players</span>
                                 <div class="nav-indicator"></div>
                             </a>
-                            <a href="#/information" class="nav-item-modern" data-page="information">
+                            <a href="/information" class="nav-item-modern" data-page="information">
                                 <span class="nav-text">Information</span>
                                 <div class="nav-indicator"></div>
                             </a>
-                            <a href="#/news" class="nav-item-modern" data-page="news">
+                            <a href="/news" class="nav-item-modern" data-page="news">
                                 <span class="nav-text">News</span>
                                 <div class="nav-indicator"></div>
                             </a>
-                            <a href="#/register" class="nav-item-modern" data-page="register">
+                            <a href="/register" class="nav-item-modern" data-page="register">
                                 <span class="nav-text">Register</span>
                                 <div class="nav-indicator"></div>
                             </a>
                             <!-- ✅ FIXED: Services link với cú pháp đúng -->
-                            <a href="#/services" class="nav-item-modern" data-page="services">
+                            <a href="/services" class="nav-item-modern" data-page="services">
                                 <span class="nav-text">Services</span>
                                 <div class="nav-indicator"></div>
                             </a>
@@ -134,56 +134,56 @@ class HeaderComponent {
                         <div class="mobile-nav-body">
                             <nav class="mobile-nav-menu">
                                 <!-- 1. HOME -->
-                                <a href="#/home" class="mobile-nav-item active" data-page="home">
+                                <a href="/home" class="mobile-nav-item active" data-page="home">
                                     <div class="mobile-nav-icon">🏠</div>
                                     <span class="mobile-nav-text">Home</span>
                                     <div class="mobile-nav-arrow">›</div>
                                 </a>
                                 
                                 <!-- 2. RANKING -->
-                                <a href="#/ranking" class="mobile-nav-item" data-page="ranking">
+                                <a href="/ranking" class="mobile-nav-item" data-page="ranking">
                                     <div class="mobile-nav-icon">🏆</div>
                                     <span class="mobile-nav-text">Ranking</span>
                                     <div class="mobile-nav-arrow">›</div>
                                 </a>
                                 
                                 <!-- 3. TOURNAMENT -->
-                                <a href="#/tournament" class="mobile-nav-item" data-page="tournament">
+                                <a href="/tournament" class="mobile-nav-item" data-page="tournament">
                                     <div class="mobile-nav-icon">🏐</div>
                                     <span class="mobile-nav-text">Tournament</span>
                                     <div class="mobile-nav-arrow">›</div>
                                 </a>
                                 
                                 <!-- 4. PLAYERS -->
-                                <a href="#/players/advanced" class="mobile-nav-item" data-page="players">
+                                <a href="/players/advanced" class="mobile-nav-item" data-page="players">
                                     <div class="mobile-nav-icon">👥</div>
                                     <span class="mobile-nav-text">Players</span>
                                     <div class="mobile-nav-arrow">›</div>
                                 </a>
                                 
                                 <!-- 5. INFORMATION -->
-                                <a href="#/information" class="mobile-nav-item" data-page="information">
+                                <a href="/information" class="mobile-nav-item" data-page="information">
                                     <div class="mobile-nav-icon">ℹ️</div>
                                     <span class="mobile-nav-text">Information</span>
                                     <div class="mobile-nav-arrow">›</div>
                                 </a>
                                 
                                 <!-- 6. NEWS -->
-                                <a href="#/news" class="mobile-nav-item" data-page="news">
+                                <a href="/news" class="mobile-nav-item" data-page="news">
                                     <div class="mobile-nav-icon">📰</div>
                                     <span class="mobile-nav-text">News</span>
                                     <div class="mobile-nav-arrow">›</div>
                                 </a>
                                 
                                 <!-- 7. REGISTER -->
-                                <a href="#/register" class="mobile-nav-item" data-page="register">
+                                <a href="/register" class="mobile-nav-item" data-page="register">
                                     <div class="mobile-nav-icon">📝</div>
                                     <span class="mobile-nav-text">Register</span>
                                     <div class="mobile-nav-arrow">›</div>
                                 </a>
 
                                 <!-- 8. SERVICES - ✅ HOÀN HẢO -->
-                                <a href="#/services" class="mobile-nav-item" data-page="services">
+                                <a href="/services" class="mobile-nav-item" data-page="services">
                                     <div class="mobile-nav-icon">🔧</div>
                                     <span class="mobile-nav-text">Services</span>
                                     <div class="mobile-nav-arrow">›</div>

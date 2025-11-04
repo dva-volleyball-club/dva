@@ -124,7 +124,7 @@ class DVARouter {
                 file: 'pages/tournament.html',
                 css: 'assets/css/modules/tournament.css',
                 js: 'assets/js/modules/tournament.js',
-                data: ['assets/js/data/tournament.js'],
+                data: ['assets/js/data/tournaments.js'],
                 section: 'awards'
             },
             'information': { 

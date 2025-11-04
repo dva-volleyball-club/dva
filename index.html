@@ -22,7 +22,11 @@
         <!-- Component CSS -->
         <link rel="stylesheet" href="assets/css/components/header.css">
         <link rel="stylesheet" href="assets/css/components/footer.css">
-
+        <link rel="stylesheet" href="assets/css/components/navigation.css">
+        <link rel="stylesheet" href="assets/css/components/cards.css">
+        <link rel="stylesheet" href="assets/css/components/pagination.css">
+        <link rel="stylesheet" href="assets/css/components/modal.css">
+        <link rel="stylesheet" href="assets/css/components/buttons.css">
         <!-- Module CSS - LOAD DYNAMICALLY BY ROUTER -->
         <link rel="stylesheet" href="assets/css/modules/home.css"
             id="module-css">
@@ -30,7 +34,8 @@
         <link rel="stylesheet" href="assets/css/modules/ranking.css"
             id="ranking-css">
         <!-- TOURNAMENT CSS - ADDED FOR PROPER STYLING -->
-        <!-- <link rel="stylesheet" href="assets/css/modules/tournament.css" -->
+        <link rel="stylesheet" href="assets/css/modules/tournament.css"
+            id="tournament-css">
 
         <!-- INFORMATION CSS -->
         <link rel="stylesheet" href="assets/css/modules/information.css"
@@ -64,8 +69,10 @@
         <link rel="preload" href="assets/css/components/header.css" as="style">
         <link rel="stylesheet" href="assets/css/components/footer.css">
         <link rel="preload" href="assets/css/themes/dva-theme.css" as="style">
+        <!-- IMPORTANT -->
         <!-- <link rel="preload" href="assets/js/main.js" as="script"> -->
-
+        <link rel="preload" href="assets/js/data/tournament.js" as="script">
+        <link rel="preload" href="assets/js/modules/tournament.js" as="script">
     </head>
     <body class="dva-body">
 
@@ -123,8 +130,8 @@
         <!-- 6. Modules AFTER data files -->
         <script src="assets/js/modules/home.js" type="text/javascript"></script>
 
-        <!-- <script src="assets/js/modules/ranking.js"
-            type="text/javascript"></script> -->
+        <script src="assets/js/modules/ranking.js"
+            type="text/javascript"></script>
         <!-- TOURNAMENT MODULE - AFTER TOURNAMENT DATA -->
         <script src="assets/js/modules/tournament.js"
             type="text/javascript"></script>
@@ -133,8 +140,13 @@
         <script src="assets/js/modules/contact.js"
             type="text/javascript"></script>
 
+        <!-- Main JS File LAST IMPORTANT -->
+        <script src="assets/js/main.js" type="text/javascript"></script>
+
         <!-- Error Recovery Script - In case of MIME type issues -->
         <script type="text/javascript">
+
+        
             // MIME Type Error Recovery
             window.addEventListener('error', function(e) {
                 if (e.message && e.message.includes('MIME type')) {

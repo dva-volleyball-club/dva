@@ -170,69 +170,7 @@ class DVARouter {
         this.handleInitialRoute();
         
         console.log('🔄 DVA Router initialized with CSS management');
-
-        // ✅ SETUP HISTORY API ROUTING (NO HASH!)
-        this.setupHistoryRouting();
-        
-        // Handle initial page load
-        this.handleInitialLoad();
     }
-
-    setupHistoryRouting() {
-        // Handle browser back/forward buttons
-        window.addEventListener('popstate', (event) => {
-            const path = this.getCurrentPath();
-            this.handleRoute(path, false); // Don't add to history again
-        });
-
-        // Handle all clicks on navigation links
-        document.addEventListener('click', (event) => {
-            // Find if click was on a navigation link
-            const link = event.target.closest('[data-route]');
-            if (link) {
-                event.preventDefault();
-                const route = link.getAttribute('data-route');
-                this.navigate(route);
-            }
-        });
-    }
-
-    // ✅ NEW: GET CURRENT CLEAN PATH
-    getCurrentPath() {
-        const path = window.location.pathname;
-        
-        // Remove leading slash and .html extension
-        let cleanPath = path.replace(/^\/+/, '').replace(/\.html$/, '');
-        
-        // If path is 'index', treat as empty (home)
-        if (cleanPath === 'index') {
-            cleanPath = '';
-        }
-        
-        return cleanPath;
-    }
-
-    handleInitialLoad() {
-        const currentPath = this.getCurrentPath();
-        console.log(`🏠 Initial load path: "${currentPath}"`);
-        
-        // Route to current path or default
-        this.handleRoute(currentPath || this.defaultRoute, false);
-    }
-    // ✅ ADD THIS TO YOUR ROUTER INIT
-setupNavigationHandlers() {
-    // Handle clicks on navigation links
-    document.addEventListener('click', (event) => {
-        const link = event.target.closest('[data-route]');
-        if (link) {
-            event.preventDefault();
-            const route = link.getAttribute('data-route');
-            console.log(`🖱️ Navigation clicked: ${route}`);
-            this.navigate(route);
-        }
-    });
-}
-
 
     setupEventListeners() {
         // Handle browser navigation (back/forward buttons)
@@ -305,19 +243,17 @@ setupNavigationHandlers() {
         return '';
     }
 
-    navigate(route, addToHistory = true) {
-        console.log(`🧭 Navigating to: /${route}`);
+    navigate(path) {
+        console.log(`🧭 Navigating to: ${path}`);
         
-        // Clean the route
-        route = route.replace(/^\/+/, ''); // Remove leading slashes
+        // Clean path
+        const cleanPath = path.replace(/^\/+/, ''); // Remove leading slashes
         
-        if (addToHistory) {
-            // ✅ PUSH CLEAN URL WITHOUT HASH
-            const url = route === '' ? '/' : `/${route}`;
-            window.history.pushState({ route }, '', url);
-        }
+        // Update URL - use hash for now, but clean format
+        window.history.pushState({}, '', `#/${cleanPath}`);
         
-        this.handleRoute(route, addToHistory);
+        // Handle route
+        this.handleRoute(cleanPath, true);
     }
 
     
@@ -479,47 +415,29 @@ setupNavigationHandlers() {
         console.log('✅ Data files loaded:', dataFiles);
     }
 
-   async loadRouteContent(routeConfig) {
-    const { file, css, js, module } = routeConfig;
-    
-    console.log(`📥 Loading content for ${module}...`);
-    
-    // ✅ GET MAIN CONTENT CONTAINER
-    const mainContent = document.getElementById('main-content');
-    if (!mainContent) return;
-    
-    // ✅ HIDE CONTENT DURING TRANSITION - CRITICAL FIX!
-    mainContent.style.opacity = '0';
-    mainContent.style.transition = 'none'; // Disable transition during loading
-    
-    // Load CSS first (with consistent namespace)
-    if (css) {
-        await this.loadCSS(css, `${module}-css`);
-        this.activeCSS.add(`${module}-css`);
+    async loadRouteContent(routeConfig) {
+        const { file, css, js, module } = routeConfig;
+        
+        console.log(`📥 Loading content for ${module}...`);
+        
+        // Load CSS first (with consistent namespace)
+        if (css) {
+            await this.loadCSS(css, `${module}-css`);
+            this.activeCSS.add(`${module}-css`);
+        }
+        
+        // Load HTML content with fallback
+        await this.loadHTMLWithFallback(file, module);
+        
+        // Load JavaScript module (if exists and not already loaded)
+        if (js && !this.loadedModules.has(module)) {
+            await this.loadJS(js, `${module}-js`);
+            this.loadedModules.add(module);
+        }
+        
+        // Scroll to top
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     }
-    
-    // ✅ WAIT A FRAME TO ENSURE CSS IS APPLIED
-    await new Promise(resolve => requestAnimationFrame(resolve));
-    
-    // Load HTML content with fallback
-    await this.loadHTMLWithFallback(file, module);
-    
-    // Load JavaScript module (if exists and not already loaded)
-    if (js && !this.loadedModules.has(module)) {
-        await this.loadJS(js, `${module}-js`);
-        this.loadedModules.add(module);
-    }
-    
-    // ✅ SHOW CONTENT AFTER EVERYTHING LOADED
-    requestAnimationFrame(() => {
-        mainContent.style.transition = 'opacity 0.2s ease';
-        mainContent.style.opacity = '1';
-    });
-    
-    // Scroll to top
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
 
     // CONSISTENT CSS loading with conflict detection
         async loadCSS(cssPath, id) {
@@ -685,58 +603,32 @@ findBestCSSInsertionPoint() {
         });
     }
 
-async loadHTMLWithFallback(contentPath, module) {
-    const mainContent = document.getElementById('main-content');
-    if (!mainContent) return;
-    
-    // ✅ CONTENT SHOULD ALREADY BE HIDDEN FROM loadRouteContent()
-    // Don't modify visibility here to prevent flash
-    
-    let content = '';
-    
-    // Try loading the actual page file first
-    if (contentPath) {
+    async loadHTMLWithFallback(filePath, module) {
         try {
-            const response = await fetch(contentPath);
-            if (response.ok) {
-                content = await response.text();
-                console.log(`✅ Loaded: ${contentPath}`);
+            console.log(`📄 Trying to load HTML: ${filePath}`);
+            
+            const response = await fetch(filePath);
+            
+            if (!response.ok) {
+                throw new Error(`HTTP ${response.status}: ${response.statusText}`);
             }
+            
+            const html = await response.text();
+            
+            // Insert content into main container
+            const mainContent = document.getElementById('main-content');
+            if (mainContent) {
+                mainContent.innerHTML = html;
+                console.log(`✅ HTML loaded from file: ${filePath}`);
+            } else {
+                throw new Error('Main content container not found');
+            }
+            
         } catch (error) {
-            console.log(`⚠️ Could not load ${contentPath}, using fallback`);
+            console.warn(`⚠️ HTML file not found, using fallback content for ${module}:`, error.message);
+            this.loadFallbackContent(module);
         }
     }
-    
-    // Fallback content generation (your existing code...)
-    if (!content) {
-        if (contentPath && contentPath.includes('home.html')) {
-            content = this.getHomeContent();
-        } else if (contentPath && contentPath.includes('tournament.html')) {
-            content = this.getTournamentContent();
-        } else if (contentPath && contentPath.includes('information.html')) {
-            content = this.getInformationContent();
-        } else if (contentPath && contentPath.includes('news.html')) {
-            content = this.getNewsContent();
-        } else if (contentPath && contentPath.includes('players.html')) {
-            content = this.getPlayersContent();
-        } else if (contentPath && contentPath.includes('ranking.html')) {
-            content = this.getRankingContent();
-        } else if (contentPath && contentPath.includes('contact.html')) {
-            content = this.getContactContent();
-        } else if (contentPath && contentPath.includes('register.html')) {
-            content = this.getRegisterContent();
-        } 
-    }
-    
-    
-    // ✅ INJECT CONTENT WHILE STILL HIDDEN - NO FLASH
-    mainContent.innerHTML = content;
-    
-    // ✅ DON'T SHOW HERE - Let loadRouteContent() handle visibility
-    console.log(`✅ HTML content injected for ${module} (still hidden)`);
-}
-
-
 
     // ENHANCED: Consistent fallback content with module initialization
     loadFallbackContent(module) {
@@ -978,7 +870,7 @@ async loadHTMLWithFallback(contentPath, module) {
         </div>`;
     }
 
-    get404Content() {
+     get404Content() {
     return `
         <!-- SEO & Meta Tags -->
         <div class="dva-404" itemscope itemtype="https://schema.org/WebPage">
@@ -1535,125 +1427,86 @@ async loadHTMLWithFallback(contentPath, module) {
 }
 
     updateActiveNavigation(currentPath) {
-    console.log(`🎯 Updating navigation for: ${currentPath}`);
-    
-    // ✅ NORMALIZE CURRENT PATH (handle empty path as home)
-    const normalizedPath = currentPath === '' || currentPath === '/' ? 'home' : currentPath;
-    
-    // ✅ UPDATE MAIN NAVIGATION - Look for data-route attribute
-    const navItems = document.querySelectorAll('[data-route], .nav-item-modern[data-page], .nav-item[data-page]');
-    navItems.forEach(item => {
-        // Check both data-route (new clean URLs) and data-page (legacy)
-        const route = item.getAttribute('data-route') || item.getAttribute('data-page');
-        if (route) {
-            const isActive = route === normalizedPath || 
-                            (route === 'home' && normalizedPath === 'home') ||
-                            (route === currentPath);
-            item.classList.toggle('active', isActive);
-            
-            // ✅ DEBUG LOG
-            if (isActive) {
-                console.log(`  ✅ Activated nav item: ${route}`);
+        console.log(`🎯 Updating navigation for: ${currentPath}`);
+        
+        // Update desktop navigation
+        const navItems = document.querySelectorAll('.nav-item-modern, [data-page]');
+        navItems.forEach(item => {
+            const page = item.getAttribute('data-page');
+            if (page) {
+                item.classList.toggle('active', page === currentPath);
             }
-        }
-    });
-    
-    // ✅ UPDATE MOBILE NAVIGATION
-    const mobileItems = document.querySelectorAll('.mobile-nav-item');
-    mobileItems.forEach(item => {
-        const route = item.getAttribute('data-route') || item.getAttribute('data-page');
-        if (route) {
-            const isActive = route === normalizedPath || 
-                            (route === 'home' && normalizedPath === 'home');
-            item.classList.toggle('active', isActive);
-        }
-    });
+        });
+        
+        // Update mobile navigation  
+        const mobileItems = document.querySelectorAll('.mobile-nav-item');
+        mobileItems.forEach(item => {
+            const page = item.getAttribute('data-page');
+            if (page) {
+                item.classList.toggle('active', page === currentPath);
+            }
+        });
 
-    // ✅ UPDATE RANKING TABS - Only when on ranking page
-    if (normalizedPath === 'ranking' || this.currentRoute === 'ranking') {
+        // Update ranking tabs
         const rankingTabs = document.querySelectorAll('.ranking-tab');
         rankingTabs.forEach(tab => {
             const division = tab.getAttribute('data-division');
             if (division) {
                 const isActive = this.currentSubRoute === division || 
-                                (this.currentSubRoute === '' && division === 'middle') ||
-                                (!this.currentSubRoute && division === 'middle');
+                                (this.currentRoute === 'ranking' && this.currentSubRoute === '' && division === 'middle');
                 tab.classList.toggle('active', isActive);
-                
-                if (isActive) {
-                    console.log(`  🏆 Activated ranking tab: ${division}`);
-                }
             }
         });
-    }
 
-    // ✅ UPDATE TOURNAMENT TABS - Only when on tournament page  
-    if (normalizedPath === 'tournament' || this.currentRoute === 'tournament') {
+        // Update tournament tabs
         const tournamentTabs = document.querySelectorAll('.tournament-tab');
         tournamentTabs.forEach(tab => {
             const section = tab.getAttribute('data-section');
             if (section) {
                 const isActive = this.currentSubRoute === section || 
-                                (this.currentSubRoute === '' && section === 'standings') ||
-                                (!this.currentSubRoute && section === 'standings');
+                                (this.currentRoute === 'tournament' && this.currentSubRoute === '' && section === 'standings');
                 tab.classList.toggle('active', isActive);
-                
-                if (isActive) {
-                    console.log(`  🏐 Activated tournament tab: ${section}`);
-                }
             }
         });
+        
+        console.log(`✅ Active navigation updated: ${currentPath} (sub: ${this.currentSubRoute})`);
     }
 
-    // ✅ UPDATE PLAYERS TABS - Only when on players page
-    if (normalizedPath === 'players' || this.currentRoute === 'players') {
-        const playersTabs = document.querySelectorAll('.players-tab');
-        playersTabs.forEach(tab => {
-            const division = tab.getAttribute('data-division');
-            if (division) {
-                const isActive = this.currentSubRoute === division || 
-                                (this.currentSubRoute === '' && division === 'advanced') ||
-                                (!this.currentSubRoute && division === 'advanced');
-                tab.classList.toggle('active', isActive);
+    showLoading(show) {
+        const mainContent = document.getElementById('main-content');
+        if (!mainContent) return;
+        
+        if (show) {
+            mainContent.innerHTML = `
+                <div class="route-loading" style="
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    min-height: 50vh;
+                    color: white;
+                    gap: 20px;
+                ">
+                    <div class="loading-spinner" style="
+                        width: 40px;
+                        height: 40px;
+                        border: 3px solid rgba(255, 107, 53, 0.2);
+                        border-left: 3px solid #FF6B35;
+                        border-radius: 50%;
+                        animation: spin 1s linear infinite;
+                    "></div>
+                    <p class="loading-text">Loading page...</p>
+                </div>
                 
-                if (isActive) {
-                    console.log(`  👥 Activated players tab: ${division}`);
-                }
-            }
-        });
+                <style>
+                    @keyframes spin {
+                        0% { transform: rotate(0deg); }
+                        100% { transform: rotate(360deg); }
+                    }
+                </style>
+            `;
+        }
     }
-
-    // ✅ UPDATE URL IN BROWSER (for clean URLs)
-    this.updateBrowserURL(normalizedPath);
-    
-    console.log(`✅ Active navigation updated: ${normalizedPath} (sub: ${this.currentSubRoute})`);
-}
-
-// ✅ NEW HELPER METHOD: Update browser URL without hash
-updateBrowserURL(route) {
-    const currentURL = window.location.pathname;
-    const expectedURL = route === 'home' ? '/' : `/${route}`;
-    
-    // Only update if URL needs to change (avoid infinite loops)
-    if (currentURL !== expectedURL) {
-        const fullURL = route === 'home' ? '/' : `/${route}`;
-        window.history.replaceState({ route }, '', fullURL);
-        console.log(`📍 URL updated to: ${fullURL}`);
-    }
-}
-
-
-    
-
-// ✅ NEW VERSION (No Flash):
-showLoading(show) {
-    // DISABLED TO PREVENT FLASH - Keep for compatibility
-    if (show) {
-        console.log('🚫 Loading display suppressed to prevent flash');
-    }
-}
-
-
 
     showError(error) {
         const mainContent = document.getElementById('main-content');

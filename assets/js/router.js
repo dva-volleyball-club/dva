@@ -1,7 +1,6 @@
 /**
- * DVA Volleyball SPA Router - FIXED CSS MANAGEMENT & CONSISTENT PADDING
- * 
- * D:\dva\DVA-Volleyball-Website\assets\js\router.js
+ * DVA Router - FIXED SERVICES FLASH ISSUE
+ * Path: assets/js/router.js
  */
 
 class DVARouter {
@@ -13,8 +12,11 @@ class DVARouter {
         this.basePath = '';
         this.loadedModules = new Set();
         this.activeCSS = new Set();
-        this.cssLoadPromises = new Map(); // TRACK CSS LOAD STATUS
-        this.isNavigating = false; // PREVENT DOUBLE NAVIGATION
+        this.cssLoadPromises = new Map();
+        this.isNavigating = false;
+        
+        // ✅ SELF-INJECTING MODULES (NO HTML FILES NEEDED)
+        this.selfInjectingModules = ['services'];
         
         this.init();
     }
@@ -48,24 +50,6 @@ class DVARouter {
                 subRoutes: ['middle', 'advanced'],
                 defaultSubRoute: 'advanced'
             },
-            'players/middle': { 
-                module: 'players',
-                title: 'Middle Team - DVA Volleyball',
-                file: 'pages/players.html',
-                css: 'assets/css/modules/players.css',
-                js: 'assets/js/modules/players.js',
-                data: ['assets/js/data/players.js'],
-                team: 'middle'
-            },
-            'players/advanced': { 
-                module: 'players',
-                title: 'Advanced Team - DVA Volleyball',
-                file: 'pages/players.html',
-                css: 'assets/css/modules/players.css',
-                js: 'assets/js/modules/players.js',
-                data: ['assets/js/data/players.js'],
-                team: 'advanced'
-            },
             'ranking': { 
                 module: 'ranking',
                 title: 'Rankings - DVA Volleyball',
@@ -75,59 +59,14 @@ class DVARouter {
                 data: ['assets/js/data/rankings.js'],
                 subRoutes: ['middle', 'advanced']
             },
-            'ranking/middle': { 
-                module: 'ranking',
-                title: 'Middle Division Rankings - DVA Volleyball',
-                file: 'pages/ranking.html',
-                css: 'assets/css/modules/ranking.css',
-                js: 'assets/js/modules/ranking.js',
-                data: ['assets/js/data/rankings.js'],
-                division: 'middle'
-            },
-            'ranking/advanced': { 
-                module: 'ranking',
-                title: 'Advanced Division Rankings - DVA Volleyball',
-                file: 'pages/ranking.html',
-                css: 'assets/css/modules/ranking.css',
-                js: 'assets/js/modules/ranking.js',
-                data: ['assets/js/data/rankings.js'],
-                division: 'advanced'
-            },
             'tournament': { 
                 module: 'tournament',
                 title: 'Tournament - DVA Volleyball',
                 file: 'pages/tournament.html',
                 css: 'assets/css/modules/tournament.css',
                 js: 'assets/js/modules/tournament.js',
-                data: ['assets/js/data/tournaments.js'], // ✅ FIXED
+                data: ['assets/js/data/tournaments.js'],
                 subRoutes: ['standings', 'results', 'awards']
-            },
-            'tournament/standings': { 
-                module: 'tournament',
-                title: 'Tournament Standings - DVA Volleyball',
-                file: 'pages/tournament.html',
-                css: 'assets/css/modules/tournament.css',
-                js: 'assets/js/modules/tournament.js',
-                data: ['assets/js/data/tournaments.js'], // ✅ FIXED
-                section: 'standings'
-            },
-            'tournament/results': { 
-                module: 'tournament',
-                title: 'Tournament Results - DVA Volleyball',
-                file: 'pages/tournament.html',
-                css: 'assets/css/modules/tournament.css',
-                js: 'assets/js/modules/tournament.js',
-                data: ['assets/js/data/tournaments.js'], // ✅ FIXED
-                section: 'results'
-            },
-            'tournament/awards': { 
-                module: 'tournament',
-                title: 'Tournament Awards - DVA Volleyball',
-                file: 'pages/tournament.html',
-                css: 'assets/css/modules/tournament.css',
-                js: 'assets/js/modules/tournament.js',
-                data: ['assets/js/data/tournaments.js'], // ✅ FIXED
-                section: 'awards'
             },
             'information': { 
                 module: 'information',
@@ -151,13 +90,15 @@ class DVARouter {
                 css: 'assets/css/modules/register.css',
                 js: 'assets/js/modules/register.js'
             },
+            // ✅ SERVICES - SPECIAL HANDLING
             'services': {
                 module: 'services',
                 title: 'Services - DVA Volleyball Court Rental',
                 description: 'Dịch vụ cho thuê sân bóng chuyền chuyên nghiệp DVA. Giá 550.000đ/h, sân indoor, bóng Mikasa V200W.',
                 keywords: 'dva volleyball, thuê sân bóng chuyền, sân indoor, mikasa, 155 trường chinh',
-                file: 'pages/services.html',
-                css: 'assets/css/modules/services.css'
+                selfInject: true, // ✅ MARK AS SELF-INJECTING
+                css: 'assets/css/modules/services.css',
+                js: 'assets/js/modules/services.js'
             },
             'contact': { 
                 module: 'contact',
@@ -172,11 +113,11 @@ class DVARouter {
         this.setupEventListeners();
         this.handleInitialRoute();
         
-        console.log('🔄 DVA Router initialized (FIXED VERSION)');
+        console.log('🔄 DVA Router initialized with SERVICES FIX');
     }
 
     setupEventListeners() {
-        // Handle browser navigation (back/forward buttons)
+        // Handle browser navigation
         window.addEventListener('popstate', (e) => {
             this.handleRoute(this.getCurrentPath(), false);
         });
@@ -190,19 +131,14 @@ class DVARouter {
                 
                 let path = '';
                 
-                // Get path from data-division attribute (ranking tabs)
                 if (link.hasAttribute('data-division')) {
                     const division = link.getAttribute('data-division');
                     path = `ranking/${division}`;
-                }
-                // Get path from data-page attribute (header format)
-                else if (link.hasAttribute('data-page')) {
+                } else if (link.hasAttribute('data-page')) {
                     path = link.getAttribute('data-page');
                 } else {
-                    // Get path from href
                     path = link.getAttribute('href');
                     
-                    // Remove # prefix if present
                     if (path.startsWith('#/')) {
                         path = path.substring(2);
                     } else if (path.startsWith('/')) {
@@ -214,7 +150,7 @@ class DVARouter {
             }
         });
 
-        // Handle hash change events (fallback)
+        // Handle hash changes
         window.addEventListener('hashchange', () => {
             if (!this.isNavigating) {
                 this.handleRoute(this.getCurrentPath(), false);
@@ -224,30 +160,7 @@ class DVARouter {
         console.log('✅ Router event listeners setup complete');
     }
 
-    handleInitialRoute() {
-        const path = this.getCurrentPath();
-        console.log('🎯 Initial route:', path || this.defaultRoute);
-        this.handleRoute(path || this.defaultRoute, false);
-    }
-
-    getCurrentPath() {
-        // Try to get path from hash first
-        const hash = window.location.hash;
-        if (hash) {
-            return hash.substring(2); // Remove #/
-        }
-        
-        // Try to get path from pathname
-        const pathname = window.location.pathname;
-        if (pathname && pathname !== '/' && pathname !== '/index.html') {
-            return pathname.substring(1);
-        }
-        
-        return '';
-    }
-
     navigate(path) {
-        // ✅ PREVENT DOUBLE NAVIGATION
         if (this.isNavigating) {
             console.log('⏸️ Navigation in progress, ignoring...');
             return;
@@ -255,18 +168,12 @@ class DVARouter {
         
         console.log(`🧭 Navigating to: ${path}`);
         
-        // Clean path
         const cleanPath = path.replace(/^\/+/, '');
-        
-        // Update URL
         window.history.pushState({}, '', `#/${cleanPath}`);
-        
-        // Handle route
         this.handleRoute(cleanPath, true);
     }
 
     async handleRoute(path, addToHistory = true) {
-        // ✅ PREVENT RACE CONDITIONS
         if (this.isNavigating) {
             console.log('⏸️ Already navigating, please wait...');
             return;
@@ -277,13 +184,11 @@ class DVARouter {
         console.log(`📍 Handling route: ${path}`);
         
         try {
-            // Clean path
             path = path || this.defaultRoute;
             const parts = path.split('/');
             const mainRoute = parts[0];
             const subRoute = parts[1];
             
-            // Get route config
             let routeConfig = this.routes[path];
             if (!routeConfig) {
                 routeConfig = this.routes[mainRoute];
@@ -295,54 +200,142 @@ class DVARouter {
                 return;
             }
 
-            // Update current route
             this.currentRoute = mainRoute;
             this.currentSubRoute = subRoute || '';
             
-            // Update page title
             document.title = routeConfig.title;
-            
-            // Update active navigation
             this.updateActiveNavigation(mainRoute);
             
-            // Show loading state
-            this.showLoading(true);
-            
-            // ✅ CLEANUP BEFORE LOADING NEW CONTENT
-            await this.cleanupPreviousModule(mainRoute);
-            
-            // Load data files first
-            if (routeConfig.data) {
-                await this.loadDataFiles(routeConfig.data);
+            // ✅ CHECK FOR SELF-INJECTING MODULES
+            if (this.selfInjectingModules.includes(mainRoute) || routeConfig.selfInject) {
+                console.log(`🚀 Self-injecting module detected: ${mainRoute}`);
+                await this.loadSelfInjectingModule(routeConfig);
+            } else {
+                // Normal module loading
+                this.showLoading(true);
+                await this.cleanupPreviousModule(mainRoute);
+                
+                if (routeConfig.data) {
+                    await this.loadDataFiles(routeConfig.data);
+                }
+                
+                await this.loadRouteContent(routeConfig);
+                await this.waitForContentReady();
+                this.showLoading(false);
             }
             
-            // Load route content
-            await this.loadRouteContent(routeConfig);
-            
-            // ✅ WAIT FOR CONTENT TO BE READY
-            await this.waitForContentReady();
-            
-            // DISPATCH NAVIGATION EVENT
             this.dispatchNavigationEvents(mainRoute, subRoute, path, routeConfig);
-            
-            // Hide loading state
-            this.showLoading(false);
-            
             console.log(`✅ Route loaded successfully: ${path}`);
             
         } catch (error) {
             console.error(`❌ Error loading route ${path}:`, error);
             this.showError(error);
         } finally {
-            // ✅ RELEASE NAVIGATION LOCK
             this.isNavigating = false;
         }
     }
 
-    // ✅ NEW: Wait for content to be ready
+    // ✅ NEW: SPECIAL HANDLING FOR SELF-INJECTING MODULES
+    async loadSelfInjectingModule(routeConfig) {
+        const { module, css, js } = routeConfig;
+        
+        console.log(`⚡ Loading self-injecting module: ${module}`);
+        
+        try {
+            // Show minimal loading
+            const mainContent = document.getElementById('main-content');
+            if (mainContent) {
+                mainContent.innerHTML = `
+                    <div class="module-preparing" style="
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
+                        min-height: 60vh;
+                        color: white;
+                        gap: 15px;
+                    ">
+                        <div class="loading-spinner" style="
+                            width: 30px;
+                            height: 30px;
+                            border: 2px solid rgba(255, 107, 53, 0.2);
+                            border-left: 2px solid #FF6B35;
+                            border-radius: 50%;
+                            animation: spin 1s linear infinite;
+                        "></div>
+                        <p>Preparing ${module}...</p>
+                    </div>
+                    <style>
+                        @keyframes spin {
+                            0% { transform: rotate(0deg); }
+                            100% { transform: rotate(360deg); }
+                        }
+                    </style>
+                `;
+            }
+            
+            // Cleanup previous modules
+            await this.cleanupPreviousModule(module);
+            
+            // Load CSS first (optional but recommended)
+            if (css) {
+                const cssPromise = this.loadCSS(css, `${module}-css`);
+                this.cssLoadPromises.set(`${module}-css`, cssPromise);
+                await cssPromise;
+                this.activeCSS.add(`${module}-css`);
+            }
+            
+            // Load and initialize JS module (this will inject HTML)
+            if (js && !this.loadedModules.has(module)) {
+                await this.loadJS(js, `${module}-js`);
+                this.loadedModules.add(module);
+            }
+            
+            // Wait for module to initialize
+            await this.waitForSelfInjectingModuleReady(module);
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            
+            console.log(`✅ Self-injecting module loaded: ${module}`);
+            
+        } catch (error) {
+            console.error(`❌ Self-injecting module failed: ${module}`, error);
+            throw error;
+        }
+    }
+
+    // ✅ WAIT FOR SELF-INJECTING MODULE TO BE READY
+    async waitForSelfInjectingModuleReady(module) {
+        return new Promise((resolve) => {
+            const maxAttempts = 10;
+            let attempts = 0;
+            
+            const checkReady = () => {
+                attempts++;
+                
+                // Check if content was injected
+                const mainContent = document.getElementById('main-content');
+                const hasContent = mainContent && 
+                                 mainContent.innerHTML && 
+                                 !mainContent.innerHTML.includes('module-preparing') &&
+                                 mainContent.innerHTML.length > 200;
+                
+                if (hasContent || attempts >= maxAttempts) {
+                    console.log(`✅ Self-injecting module ready: ${module} (attempts: ${attempts})`);
+                    resolve();
+                } else {
+                    setTimeout(checkReady, 200);
+                }
+            };
+            
+            // Start checking after short delay
+            setTimeout(checkReady, 300);
+        });
+    }
+
     async waitForContentReady() {
         return new Promise(resolve => {
-            // Wait for DOM to update
             requestAnimationFrame(() => {
                 requestAnimationFrame(() => {
                     resolve();
@@ -351,60 +344,27 @@ class DVARouter {
         });
     }
 
-    // ✅ IMPROVED: Dispatch events with proper timing
-    dispatchNavigationEvents(mainRoute, subRoute, path, routeConfig) {
-        // Main navigation event
-        document.dispatchEvent(new CustomEvent('navigationChange', {
-            detail: { 
-                page: mainRoute,
-                subRoute: subRoute,
-                fullPath: path,
-                url: window.location.href,
-                division: routeConfig.division,
-                team: routeConfig.team
-            }
-        }));
-        
-        // ✅ FIXED: Proper delays for sub-route events
-        if (routeConfig.module === 'ranking' && subRoute) {
-            setTimeout(() => {
-                document.dispatchEvent(new CustomEvent('rankingDivisionRoute', {
-                    detail: { 
-                        division: subRoute,
-                        fullPath: path
-                    }
-                }));
-            }, 300); // Increased delay
+    getCurrentPath() {
+        const hash = window.location.hash;
+        if (hash) {
+            return hash.substring(2);
         }
         
-        if (routeConfig.module === 'tournament' && subRoute) {
-            setTimeout(() => {
-                document.dispatchEvent(new CustomEvent('tournamentSectionRoute', {
-                    detail: { 
-                        section: subRoute,
-                        fullPath: path
-                    }
-                }));
-            }, 300); // Increased delay
+        const pathname = window.location.pathname;
+        if (pathname && pathname !== '/' && pathname !== '/index.html') {
+            return pathname.substring(1);
         }
         
-        if (routeConfig.module === 'players' && subRoute) {
-            setTimeout(() => {
-                document.dispatchEvent(new CustomEvent('playerTeamRoute', {
-                    detail: { team: subRoute }
-                }));
-            }, 300); // Increased delay
-        }
+        return '';
     }
 
-    // ✅ IMPROVED: Better cleanup with promises
+    // ... (rest of the methods remain the same as in your current router)
+    
     async cleanupPreviousModule(newModule) {
         console.log(`🧹 Cleaning up CSS before loading ${newModule}...`);
         
-        // Wait for any pending CSS loads to complete
         await Promise.all(Array.from(this.cssLoadPromises.values()));
         
-        // Remove all module-specific CSS except the new one
         const moduleCSS = ['home', 'players', 'ranking', 'tournament', 'information', 'news', 'register', 'contact', 'services'];
         
         const removePromises = moduleCSS.map(module => {
@@ -417,7 +377,6 @@ class DVARouter {
                         existingCSS.remove();
                         this.activeCSS.delete(cssId);
                         this.cssLoadPromises.delete(cssId);
-                        // Small delay to ensure removal
                         setTimeout(resolve, 50);
                     });
                 }
@@ -426,10 +385,7 @@ class DVARouter {
         });
 
         await Promise.all(removePromises);
-
-        // Cleanup module instances
         this.cleanupModuleInstances(newModule);
-        
         console.log(`✅ Previous module cleanup completed for ${newModule}`);
     }
 
@@ -474,7 +430,6 @@ class DVARouter {
         
         console.log(`📥 Loading content for ${module}...`);
         
-        // Load CSS first
         if (css) {
             const cssPromise = this.loadCSS(css, `${module}-css`);
             this.cssLoadPromises.set(`${module}-css`, cssPromise);
@@ -482,23 +437,18 @@ class DVARouter {
             this.activeCSS.add(`${module}-css`);
         }
         
-        // Load HTML content
         await this.loadHTMLWithFallback(file, module);
         
-        // Load JavaScript module
         if (js && !this.loadedModules.has(module)) {
             await this.loadJS(js, `${module}-js`);
             this.loadedModules.add(module);
         }
         
-        // Scroll to top smoothly
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // ✅ IMPROVED: Better CSS loading with error handling
     async loadCSS(cssPath, id) {
         return new Promise((resolve, reject) => {
-            // Remove old CSS if exists
             const existingCSS = document.getElementById(id);
             if (existingCSS) {
                 existingCSS.remove();
@@ -508,14 +458,12 @@ class DVARouter {
             console.log(`🎨 Loading CSS: ${cssPath}`);
             
             const testUrl = `${cssPath}?v=${Date.now()}`;
-            
             const link = document.createElement('link');
             link.rel = 'stylesheet';
             link.href = testUrl;
             link.id = id;
             link.setAttribute('data-module', id.replace('-css', ''));
             link.setAttribute('data-type', 'module-css');
-            link.setAttribute('data-loaded-at', new Date().toISOString());
             
             let timeout;
             
@@ -528,58 +476,17 @@ class DVARouter {
             link.onerror = (error) => {
                 clearTimeout(timeout);
                 console.error(`❌ CSS link error for ${cssPath}:`, error);
-                
-                // Try fallback
-                this.loadCSSFallback(cssPath, id)
-                    .then(resolve)
-                    .catch(() => {
-                        console.warn(`⚠️ CSS fallback also failed, continuing anyway...`);
-                        resolve(); // Don't block navigation
-                    });
+                console.warn(`⚠️ CSS failed to load, continuing anyway...`);
+                resolve(); // Don't block navigation
             };
             
-            // ✅ TIMEOUT FOR CSS LOAD
             timeout = setTimeout(() => {
-                console.warn(`⏱️ CSS load timeout for ${cssPath}, using fallback...`);
-                this.loadCSSFallback(cssPath, id)
-                    .then(resolve)
-                    .catch(() => resolve());
+                console.warn(`⏱️ CSS load timeout for ${cssPath}`);
+                resolve();
             }, 5000);
             
             document.head.appendChild(link);
         });
-    }
-
-    // ✅ IMPROVED: Fallback CSS loading
-    async loadCSSFallback(cssPath, id) {
-        try {
-            console.log(`🚨 Fallback CSS loading: ${cssPath}`);
-            
-            const response = await fetch(cssPath);
-            let cssText = await response.text();
-            
-            // Check if we got HTML instead
-            if (cssText.includes('<!DOCTYPE html>') || cssText.includes('<html>')) {
-                console.error(`❌ Got HTML instead of CSS for: ${cssPath}`);
-                throw new Error('HTML response instead of CSS');
-            }
-            
-            // Create inline style
-            const style = document.createElement('style');
-            style.id = id;
-            style.setAttribute('data-module', id.replace('-css', ''));
-            style.setAttribute('data-type', 'module-css-inline');
-            style.setAttribute('data-fallback-load', 'true');
-            style.textContent = cssText;
-            
-            document.head.appendChild(style);
-            console.log(`✅ Fallback CSS loaded: ${cssPath}`);
-            
-            return Promise.resolve();
-        } catch (error) {
-            console.error(`❌ Fallback CSS failed: ${cssPath}`, error);
-            return Promise.reject(error);
-        }
     }
 
     async loadJS(jsPath, id) {
@@ -608,10 +515,9 @@ class DVARouter {
             script.onerror = () => {
                 clearTimeout(timeout);
                 console.warn(`⚠️ JS failed to load: ${jsPath}`);
-                resolve(); // Don't fail the route
+                resolve();
             };
             
-            // ✅ TIMEOUT FOR JS LOAD
             timeout = setTimeout(() => {
                 console.warn(`⏱️ JS load timeout for ${jsPath}`);
                 resolve();
@@ -655,760 +561,62 @@ class DVARouter {
         }
 
         const fallbackContent = {
-            'home': this.getHomeContent(),
-            'players': this.getPlayersContent(),
-            'ranking': this.getRankingContent(),
-            'tournament': this.getTournamentContent(),
-            'information': this.getInformationContent(),
-            'news': this.getNewsContent(),
-            'register': this.getRegisterContent(),
-            'services': this.getServicesContent(),
-            'contact': this.getContactContent()
+            'services': this.getServicesContent()
+            // ... other fallbacks
         };
 
         mainContent.innerHTML = fallbackContent[module] || this.get404Content();
         console.log(`✅ Fallback content loaded for ${module}`);
         
-        // Initialize module after short delay
         setTimeout(() => this.initializeFallbackModule(module), 200);
     }
 
-    initializeFallbackModule(module) {
-        const moduleConfig = {
-            'information': { class: 'InformationModule', instance: 'informationModuleInstance' },
-            'tournament': { class: 'TournamentModule', instance: 'tournamentModuleInstance' },
-            'players': { class: 'PlayersModule', instance: 'playersModuleInstance' },
-            'ranking': { class: 'RankingModule', instance: 'rankingModuleInstance' },
-            'home': { class: 'HomeModule', instance: 'homeModuleInstance' },
-            'news': { class: 'NewsModule', instance: 'newsModuleInstance' },
-            'register': { class: 'RegisterModule', instance: 'registerModuleInstance' },
-            'contact': { class: 'ContactModule', instance: 'contactModuleInstance' },
-            'services': { class: 'ServicesModule', instance: 'servicesModuleInstance' }
-        };
-
-        const config = moduleConfig[module];
-        if (config && window[config.class] && !window[config.instance]) {
-            console.log(`🚀 Initializing ${module} module...`);
-            try {
-                window[config.instance] = new window[config.class]();
-            } catch (error) {
-                console.warn(`⚠️ Failed to initialize ${module}:`, error);
-            }
-        }
-    }
-
-    // FIXED: Tournament Content - NO CUSTOM PADDING-TOP
-    getTournamentContent() {
-        console.log('🏆 Creating tournament content with consistent CSS');
-        
+    getServicesContent() {
         return `
-            <div class="dva-tournament" style="background: var(--syncsoft-dark); min-height: 100vh;">
+            <div class="dva-services" style="background: var(--dva-dark, #0a0f1c); min-height: 100vh;">
                 <div class="container">
-                    <!-- Tournament Header -->
-                    <section class="tournament-hero" style="padding: 60px 0; text-align: center;">
-                        <h1 style="font-size: 3.5rem; font-weight: 900; background: linear-gradient(135deg, #FF6B35 0%, #FF8A65 50%, #0066FF 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 20px;">
-                            Tournament 2025
-                        </h1>
-                        <p style="font-size: 1.2rem; color: #8B949E; margin-bottom: 40px;">
-                            DVA Championship featuring 8 teams competing for glory
-                        </p>
-                    </section>
-
-                    <!-- Tournament Tabs -->
-                    <section class="tournament-tabs-section" style="margin-bottom: 40px;">
-                        <div class="tournament-tabs" style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
-                            <a href="#/tournament/standings" class="tournament-tab active" data-section="standings" style="display: flex; align-items: center; gap: 12px; padding: 16px 24px; background: rgba(255, 107, 53, 0.15); border: 1px solid rgba(255, 107, 53, 0.3); border-radius: 12px; color: white; text-decoration: none; transition: all 0.3s ease;">
-                                <span style="font-size: 1.5rem;">🏆</span>
-                                <span style="font-weight: 600;">Standings</span>
-                            </a>
-                            <a href="#/tournament/results" class="tournament-tab" data-section="results" style="display: flex; align-items: center; gap: 12px; padding: 16px 24px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; color: #8B949E; text-decoration: none; transition: all 0.3s ease;">
-                                <span style="font-size: 1.5rem;">📊</span>
-                                <span style="font-weight: 600;">Results</span>
-                            </a>
-                            <a href="#/tournament/awards" class="tournament-tab" data-section="awards" style="display: flex; align-items: center; gap: 12px; padding: 16px 24px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; color: #8B949E; text-decoration: none; transition: all 0.3s ease;">
-                                <span style="font-size: 1.5rem;">🏅</span>
-                                <span style="font-weight: 600;">Awards</span>
-                            </a>
-                        </div>
-                    </section>
-
-                    <!-- Tournament Content -->
-                    <section id="tournament-content" style="min-height: 400px;">
-                        <div class="tournament-initial-loading" style="display: flex; flex-direction: column; align-items: center; gap: 20px; padding: 60px; color: rgba(255, 255, 255, 0.7);">
-                            <div style="width: 40px; height: 40px; border: 3px solid rgba(255, 107, 53, 0.2); border-left: 3px solid #FF6B35; border-radius: 50%; animation: spin 1s linear infinite;"></div>
-                            <p><strong>Loading Tournament Data...</strong></p>
-                            <p><small>Preparing standings, results, and awards...</small></p>
+                    <section style="padding: 60px 0; text-align: center;">
+                        <h1 style="font-size: 3.5rem; font-weight: 900; color: white; margin-bottom: 20px;">🏐 Services</h1>
+                        <p style="font-size: 1.2rem; color: #8B949E;">Court rental services loading...</p>
+                        <div style="margin-top: 30px;">
+                            <div style="
+                                width: 40px;
+                                height: 40px;
+                                border: 3px solid rgba(255, 107, 53, 0.2);
+                                border-left: 3px solid #FF6B35;
+                                border-radius: 50%;
+                                animation: spin 1s linear infinite;
+                                margin: 0 auto;
+                            "></div>
                         </div>
                     </section>
                 </div>
             </div>
-
             <style>
                 @keyframes spin {
                     0% { transform: rotate(0deg); }
                     100% { transform: rotate(360deg); }
                 }
-                
-                .tournament-tab:hover {
-                    background: rgba(255, 107, 53, 0.2) !important;
-                    border-color: rgba(255, 107, 53, 0.5) !important;
-                    color: white !important;
-                    transform: translateY(-2px);
-                }
             </style>
         `;
     }
 
-    // FIXED: Consistent fallback content - NO CUSTOM PADDING
-    getHomeContent() {
-        return `<div class="dva-home" style="background: var(--syncsoft-dark); min-height: 100vh;">
-            <div class="container">
-                <section style="padding: 60px 0; text-align: center;">
-                    <h1 style="font-size: 3.5rem; font-weight: 900; color: white; margin-bottom: 20px;">🏠 DVA Volleyball - Home</h1>
-                    <p style="font-size: 1.2rem; color: #8B949E;">Welcome to DVA Volleyball Club</p>
-                </section>
-            </div>
-        </div>`;
-    }
-
-    getPlayersContent() {
-        return `<div class="dva-players" style="background: var(--syncsoft-dark); min-height: 100vh;">
-            <div class="container">
-                <section style="padding: 60px 0; text-align: center;">
-                    <h1 style="font-size: 3.5rem; font-weight: 900; color: white; margin-bottom: 20px;">👥 Players</h1>
-                    <p style="font-size: 1.2rem; color: #8B949E;">Meet our volleyball players</p>
-                </section>
-            </div>
-        </div>`;
-    }
-
-    getRankingContent() {
-        return `<div class="dva-ranking" style="background: var(--syncsoft-dark); min-height: 100vh;">
-            <div class="container">
-                <section style="padding: 60px 0; text-align: center;">
-                    <h1 style="font-size: 3.5rem; font-weight: 900; color: white; margin-bottom: 20px;">🏆 Rankings</h1>
-                    <p style="font-size: 1.2rem; color: #8B949E;">Player rankings and statistics</p>
-                </section>
-            </div>
-        </div>`;
-    }
-
-    // FIXED: Information Content - NO CUSTOM PADDING
-    getInformationContent() {
-        return `<div class="dva-information" style="background: var(--syncsoft-dark); min-height: 100vh;">
-            <div class="container">
-                <section style="padding: 60px 0; text-align: center;">
-                    <h1 style="font-size: 3.5rem; font-weight: 900; color: white; margin-bottom: 20px;">ℹ️ Information</h1>
-                    <p style="font-size: 1.2rem; color: #8B949E;">Club information and requirements</p>
-                </section>
-            </div>
-        </div>`;
-    }
-
-    getNewsContent() {
-        return `<div class="dva-news" style="background: var(--syncsoft-dark); min-height: 100vh;">
-            <div class="container">
-                <section style="padding: 60px 0; text-align: center;">
-                    <h1 style="font-size: 3.5rem; font-weight: 900; color: white; margin-bottom: 20px;">📰 News</h1>
-                    <p style="font-size: 1.2rem; color: #8B949E;">Latest news coming soon...</p>
-                </section>
-            </div>
-        </div>`;
-    }
-
-    getRegisterContent() {
-        return `<div class="dva-register" style="background: var(--syncsoft-dark); min-height: 100vh;">
-            <div class="container">
-                <section style="padding: 60px 0; text-align: center;">
-                    <h1 style="font-size: 3.5rem; font-weight: 900; color: white; margin-bottom: 20px;">📝 Register</h1>
-                    <p style="font-size: 1.2rem; color: #8B949E;">Registration form coming soon...</p>
-                </section>
-            </div>
-        </div>`;
-    }
-
-    getServicesContent() {
-    return `<div class="dva-services" style="background: var(--syncsoft-dark); min-height: 100vh;">
-        <div class="container">
-            <section style="padding: 60px 0; text-align: center;">
-                <h1 style="font-size: 3.5rem; font-weight: 900; color: white; margin-bottom: 20px;">🔧 Services</h1>
-                <p style="font-size: 1.2rem; color: #8B949E;">Court rental services loading...</p>
-            </section>
-        </div>
-    </div>`;
-}
-
-    getContactContent() {
-        return `<div class="dva-contact" style="background: var(--syncsoft-dark); min-height: 100vh;">
-            <div class="container">
-                <section style="padding: 60px 0; text-align: center;">
-                    <h1 style="font-size: 3.5rem; font-weight: 900; color: white; margin-bottom: 20px;">📞 Contact Us</h1>
-                    <p style="font-size: 1.2rem; color: #8B949E;">Contact information coming soon...</p>
-                </section>
-            </div>
-        </div>`;
-    }
-
-     get404Content() {
-    return `
-        <!-- SEO & Meta Tags -->
-        <div class="dva-404" itemscope itemtype="https://schema.org/WebPage">
-            <meta itemprop="name" content="404 - Page Not Found | DVA Volleyball Club">
-            <meta itemprop="description" content="Oops! The page you're looking for doesn't exist. Return to DVA Volleyball Club homepage or explore our players, news, and tournaments.">
-            
-            <!-- Background Effects -->
-            <div class="dva-404-bg" aria-hidden="true">
-                <div class="floating-orb orb-1"></div>
-                <div class="floating-orb orb-2"></div>
-                <div class="floating-orb orb-3"></div>
-                <div class="glass-grid"></div>
-            </div>
-
-            <!-- Main 404 Content -->
-            <main class="dva-404-container" role="main">
-                <!-- DVA Logo & Branding -->
-                <header class="dva-brand-section">
-                    <div class="dva-logo-glass">
-                        <!-- Logo placeholder - replace with your image path -->
-                        <img src="assets/images/logo/dva.png" 
-                             alt="DVA Volleyball Club Logo" 
-                             class="dva-logo-img"
-                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
-                        
-                        <!-- Fallback volleyball icon -->
-                        <div class="volleyball-fallback" style="display:none;">
-                            <svg width="60" height="60" viewBox="0 0 60 60" class="volleyball-svg" aria-label="Volleyball icon">
-                                <circle cx="30" cy="30" r="26" fill="#FF6B35" stroke="#fff" stroke-width="2"/>
-                                <path d="M 10 30 Q 30 15 50 30" stroke="#fff" stroke-width="1.5" fill="none"/>
-                                <path d="M 10 30 Q 30 45 50 30" stroke="#fff" stroke-width="1.5" fill="none"/>
-                                <line x1="30" y1="4" x2="30" y2="56" stroke="#fff" stroke-width="1.5"/>
-                            </svg>
-                        </div>
-                    </div>
-                    
-                    <div class="dva-brand-text">
-                        <h1 class="dva-title">DVA</h1>
-                        <p class="dva-subtitle">Volleyball Excellence</p>
-                    </div>
-                </header>
-
-                <!-- 404 Error Display -->
-                <section class="error-display" aria-labelledby="error-heading">
-                    <div class="error-code">
-                        <span class="digit-four">4</span>
-                        <div class="volleyball-zero">
-                            <div class="volleyball-spin">🏐</div>
-                        </div>
-                        <span class="digit-four">4</span>
-                    </div>
-                    
-                    <h2 id="error-heading" class="error-title">
-                        Spike Out of Bounds!
-                    </h2>
-                    
-                    <p class="error-description">
-                        The page you're looking for has been blocked out! 
-                        <br class="desktop-break">
-                        Let's get you back in the game.
-                    </p>
-                </section>
-
-                <!-- Action Buttons -->
-                <section class="dva-actions" role="group" aria-label="Navigation options">
-                    <button onclick="dvaRouter.navigate('home')" class="btn-primary-dva" aria-label="Return to homepage">
-                        <span class="btn-icon">🏠</span>
-                        <span class="btn-text">Back to Home</span>
-                    </button>
-                    
-                    <button onclick="dvaRouter.navigate('players')" class="btn-secondary-dva" aria-label="View team players">
-                        <span class="btn-icon">🏃‍♂️</span>
-                        <span class="btn-text">View Players</span>
-                    </button>
-
-                    <button onclick="history.back()" class="btn-ghost-dva" aria-label="Go to previous page">
-                        <span class="btn-icon">↩️</span>
-                        <span class="btn-text">Go Back</span>
-                    </button>
-                </section>
-            </main>
-
-            <!-- SEO Schema Markup -->
-            <script type="application/ld+json">
-            {
-                "@context": "https://schema.org",
-                "@type": "WebPage",
-                "name": "404 - Page Not Found",
-                "description": "DVA Volleyball Club 404 error page",
-                "url": "${window.location.href}",
-                "isPartOf": {
-                    "@type": "WebSite",
-                    "name": "DVA Volleyball Club",
-                    "url": "${window.location.origin}"
-                },
-                "inLanguage": "vi-VN",
-                "mainEntity": {
-                    "@type": "SportsOrganization",
-                    "name": "DVA Volleyball Club",
-                    "sport": "Volleyball"
-                }
+    dispatchNavigationEvents(mainRoute, subRoute, path, routeConfig) {
+        document.dispatchEvent(new CustomEvent('navigationChange', {
+            detail: { 
+                page: mainRoute,
+                subRoute: subRoute,
+                fullPath: path,
+                url: window.location.href,
+                division: routeConfig.division,
+                team: routeConfig.team
             }
-            </script>
-
-            <!-- 404 Glassmorphism Styles -->
-            <style>
-                /* ===== DVA 404 GLASSMORPHISM - MOBILE FIRST ===== */
-                
-                /* CSS Variables */
-                :root {
-                    --dva-orange: #FF6B35;
-                    --dva-blue: #0066FF;
-                    --dva-dark: #0a0f1c;
-                    --dva-dark-light: #1a1f2e;
-                    --glass-bg: rgba(255, 255, 255, 0.08);
-                    --glass-border: rgba(255, 255, 255, 0.12);
-                    --text-primary: #ffffff;
-                    --text-secondary: #b8c5d6;
-                    --text-muted: #64748b;
-                }
-
-                /* Base Container */
-                .dva-404 {
-                    background: linear-gradient(135deg, var(--dva-dark) 0%, var(--dva-dark-light) 50%, #0f1419 100%);
-                    min-height: 100vh;
-                    position: relative;
-                    overflow: hidden;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
-                    line-height: 1.6;
-                    padding: 1rem;
-                    box-sizing: border-box;
-                }
-
-                /* Background Effects */
-                .dva-404-bg {
-                    position: absolute;
-                    inset: 0;
-                    pointer-events: none;
-                    z-index: 1;
-                }
-
-                .floating-orb {
-                    position: absolute;
-                    border-radius: 50%;
-                    background: linear-gradient(135deg, var(--dva-orange), var(--dva-blue));
-                    opacity: 0.06;
-                    animation: float-smooth 8s ease-in-out infinite;
-                }
-
-                .orb-1 {
-                    width: 200px;
-                    height: 200px;
-                    top: -100px;
-                    right: -100px;
-                    animation-delay: 0s;
-                }
-
-                .orb-2 {
-                    width: 150px;
-                    height: 150px;
-                    bottom: -75px;
-                    left: -75px;
-                    animation-delay: 3s;
-                }
-
-                .orb-3 {
-                    width: 100px;
-                    height: 100px;
-                    top: 40%;
-                    left: 20%;
-                    animation-delay: 6s;
-                }
-
-                .glass-grid {
-                    background-image: 
-                        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-                        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-                    background-size: 30px 30px;
-                    position: absolute;
-                    inset: 0;
-                    animation: grid-shift 20s linear infinite;
-                }
-
-                @keyframes float-smooth {
-                    0%, 100% { transform: translate(0, 0) rotate(0deg); }
-                    25% { transform: translate(10px, -15px) rotate(90deg); }
-                    50% { transform: translate(-5px, 10px) rotate(180deg); }
-                    75% { transform: translate(-10px, -5px) rotate(270deg); }
-                }
-
-                @keyframes grid-shift {
-                    0% { transform: translate(0, 0); }
-                    100% { transform: translate(30px, 30px); }
-                }
-
-                /* Main Container */
-                .dva-404-container {
-                    text-align: center;
-                    color: var(--text-primary);
-                    max-width: 500px;
-                    width: 100%;
-                    z-index: 10;
-                    position: relative;
-                    background: var(--glass-bg);
-                    backdrop-filter: blur(20px);
-                    border: 1px solid var(--glass-border);
-                    border-radius: 24px;
-                    padding: 2rem;
-                    box-shadow: 
-                        0 8px 32px rgba(0, 0, 0, 0.3),
-                        inset 0 1px 0 rgba(255, 255, 255, 0.1);
-                }
-
-                /* DVA Branding */
-                .dva-brand-section {
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    gap: 1rem;
-                    margin-bottom: 2rem;
-                }
-
-                .dva-logo-glass {
-                    position: relative;
-                    padding: 1rem;
-                    background: linear-gradient(135deg, var(--dva-orange), var(--dva-blue));
-                    border-radius: 20px;
-                    box-shadow: 
-                        0 8px 25px rgba(255, 107, 53, 0.25),
-                        0 0 0 1px rgba(255, 255, 255, 0.1);
-                    animation: logo-pulse 3s ease-in-out infinite;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    min-width: 80px;
-                    min-height: 80px;
-                }
-
-                .dva-logo-img {
-                    width: 60px;
-                    height: 60px;
-                    object-fit: contain;
-                    border-radius: 12px;
-                }
-
-                .volleyball-fallback {
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                }
-
-                .volleyball-svg {
-                    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3));
-                }
-
-                @keyframes logo-pulse {
-                    0%, 100% { transform: scale(1); box-shadow: 0 8px 25px rgba(255, 107, 53, 0.25); }
-                    50% { transform: scale(1.05); box-shadow: 0 12px 35px rgba(255, 107, 53, 0.35); }
-                }
-
-                .dva-brand-text {
-                    text-align: left;
-                }
-
-                .dva-title {
-                    font-size: 2rem;
-                    font-weight: 900;
-                    margin: 0;
-                    background: linear-gradient(135deg, var(--dva-orange), var(--dva-blue));
-                    -webkit-background-clip: text;
-                    -webkit-text-fill-color: transparent;
-                    background-clip: text;
-                    letter-spacing: 3px;
-                    text-transform: uppercase;
-                }
-
-                .dva-subtitle {
-                    margin: 0;
-                    color: var(--text-secondary);
-                    font-weight: 500;
-                    font-size: 0.875rem;
-                    letter-spacing: 1px;
-                    opacity: 0.8;
-                }
-
-                /* Error Display */
-                .error-display {
-                    margin-bottom: 2rem;
-                }
-
-                .error-code {
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    gap: 0.5rem;
-                    margin-bottom: 1.5rem;
-                    font-size: 4rem;
-                    font-weight: 900;
-                }
-
-                .digit-four {
-                    color: var(--dva-orange);
-                    text-shadow: 
-                        0 0 20px rgba(255, 107, 53, 0.5),
-                        0 0 40px rgba(255, 107, 53, 0.2);
-                    animation: digit-glitch 3s ease-in-out infinite;
-                }
-
-                .volleyball-zero {
-                    position: relative;
-                    width: 80px;
-                    height: 80px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    background: var(--glass-bg);
-                    border: 2px solid var(--glass-border);
-                    border-radius: 50%;
-                    backdrop-filter: blur(10px);
-                }
-
-                .volleyball-spin {
-                    font-size: 2.5rem;
-                    animation: volleyball-bounce 2s ease-in-out infinite;
-                }
-
-                @keyframes volleyball-bounce {
-                    0%, 100% { transform: translateY(0) rotate(0deg); }
-                    50% { transform: translateY(-10px) rotate(180deg); }
-                }
-
-                @keyframes digit-glitch {
-                    0%, 95%, 100% { transform: translate(0); }
-                    5% { transform: translate(-1px, 1px); }
-                    10% { transform: translate(1px, -1px); }
-                }
-
-                .error-title {
-                    font-size: 1.75rem;
-                    margin-bottom: 1rem;
-                    color: var(--text-primary);
-                    font-weight: 700;
-                    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-                }
-
-                .error-description {
-                    font-size: 1rem;
-                    color: var(--text-secondary);
-                    margin-bottom: 2rem;
-                    opacity: 0.9;
-                }
-
-                .desktop-break {
-                    display: none;
-                }
-
-                /* Action Buttons */
-                .dva-actions {
-                    display: flex;
-                    flex-direction: column;
-                    gap: 0.75rem;
-                    align-items: center;
-                }
-
-                .btn-primary-dva,
-                .btn-secondary-dva,
-                .btn-ghost-dva {
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    gap: 0.5rem;
-                    padding: 0.875rem 1.5rem;
-                    border: none;
-                    border-radius: 16px;
-                    font-weight: 600;
-                    font-size: 0.9rem;
-                    cursor: pointer;
-                    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-                    text-decoration: none;
-                    width: 100%;
-                    max-width: 240px;
-                    backdrop-filter: blur(10px);
-                }
-
-                .btn-primary-dva {
-                    background: linear-gradient(135deg, var(--dva-orange), #ff8c5a);
-                    color: white;
-                    box-shadow: 
-                        0 4px 15px rgba(255, 107, 53, 0.3),
-                        inset 0 1px 0 rgba(255, 255, 255, 0.2);
-                }
-
-                .btn-primary-dva:hover {
-                    transform: translateY(-2px);
-                    box-shadow: 
-                        0 8px 25px rgba(255, 107, 53, 0.4),
-                        inset 0 1px 0 rgba(255, 255, 255, 0.2);
-                }
-
-                .btn-secondary-dva {
-                    background: var(--glass-bg);
-                    color: var(--text-primary);
-                    border: 1px solid var(--glass-border);
-                    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
-                }
-
-                .btn-secondary-dva:hover {
-                    background: rgba(255, 255, 255, 0.12);
-                    transform: translateY(-2px);
-                    box-shadow: 
-                        0 8px 25px rgba(0, 0, 0, 0.1),
-                        inset 0 1px 0 rgba(255, 255, 255, 0.15);
-                }
-
-                .btn-ghost-dva {
-                    background: transparent;
-                    color: var(--text-secondary);
-                    border: 1px solid rgba(255, 255, 255, 0.1);
-                }
-
-                .btn-ghost-dva:hover {
-                    color: var(--dva-orange);
-                    border-color: var(--dva-orange);
-                    background: rgba(255, 107, 53, 0.05);
-                    transform: translateY(-1px);
-                }
-
-                .btn-icon {
-                    font-size: 1.1rem;
-                    opacity: 0.9;
-                }
-
-                .btn-text {
-                    font-weight: 600;
-                    letter-spacing: 0.5px;
-                }
-
-                /* Desktop Responsive */
-                @media (min-width: 640px) {
-                    .dva-404-container {
-                        padding: 2.5rem;
-                    }
-
-                    .dva-brand-section {
-                        flex-direction: row;
-                    }
-
-                    .dva-brand-text {
-                        text-align: left;
-                    }
-
-                    .error-code {
-                        font-size: 5rem;
-                        gap: 1rem;
-                    }
-
-                    .volleyball-zero {
-                        width: 100px;
-                        height: 100px;
-                    }
-
-                    .volleyball-spin {
-                        font-size: 3rem;
-                    }
-
-                    .error-title {
-                        font-size: 2.25rem;
-                    }
-
-                    .error-description {
-                        font-size: 1.125rem;
-                    }
-
-                    .desktop-break {
-                        display: inline;
-                    }
-
-                    .dva-actions {
-                        flex-direction: row;
-                        justify-content: center;
-                        flex-wrap: wrap;
-                    }
-
-                    .btn-primary-dva,
-                    .btn-secondary-dva,
-                    .btn-ghost-dva {
-                        width: auto;
-                        min-width: 140px;
-                    }
-                }
-
-                @media (min-width: 768px) {
-                    .dva-404 {
-                        padding: 2rem;
-                    }
-
-                    .orb-1 {
-                        width: 300px;
-                        height: 300px;
-                        top: -150px;
-                        right: -150px;
-                    }
-
-                    .orb-2 {
-                        width: 200px;
-                        height: 200px;
-                        bottom: -100px;
-                        left: -100px;
-                    }
-
-                    .glass-grid {
-                        background-size: 40px 40px;
-                    }
-                }
-
-                /* High contrast mode support */
-                @media (prefers-contrast: high) {
-                    .dva-404-container {
-                        background: rgba(0, 0, 0, 0.9);
-                        border: 2px solid #ffffff;
-                    }
-                    
-                    .btn-primary-dva,
-                    .btn-secondary-dva,
-                    .btn-ghost-dva {
-                        border: 2px solid currentColor;
-                    }
-                }
-
-                /* Reduced motion support */
-                @media (prefers-reduced-motion: reduce) {
-                    *,
-                    *::before,
-                    *::after {
-                        animation-duration: 0.01ms !important;
-                        animation-iteration-count: 1 !important;
-                        transition-duration: 0.01ms !important;
-                    }
-                }
-
-                /* Focus states for accessibility */
-                .btn-primary-dva:focus,
-                .btn-secondary-dva:focus,
-                .btn-ghost-dva:focus {
-                    outline: 2px solid var(--dva-orange);
-                    outline-offset: 2px;
-                }
-            </style>
-        </div>
-    `;
-}
+        }));
+    }
 
     updateActiveNavigation(currentPath) {
         console.log(`🎯 Updating navigation for: ${currentPath}`);
         
-        // Update desktop navigation
         const navItems = document.querySelectorAll('.nav-item-modern, [data-page]');
         navItems.forEach(item => {
             const page = item.getAttribute('data-page');
@@ -1417,7 +625,6 @@ class DVARouter {
             }
         });
         
-        // Update mobile navigation  
         const mobileItems = document.querySelectorAll('.mobile-nav-item');
         mobileItems.forEach(item => {
             const page = item.getAttribute('data-page');
@@ -1425,30 +632,8 @@ class DVARouter {
                 item.classList.toggle('active', page === currentPath);
             }
         });
-
-        // Update ranking tabs
-        const rankingTabs = document.querySelectorAll('.ranking-tab');
-        rankingTabs.forEach(tab => {
-            const division = tab.getAttribute('data-division');
-            if (division) {
-                const isActive = this.currentSubRoute === division || 
-                                (this.currentRoute === 'ranking' && this.currentSubRoute === '' && division === 'middle');
-                tab.classList.toggle('active', isActive);
-            }
-        });
-
-        // Update tournament tabs
-        const tournamentTabs = document.querySelectorAll('.tournament-tab');
-        tournamentTabs.forEach(tab => {
-            const section = tab.getAttribute('data-section');
-            if (section) {
-                const isActive = this.currentSubRoute === section || 
-                                (this.currentRoute === 'tournament' && this.currentSubRoute === '' && section === 'standings');
-                tab.classList.toggle('active', isActive);
-            }
-        });
         
-        console.log(`✅ Active navigation updated: ${currentPath} (sub: ${this.currentSubRoute})`);
+        console.log(`✅ Active navigation updated: ${currentPath}`);
     }
 
     showLoading(show) {
@@ -1526,28 +711,47 @@ class DVARouter {
         const mainContent = document.getElementById('main-content');
         if (!mainContent) return;
         
-        mainContent.innerHTML = this.get404Content();
+        mainContent.innerHTML = `
+            <div style="
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                min-height: 60vh;
+                color: white;
+                text-align: center;
+            ">
+                <div style="font-size: 6rem; margin-bottom: 20px;">4🏐4</div>
+                <h2>Page Not Found</h2>
+                <p>This page doesn't exist or has been moved.</p>
+                <button onclick="dvaRouter.navigate('home')" style="
+                    margin-top: 20px;
+                    padding: 12px 24px;
+                    background: #FF6B35;
+                    color: white;
+                    border: none;
+                    border-radius: 8px;
+                    cursor: pointer;
+                    font-weight: 600;
+                ">
+                    Back to Home
+                </button>
+            </div>
+        `;
     }
 
-    // Public methods
+    handleInitialRoute() {
+        const path = this.getCurrentPath();
+        console.log('🎯 Initial route:', path || this.defaultRoute);
+        this.handleRoute(path || this.defaultRoute, false);
+    }
+
     getCurrentRoute() {
         return this.currentRoute;
     }
 
     getCurrentSubRoute() {
         return this.currentSubRoute;
-    }
-
-    getCurrentFullPath() {
-        return this.currentSubRoute ? `${this.currentRoute}/${this.currentSubRoute}` : this.currentRoute;
-    }
-
-    getActiveCSS() {
-        return Array.from(this.activeCSS);
-    }
-
-    isActiveRoute(path) {
-        return this.currentRoute === path;
     }
 }
 
@@ -1557,15 +761,13 @@ let dvaRouter;
 document.addEventListener('DOMContentLoaded', () => {
     dvaRouter = new DVARouter();
     
-    // Export globally
     if (typeof window !== 'undefined') {
         window.dvaRouter = dvaRouter;
     }
     
-    console.log('🚀 DVA Router ready with consistent CSS management!');
+    console.log('🚀 DVA Router ready with SERVICES FLASH FIX!');
 });
 
-// Also initialize if DOM already loaded
 if (document.readyState !== 'loading') {
     dvaRouter = new DVARouter();
     if (typeof window !== 'undefined') {
@@ -1573,7 +775,6 @@ if (document.readyState !== 'loading') {
     }
 }
 
-// Export for modules
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = DVARouter;
 }

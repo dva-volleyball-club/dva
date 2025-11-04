@@ -91,7 +91,7 @@
 /* ===== SEARCH SECTION ===== */
 
 .dva-news .news-search-section {
-    padding: 40px 0;
+    padding: 30px 0;
     background: rgba(0, 0, 0, 0.1);
 }
 
@@ -99,6 +99,7 @@
     max-width: 600px;
     margin: 0 auto;
     position: relative;
+    padding: 0 16px;
 }
 
 .dva-news .search-box {
@@ -106,22 +107,34 @@
     display: flex;
     align-items: center;
     background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    border: 2px solid rgba(255, 255, 255, 0.15);
     border-radius: 16px;
     padding: 4px;
     transition: var(--transition-smooth);
+    /* ✅ Ensure proper sizing */
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    min-height: 56px;
 }
 
 .dva-news .search-box:focus-within {
     background: rgba(255, 255, 255, 0.12);
-    border-color: rgba(255, 107, 53, 0.4);
+    border-color: rgba(255, 107, 53, 0.5);
     box-shadow: 0 0 20px rgba(255, 107, 53, 0.2);
+    transform: translateY(-1px);
 }
 
 .dva-news .search-icon {
-    padding: 16px 20px;
+    padding: 16px;
     color: var(--dva-primary);
     font-size: 1.2rem;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
 }
 
 .dva-news .news-search-input {
@@ -131,12 +144,24 @@
     outline: none;
     color: var(--syncsoft-white);
     font-size: 1rem;
-    padding: 16px 0;
-    placeholder-color: rgba(255, 255, 255, 0.5);
+    padding: 16px 8px;
+    /* ✅ Better mobile placeholder handling */
+    min-width: 0;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .dva-news .news-search-input::placeholder {
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.6) !important;
+    font-size: 1rem;
+    font-weight: 400;
+    /* ✅ Better text rendering */
+    opacity: 1;
+    transition: all 0.3s ease;
+}
+.dva-news .news-search-input:focus::placeholder {
+    color: rgba(255, 255, 255, 0.4) !important;
+    transform: translateX(4px);
 }
 
 .dva-news .search-clear-btn {
@@ -152,6 +177,7 @@
     cursor: pointer;
     margin-right: 12px;
     transition: var(--transition-smooth);
+    flex-shrink: 0;
 }
 
 .dva-news .search-clear-btn:hover {
@@ -165,6 +191,7 @@
     margin-top: 16px;
     color: var(--syncsoft-gray);
     font-size: 0.9rem;
+    padding: 0 16px;
 }
 
 /* ===== NEWS GRID ===== */
@@ -485,74 +512,245 @@
 }
 
 @media (max-width: 768px) {
-    .dva-news .hero-title {
-        font-size: 2.8rem;
-    }
-    
-    .dva-news .hero-description {
-        font-size: 1.1rem;
-    }
-    
-    .dva-news .news-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-    
-    .dva-news .news-card-content {
-        padding: 20px;
-    }
-    
-    .dva-news .news-meta {
-        gap: 12px;
-    }
-    
-    .dva-news .news-meta span {
-        font-size: 0.8rem;
-    }
-    
-    .dva-news .news-title {
-        font-size: 1.2rem;
-    }
-    
-    .dva-news .pagination-btn {
-        padding: 10px 12px;
-        font-size: 0.9rem;
+    .dva-news .news-search-container {
+        padding: 0 20px;
     }
     
     .dva-news .search-box {
-        margin: 0 16px;
+        border-radius: 14px;
+        min-height: 52px;
+    }
+    
+    .dva-news .search-icon {
+        padding: 14px;
+        font-size: 1.1rem;
+        width: 44px;
+        height: 44px;
+    }
+    
+    .dva-news .news-search-input {
+        font-size: 0.95rem;
+        padding: 14px 6px;
+    }
+    
+    .dva-news .news-search-input::placeholder {
+        font-size: 0.95rem !important;
     }
 }
 
+/* ✅ CRITICAL: Mobile Phones - 480px and below */
 @media (max-width: 480px) {
-    .dva-news .hero-title {
-        font-size: 2.2rem;
+    .dva-news .news-search-section {
+        padding: 20px 0;
     }
     
-    .dva-news .news-card-image {
-        height: 200px;
+    .dva-news .news-search-container {
+        padding: 0 12px !important;
+        max-width: 100%;
     }
     
-    .dva-news .news-card-content {
-        padding: 16px;
+    .dva-news .search-box {
+        border-radius: 12px !important;
+        min-height: 48px !important;
+        padding: 3px !important;
+        /* ✅ Prevent overflow */
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow: hidden !important;
     }
     
-    .dva-news .news-footer {
-        flex-direction: column;
-        gap: 12px;
-        align-items: flex-start;
+    .dva-news .search-icon {
+        padding: 10px !important;
+        font-size: 1rem !important;
+        width: 36px !important;
+        height: 36px !important;
+        flex-shrink: 0 !important;
     }
     
-    .dva-news .read-more-btn {
-        align-self: flex-end;
+    .dva-news .news-search-input {
+        font-size: 0.85rem !important;
+        padding: 12px 6px !important;
+        /* ✅ Critical mobile fixes */
+        min-width: 0 !important;
+        width: 100% !important;
+        flex: 1 !important;
+        box-sizing: border-box !important;
+        /* ✅ Prevent text overflow */
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
     }
     
-    .dva-news .news-meta {
-        flex-direction: column;
-        gap: 8px;
+    /* ✅ MOBILE PLACEHOLDER OPTIMIZATION */
+    .dva-news .news-search-input::placeholder {
+        color: rgba(255, 255, 255, 0.7) !important;
+        font-size: 0.82rem !important;
+        font-weight: 400 !important;
+        /* ✅ Better mobile readability */
+        opacity: 1 !important;
+        /* ✅ Prevent text cutoff */
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        max-width: 100% !important;
+    }
+    
+    .dva-news .news-search-input:focus::placeholder {
+        color: rgba(255, 255, 255, 0.5) !important;
+        transform: translateX(2px);
+    }
+    
+    .dva-news .search-clear-btn {
+        width: 28px !important;
+        height: 28px !important;
+        margin-right: 8px !important;
+        border-radius: 6px !important;
+    }
+    
+    .dva-news .search-results-count {
+        font-size: 0.8rem;
+        margin-top: 12px;
+        padding: 0 12px;
+    }
+}
+/* ✅ EXTRA SMALL MOBILE - 375px and below */
+@media (max-width: 375px) {
+    .dva-news .news-search-container {
+        padding: 0 10px !important;
+    }
+    
+    .dva-news .search-box {
+        min-height: 44px !important;
+        border-width: 1px !important;
+    }
+    
+    .dva-news .search-icon {
+        padding: 8px !important;
+        width: 32px !important;
+        height: 32px !important;
+        font-size: 0.9rem !important;
+    }
+    
+    .dva-news .news-search-input {
+        font-size: 0.8rem !important;
+        padding: 10px 4px !important;
+    }
+    
+    /* ✅ ULTRA MOBILE PLACEHOLDER */
+    .dva-news .news-search-input::placeholder {
+        font-size: 0.78rem !important;
+        color: rgba(255, 255, 255, 0.8) !important;
+        /* ✅ Shorter placeholder text for ultra mobile */
+        content: "Tìm tin tức..." !important;
+    }
+    
+    .dva-news .search-clear-btn {
+        width: 24px !important;
+        height: 24px !important;
+        margin-right: 6px !important;
     }
 }
 
+/* ✅ LANDSCAPE MODE FIXES */
+@media (max-height: 500px) and (orientation: landscape) {
+    .dva-news .news-search-section {
+        padding: 15px 0;
+    }
+    
+    .dva-news .search-box {
+        min-height: 40px;
+    }
+    
+    .dva-news .search-icon {
+        width: 32px;
+        height: 32px;
+        padding: 8px;
+    }
+    
+    .dva-news .news-search-input {
+        padding: 10px 6px;
+        font-size: 0.85rem;
+    }
+}
+/* ✅ HIGH DPI DISPLAYS */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .dva-news .news-search-input::placeholder {
+        /* ✅ Better text rendering on high DPI */
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+}
+
+/* ✅ TOUCH DEVICE OPTIMIZATIONS */
+@media (pointer: coarse) {
+    .dva-news .search-box {
+        /* ✅ Larger touch targets */
+        min-height: 50px;
+    }
+    
+    .dva-news .news-search-input {
+        /* ✅ Better touch interaction */
+        font-size: 16px; /* Prevents zoom on iOS */
+        padding: 15px 8px;
+    }
+    
+    .dva-news .search-icon {
+        /* ✅ Larger touch area */
+        width: 48px;
+        height: 48px;
+        padding: 12px;
+    }
+}
+/* ✅ iOS SPECIFIC FIXES */
+@supports (-webkit-touch-callout: none) {
+    .dva-news .news-search-input {
+        /* ✅ Fix iOS input styling */
+        -webkit-appearance: none;
+        border-radius: 0;
+    }
+    
+    .dva-news .news-search-input::placeholder {
+        /* ✅ Fix iOS placeholder opacity */
+        opacity: 1 !important;
+        -webkit-text-fill-color: rgba(255, 255, 255, 0.7);
+    }
+    
+    .dva-news .search-box {
+        /* ✅ Fix iOS border rendering */
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+    }
+}
+
+/* ✅ ANDROID SPECIFIC FIXES */
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+    .dva-news .news-search-input::placeholder {
+        /* ✅ Better Android placeholder */
+        color: rgba(255, 255, 255, 0.7) !important;
+        opacity: 1 !important;
+    }
+}
+
+/* ✅ FOCUS ACCESSIBILITY */
+.dva-news .news-search-input:focus {
+    /* ✅ Better focus indication */
+    outline: 2px solid rgba(255, 107, 53, 0.5);
+    outline-offset: -2px;
+}
+
+/* ✅ SEARCH LOADING STATE */
+.dva-news .search-box.loading {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+.dva-news .search-box.loading .search-icon {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
 /* ===== LOADING STATES ===== */
 
 .dva-news .news-card.loading {

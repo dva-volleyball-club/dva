@@ -1,9 +1,9 @@
 /**
- * DVA Volleyball Tournament Module Styles - FINAL PERFECT VERSION
+ * DVA Volleyball Tournament Module Styles - MOBILE OPTIMIZED VERSION
  */
 
 /* =============================================================================
-   BASE STYLES
+   BASE STYLES WITH MOBILE BOX-SIZING FIX
    ============================================================================= */
 
 .dva-tournament {
@@ -14,10 +14,18 @@
     overflow-x: hidden;
 }
 
+/* ✅ CRITICAL: Box-sizing for all tournament elements */
+.dva-tournament *,
+.dva-tournament *::before,
+.dva-tournament *::after {
+    box-sizing: border-box !important;
+}
+
 .dva-tournament .container {
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 20px;
+    box-sizing: border-box;
 }
 
 /* =============================================================================
@@ -87,6 +95,7 @@
     border-radius: 20px;
     font-size: 0.9rem;
     color: rgba(255, 255, 255, 0.9);
+    box-sizing: border-box;
 }
 
 /* =============================================================================
@@ -107,6 +116,7 @@
     border-radius: 16px;
     border: 1px solid rgba(255, 255, 255, 0.1);
     flex-wrap: wrap;
+    box-sizing: border-box;
 }
 
 .tournament-tab {
@@ -122,6 +132,7 @@
     transition: all 0.3s ease;
     font-family: inherit;
     text-decoration: none;
+    box-sizing: border-box;
 }
 
 .tournament-tab:hover {
@@ -137,6 +148,7 @@
 
 .tab-icon {
     font-size: 1.5rem;
+    flex-shrink: 0;
 }
 
 .tab-name {
@@ -217,6 +229,7 @@
 
 .standings-container {
     width: 100%;
+    box-sizing: border-box;
 }
 
 .standings-grid {
@@ -235,6 +248,8 @@
     border-radius: 16px;
     transition: all 0.3s ease;
     position: relative;
+    box-sizing: border-box;
+    width: 100%;
 }
 
 .standing-card:hover {
@@ -264,6 +279,7 @@
     align-items: center;
     gap: 8px;
     min-width: 80px;
+    flex-shrink: 0;
 }
 
 .position-number {
@@ -282,6 +298,7 @@
     align-items: center;
     gap: 16px;
     flex: 1;
+    min-width: 0;
 }
 
 .team-logo {
@@ -300,12 +317,14 @@
 
 .team-details {
     flex: 1;
+    min-width: 0;
 }
 
 .team-name {
     font-size: 1.3rem;
     font-weight: 700;
     margin: 0 0 8px 0;
+    word-wrap: break-word;
 }
 
 .team-meta {
@@ -319,6 +338,7 @@
 .team-stats {
     display: flex;
     gap: 24px;
+    flex-shrink: 0;
 }
 
 .stat-item {
@@ -359,6 +379,7 @@
     width: 12px;
     height: 12px;
     border-radius: 50%;
+    flex-shrink: 0;
 }
 
 /* =============================================================================
@@ -367,6 +388,7 @@
 
 .results-container {
     width: 100%;
+    box-sizing: border-box;
 }
 
 .stage-section {
@@ -381,6 +403,7 @@
     padding: 16px 24px;
     background: rgba(255, 255, 255, 0.05);
     border-radius: 12px;
+    box-sizing: border-box;
 }
 
 .stage-title {
@@ -410,6 +433,7 @@
     border-radius: 16px;
     padding: 20px;
     transition: all 0.3s ease;
+    box-sizing: border-box;
 }
 
 .match-card:hover {
@@ -451,6 +475,7 @@
     align-items: center;
     gap: 8px;
     flex: 1;
+    min-width: 0;
 }
 
 .match-team.winner {
@@ -463,11 +488,13 @@
     height: 32px;
     border-radius: 50%;
     object-fit: cover;
+    flex-shrink: 0;
 }
 
 .team-name-short {
     font-weight: 600;
     font-size: 0.9rem;
+    word-wrap: break-word;
 }
 
 .team-score {
@@ -475,12 +502,14 @@
     font-weight: 700;
     min-width: 20px;
     text-align: center;
+    flex-shrink: 0;
 }
 
 .match-vs {
     font-size: 0.8rem;
     color: rgba(255, 255, 255, 0.5);
     padding: 0 16px;
+    flex-shrink: 0;
 }
 
 .match-details {
@@ -531,6 +560,7 @@
 
 .awards-container {
     width: 100%;
+    box-sizing: border-box;
 }
 
 .awards-section {
@@ -557,6 +587,7 @@
     position: relative;
     padding: 50px 20px 80px 20px;
     z-index: 2;
+    box-sizing: border-box;
 }
 
 /* PODIUM BASE */
@@ -595,8 +626,8 @@
 /* THIRD PLACE - INCREASED HEIGHT TO FIT CONTENT */
 .team-award-card[data-rank="3"] {
     width: 250px;
-    height: 400px; /* INCREASED from 360px to 400px */
-    padding: 20px 18px 45px 18px; /* INCREASED bottom padding from 35px to 45px */
+    height: 400px;
+    padding: 20px 18px 45px 18px;
     border-color: #CD7F32;
     background: linear-gradient(135deg, rgba(205, 127, 50, 0.2) 0%, rgba(255, 255, 255, 0.05) 100%);
     box-shadow: 0 0 40px rgba(205, 127, 50, 0.4), 0 20px 60px rgba(0, 0, 0, 0.4);
@@ -655,12 +686,12 @@
     display: block;
     text-shadow: 0 0 30px currentColor;
     filter: drop-shadow(0 0 10px currentColor);
-    animation: gentleGlow 4s ease-in-out infinite alternate; /* GENTLE ANIMATION */
+    animation: gentleGlow 4s ease-in-out infinite alternate;
 }
 
 .team-award-card[data-rank="1"] .award-icon {
     font-size: 4.5rem;
-    animation: championGentleGlow 5s ease-in-out infinite alternate; /* GENTLE CHAMPION GLOW */
+    animation: championGentleGlow 5s ease-in-out infinite alternate;
 }
 
 /* GENTLE ANIMATIONS - NO SHAKING */
@@ -769,6 +800,7 @@
     line-height: 1.2;
     text-align: center;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    word-wrap: break-word;
 }
 
 .team-award-card[data-rank="1"] .award-team-name {
@@ -810,7 +842,7 @@
 }
 
 .team-award-card[data-rank="3"] .award-prize {
-    bottom: 18px; /* MORE SPACE for third place */
+    bottom: 18px;
 }
 
 /* RANK NUMBERS */
@@ -878,6 +910,7 @@
     position: relative;
     -webkit-backdrop-filter: blur(5px);
     backdrop-filter: blur(5px);
+    box-sizing: border-box;
 }
 
 .individual-award-card[data-special="true"] {
@@ -921,10 +954,13 @@
     display: flex;
     align-items: center;
     gap: 12px;
+    min-width: 0;
+    flex: 1;
 }
 
 .award-icon-individual {
     font-size: 1.8rem;
+    flex-shrink: 0;
 }
 
 .award-name {
@@ -932,6 +968,7 @@
     font-weight: 700;
     color: white;
     line-height: 1.3;
+    word-wrap: break-word;
 }
 
 .award-rank {
@@ -941,6 +978,7 @@
     padding: 4px 10px;
     border-radius: 12px;
     font-weight: 600;
+    flex-shrink: 0;
 }
 
 .award-player {
@@ -975,6 +1013,7 @@
 
 .player-info {
     flex: 1;
+    min-width: 0;
 }
 
 .player-name {
@@ -983,6 +1022,7 @@
     color: white;
     margin: 0 0 8px 0;
     line-height: 1.2;
+    word-wrap: break-word;
 }
 
 .individual-award-card[data-special="true"] .player-name {
@@ -996,6 +1036,7 @@
     font-size: 0.95rem;
     font-weight: 600;
     margin-bottom: 10px;
+    word-wrap: break-word;
 }
 
 .player-stats {
@@ -1026,7 +1067,541 @@
 }
 
 /* =============================================================================
-   RESPONSIVE DESIGN
+   MOBILE CRITICAL FIXES - SCREENS < 450px
+   ============================================================================= */
+
+/* ✅ MOBILE BREAKPOINT: 450px and below */
+@media (max-width: 450px) {
+    .dva-tournament {
+        padding: 20px 0 !important;
+    }
+    
+    .dva-tournament .container {
+        padding: 0 12px !important;
+    }
+    
+    /* ===== HERO SECTION FIXES ===== */
+    .tournament-hero {
+        margin-bottom: 30px !important;
+        padding: 0 5px !important;
+    }
+    
+    .tournament-title {
+        font-size: 1.8rem !important;
+        margin-bottom: 8px !important;
+    }
+    
+    .tournament-subtitle {
+        font-size: 1rem !important;
+        margin-bottom: 12px !important;
+    }
+    
+    .tournament-description {
+        font-size: 0.9rem !important;
+        padding: 0 5px !important;
+        line-height: 1.5 !important;
+        margin-bottom: 15px !important;
+    }
+    
+    .tournament-info {
+        gap: 8px !important;
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+    
+    .info-item {
+        padding: 6px 12px !important;
+        font-size: 0.8rem !important;
+        width: auto !important;
+        min-width: 120px !important;
+    }
+    
+    /* ===== TOURNAMENT TABS FIXES ===== */
+    .tournament-tabs-section {
+        margin-bottom: 20px !important;
+        padding: 0 5px !important;
+    }
+    
+    .tournament-tabs {
+        flex-direction: column !important;
+        gap: 8px !important;
+        padding: 8px !important;
+        width: 100% !important;
+    }
+    
+    .tournament-tab {
+        width: 100% !important;
+        padding: 12px 16px !important;
+        justify-content: center !important;
+        gap: 8px !important;
+    }
+    
+    .tab-icon {
+        font-size: 1.2rem !important;
+    }
+    
+    .tab-name {
+        font-size: 0.9rem !important;
+    }
+    
+    .tab-desc {
+        font-size: 0.75rem !important;
+    }
+    
+    /* ===== SECTION HEADERS FIXES ===== */
+    .section-title {
+        font-size: 1.6rem !important;
+        padding: 0 10px !important;
+    }
+    
+    .section-subtitle {
+        font-size: 0.85rem !important;
+        padding: 0 10px !important;
+    }
+    
+    .awards-section-title {
+        font-size: 1.4rem !important;
+        padding: 0 10px !important;
+    }
+    
+    /* ===== STANDINGS FIXES ===== */
+    .standing-card {
+        flex-direction: column !important;
+        text-align: center !important;
+        gap: 16px !important;
+        padding: 16px 12px !important;
+    }
+    
+    .standing-position {
+        min-width: auto !important;
+    }
+    
+    .position-number {
+        font-size: 1.5rem !important;
+    }
+    
+    .team-info {
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 12px !important;
+    }
+    
+    .team-logo {
+        width: 50px !important;
+        height: 50px !important;
+    }
+    
+    .team-name {
+        font-size: 1.1rem !important;
+        text-align: center !important;
+    }
+    
+    .team-meta {
+        text-align: center !important;
+        font-size: 0.8rem !important;
+    }
+    
+    .team-stats {
+        gap: 16px !important;
+        justify-content: center !important;
+    }
+    
+    .stat-value {
+        font-size: 1rem !important;
+    }
+    
+    .stat-label {
+        font-size: 0.7rem !important;
+    }
+    
+    .standings-legend {
+        gap: 12px !important;
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+    
+    .legend-item {
+        font-size: 0.8rem !important;
+    }
+    
+    /* ===== RESULTS FIXES ===== */
+    .stage-header {
+        flex-direction: column !important;
+        gap: 8px !important;
+        padding: 12px 16px !important;
+    }
+    
+    .stage-title {
+        font-size: 1.2rem !important;
+        text-align: center !important;
+    }
+    
+    .matches-grid {
+        grid-template-columns: 1fr !important;
+        gap: 12px !important;
+    }
+    
+    .match-card {
+        padding: 16px 12px !important;
+    }
+    
+    .match-header {
+        flex-direction: column !important;
+        gap: 8px !important;
+        text-align: center !important;
+    }
+    
+    .match-teams {
+        flex-direction: column !important;
+        gap: 12px !important;
+    }
+    
+    .match-team {
+        justify-content: center !important;
+        gap: 6px !important;
+    }
+    
+    .team-logo-small {
+        width: 28px !important;
+        height: 28px !important;
+    }
+    
+    .team-name-short {
+        font-size: 0.8rem !important;
+    }
+    
+    .team-score {
+        font-size: 1rem !important;
+    }
+    
+    .match-vs {
+        display: none !important;
+    }
+    
+    .match-details {
+        font-size: 0.8rem !important;
+        text-align: center !important;
+    }
+    
+    /* ===== TEAM AWARDS MOBILE FIXES ===== */
+    .team-awards-grid {
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 20px !important;
+        padding: 20px 10px 40px 10px !important;
+        margin: 30px auto 60px auto !important;
+    }
+    
+    .team-award-card {
+        order: initial !important;
+        transform: none !important;
+        width: 260px !important;
+        height: auto !important;
+        min-height: 320px !important;
+        padding: 16px 12px 20px 12px !important;
+    }
+    
+    .team-award-card[data-rank="1"] {
+        width: 280px !important;
+        min-height: 340px !important;
+    }
+    
+    .team-award-card[data-rank="3"] {
+        min-height: 340px !important;
+    }
+    
+    .award-icon {
+        font-size: 2.5rem !important;
+    }
+    
+    .team-award-card[data-rank="1"] .award-icon {
+        font-size: 3rem !important;
+    }
+    
+    .award-title {
+        font-size: 1rem !important;
+        letter-spacing: 0.5px !important;
+    }
+    
+    .team-award-card[data-rank="1"] .award-title {
+        font-size: 1.1rem !important;
+    }
+    
+    .award-achievement {
+        font-size: 0.7rem !important;
+        margin-bottom: 12px !important;
+    }
+    
+    .award-team-logo {
+        width: 65px !important;
+        height: 65px !important;
+        margin-bottom: 10px !important;
+    }
+    
+    .team-award-card[data-rank="1"] .award-team-logo {
+        width: 75px !important;
+        height: 75px !important;
+    }
+    
+    .award-team-name {
+        font-size: 0.95rem !important;
+        margin-bottom: 10px !important;
+    }
+    
+    .team-award-card[data-rank="1"] .award-team-name {
+        font-size: 1.05rem !important;
+    }
+    
+    .award-prize {
+        position: relative !important;
+        bottom: auto !important;
+        left: auto !important;
+        transform: none !important;
+        margin-top: 12px !important;
+        font-size: 0.8rem !important;
+        padding: 8px 12px !important;
+    }
+    
+    .team-award-card[data-rank="1"] .award-prize {
+        font-size: 0.9rem !important;
+        padding: 10px 16px !important;
+    }
+    
+    /* ===== INDIVIDUAL AWARDS MOBILE FIXES ===== */
+    .individual-awards-grid {
+        grid-template-columns: 1fr !important;
+        gap: 16px !important;
+        margin-top: 30px !important;
+    }
+    
+    .individual-award-card {
+        padding: 16px 12px !important;
+    }
+    
+    .award-header {
+        flex-direction: column !important;
+        gap: 8px !important;
+        text-align: center !important;
+    }
+    
+    .award-header-left {
+        justify-content: center !important;
+        gap: 8px !important;
+    }
+    
+    .award-name {
+        font-size: 0.95rem !important;
+        text-align: center !important;
+    }
+    
+    .award-player {
+        flex-direction: column !important;
+        text-align: center !important;
+        gap: 12px !important;
+    }
+    
+    .player-avatar {
+        width: 55px !important;
+        height: 55px !important;
+    }
+    
+    .individual-award-card[data-special="true"] .player-avatar {
+        width: 65px !important;
+        height: 65px !important;
+    }
+    
+    .player-name {
+        font-size: 1.1rem !important;
+        text-align: center !important;
+    }
+    
+    .individual-award-card[data-special="true"] .player-name {
+        font-size: 1.2rem !important;
+    }
+    
+    .player-team {
+        font-size: 0.85rem !important;
+        text-align: center !important;
+    }
+    
+    .player-stats {
+        font-size: 0.8rem !important;
+        text-align: center !important;
+    }
+    
+    .award-prize-individual {
+        font-size: 0.9rem !important;
+        padding: 6px 12px !important;
+    }
+}
+
+/* ✅ ULTRA SMALL MOBILE: 375px and below */
+@media (max-width: 375px) {
+    .dva-tournament .container {
+        padding: 0 8px !important;
+    }
+    
+    .tournament-title {
+        font-size: 1.6rem !important;
+    }
+    
+    .tournament-description {
+        font-size: 0.85rem !important;
+    }
+    
+    .team-award-card {
+        width: 240px !important;
+        min-height: 300px !important;
+        padding: 14px 10px 18px 10px !important;
+    }
+    
+    .team-award-card[data-rank="1"] {
+        width: 260px !important;
+        min-height: 320px !important;
+    }
+    
+    .individual-award-card {
+        padding: 14px 10px !important;
+    }
+    
+    .standing-card {
+        padding: 14px 10px !important;
+    }
+    
+    .match-card {
+        padding: 14px 10px !important;
+    }
+}
+
+/* ✅ EXTRA SMALL: 320px and below */
+@media (max-width: 320px) {
+    .dva-tournament .container {
+        padding: 0 6px !important;
+    }
+    
+    .tournament-title {
+        font-size: 1.4rem !important;
+    }
+    
+    .section-title {
+        font-size: 1.4rem !important;
+    }
+    
+    .team-award-card {
+        width: 220px !important;
+        min-height: 280px !important;
+    }
+    
+    .team-award-card[data-rank="1"] {
+        width: 240px !important;
+        min-height: 300px !important;
+    }
+}
+
+/* ✅ LANDSCAPE MODE FOR SMALL SCREENS */
+@media (max-height: 500px) and (orientation: landscape) and (max-width: 450px) {
+    .dva-tournament {
+        padding: 15px 0 !important;
+    }
+    
+    .tournament-hero {
+        margin-bottom: 20px !important;
+    }
+    
+    .tournament-title {
+        font-size: 1.4rem !important;
+    }
+    
+    .section-title {
+        font-size: 1.3rem !important;
+    }
+    
+    .team-awards-grid {
+        flex-direction: row !important;
+        padding: 15px 10px 30px 10px !important;
+        margin: 20px auto 40px auto !important;
+    }
+    
+    .team-award-card {
+        width: 180px !important;
+        min-height: 240px !important;
+        padding: 12px 8px 16px 8px !important;
+    }
+}
+
+/* ✅ HIGH DPI MOBILE DISPLAYS */
+@media (max-width: 450px) and (-webkit-min-device-pixel-ratio: 2) {
+    .tournament-title,
+    .section-title {
+        -webkit-font-smoothing: antialiased !important;
+        -moz-osx-font-smoothing: grayscale !important;
+    }
+}
+
+/* ✅ TOUCH DEVICE OPTIMIZATIONS */
+@media (max-width: 450px) and (pointer: coarse) {
+    .tournament-tab {
+        min-height: 44px !important;
+        padding: 12px 16px !important;
+    }
+    
+    .standing-card,
+    .match-card,
+    .individual-award-card {
+        /* Larger touch targets */
+        padding: 18px 14px !important;
+    }
+}
+
+/* ✅ iOS SPECIFIC FIXES */
+@supports (-webkit-touch-callout: none) and (max-width: 450px) {
+    .team-award-card {
+        /* Fix iOS rendering issues */
+        -webkit-transform: translateZ(0) !important;
+        transform: translateZ(0) !important;
+    }
+}
+
+/* ✅ PREVENT HORIZONTAL SCROLL */
+@media (max-width: 450px) {
+    .dva-tournament {
+        overflow-x: hidden !important;
+        width: 100% !important;
+        max-width: 100vw !important;
+    }
+    
+    .dva-tournament .container,
+    .team-awards-grid,
+    .individual-awards-grid,
+    .standings-grid,
+    .matches-grid {
+        max-width: 100% !important;
+        overflow: hidden !important;
+    }
+}
+
+/* ✅ ANIMATION PERFORMANCE ON MOBILE */
+@media (max-width: 450px) {
+    .standing-card,
+    .match-card,
+    .individual-award-card,
+    .team-award-card {
+        /* Simpler animations for better performance */
+        transition: background-color 0.2s ease, border-color 0.2s ease !important;
+    }
+    
+    .standing-card:hover,
+    .match-card:hover,
+    .individual-award-card:hover,
+    .team-award-card:hover {
+        /* Disable complex transforms on mobile */
+        transform: none !important;
+        box-shadow: none !important;
+    }
+}
+
+/* =============================================================================
+   RESPONSIVE DESIGN - EXISTING BREAKPOINTS UPDATED
    ============================================================================= */
 
 @media (max-width: 1024px) {
@@ -1043,7 +1618,7 @@
         transform: none !important;
         width: 320px !important;
         height: auto !important;
-        min-height: 420px; /* INCREASED for third place */
+        min-height: 420px;
         position: relative;
     }
     
@@ -1053,10 +1628,9 @@
     }
     
     .team-award-card[data-rank="3"] {
-        min-height: 440px; /* EXTRA HEIGHT for third place on mobile */
+        min-height: 440px;
     }
     
-    /* MOBILE PRIZE POSITIONING */
     .award-prize {
         position: relative !important;
         bottom: auto !important;

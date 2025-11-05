@@ -751,11 +751,11 @@ bindSuccessEvents() {
                     message: '💬 Đang mở Zalo...'
                 },
                 facebook: {
-                    action: () => window.open('https://facebook.com/dva-volleyball'),
+                    action: () => window.open('https://www.facebook.com/profile.php?id=61552198143397'),
                     message: '📘 Đang mở Facebook...'
                 },
                 email: {
-                    action: () => window.open('mailto:dvavolleyballclub@gmail.com'),
+                    action: () => window.open('mailto:quocduyhoang42@gmail.com'),
                     message: '📧 Đang mở email...'
                 }
             };

@@ -192,7 +192,7 @@
                 }
             },
             {
-                id: 208,
+                id: 214,
                 name: "Beatriz Muramoto Padeti",
                 shortName: "BMP",
                 number: 227,
@@ -1251,17 +1251,17 @@
             },
             {
                 id: 25,
-                name: "Đoàn Nam Cường",
-                shortName: "DNC",
-                number: 11,
-                position: "Middle Blocker",
-                positionCode: "MB",
-                height: "183cm",
-                reachHeight: "290cm",
-                address: "Nam Định",
-                born: "1998",
-                age: 20,
-                avatar: "assets/images/players/advanced/HoangVietAnh.webp",
+                name: "Phan Tiến Nam",
+                shortName: "PTN",
+                number: 19,
+                position: "Outside Hitter",
+                positionCode: "OH",
+                height: "181cm",
+                reachHeight: "300cm",
+                address: "Phú Thọ",
+                born: "1999",
+                age: 26,
+                avatar: "assets/images/players/advanced/PhanTienNam.webp",
                 country: "Vietnam",
                 countryCode: "VN",
                 flag: "🇻🇳",
@@ -1279,8 +1279,69 @@
                     blocks: 45,
                     assists: 12
                 }
+            },
+            {
+                id: 26,
+                name: "Nguyễn Thế Anh",
+                shortName: "NTA",
+                number: 20,
+                position: "Outside Hitter",
+                positionCode: "OH",
+                height: "170cm",
+                reachHeight: "295cm",
+                address: "Vĩnh Phúc",
+                born: "1997",
+                age: 26,
+                avatar: "assets/images/players/advanced/NguyenTheAnh.webp",
+                country: "Vietnam",
+                countryCode: "VN",
+                flag: "🇻🇳",
+                isCaptain: false,
+                isViceCaptain: false,
+                team: "advanced",
+                status: "active",
+                joinedYear: 2023,
+                experience: 3,
+                stats: {
+                    matches: 42,
+                    wins: 28,
+                    points: 287,
+                    aces: 34,
+                    blocks: 45,
+                    assists: 12
+                }
+            },
+            {
+                id: 27,
+                name: "Nguyễn Văn Thắng",
+                shortName: "NVT",
+                number: 9,
+                position: "Middle Blocker",
+                positionCode: "MB",
+                height: "172cm",
+                reachHeight: "290cm",
+                address: "Hà Nam",
+                born: "1999",
+                age: 26,
+                avatar: "assets/images/players/advanced/NguyenVanThang.webp",
+                country: "Vietnam",
+                countryCode: "VN",
+                flag: "🇻🇳",
+                isCaptain: false,
+                isViceCaptain: false,
+                team: "advanced",
+                status: "active",
+                joinedYear: 2023,
+                experience: 3,
+                stats: {
+                    matches: 42,
+                    wins: 28,
+                    points: 287,
+                    aces: 34,
+                    blocks: 45,
+                    assists: 12
+                }
             }
-
 
         ]
     };

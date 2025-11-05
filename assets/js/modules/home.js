@@ -524,7 +524,7 @@ class HomeModule {
                 
                 <div class="simple-player-avatar">
                     <img src="${player.avatar}" alt="${player.name}" onerror="this.src='${fallbackSVG}'" class="player-image-simple">
-                    <div class="simple-player-number" style="background: ${positionColor}">${player.number}</div>
+                    
                 </div>
                 
                 <div class="simple-player-info">

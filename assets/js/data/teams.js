@@ -17,14 +17,14 @@ if (typeof window.teamsData === 'undefined') {
                     name: "Nguyễn Quang Hưng",
                     number: 9,
                     position: "Outside Hitter",
-                    avatar: "assets/images/players/middle/NguyenQuangHungg.webp"
+                    avatar: "assets/images/players/advanced/NguyenQuangHung.webp"
                 },
                 {
                     id: 2,
-                    name: "Phùng Trung Diễn",
+                    name: "Bùi Ngọc Chiến",
                     number: 25,
                     position: "Outside Hitter",
-                    avatar: "assets/images/players/advanced/Liuba.webp"
+                    avatar: "assets/images/players/advanced/BuiNgocChien.webp"
                 },
                 // 2 MIDDLE BLOCKERS
                 {
@@ -32,22 +32,22 @@ if (typeof window.teamsData === 'undefined') {
                     name: "Lê Hải Dương",
                     number: 4,
                     position: "Middle Blocker",
-                    avatar: "assets/images/players/advanced/JangWooheok.webp"
+                    avatar: "assets/images/players/advanced/LeHaiDuong.webp"
                 },
                 {
                     id: 4,
-                    name: "Đỗ Văn Đạt",
+                    name: "Đỗ Xuân Đạt",
                     number: 20,
                     position: "Middle Blocker",
-                    avatar: "assets/images/players/middle/DuongVanDaii.webp"
+                    avatar: "assets/images/players/advanced/DoXuanDat.webp"
                 },
                 // 1 OPPOSITE HITTER
                 {
                     id: 5,
-                    name: "Bùi Ngọc Chiến",
+                    name: "Lê Hoàng Xuân",
                     number: 6,
                     position: "Opposite Hitter",
-                    avatar: "assets/images/players/advanced/NeoJackson.webp"
+                    avatar: "assets/images/players/advanced/LeHoangXuan.webp"
                 },
                 // 1 SETTER
                 {
@@ -55,7 +55,7 @@ if (typeof window.teamsData === 'undefined') {
                     name: "Hoàng Quốc Duy",
                     number: 29,
                     position: "Setter",
-                    avatar: "assets/images/players/middle/HoangQuocDuy.webp",
+                    avatar: "assets/images/players/advanced/HoangQuocDuy.webp",
                     isCaptain: true
                 },
                 // 1 LIBERO
@@ -64,7 +64,7 @@ if (typeof window.teamsData === 'undefined') {
                     name: "Nguyễn Tùng Dương",
                     number: 20,
                     position: "Libero",
-                    avatar: "assets/images/players/advanced/ThanhBinh.webp",
+                    avatar: "assets/images/players/advanced/NguyenTungDuong.webp",
                     isLibero: true
                 }
             ]
@@ -82,7 +82,7 @@ if (typeof window.teamsData === 'undefined') {
                     name: "Bùi Tuấn Thành",
                     number: 27,
                     position: "Outside Hitter",
-                    avatar: "assets/images/players/middle/HaXuanQuann.webp"
+                    avatar: "assets/images/players/advanced/BuiTuanThanh.webp"
                 },
                 {
                     id: 9,
@@ -97,14 +97,14 @@ if (typeof window.teamsData === 'undefined') {
                     name: "Hoàng Quốc Khánh",
                     number: 24,
                     position: "Middle Blocker",
-                    avatar: "assets/images/players/middle/HoangQuocKhanh.webp"
+                    avatar: "assets/images/players/advanced/HoangQuocKhanh.webp"
                 },
                 {
                     id: 11,
                     name: "Dương Quang Khải",
                     number: 12,
                     position: "Middle Blocker",
-                    avatar: "assets/images/players/middle/DuongQuangKhai.webp"
+                    avatar: "assets/images/players/advanced/DuongQuangKhai.webp"
                 },
                 // 1 OPPOSITE HITTER
                 {
@@ -112,7 +112,7 @@ if (typeof window.teamsData === 'undefined') {
                     name: "Nông Đức Trưởng",
                     number: 8,
                     position: "Opposite Hitter",
-                    avatar: "assets/images/players/middle/NongDucTruong.webp"
+                    avatar: "assets/images/players/advanced/NongDucTruong.webp"
                 },
                 // 1 SETTER
                 {
@@ -120,7 +120,7 @@ if (typeof window.teamsData === 'undefined') {
                     name: "Trịnh Duy Đông",
                     number: 3,
                     position: "Setter",
-                    avatar: "assets/images/players/middle/LeMinhDuc.webp",
+                    avatar: "assets/images/players/advanced/TrinhDuyDong.webp",
                     isCaptain: true
                 },
                 // 1 LIBERO
@@ -129,7 +129,7 @@ if (typeof window.teamsData === 'undefined') {
                     name: "Nguyễn Xuân Trường",    
                     number: 5,
                     position: "Libero",
-                    avatar: "assets/images/players/middle/PhamVanAn.webp",
+                    avatar: "assets/images/players/advanced/NguyenXuanTruong.webp",
                     isLibero: true
                 }
             ]
@@ -147,14 +147,14 @@ if (typeof window.teamsData === 'undefined') {
                     name: "Phan Tiến Nam",
                     number: 18,
                     position: "Outside Hitter",
-                    avatar: "assets/images/players/middle/PhanTienNam.webp"
+                    avatar: "assets/images/players/advanced/PhanTienNam.webp"
                 },
                 {
                     id: 16,
                     name: "Nguyễn Thế Anh",
                     number: 7,
                     position: "Outside Hitter",
-                    avatar: "assets/images/players/middle/NguyenTheAnh.webp"
+                    avatar: "assets/images/players/advanced/NguyenTheAnh.webp"
                 },
                 // 2 MIDDLE BLOCKERS
                 {
@@ -162,14 +162,14 @@ if (typeof window.teamsData === 'undefined') {
                     name: "Đoàn Nam Cường",
                     number: 19,
                     position: "Middle Blocker",
-                    avatar: "assets/images/players/middle/DuongVanDaii.webp" // Using existing
+                    avatar: "assets/images/players/advanced/DoanNamCuong.webp" // Using existing
                 },
                 {
                     id: 18,
                     name: "Nguyễn Văn Thắng",
                     number: 11,
                     position: "Middle Blocker",
-                    avatar: "assets/images/players/middle/TranMinhTam.webp"
+                    avatar: "assets/images/players/advanced/NguyenVanThang.webp"
                 },
                 // 1 OPPOSITE HITTER
                 {
@@ -177,7 +177,7 @@ if (typeof window.teamsData === 'undefined') {
                     name: "Nguyễn Văn Lộc",
                     number: 16,
                     position: "Opposite Hitter",
-                    avatar: "assets/images/players/middle/VuThanhSon.webp"
+                    avatar: "assets/images/players/advanced/NguyenVanLoc.webp"
                 },
                 // 1 SETTER
                 {
@@ -185,7 +185,7 @@ if (typeof window.teamsData === 'undefined') {
                     name: "Hoàng Minh Hiếu",
                     number: 2,
                     position: "Setter",
-                    avatar: "assets/images/players/middle/HoangVanKhoi.webp",
+                    avatar: "assets/images/players/advanced/HoangMinhHieu.webp",
                     isCaptain: true
                 },
                 // 1 LIBERO
@@ -194,7 +194,7 @@ if (typeof window.teamsData === 'undefined') {
                     name: "Bùi Văn Sơn",
                     number: 15,
                     position: "Libero",
-                    avatar: "assets/images/players/middle/MinhHieu.webp",
+                    avatar: "assets/images/players/advanced/BuiVanSon.webp",
                     isLibero: true
                 }
             ]
@@ -212,7 +212,7 @@ if (typeof window.leadershipData === 'undefined') {
             name: "Hoàng Quốc Duy",
             title: "Manager & Leader",
             description: "Vision to build a volleyball community in Hanoi area at many different levels",
-            avatar: "assets/images/home/leader/DuyFou.webp",
+            avatar: "assets/images/players/advanced/HoangQuocDuy.webp",
             achievements: [
                 "3+ years in volleyball management",
                 "Always toward the community", 
@@ -227,9 +227,9 @@ if (typeof window.leadershipData === 'undefined') {
         contentCreator: {
             id: 101,
             name: "Hoàng Minh Hiếu",
-            title: "Content Creator & Setter Specialist",
+            title: "Content Creator & Setter",
             description: "5+ years volleyball experience with specialty in setter position and creative content development",
-            avatar: "data:image/svg+xml,%3Csvg%20width%3D%22120%22%20height%3D%22120%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Ccircle%20cx%3D%2260%22%20cy%3D%2260%22%20r%3D%2260%22%20fill%3D%22%23FF6B35%22/%3E%3Ctext%20x%3D%2260%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20fill%3D%22white%22%20font-size%3D%2218%22%20font-weight%3D%22bold%22%3EHMH%3C/text%3E%3Ctext%20x%3D%2260%22%20y%3D%2280%22%20text-anchor%3D%22middle%22%20fill%3D%22white%22%20font-size%3D%2210%22%3ESETTER%3C/text%3E%3C/svg%3E",
+            avatar: "assets/images/players/advanced/HoangMinhHieu.webp",
             achievements: [
                 "5+ years volleyball experience",
                 "Setter position", 
@@ -252,7 +252,7 @@ if (typeof window.leadershipData === 'undefined') {
                 name: "Phùng Kiến Quốc",
                 title: "DVA Middle Assistant Leader & Team Captain",
                 description: "Assistant leader of DVA Middle team and captain of HORIZON High School volleyball team, specializing in Outside Hitter position",
-                avatar: "data:image/svg+xml,%3Csvg%20width%3D%22120%22%20height%3D%22120%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Ccircle%20cx%3D%2260%22%20cy%3D%2260%22%20r%3D%2260%22%20fill%3D%22%230066FF%22/%3E%3Ctext%20x%3D%2260%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20fill%3D%22white%22%20font-size%3D%2218%22%20font-weight%3D%22bold%22%3EPKQ%3C/text%3E%3Ctext%20x%3D%2260%22%20y%3D%2280%22%20text-anchor%3D%22middle%22%20fill%3D%22white%22%20font-size%3D%229%22%3EOUT-HIT%3C/text%3E%3C/svg%3E",
+                avatar: "assets/images/players/middle/PhungKienQuoc.webp",
                 achievements: [
                     "DVA Middle assistant leader",
                     "HORIZON High School team captain",

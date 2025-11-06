@@ -1,5 +1,5 @@
 /**
- * DVA Volleyball Header Component - FIXED SERVICES INTEGRATION
+ * DVA Volleyball Header Component - FIXED  INTEGRATION
  * D:\dva\DVA-Volleyball-Website\assets\js\components\header.js
  */
 class HeaderComponent {
@@ -86,11 +86,6 @@ class HeaderComponent {
                             </a>
                             <a href="/register" class="nav-item-modern" data-page="register">
                                 <span class="nav-text">Register</span>
-                                <div class="nav-indicator"></div>
-                            </a>
-                            <!-- ✅ FIXED: Services link với cú pháp đúng -->
-                            <a href="/services" class="nav-item-modern" data-page="services">
-                                <span class="nav-text">Services</span>
                                 <div class="nav-indicator"></div>
                             </a>
                         </div>
@@ -181,13 +176,6 @@ class HeaderComponent {
                                     <span class="mobile-nav-text">Register</span>
                                     <div class="mobile-nav-arrow">›</div>
                                 </a>
-
-                                <!-- 8. SERVICES - ✅ HOÀN HẢO -->
-                                <a href="/services" class="mobile-nav-item" data-page="services">
-                                    <div class="mobile-nav-icon">🔧</div>
-                                    <span class="mobile-nav-text">Services</span>
-                                    <div class="mobile-nav-arrow">›</div>
-                                </a>
                                 <!-- 9. CONTACT US -->
                                 <a href="#/contact" class="mobile-nav-item" data-page="contact">
                                     <div class="mobile-nav-icon">📞</div>
@@ -266,7 +254,6 @@ class HeaderComponent {
             newMobileBtn.addEventListener('click', (e) => {
                 e.preventDefault();
                 e.stopPropagation();
-                console.log('🖱️ Mobile menu button clicked!');
                 this.toggleMobileMenu();
             });
         }
@@ -290,26 +277,9 @@ class HeaderComponent {
             });
         }
 
-        // Mobile nav items - ✅ NOW INCLUDES SERVICES
-        const mobileNavItems = document.querySelectorAll('.mobile-nav-item');
-        mobileNavItems.forEach((item, index) => {
-            item.addEventListener('click', (e) => {
-                const page = item.getAttribute('data-page');
-                const text = item.querySelector('.mobile-nav-text')?.textContent;
-                console.log(`🖱️ Mobile nav item clicked: ${text} (${page})`);
-                
-                // Update active state
-                mobileNavItems.forEach(i => i.classList.remove('active'));
-                item.classList.add('active');
-                
-                // Close menu after navigation
-                setTimeout(() => {
-                    this.closeMobileMenu();
-                }, 200);
-            });
-        });
+        
 
-        console.log('✅ Mobile menu events bound with', mobileNavItems.length, 'nav items');
+        
     }
 
     // ... (all other methods remain the same)
@@ -426,20 +396,6 @@ class HeaderComponent {
                 const icon = item.querySelector('.mobile-nav-icon')?.textContent;
                 console.log(`  ${index + 1}. ${icon} ${text} (${page})`);
             });
-
-            // ✅ SPECIFIC CHECK FOR SERVICES
-            const servicesItem = Array.from(items).find(item => 
-                item.getAttribute('data-page') === 'services'
-            );
-            
-            if (servicesItem) {
-                console.log('\n✅ Services menu item found and working!');
-                console.log('- Text:', servicesItem.querySelector('.mobile-nav-text')?.textContent);
-                console.log('- Icon:', servicesItem.querySelector('.mobile-nav-icon')?.textContent);
-                console.log('- Href:', servicesItem.getAttribute('href'));
-            } else {
-                console.error('❌ SERVICES MENU ITEM NOT FOUND!');
-            }
         } else {
             console.error('❌ NO MENU ITEMS FOUND!');
         }

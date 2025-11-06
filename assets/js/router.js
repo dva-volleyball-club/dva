@@ -1,5 +1,5 @@
 /**
- * DVA Router - FIXED SERVICES FLASH ISSUE
+ * DVA Router - FIXED  FLASH ISSUE
  * Path: assets/js/router.js
  */
 
@@ -14,7 +14,7 @@ class DVARouter {
         this.activeCSS = new Set();
         this.cssLoadPromises = new Map();
         this.isNavigating = false;
-        
+        this.loadedScripts = new Map(); // newl
         // ✅ SELF-INJECTING MODULES (NO HTML FILES NEEDED)
         this.selfInjectingModules = ['services'];
         
@@ -90,16 +90,6 @@ class DVARouter {
                 css: 'assets/css/modules/register.css',
                 js: 'assets/js/modules/register.js'
             },
-            // ✅ SERVICES - SPECIAL HANDLING
-            'services': {
-                module: 'services',
-                title: 'Services - DVA Volleyball Court Rental',
-                description: 'Dịch vụ cho thuê sân bóng chuyền chuyên nghiệp DVA. Giá 550.000đ/h, sân indoor, bóng Mikasa V200W.',
-                keywords: 'dva volleyball, thuê sân bóng chuyền, sân indoor, mikasa, 155 trường chinh',
-                selfInject: true, // ✅ MARK AS SELF-INJECTING
-                css: 'assets/css/modules/services.css',
-                js: 'assets/js/modules/services.js'
-            },
             'contact': { 
                 module: 'contact',
                 title: 'Contact - DVA Volleyball',
@@ -113,7 +103,7 @@ class DVARouter {
         this.setupEventListeners();
         this.handleInitialRoute();
         
-        console.log('🔄 DVA Router initialized with SERVICES FIX');
+        
     }
 
     setupEventListeners() {
@@ -365,7 +355,7 @@ class DVARouter {
         
         await Promise.all(Array.from(this.cssLoadPromises.values()));
         
-        const moduleCSS = ['home', 'players', 'ranking', 'tournament', 'information', 'news', 'register', 'contact', 'services'];
+        const moduleCSS = ['home', 'players', 'ranking', 'tournament', 'information', 'news', 'register', 'contact'];
         
         const removePromises = moduleCSS.map(module => {
             if (module !== newModule) {
@@ -398,8 +388,7 @@ class DVARouter {
             'home': 'homeModuleInstance',
             'news': 'newsModuleInstance',
             'register': 'registerModuleInstance',
-            'contact': 'contactModuleInstance',
-            'services': 'servicesModuleInstance'
+            'contact': 'contactModuleInstance'
         };
 
         Object.entries(moduleInstances).forEach(([module, instanceName]) => {
@@ -488,6 +477,74 @@ class DVARouter {
             document.head.appendChild(link);
         });
     }
+    // ✅ NEW: ADVANCED DUPLICATE CHECK FOR JS FILES
+    async loadJSWithDuplicateCheck(jsPath, id) {
+        return new Promise((resolve) => {
+            // Normalize path for comparison
+            const normalizedPath = jsPath.replace(/\?.*$/, ''); // Remove query strings
+            
+            // Check 1: By ID
+            if (document.getElementById(id)) {
+                console.log(`✅ Script already loaded by ID: ${id}`);
+                resolve();
+                return;
+            }
+            
+            // Check 2: By normalized path in our tracking map
+            if (this.loadedScripts.has(normalizedPath)) {
+                console.log(`✅ Script already loaded by path: ${normalizedPath}`);
+                resolve();
+                return;
+            }
+            
+            // Check 3: By src attribute in DOM (catches scripts loaded by HTML)
+            const allScripts = document.querySelectorAll('script[src]');
+            const alreadyExists = Array.from(allScripts).some(script => {
+                const scriptSrc = script.src.replace(/\?.*$/, '');
+                const scriptPath = scriptSrc.replace(window.location.origin, '').replace(/^\//, '');
+                const targetPath = normalizedPath.replace(/^\//, '');
+                return scriptPath === targetPath || scriptSrc.includes(normalizedPath);
+            });
+            
+            if (alreadyExists) {
+                console.log(`✅ Script already loaded in DOM: ${normalizedPath}`);
+                this.loadedScripts.set(normalizedPath, true);
+                resolve();
+                return;
+            }
+            
+            // If not found anywhere, load it
+            console.log(`📜 Loading NEW script: ${jsPath}`);
+            
+            const script = document.createElement('script');
+            script.src = `${jsPath}?v=${Date.now()}`;
+            script.id = id;
+            script.defer = true;
+            script.type = 'text/javascript';
+            
+            let timeout;
+            
+            script.onload = () => {
+                clearTimeout(timeout);
+                this.loadedScripts.set(normalizedPath, script);
+                console.log(`✅ JS loaded: ${jsPath}`);
+                resolve();
+            };
+            
+            script.onerror = () => {
+                clearTimeout(timeout);
+                console.warn(`⚠️ JS failed: ${jsPath}`);
+                resolve();
+            };
+            
+            timeout = setTimeout(() => {
+                console.warn(`⏱️ JS timeout: ${jsPath}`);
+                resolve();
+            }, 10000);
+            
+            document.head.appendChild(script);
+        });
+    }
 
     async loadJS(jsPath, id) {
         return new Promise((resolve) => {
@@ -560,10 +617,7 @@ class DVARouter {
             return;
         }
 
-        const fallbackContent = {
-            'services': this.getServicesContent()
-            // ... other fallbacks
-        };
+        
 
         mainContent.innerHTML = fallbackContent[module] || this.get404Content();
         console.log(`✅ Fallback content loaded for ${module}`);
@@ -571,35 +625,7 @@ class DVARouter {
         setTimeout(() => this.initializeFallbackModule(module), 200);
     }
 
-    getServicesContent() {
-        return `
-            <div class="dva-services" style="background: var(--dva-dark, #0a0f1c); min-height: 100vh;">
-                <div class="container">
-                    <section style="padding: 60px 0; text-align: center;">
-                        <h1 style="font-size: 3.5rem; font-weight: 900; color: white; margin-bottom: 20px;">🏐 Services</h1>
-                        <p style="font-size: 1.2rem; color: #8B949E;">Court rental services loading...</p>
-                        <div style="margin-top: 30px;">
-                            <div style="
-                                width: 40px;
-                                height: 40px;
-                                border: 3px solid rgba(255, 107, 53, 0.2);
-                                border-left: 3px solid #FF6B35;
-                                border-radius: 50%;
-                                animation: spin 1s linear infinite;
-                                margin: 0 auto;
-                            "></div>
-                        </div>
-                    </section>
-                </div>
-            </div>
-            <style>
-                @keyframes spin {
-                    0% { transform: rotate(0deg); }
-                    100% { transform: rotate(360deg); }
-                }
-            </style>
-        `;
-    }
+    
 
     dispatchNavigationEvents(mainRoute, subRoute, path, routeConfig) {
         document.dispatchEvent(new CustomEvent('navigationChange', {
@@ -765,7 +791,7 @@ document.addEventListener('DOMContentLoaded', () => {
         window.dvaRouter = dvaRouter;
     }
     
-    console.log('🚀 DVA Router ready with SERVICES FLASH FIX!');
+    
 });
 
 if (document.readyState !== 'loading') {

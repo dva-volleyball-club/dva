@@ -232,50 +232,85 @@ class HeaderComponent {
     }
 
     bindMobileMenuEvents() {
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileOverlay = document.getElementById('mobile-nav-overlay');
-        const mobileCloseBtn = document.getElementById('mobile-close-btn');
-        const mobileBackdrop = document.querySelector('.mobile-nav-backdrop');
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileOverlay = document.getElementById('mobile-nav-overlay');
+    const mobileCloseBtn = document.getElementById('mobile-close-btn');
+    const mobileBackdrop = document.querySelector('.mobile-nav-backdrop');
 
-      
-       
+    console.log('📱 Binding mobile menu events...');
+    console.log('Elements found:', {
+        button: !!mobileMenuBtn,
+        overlay: !!mobileOverlay,
+        closeBtn: !!mobileCloseBtn,
+        backdrop: !!mobileBackdrop
+    });
 
-        // Mobile menu toggle
-        if (mobileMenuBtn) {
-            // Remove existing listeners to prevent duplicates
-            mobileMenuBtn.replaceWith(mobileMenuBtn.cloneNode(true));
-            const newMobileBtn = document.getElementById('mobile-menu-btn');
-            
-            newMobileBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                this.toggleMobileMenu();
-            });
-        }
-
-        // Close button
-        if (mobileCloseBtn) {
-            mobileCloseBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-          
-                this.closeMobileMenu();
-            });
-        }
-
-        // Backdrop click to close
-        if (mobileBackdrop) {
-            mobileBackdrop.addEventListener('click', (e) => {
-                e.preventDefault();
-       
-                this.closeMobileMenu();
-            });
-        }
-
+    // Mobile menu toggle
+    if (mobileMenuBtn) {
+        // Remove existing listeners to prevent duplicates
+        mobileMenuBtn.replaceWith(mobileMenuBtn.cloneNode(true));
+        const newMobileBtn = document.getElementById('mobile-menu-btn');
         
-
-        
+        newMobileBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log('🖱️ Mobile menu button clicked!');
+            this.toggleMobileMenu();
+        });
     }
+
+    // Close button
+    if (mobileCloseBtn) {
+        mobileCloseBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log('❌ Mobile close button clicked!');
+            this.closeMobileMenu();
+        });
+    }
+
+    // Backdrop click to close
+    if (mobileBackdrop) {
+        mobileBackdrop.addEventListener('click', (e) => {
+            e.preventDefault();
+            console.log('🖱️ Mobile backdrop clicked!');
+            this.closeMobileMenu();
+        });
+    }
+
+    // ✅ FIX: Mobile nav items - CLOSE MENU AFTER CLICK
+    const mobileNavItems = document.querySelectorAll('.mobile-nav-item');
+    mobileNavItems.forEach((item, index) => {
+        item.addEventListener('click', (e) => {
+            const page = item.getAttribute('data-page');
+            const text = item.querySelector('.mobile-nav-text')?.textContent;
+            console.log(`🖱️ Mobile nav item clicked: ${text} (${page})`);
+            
+            // Update active state
+            mobileNavItems.forEach(i => i.classList.remove('active'));
+            item.classList.add('active');
+            
+            // ✅ CRITICAL: Close menu after navigation with delay for smooth transition
+            setTimeout(() => {
+                console.log('🔄 Auto-closing mobile menu after navigation...');
+                this.closeMobileMenu();
+            }, 200);
+            
+            // Trigger navigation event for router
+            document.dispatchEvent(new CustomEvent('navigationChange', {
+                detail: { 
+                    page: page,
+                    url: item.href,
+                    element: item,
+                    source: 'mobile-menu'
+                }
+            }));
+        });
+    });
+
+    console.log('✅ Mobile menu events bound with', mobileNavItems.length, 'nav items');
+}
+
 
     // ... (all other methods remain the same)
 

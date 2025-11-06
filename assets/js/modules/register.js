@@ -23,7 +23,7 @@ if (typeof window.RegisterModule === 'undefined') {
             // Google Apps Script URL from existing code
             this.GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxZp3TswdiPpth82v7jX9mRwtB00nLdork7Al-BWlgGH_PkLV3gc1IOqzXt11BVOk9l1w/exec';
             
-            console.log('🏐 Register Module initializing...');
+           
             this.init();
         }
 
@@ -36,7 +36,7 @@ if (typeof window.RegisterModule === 'undefined') {
                 this.initFormValidation();
                 
                 this.isInitialized = true;
-                console.log('✅ Register Module initialized successfully');
+            
                 
                 document.dispatchEvent(new CustomEvent('registerModuleReady', {
                     detail: { instance: this }
@@ -52,7 +52,7 @@ if (typeof window.RegisterModule === 'undefined') {
             if (!this.moduleContainer) {
                 throw new Error('Register module container not found');
             }
-            console.log('🎯 Register module scope established');
+         
         }
 
         async waitForElements() {
@@ -70,7 +70,7 @@ if (typeof window.RegisterModule === 'undefined') {
                         const toastContainer = registerModule.querySelector('#toast-container');
 
                         if (form && modal && toastContainer) {
-                            console.log('✅ Register elements found and verified');
+                          
                             resolve();
                             return;
                         }
@@ -89,7 +89,7 @@ if (typeof window.RegisterModule === 'undefined') {
         }
 
         bindEvents() {
-            console.log('🔗 Binding register events...');
+            
 
             const form = this.moduleContainer.querySelector('#registration-form');
             if (form) {
@@ -114,11 +114,11 @@ if (typeof window.RegisterModule === 'undefined') {
                 });
             }
 
-            console.log('✅ Register events bound successfully');
+          
         }
 
         initFormValidation() {
-            console.log('🔍 Initializing form validation...');
+            
             
             // Add validation CSS if not already present
             if (!document.getElementById('register-validation-styles')) {
@@ -139,10 +139,10 @@ if (typeof window.RegisterModule === 'undefined') {
                 `;
                 
                 document.head.appendChild(style);
-                console.log('💄 Register validation styles added');
+             
             }
             
-            console.log('✅ Form validation initialized successfully');
+          
         }
 
         async handleFormSubmit(e) {
@@ -153,16 +153,16 @@ if (typeof window.RegisterModule === 'undefined') {
             const form = e.target;
             const formType = form.dataset.form;
             
-            console.log('📝 Form submission started for:', formType);
+           
             
             // Validate entire form
             if (!this.validateForm(form)) {
-                console.log('❌ Form validation failed');
+            
                 this.showFormMessage('error', 'Please correct the errors above and try again.');
                 return;
             }
             
-            console.log('✅ Form validation passed');
+   
             
             this.isSubmitting = true;
             const submitBtn = form.querySelector('.submit-btn');
@@ -177,7 +177,7 @@ if (typeof window.RegisterModule === 'undefined') {
                 const formData = new FormData(form);
                 const data = Object.fromEntries(formData.entries());
                 
-                console.log('📋 Raw form data:', data);
+             
                 
                 // Add form type and timestamp - EXACTLY as in original code
                 data.formType = formType;
@@ -201,13 +201,13 @@ if (typeof window.RegisterModule === 'undefined') {
                     data.positionDisplay = positionNames[data.position] || data.position;
                 }
                 
-                console.log('📊 Final data to send:', data);
+         
                 
                 // Use enhanced submission method from original code
                 const success = await this.sendToGoogleSheetsEnhanced(data);
                 
                 if (success) {
-                    console.log('🎉 Registration successful!');
+       
                     // Show success modal instead of simple message
                     this.showSuccessModal(data);
                     form.reset();
@@ -233,45 +233,45 @@ if (typeof window.RegisterModule === 'undefined') {
 
         // Enhanced function with multiple fallback methods - EXACTLY from original code
         async sendToGoogleSheetsEnhanced(data) {
-            console.log('🎯 Trying enhanced submission with multiple methods...');
+      
             
             // Method 1: Form submission (most reliable)
             try {
                 const formResult = await this.sendToGoogleSheets(data);
                 if (formResult) {
-                    console.log('✅ Form submission successful');
+       
                     return true;
                 }
             } catch (error) {
-                console.log('⚠️ Form method failed:', error.message);
+          
             }
             
             // Method 2: Direct URL (fallback)
             try {
                 const urlResult = this.sendToGoogleSheetsViaURL(data);
                 if (urlResult) {
-                    console.log('✅ URL method successful');
+              
                     return true;
                 }
             } catch (error) {
-                console.log('⚠️ URL method failed:', error.message);
+      
             }
             
             // Method 3: Image pixel technique
             try {
-                console.log('🔄 Trying image pixel method...');
+     
                 
                 const params = new URLSearchParams(data);
                 const img = new Image();
                 
                 return new Promise((resolve) => {
                     img.onload = () => {
-                        console.log('✅ Image method successful');
+                 
                         resolve(true);
                     };
                     
                     img.onerror = () => {
-                        console.log('⚠️ Image method failed (expected)');
+           
                         resolve(true); // Still assume success
                     };
                     
@@ -279,17 +279,17 @@ if (typeof window.RegisterModule === 'undefined') {
                     
                     // Timeout after 5 seconds
                     setTimeout(() => {
-                        console.log('⏰ Image method timeout, assuming success');
+                    
                         resolve(true);
                     }, 5000);
                 });
                 
             } catch (error) {
-                console.log('⚠️ Image method failed:', error.message);
+     
             }
             
             // If all methods fail
-            console.log('💾 All methods failed, saving to localStorage');
+      
             this.saveToLocalStorage(data);
             return false;
         }
@@ -298,9 +298,7 @@ if (typeof window.RegisterModule === 'undefined') {
         async sendToGoogleSheets(data) {
             return new Promise((resolve, reject) => {
                 try {
-                    console.log('🚀 Starting form submission method...');
-                    console.log('📤 Data being sent:', data);
-                    
+                
                     // Create invisible iframe to handle response
                     const iframe = document.createElement('iframe');
                     iframe.style.display = 'none';
@@ -325,14 +323,14 @@ if (typeof window.RegisterModule === 'undefined') {
                     
                     // Handle iframe load
                     iframe.onload = function() {
-                        console.log('✅ Form submission completed');
+            
                         
                         try {
                             // Try to read response (may fail due to CORS)
                             const responseText = iframe.contentDocument.body.textContent;
-                            console.log('📋 Response:', responseText);
+                     
                         } catch (error) {
-                            console.log('🔒 Response blocked by CORS (normal)');
+                       
                         }
                         
                         // Clean up
@@ -358,7 +356,7 @@ if (typeof window.RegisterModule === 'undefined') {
                     document.body.appendChild(form);
                     form.submit();
                     
-                    console.log('📨 Form submitted to Google Apps Script');
+    
                     
                 } catch (error) {
                     console.error('❌ Form submission error:', error);
@@ -373,7 +371,7 @@ if (typeof window.RegisterModule === 'undefined') {
         // Alternative method using direct URL navigation - EXACTLY from original code
         sendToGoogleSheetsViaURL(data) {
             try {
-                console.log('🔄 Using direct URL method...');
+       
                 
                 const params = new URLSearchParams();
                 Object.keys(data).forEach(key => {
@@ -381,20 +379,20 @@ if (typeof window.RegisterModule === 'undefined') {
                 });
                 
                 const url = `${this.GOOGLE_SCRIPT_URL}?${params.toString()}`;
-                console.log('🔗 Generated URL length:', url.length);
+        
                 
                 // Open in new tab to see result
                 const newWindow = window.open(url, '_blank');
                 
                 if (newWindow) {
-                    console.log('✅ URL opened successfully');
+              
                     // Close the tab after 3 seconds
                     setTimeout(() => {
                         newWindow.close();
                     }, 3000);
                     return true;
                 } else {
-                    console.log('❌ Popup blocked');
+   
                     return false;
                 }
                 
@@ -414,7 +412,7 @@ if (typeof window.RegisterModule === 'undefined') {
                     status: 'pending'
                 });
                 localStorage.setItem('dva_registrations', JSON.stringify(submissions));
-                console.log('Data saved to localStorage as fallback');
+        
             } catch (error) {
                 console.error('Error saving to localStorage:', error);
             }
@@ -444,7 +442,7 @@ if (typeof window.RegisterModule === 'undefined') {
                 // Show success toast as well
                 this.showToast('success', 'Registration Submitted!', 'Your application has been sent successfully.');
                 
-                console.log('🎉 Success modal displayed for:', playerName);
+              
             }
         }
 
@@ -717,17 +715,11 @@ if (typeof window.RegisterModule === 'undefined') {
         }
 
         trackFormSubmission(formType, data) {
-            console.log(`Form submitted: ${formType}`, data);
+     
             
             // Track registration specific data
             if (formType === 'registration') {
-                console.log('Player Registration:', {
-                    name: data.fullname,
-                    position: data.positionDisplay,
-                    age: data.age,
-                    height: data.height,
-                    experience: data.rotation
-                });
+                
             }
         }
 
@@ -762,7 +754,7 @@ if (typeof window.RegisterModule === 'undefined') {
         }
 
         cleanup() {
-            console.log('🧹 Cleaning up Register module...');
+            
 
             this.eventListeners.forEach(({ element, event, handler }) => {
                 if (element && element.removeEventListener) {
@@ -779,27 +771,27 @@ if (typeof window.RegisterModule === 'undefined') {
             this.observers = [];
 
             this.isInitialized = false;
-            console.log('✅ Register module cleanup completed');
+       
         }
     }
 
     // EXPOSE CLASS GLOBALLY
     window.RegisterModule = RegisterModule;
-    console.log('✅ RegisterModule class defined successfully');
+   
 
 } else {
-    console.log('⚠️ RegisterModule already exists, skipping redefinition');
+    
 }
 
 // MODULE INITIALIZATION
 document.addEventListener('navigationChange', (e) => {
     const currentPage = e.detail?.page;
-    console.log('📍 Navigation change detected for Register:', currentPage);
+    
 
     if (currentPage === 'register') {
         setTimeout(() => {
             if (!window.registerModuleInstance && window.RegisterModule) {
-                console.log('🚀 Creating register module instance');
+         
                 try {
                     window.registerModuleInstance = new window.RegisterModule();
                     window.registerModule = window.registerModuleInstance; // For global access
@@ -807,7 +799,7 @@ document.addEventListener('navigationChange', (e) => {
                     console.error('❌ Failed to create Register module instance:', error);
                 }
             } else if (window.registerModuleInstance && !window.registerModuleInstance.isInitialized) {
-                console.log('🔄 Reinitializing register module');
+               
                 window.registerModuleInstance.init();
             }
         }, 300);
@@ -818,7 +810,7 @@ document.addEventListener('navigationChange', (e) => {
 if (window.location.hash.includes('#/register')) {
     setTimeout(() => {
         if (window.RegisterModule && !window.registerModuleInstance) {
-            console.log('🔄 Direct register initialization');
+          
             try {
                 window.registerModuleInstance = new window.RegisterModule();
                 window.registerModule = window.registerModuleInstance;
@@ -842,4 +834,4 @@ window.goToHomePage = function() {
     }
 };
 
-console.log('📜 Enhanced Register.js loaded successfully');
+

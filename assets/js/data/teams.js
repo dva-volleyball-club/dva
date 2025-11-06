@@ -297,7 +297,4 @@ if (typeof window.formationInfo === 'undefined') {
     window.formationInfo = formationInfo;
 }
 
-console.log('✅ Simple teams data loaded successfully:', {
-    teams: Object.keys(window.teamsData).length,
-    leadership: Object.keys(window.leadershipData).length
-});
+

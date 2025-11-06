@@ -95,4 +95,4 @@ if (typeof module !== 'undefined' && module.exports) {
     module.exports = { newsData: window.newsData };
 }
 
-console.log('📰 DVA News Data loaded successfully');
+

@@ -4,7 +4,7 @@
 
 // PREVENT DUPLICATE DECLARATION & ENSURE EVENT BINDING
 if (typeof window.HomeModule !== 'undefined') {
-    console.log('⚠️ HomeModule already exists, refreshing with events');
+   
     // Cleanup existing module
     if (window.homeModule) {
         if (typeof window.homeModule.cleanup === 'function') {
@@ -25,12 +25,12 @@ class HomeModule {
         this.keyboardHandler = null;
         this.boundMethods = {};
         
-        console.log('🏠 Home Module constructor called');
+        
         this.init();
     }
 
     async init() {
-        console.log('📚 Initializing Home Module...');
+        
         
         try {
             // CLEANUP FIRST
@@ -47,7 +47,7 @@ class HomeModule {
             this.animateStats();
             this.initTeamCarousel();
             
-            console.log('✅ Home Module initialized successfully');
+          
             
         } catch (error) {
             console.error('❌ Home Module initialization failed:', error);
@@ -58,7 +58,7 @@ class HomeModule {
 
     // CLEANUP METHOD - REMOVE OLD LISTENERS
     cleanup() {
-        console.log('🧹 Cleaning up old event listeners...');
+       
         
         // Remove keyboard listener
         if (this.keyboardHandler) {
@@ -89,7 +89,7 @@ class HomeModule {
         this.boundMethods = {};
         this.eventsBound = false;
         
-        console.log('✅ Cleanup completed');
+        
     }
 
     // FORCE DATA RELOAD - PREVENT NAVIGATION DATA LOSS
@@ -97,19 +97,19 @@ class HomeModule {
         return new Promise((resolve) => {
             // Check if data exists
             if (window.teamsData && window.leadershipData && window.teamPositionColors) {
-                console.log('✅ Existing data found');
+                
                 this.dataLoaded = true;
                 resolve();
                 return;
             }
 
             // Force reload teams.js if missing
-            console.log('🔄 Reloading teams data...');
+           
             
             const script = document.createElement('script');
             script.src = 'assets/js/data/teams.js?t=' + Date.now(); // Cache busting
             script.onload = () => {
-                console.log('✅ Teams data reloaded');
+                
                 this.dataLoaded = true;
                 resolve();
             };
@@ -126,7 +126,7 @@ class HomeModule {
 
     // FALLBACK DATA LOADING
     loadFallbackData() {
-        console.log('🔄 Loading fallback data...');
+        
         
         // Ensure data exists with fallback
         if (!window.teamsData) {
@@ -196,7 +196,7 @@ class HomeModule {
             };
         }
 
-        console.log('✅ Fallback data loaded');
+    
     }
 
     async waitForElements() {
@@ -211,7 +211,7 @@ class HomeModule {
                 const leadershipGrid = document.getElementById('leadership-grid');
                 
                 if (teamSlider && leadershipGrid) {
-                    console.log('✅ Home elements found');
+                    
                     this.elementsReady = true;
                     resolve();
                 } else if (attempts >= maxAttempts) {
@@ -228,7 +228,7 @@ class HomeModule {
 
     // REFRESH DATA - For navigation comeback
     refreshData() {
-        console.log('🔄 Refreshing home data and events...');
+        
         if (this.elementsReady) {
             this.renderTeams();
             this.renderLeadership();
@@ -242,11 +242,11 @@ class HomeModule {
     // FIXED EVENT BINDING - ALWAYS WORKS AFTER NAVIGATION
     bindEvents() {
         if (this.eventsBound) {
-            console.log('⚠️ Events already bound, skipping...');
+            
             return;
         }
 
-        console.log('🔗 Binding navigation events...');
+        
         
         // Wait a bit for DOM to be fully ready
         setTimeout(() => {
@@ -263,12 +263,12 @@ class HomeModule {
             if (prevBtn && nextBtn) {
                 // Create bound methods
                 this.boundMethods.prevTeam = () => {
-                    console.log('⬅️ Previous team clicked');
+                    
                     this.previousTeam();
                 };
                 
                 this.boundMethods.nextTeam = () => {
-                    console.log('➡️ Next team clicked');
+                    
                     this.nextTeam();
                 };
                 
@@ -276,7 +276,7 @@ class HomeModule {
                 prevBtn.addEventListener('click', this.boundMethods.prevTeam);
                 nextBtn.addEventListener('click', this.boundMethods.nextTeam);
                 
-                console.log('✅ Navigation buttons bound');
+                
             } else {
                 console.error('❌ Navigation buttons not found');
             }
@@ -285,20 +285,20 @@ class HomeModule {
             this.keyboardHandler = (e) => {
                 if (document.querySelector('.dva-home')) {
                     if (e.key === 'ArrowLeft') {
-                        console.log('⬅️ Left arrow pressed');
+                        
                         this.previousTeam();
                     } else if (e.key === 'ArrowRight') {
-                        console.log('➡️ Right arrow pressed');
+                        
                         this.nextTeam();
                     }
                 }
             };
             
             document.addEventListener('keydown', this.keyboardHandler);
-            console.log('✅ Keyboard navigation bound');
+            
             
             this.eventsBound = true;
-            console.log('✅ All home events bound successfully');
+            
             
         } catch (error) {
             console.error('❌ Error binding events:', error);
@@ -316,7 +316,7 @@ class HomeModule {
         const indicators = document.getElementById('team-indicators');
         
         if (!slider || !indicators) {
-            console.error('❌ Team slider or indicators not found');
+           
             return;
         }
         
@@ -344,63 +344,60 @@ class HomeModule {
             const indicatorElements = indicators.querySelectorAll('.team-indicator');
             indicatorElements.forEach((indicator, index) => {
                 this.boundMethods[`indicator_${index}`] = () => {
-                    console.log(`📍 Indicator ${index + 1} clicked`);
+                    
                     this.goToTeam(index);
                 };
                 
                 indicator.addEventListener('click', this.boundMethods[`indicator_${index}`]);
             });
             
-            console.log(`✅ ${indicatorElements.length} indicators bound`);
+            
         }, 100);
         
-        console.log(`✅ ${teams.length} teams rendered successfully`);
+       
     }
 
     // Team Carousel Methods - IMPROVED LOGGING
     initTeamCarousel() {
         this.updateCarouselState();
-        console.log('🎠 Team carousel initialized');
+       
     }
 
     nextTeam() {
-        console.log('🔄 Next team requested, current:', this.currentTeamIndex, 'total:', this.totalTeams, 'transitioning:', this.isTransitioning);
+       
         
         if (this.isTransitioning) {
-            console.log('⚠️ Already transitioning, ignoring');
+        
             return;
         }
         
         if (this.currentTeamIndex < this.totalTeams - 1) {
             this.goToTeam(this.currentTeamIndex + 1);
         } else {
-            console.log('⚠️ Already at last team');
+    
         }
     }
 
     previousTeam() {
-        console.log('🔄 Previous team requested, current:', this.currentTeamIndex, 'total:', this.totalTeams, 'transitioning:', this.isTransitioning);
+        
         
         if (this.isTransitioning) {
-            console.log('⚠️ Already transitioning, ignoring');
+          
             return;
         }
         
         if (this.currentTeamIndex > 0) {
             this.goToTeam(this.currentTeamIndex - 1);
         } else {
-            console.log('⚠️ Already at first team');
+           
         }
     }
 
     goToTeam(index) {
-        console.log('🎯 Going to team:', index, 'from:', this.currentTeamIndex);
+        
         
         if (this.isTransitioning || index === this.currentTeamIndex) {
-            console.log('⚠️ Cannot switch teams:', {
-                isTransitioning: this.isTransitioning,
-                sameIndex: index === this.currentTeamIndex
-            });
+            
             return;
         }
         
@@ -410,7 +407,7 @@ class HomeModule {
         const slides = document.querySelectorAll('.team-slide');
         const indicators = document.querySelectorAll('.team-indicator');
         
-        console.log('📱 Found slides:', slides.length, 'indicators:', indicators.length);
+       
         
         slides.forEach((slide, i) => {
             slide.classList.toggle('active', i === index);
@@ -426,10 +423,10 @@ class HomeModule {
         // Animation complete
         setTimeout(() => {
             this.isTransitioning = false;
-            console.log('✅ Team switch completed to:', index + 1);
+            
         }, 600);
         
-        console.log(`🔄 Switched to team ${index + 1}`);
+       
     }
 
     updateCarouselState() {
@@ -438,12 +435,12 @@ class HomeModule {
         
         if (prevBtn) {
             prevBtn.disabled = this.currentTeamIndex === 0;
-            console.log('⬅️ Prev button disabled:', prevBtn.disabled);
+           
         }
         
         if (nextBtn) {
             nextBtn.disabled = this.currentTeamIndex === this.totalTeams - 1;
-            console.log('➡️ Next button disabled:', nextBtn.disabled);
+          
         }
     }
 
@@ -557,7 +554,7 @@ class HomeModule {
         
         const leaders = Object.values(window.leadershipData || {});
         grid.innerHTML = leaders.map(leader => this.createLeaderCard(leader)).join('');
-        console.log(`✅ ${leaders.length} leaders rendered`);
+        
     }
 
     createLeaderCard(leader) {
@@ -631,20 +628,20 @@ class HomeModule {
 }
 
 // ENHANCED SAFE INITIALIZATION WITH EVENT MANAGEMENT
-console.log('📜 Home.js loaded with enhanced event management');
+
 
 function initHome() {
     if (document.querySelector('.dva-home')) {
         // ALWAYS CREATE FRESH MODULE TO ENSURE EVENTS WORK
         if (window.homeModule) {
-            console.log('🧹 Cleaning up existing Home Module...');
+            
             if (typeof window.homeModule.cleanup === 'function') {
                 window.homeModule.cleanup();
             }
         }
         
         // Create new module
-        console.log('🚀 Creating new Home Module with fresh events...');
+      
         window.homeModule = new HomeModule();
     }
 }
@@ -657,7 +654,7 @@ setTimeout(initHome, 500);
 // Enhanced navigation listener
 document.addEventListener('navigationChange', (e) => {
     if (e.detail?.page === 'home') {
-        console.log('📍 Navigation to home detected, force reinit...');
+        
         // Force reinit with delay to ensure DOM is ready
         setTimeout(initHome, 100);
     }

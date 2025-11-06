@@ -11,7 +11,7 @@ if (typeof window.TournamentModule === 'undefined') {
             this.currentSection = 'standings';
             this.isInitialized = false;
             
-            console.log('🏆 Tournament Module initializing with static data...');
+         
             this.init();
         }
 
@@ -30,7 +30,7 @@ if (typeof window.TournamentModule === 'undefined') {
                 this.renderContent();
 
                 this.isInitialized = true;
-                console.log('✅ Tournament Module initialized successfully');
+               
 
             } catch (error) {
                 console.error('❌ Tournament Module initialization failed:', error);
@@ -46,11 +46,7 @@ if (typeof window.TournamentModule === 'undefined') {
                            window.tournamentData.awards;
             
             if (hasData) {
-                console.log('✅ Tournament data found:', {
-                    teams: Object.keys(window.tournamentData.teams).length,
-                    matches: Object.keys(window.tournamentData.matches).length,
-                    awards: Object.keys(window.tournamentData.awards.individual).length
-                });
+                
             }
             
             return hasData;
@@ -66,7 +62,7 @@ if (typeof window.TournamentModule === 'undefined') {
                     const tournamentContent = document.getElementById('tournament-content');
 
                     if (tournamentContent) {
-                        console.log('✅ Tournament elements found');
+                        
                         resolve();
                     } else if (attempts >= maxAttempts) {
                         console.error('❌ Tournament elements not found');
@@ -86,14 +82,14 @@ if (typeof window.TournamentModule === 'undefined') {
             
             if (parts[0] === 'tournament' && parts[1]) {
                 this.currentSection = parts[1];
-                console.log('🎯 Initial section: ' + this.currentSection);
+                
             }
 
             this.updateTabStates();
         }
 
         bindEvents() {
-            console.log('🔗 Binding tournament events...');
+           
 
             document.querySelectorAll('.tournament-tab').forEach(tab => {
                 tab.addEventListener('click', (e) => {
@@ -102,7 +98,7 @@ if (typeof window.TournamentModule === 'undefined') {
                     
                     const section = tab.getAttribute('data-section');
                     if (section && section !== this.currentSection) {
-                        console.log('🔄 Switching to ' + section + ' section');
+                  
                         
                         // Update URL
                         const newUrl = '#/tournament/' + section;
@@ -114,13 +110,12 @@ if (typeof window.TournamentModule === 'undefined') {
                 });
             });
 
-            console.log('✅ Tournament events bound');
         }
 
         switchSection(section) {
             if (section === this.currentSection) return;
 
-            console.log('🔄 Switching to ' + section + ' section');
+         
 
             this.currentSection = section;
             this.updateTabStates();
@@ -147,7 +142,7 @@ if (typeof window.TournamentModule === 'undefined') {
         }
 
         renderContent() {
-            console.log('🎨 Rendering ' + this.currentSection + ' content');
+            
 
             const content = document.getElementById('tournament-content');
             if (!content) {
@@ -226,7 +221,7 @@ if (typeof window.TournamentModule === 'undefined') {
             );
 
             content.innerHTML = standingsHTML.join('\n');
-            console.log('✅ Standings rendered successfully');
+           
         }
 
         renderResults(content) {
@@ -269,7 +264,7 @@ if (typeof window.TournamentModule === 'undefined') {
 
             resultsHTML.push('</div>');
             content.innerHTML = resultsHTML.join('\n');
-            console.log('✅ Results rendered successfully');
+            
         }
 
         renderAwards(content) {
@@ -327,7 +322,7 @@ if (typeof window.TournamentModule === 'undefined') {
             );
 
             content.innerHTML = awardsHTML.join('\n');
-            console.log('✅ Awards rendered successfully');
+         
         }
 
         // ===== CARD CREATION METHODS ===== //
@@ -650,21 +645,21 @@ if (typeof window.TournamentModule === 'undefined') {
 
     // EXPOSE CLASS GLOBALLY
     window.TournamentModule = TournamentModule;
-    console.log('✅ TournamentModule class defined successfully with all methods');
+   
 
 } else {
-    console.log('⚠️ TournamentModule already exists, skipping redefinition');
+    
 }
 
 // SIMPLE INITIALIZATION
 document.addEventListener('navigationChange', (e) => {
     const currentPage = e.detail ? e.detail.page : null;
-    console.log('📍 Navigation change detected:', currentPage);
+    
 
     if (currentPage === 'tournament') {
         setTimeout(() => {
             if (!window.tournamentModuleInstance && window.TournamentModule) {
-                console.log('🚀 Creating tournament module instance');
+               
                 window.tournamentModuleInstance = new window.TournamentModule();
             }
         }, 500);
@@ -675,7 +670,7 @@ document.addEventListener('navigationChange', (e) => {
 if (window.location.hash.includes('#/tournament')) {
     setTimeout(() => {
         if (window.TournamentModule && !window.tournamentModuleInstance) {
-            console.log('🔄 Direct tournament initialization');
+           
             window.tournamentModuleInstance = new window.TournamentModule();
         }
     }, 1500);

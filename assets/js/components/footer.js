@@ -27,7 +27,7 @@ class FooterComponent {
                 this.setupScrollEffects();
                 this.initStatsAnimation();
                 this.isInitialized = true;
-                console.log('✅ Footer component loaded successfully');
+               
             }, 100);
             
         } catch (error) {
@@ -223,7 +223,7 @@ class FooterComponent {
     }
 
     bindAllEvents() {
-        console.log('🔗 Binding footer events...');
+       
         
         // Newsletter form
         this.bindNewsletterEvents();
@@ -237,7 +237,7 @@ class FooterComponent {
         // Social links tracking
         this.bindSocialLinks();
         
-        console.log('✅ Footer events bound successfully');
+      
     }
 
     bindNewsletterEvents() {
@@ -278,7 +278,7 @@ class FooterComponent {
             
         }, 1500);
         
-        console.log('Newsletter subscription:', email);
+    
     }
 
     bindScrollToTopEvents() {
@@ -310,7 +310,7 @@ class FooterComponent {
         const footerLinks = document.querySelectorAll('.footer-link');
         footerLinks.forEach(link => {
             link.addEventListener('click', (e) => {
-                console.log('Footer link clicked:', link.href);
+              
                 // Add navigation logic here
             });
         });
@@ -322,7 +322,7 @@ class FooterComponent {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
                 const platform = link.getAttribute('aria-label');
-                console.log('Social link clicked:', platform);
+               
                 
                 // Add actual social media URLs
                 const socialUrls = {

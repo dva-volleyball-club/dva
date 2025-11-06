@@ -3,7 +3,7 @@
  * Path: D:\dva\DVA-Volleyball-Website\assets\js\data\tournament.js
  */
 
-console.log('🏆 Loading tournament data...');
+
 
 // PREVENT DUPLICATE DATA LOADING
 if (typeof window.tournamentData === 'undefined') {
@@ -685,17 +685,7 @@ if (typeof window.tournamentData === 'undefined') {
         ]
     };
 
-    // LOG SUCCESS
-    console.log('✅ Tournament data loaded successfully');
-    console.log('🏆 Data structure validation:', {
-        teams: Object.keys(window.tournamentData.teams).length,
-        totalMatches: Object.keys(window.tournamentData.matches).length,
-        groupStageMatches: Object.values(window.tournamentData.matches).filter(m => m.stage === 'group').length,
-        playoffMatches: Object.values(window.tournamentData.matches).filter(m => m.stage !== 'group').length,
-        teamAwards: Object.keys(window.tournamentData.awards.team).length,
-        individualAwards: Object.keys(window.tournamentData.awards.individual).length,
-        mvpSpecial: Object.values(window.tournamentData.awards.individual).filter(a => a.special).length
-    });
+    
 
     // VALIDATE DATA INTEGRITY
     const validation = {
@@ -707,13 +697,13 @@ if (typeof window.tournamentData === 'undefined') {
     };
 
     if (Object.values(validation).every(v => v === true)) {
-        console.log('✅ All data validation checks passed!');
+      
     } else {
         console.warn('⚠️ Data validation issues:', validation);
     }
 
 } else {
-    console.log('⚠️ Tournament data already loaded, skipping redefinition');
+   
 }
 
 // EXPOSE FOR DEBUGGING

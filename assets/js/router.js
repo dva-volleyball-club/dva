@@ -147,16 +147,16 @@ class DVARouter {
             }
         });
 
-        console.log('✅ Router event listeners setup complete');
+      
     }
 
     navigate(path) {
         if (this.isNavigating) {
-            console.log('⏸️ Navigation in progress, ignoring...');
+            
             return;
         }
         
-        console.log(`🧭 Navigating to: ${path}`);
+       
         
         const cleanPath = path.replace(/^\/+/, '');
         window.history.pushState({}, '', `#/${cleanPath}`);
@@ -165,13 +165,13 @@ class DVARouter {
 
     async handleRoute(path, addToHistory = true) {
         if (this.isNavigating) {
-            console.log('⏸️ Already navigating, please wait...');
+           
             return;
         }
         
         this.isNavigating = true;
         
-        console.log(`📍 Handling route: ${path}`);
+        
         
         try {
             path = path || this.defaultRoute;
@@ -198,7 +198,7 @@ class DVARouter {
             
             // ✅ CHECK FOR SELF-INJECTING MODULES
             if (this.selfInjectingModules.includes(mainRoute) || routeConfig.selfInject) {
-                console.log(`🚀 Self-injecting module detected: ${mainRoute}`);
+              
                 await this.loadSelfInjectingModule(routeConfig);
             } else {
                 // Normal module loading
@@ -215,7 +215,7 @@ class DVARouter {
             }
             
             this.dispatchNavigationEvents(mainRoute, subRoute, path, routeConfig);
-            console.log(`✅ Route loaded successfully: ${path}`);
+         
             
         } catch (error) {
             console.error(`❌ Error loading route ${path}:`, error);
@@ -229,7 +229,7 @@ class DVARouter {
     async loadSelfInjectingModule(routeConfig) {
         const { module, css, js } = routeConfig;
         
-        console.log(`⚡ Loading self-injecting module: ${module}`);
+      
         
         try {
             // Show minimal loading
@@ -287,7 +287,7 @@ class DVARouter {
             // Scroll to top
             window.scrollTo({ top: 0, behavior: 'smooth' });
             
-            console.log(`✅ Self-injecting module loaded: ${module}`);
+         
             
         } catch (error) {
             console.error(`❌ Self-injecting module failed: ${module}`, error);
@@ -312,7 +312,7 @@ class DVARouter {
                                  mainContent.innerHTML.length > 200;
                 
                 if (hasContent || attempts >= maxAttempts) {
-                    console.log(`✅ Self-injecting module ready: ${module} (attempts: ${attempts})`);
+                    
                     resolve();
                 } else {
                     setTimeout(checkReady, 200);
@@ -351,7 +351,7 @@ class DVARouter {
     // ... (rest of the methods remain the same as in your current router)
     
     async cleanupPreviousModule(newModule) {
-        console.log(`🧹 Cleaning up CSS before loading ${newModule}...`);
+   
         
         await Promise.all(Array.from(this.cssLoadPromises.values()));
         
@@ -363,7 +363,7 @@ class DVARouter {
                 const existingCSS = document.getElementById(cssId);
                 if (existingCSS) {
                     return new Promise(resolve => {
-                        console.log(`🗑️ Removing ${module} CSS`);
+                    
                         existingCSS.remove();
                         this.activeCSS.delete(cssId);
                         this.cssLoadPromises.delete(cssId);
@@ -376,7 +376,7 @@ class DVARouter {
 
         await Promise.all(removePromises);
         this.cleanupModuleInstances(newModule);
-        console.log(`✅ Previous module cleanup completed for ${newModule}`);
+       
     }
 
     cleanupModuleInstances(newModule) {
@@ -393,7 +393,7 @@ class DVARouter {
 
         Object.entries(moduleInstances).forEach(([module, instanceName]) => {
             if (module !== newModule && window[instanceName]) {
-                console.log(`🧹 Cleaning up ${module} module instance`);
+      
                 if (typeof window[instanceName].cleanup === 'function') {
                     try {
                         window[instanceName].cleanup();
@@ -411,13 +411,13 @@ class DVARouter {
             this.loadJS(dataFile, `data-${dataFile.split('/').pop()}`)
         );
         await Promise.all(promises);
-        console.log('✅ Data files loaded:', dataFiles);
+      
     }
 
     async loadRouteContent(routeConfig) {
         const { file, css, js, module } = routeConfig;
         
-        console.log(`📥 Loading content for ${module}...`);
+  
         
         if (css) {
             const cssPromise = this.loadCSS(css, `${module}-css`);
@@ -441,10 +441,10 @@ class DVARouter {
             const existingCSS = document.getElementById(id);
             if (existingCSS) {
                 existingCSS.remove();
-                console.log(`🗑️ Removed old CSS: ${id}`);
+               
             }
             
-            console.log(`🎨 Loading CSS: ${cssPath}`);
+       
             
             const testUrl = `${cssPath}?v=${Date.now()}`;
             const link = document.createElement('link');
@@ -458,7 +458,7 @@ class DVARouter {
             
             link.onload = () => {
                 clearTimeout(timeout);
-                console.log(`✅ CSS loaded successfully: ${cssPath}`);
+           
                 resolve();
             };
             
@@ -485,14 +485,14 @@ class DVARouter {
             
             // Check 1: By ID
             if (document.getElementById(id)) {
-                console.log(`✅ Script already loaded by ID: ${id}`);
+              
                 resolve();
                 return;
             }
             
             // Check 2: By normalized path in our tracking map
             if (this.loadedScripts.has(normalizedPath)) {
-                console.log(`✅ Script already loaded by path: ${normalizedPath}`);
+           
                 resolve();
                 return;
             }
@@ -507,14 +507,13 @@ class DVARouter {
             });
             
             if (alreadyExists) {
-                console.log(`✅ Script already loaded in DOM: ${normalizedPath}`);
+                
                 this.loadedScripts.set(normalizedPath, true);
                 resolve();
                 return;
             }
             
-            // If not found anywhere, load it
-            console.log(`📜 Loading NEW script: ${jsPath}`);
+          
             
             const script = document.createElement('script');
             script.src = `${jsPath}?v=${Date.now()}`;
@@ -527,7 +526,7 @@ class DVARouter {
             script.onload = () => {
                 clearTimeout(timeout);
                 this.loadedScripts.set(normalizedPath, script);
-                console.log(`✅ JS loaded: ${jsPath}`);
+               
                 resolve();
             };
             
@@ -553,7 +552,7 @@ class DVARouter {
                 return;
             }
             
-            console.log(`📜 Loading JS: ${jsPath}`);
+       
             
             const script = document.createElement('script');
             script.src = `${jsPath}?v=${Date.now()}`;
@@ -565,7 +564,7 @@ class DVARouter {
             
             script.onload = () => {
                 clearTimeout(timeout);
-                console.log(`✅ JS loaded: ${jsPath}`);
+               
                 resolve();
             };
             
@@ -586,7 +585,7 @@ class DVARouter {
 
     async loadHTMLWithFallback(filePath, module) {
         try {
-            console.log(`📄 Loading HTML: ${filePath}`);
+          
             
             const response = await fetch(`${filePath}?v=${Date.now()}`);
             
@@ -599,7 +598,7 @@ class DVARouter {
             const mainContent = document.getElementById('main-content');
             if (mainContent) {
                 mainContent.innerHTML = html;
-                console.log(`✅ HTML loaded: ${filePath}`);
+               
             } else {
                 throw new Error('Main content container not found');
             }
@@ -620,7 +619,7 @@ class DVARouter {
         
 
         mainContent.innerHTML = fallbackContent[module] || this.get404Content();
-        console.log(`✅ Fallback content loaded for ${module}`);
+       
         
         setTimeout(() => this.initializeFallbackModule(module), 200);
     }
@@ -641,7 +640,7 @@ class DVARouter {
     }
 
     updateActiveNavigation(currentPath) {
-        console.log(`🎯 Updating navigation for: ${currentPath}`);
+  
         
         const navItems = document.querySelectorAll('.nav-item-modern, [data-page]');
         navItems.forEach(item => {
@@ -659,7 +658,7 @@ class DVARouter {
             }
         });
         
-        console.log(`✅ Active navigation updated: ${currentPath}`);
+     
     }
 
     showLoading(show) {
@@ -768,7 +767,7 @@ class DVARouter {
 
     handleInitialRoute() {
         const path = this.getCurrentPath();
-        console.log('🎯 Initial route:', path || this.defaultRoute);
+      
         this.handleRoute(path || this.defaultRoute, false);
     }
 

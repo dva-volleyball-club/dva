@@ -18,8 +18,7 @@ if (typeof window.NewsModule === 'undefined') {
             this.filteredNews = [];
             this.currentModal = null;
             this.modalEscapeHandler = null;
-            
-            console.log('📰 News Module initializing...');
+ 
             this.init();
         }
 
@@ -33,7 +32,7 @@ if (typeof window.NewsModule === 'undefined') {
                 this.setupAnimations();
                 
                 this.isInitialized = true;
-                console.log('✅ News Module initialized successfully');
+         
                 
                 document.dispatchEvent(new CustomEvent('newsModuleReady', {
                     detail: { instance: this }
@@ -49,7 +48,7 @@ if (typeof window.NewsModule === 'undefined') {
             if (!this.moduleContainer) {
                 throw new Error('News module container not found');
             }
-            console.log('🎯 News module scope established');
+       
         }
 
         async waitForElements() {
@@ -73,7 +72,7 @@ if (typeof window.NewsModule === 'undefined') {
                         );
 
                         if (allFound) {
-                            console.log('✅ News elements found and verified');
+                       
                             resolve();
                             return;
                         }
@@ -95,7 +94,7 @@ if (typeof window.NewsModule === 'undefined') {
             if (window.newsData) {
                 this.allNews = [...window.newsData].sort((a, b) => new Date(b.date) - new Date(a.date));
                 this.filteredNews = [...this.allNews];
-                console.log(`📰 Loaded ${this.allNews.length} news articles`);
+           
             } else {
                 console.warn('⚠️ News data not found');
                 this.allNews = [];
@@ -104,7 +103,7 @@ if (typeof window.NewsModule === 'undefined') {
         }
 
         bindEvents() {
-            console.log('🔗 Binding news events...');
+   
 
             const searchInput = this.moduleContainer.querySelector('.news-search-input');
             if (searchInput) {
@@ -124,7 +123,6 @@ if (typeof window.NewsModule === 'undefined') {
                 this.eventListeners.push({ element: clearButton, event: 'click', handler: clearHandler });
             }
 
-            console.log('✅ News events bound successfully');
         }
 
         handleSearch(query) {
@@ -147,7 +145,6 @@ if (typeof window.NewsModule === 'undefined') {
             this.renderNews();
             this.updateSearchUI();
             
-            console.log(`🔍 Search: "${query}" - Found ${this.filteredNews.length} results`);
         }
 
         removeVietnameseTones(str) {
@@ -345,7 +342,6 @@ if (typeof window.NewsModule === 'undefined') {
                 newsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
 
-            console.log(`📄 Changed to page ${page}/${totalPages}`);
         }
 
         animateCards() {
@@ -392,7 +388,7 @@ if (typeof window.NewsModule === 'undefined') {
             if (!news) return;
 
             this.openNewsModal(news);
-            console.log(`📖 Viewing news detail: ${newsId} - ${news.title}`);
+         
         }
 
         // NEW: Open news modal with full content
@@ -578,7 +574,7 @@ if (typeof window.NewsModule === 'undefined') {
             // Clear modal reference
             this.currentModal = null;
             
-            console.log('📰 News modal closed');
+      
         }
 
         // NEW: Search by tag from modal
@@ -599,7 +595,7 @@ if (typeof window.NewsModule === 'undefined') {
                 }
             }, 400);
             
-            console.log(`🏷️ Searching by tag: ${tag}`);
+          
         }
 
         // NEW: Share news functionality
@@ -622,8 +618,7 @@ if (typeof window.NewsModule === 'undefined') {
                     this.showToast('📤 Chia sẻ không khả dụng');
                 });
             }
-            
-            console.log(`📤 Sharing news: ${newsId}`);
+        
         }
 
         // NEW: Print news functionality  
@@ -676,7 +671,7 @@ if (typeof window.NewsModule === 'undefined') {
                 printWindow.close();
             }, 500);
             
-            console.log(`🖨️ Printing news: ${newsId}`);
+            
         }
 
         // NEW: Show toast notification
@@ -718,7 +713,7 @@ if (typeof window.NewsModule === 'undefined') {
         }
 
         cleanup() {
-            console.log('🧹 Cleaning up News module...');
+          
 
             // Close modal if open
             this.closeNewsModal();
@@ -738,27 +733,27 @@ if (typeof window.NewsModule === 'undefined') {
             this.observers = [];
 
             this.isInitialized = false;
-            console.log('✅ News module cleanup completed');
+          
         }
     }
 
     // EXPOSE CLASS GLOBALLY
     window.NewsModule = NewsModule;
-    console.log('✅ Enhanced NewsModule class defined successfully');
+   
 
 } else {
-    console.log('⚠️ NewsModule already exists, skipping redefinition');
+    
 }
 
 // MODULE INITIALIZATION
 document.addEventListener('navigationChange', (e) => {
     const currentPage = e.detail?.page;
-    console.log('📍 Navigation change detected for News:', currentPage);
+   
 
     if (currentPage === 'news') {
         setTimeout(() => {
             if (!window.newsModuleInstance && window.NewsModule) {
-                console.log('🚀 Creating news module instance');
+             
                 try {
                     window.newsModuleInstance = new window.NewsModule();
                     window.newsModule = window.newsModuleInstance; // For global access
@@ -766,7 +761,7 @@ document.addEventListener('navigationChange', (e) => {
                     console.error('❌ Failed to create News module instance:', error);
                 }
             } else if (window.newsModuleInstance && !window.newsModuleInstance.isInitialized) {
-                console.log('🔄 Reinitializing news module');
+           
                 window.newsModuleInstance.init();
             }
         }, 300);
@@ -777,7 +772,7 @@ document.addEventListener('navigationChange', (e) => {
 if (window.location.hash.includes('#/news')) {
     setTimeout(() => {
         if (window.NewsModule && !window.newsModuleInstance) {
-            console.log('🔄 Direct news initialization');
+        
             try {
                 window.newsModuleInstance = new window.NewsModule();
                 window.newsModule = window.newsModuleInstance;
@@ -788,4 +783,3 @@ if (window.location.hash.includes('#/news')) {
     }, 1000);
 }
 
-console.log('📜 Enhanced News.js loaded successfully');

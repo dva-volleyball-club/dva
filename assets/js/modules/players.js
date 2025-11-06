@@ -480,7 +480,7 @@ class PlayersModule {
     constructor() {
         // Prevent multiple instances
         if (window.playersModule) {
-            console.log('⚠️ Players module already exists, cleaning up...');
+        
             this.cleanup();
         }
         
@@ -497,14 +497,14 @@ class PlayersModule {
             sort: 'name'
         };
         
-        console.log('🏐 Players Module constructor called');
+
         this.init();
     }
 
     async init() {
         if (this.isDestroyed) return;
         
-        console.log('📚 Initializing Players Module...');
+     
         
         try {
             await this.waitForElements();
@@ -528,7 +528,7 @@ class PlayersModule {
             if (!this.isDestroyed) {
                 this.animateStats();
                 this.isInitialized = true;
-                console.log('✅ Players Module initialized successfully');
+      
             }
             
         } catch (error) {
@@ -538,7 +538,7 @@ class PlayersModule {
     }
 
     cleanup() {
-        console.log('🧹 Cleaning up Players Module...');
+
         
         this.isDestroyed = true;
         this.isInitialized = false;
@@ -557,8 +557,7 @@ class PlayersModule {
         
         // Clear data
         this.filteredPlayers = [];
-        
-        console.log('✅ Players Module cleaned up');
+   
     }
 
     setupRouting() {
@@ -573,7 +572,7 @@ class PlayersModule {
             
             const team = e.detail.team;
             if (team && (team === 'middle' || team === 'advanced')) {
-                console.log(`🔄 Route team switch: ${team}`);
+   
                 this.switchTeam(team, false);
             }
         };
@@ -589,7 +588,7 @@ class PlayersModule {
     }
 
     async waitForElements() {
-        console.log('⏳ Waiting for HTML elements...');
+
         
         return new Promise((resolve, reject) => {
             const maxAttempts = 50;
@@ -608,7 +607,7 @@ class PlayersModule {
                 const teamTabs = document.querySelectorAll('.team-tab');
                 
                 if (playersGrid && playersModule && teamTabs.length > 0) {
-                    console.log('✅ Required elements found');
+             
                     resolve();
                 } else if (attempts >= maxAttempts) {
                     console.error('❌ Elements not found after max attempts');
@@ -623,7 +622,7 @@ class PlayersModule {
     }
 
     async waitForData() {
-        console.log('⏳ Waiting for players data...');
+   
         
         return new Promise((resolve) => {
             const checkData = () => {
@@ -633,10 +632,7 @@ class PlayersModule {
                 }
                 
                 if (window.playersData && window.positionColors) {
-                    console.log('✅ Players data found:', {
-                        middle: window.playersData.middle?.length || 0,
-                        advanced: window.playersData.advanced?.length || 0
-                    });
+                    
                     resolve();
                 } else {
                     setTimeout(checkData, 100);
@@ -650,7 +646,7 @@ class PlayersModule {
     bindEvents() {
         if (this.isDestroyed) return;
         
-        console.log('🔗 Binding players events...');
+     
         
         // Team tabs - SMOOTH SWITCHING WITHOUT PAGE RELOAD
         const teamTabs = document.querySelectorAll('.team-tab');
@@ -662,7 +658,7 @@ class PlayersModule {
                 e.stopPropagation();
                 
                 const team = e.currentTarget.getAttribute('data-team');
-                console.log('Team tab clicked:', team);
+                
                 
                 // Update URL without page reload
                 const newUrl = `#/players/${team}`;
@@ -715,14 +711,10 @@ class PlayersModule {
 
         // ENHANCED FILTERS WITH DEBUGGING
         const filterSelects = document.querySelectorAll('select[id$="-filter"]');
-        console.log('🔍 Filter selects found:', filterSelects.length);
+      
         
         filterSelects.forEach((select, index) => {
-            console.log(`Filter ${index + 1}:`, {
-                id: select.id,
-                options: select.options.length,
-                value: select.value
-            });
+            
             
             select.addEventListener('change', (e) => {
                 if (this.isDestroyed) return;
@@ -730,7 +722,7 @@ class PlayersModule {
                 const filterType = e.target.id.replace('-filter', '');
                 const newValue = e.target.value;
                 
-                console.log(`🎛️ Filter changed: ${filterType} = "${newValue}"`);
+            
                 
                 this.filters[filterType] = newValue;
                 this.applyFilters();
@@ -755,8 +747,7 @@ class PlayersModule {
                 this.resetFilters();
             });
         }
-        
-        console.log('✅ Events bound successfully');
+
     }
 
     initializeFilters() {
@@ -793,7 +784,7 @@ class PlayersModule {
     async switchTeam(teamName, updateUrl = true) {
         if (this.isDestroyed || teamName === this.currentTeam) return;
         
-        console.log(`🔄 Switching to ${teamName} team (updateUrl: ${updateUrl})`);
+     
         
         // Update tab states immediately for smooth UX
         this.updateTabStates(teamName);
@@ -805,7 +796,7 @@ class PlayersModule {
         await this.loadTeamPlayers(teamName);
         
         if (!this.isDestroyed) {
-            console.log(`✅ Team switched to ${teamName}`);
+
         }
     }
 
@@ -832,21 +823,15 @@ class PlayersModule {
             }
         });
         
-        console.log(`🎯 Tab states updated for ${activeTeam}`);
+  
     }
 
     async loadTeamPlayers(teamName) {
     if (this.isDestroyed) return;
     
-    console.log(`📥 Loading ${teamName} team players...`);
+
     
-    // ✅ ENHANCED: Verify data exists
-    console.log('📊 Data check:', {
-        playersDataExists: !!window.playersData,
-        teamData: window.playersData?.[teamName]?.length || 0,
-        positionColorsExists: !!window.positionColors,
-        availableTeams: Object.keys(window.playersData || {})
-    });
+    
     
     // ✅ CRITICAL: Handle missing data
     if (!window.playersData || !window.playersData[teamName]) {
@@ -897,7 +882,7 @@ class PlayersModule {
     if (this.isDestroyed) return;
     
     const players = window.playersData[teamName] || [];
-    console.log(`📊 Found ${players.length} players for ${teamName} team`);
+  
     
     this.filteredPlayers = [...players];
     this.applyFilters();
@@ -1000,7 +985,7 @@ class PlayersModule {
             this.filters.search = query.toLowerCase().trim();
             this.applyFilters();
             
-            console.log(`🔍 Search executed: "${query}" → ${this.filteredPlayers.length} results`);
+        
         };
         
         if (immediate) {
@@ -1026,14 +1011,14 @@ class PlayersModule {
         this.filters.search = '';
         this.applyFilters();
         
-        console.log('🧹 Search cleared');
+    
     }
 
     applyFilters() {
         if (this.isDestroyed) return;
         
         let filtered = [...(window.playersData[this.currentTeam] || [])];
-        console.log(`🔍 Starting filter with ${filtered.length} players`);
+      
         
         // ADVANCED SEARCH FILTER - Support Vietnamese diacritics
         if (this.filters.search) {
@@ -1058,7 +1043,7 @@ class PlayersModule {
                 return nameMatch || positionMatch || addressMatch || countryMatch || fuzzyNameMatch;
             });
             
-            console.log(`🔍 Search "${this.filters.search}" found ${filtered.length} results`);
+           
         }
         
         // Apply position filter
@@ -1066,7 +1051,7 @@ class PlayersModule {
             filtered = filtered.filter(player => 
                 player.position === this.filters.position
             );
-            console.log(`🎯 Position filter "${this.filters.position}" found ${filtered.length} results`);
+         
         }
         
         // Apply height filter
@@ -1086,7 +1071,7 @@ class PlayersModule {
                         return true;
                 }
             });
-            console.log(`📏 Height filter "${this.filters.height}" found ${filtered.length} results`);
+          
         }
         
         // Apply country filter
@@ -1094,7 +1079,7 @@ class PlayersModule {
             filtered = filtered.filter(player => 
                 player.country === this.filters.country
             );
-            console.log(`🌍 Country filter "${this.filters.country}" found ${filtered.length} results`);
+      
         }
         
         // Apply sorting
@@ -1104,7 +1089,7 @@ class PlayersModule {
         this.renderPlayers();
         this.updateResultsCount();
         
-        console.log(`✅ Final filtered results: ${filtered.length} players`);
+    
     }
 
     sortPlayers(players, sortBy) {
@@ -1135,7 +1120,7 @@ class PlayersModule {
     resetFilters() {
         if (this.isDestroyed) return;
         
-        console.log('🔄 Resetting all filters...');
+    
         
         this.filters = {
             search: '',
@@ -1148,13 +1133,13 @@ class PlayersModule {
         this.initializeFilters();
         this.applyFilters();
         
-        console.log('✅ All filters reset');
+        
     }
 
     renderPlayers() {
         if (this.isDestroyed) return;
         
-        console.log(`🎨 Rendering ${this.filteredPlayers.length} players`);
+       
         
         const grid = document.getElementById('players-grid');
         const empty = document.getElementById('players-empty');
@@ -1467,7 +1452,7 @@ class PlayersModule {
 // ✅ ENHANCED MODULE MANAGEMENT - SINGLE INIT PATTERN
 // =====================================
 
-console.log('📜 Players.js loaded with SINGLE INIT pattern');
+
 
 // Global flag to prevent multiple inits
 let playersInitInProgress = false;
@@ -1478,7 +1463,7 @@ let playersInitInProgress = false;
 async function initPlayersModuleSafe() {
     // Prevent concurrent inits
     if (playersInitInProgress) {
-        console.log('⏳ Players init already in progress, skipping...');
+        
         return;
     }
     
@@ -1486,27 +1471,27 @@ async function initPlayersModuleSafe() {
     if (window.playersModule && 
         window.playersModule.isInitialized && 
         !window.playersModule.isDestroyed) {
-        console.log('✅ Players module already initialized and working');
+   
         return;
     }
     
     // Check if DOM is ready
     const playersContainer = document.querySelector('.dva-players');
     if (!playersContainer) {
-        console.log('⏳ Players container not found, waiting...');
+        
         return;
     }
     
     // Check if data is loaded
     if (!window.playersData || !window.positionColors) {
-        console.log('⏳ Players data not loaded yet, waiting...');
+        
         setTimeout(initPlayersModuleSafe, 200);
         return;
     }
     
     try {
         playersInitInProgress = true;
-        console.log('🚀 Initializing Players Module...');
+      
         
         // Cleanup old instance if exists
         if (window.playersModule) {
@@ -1519,7 +1504,7 @@ async function initPlayersModuleSafe() {
         // Create new instance
         window.playersModule = new PlayersModule();
         
-        console.log('✅ Players Module initialized successfully');
+        
         
     } catch (error) {
         console.error('❌ Players Module initialization failed:', error);
@@ -1532,7 +1517,7 @@ async function initPlayersModuleSafe() {
 document.addEventListener('navigationChange', (e) => {
     const currentPage = e.detail?.page;
     
-    console.log('📍 Navigation change detected:', currentPage);
+  
     
     if (currentPage === 'players') {
         // Small delay to ensure DOM is ready
@@ -1542,7 +1527,7 @@ document.addEventListener('navigationChange', (e) => {
     } else {
         // Cleanup when leaving players page
         if (window.playersModule && !window.playersModule.isDestroyed) {
-            console.log('🧹 Cleaning up Players module (left page)');
+          
             window.playersModule.cleanup();
             window.playersModule = null;
         }
@@ -1553,14 +1538,14 @@ document.addEventListener('navigationChange', (e) => {
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
         if (window.location.hash.includes('#/players')) {
-            console.log('📄 DOM ready + on players page');
+           
             setTimeout(initPlayersModuleSafe, 500);
         }
     });
 } else {
     // DOM already loaded
     if (window.location.hash.includes('#/players')) {
-        console.log('📄 DOM already loaded + on players page');
+     
         setTimeout(initPlayersModuleSafe, 500);
     }
 }
@@ -1572,7 +1557,7 @@ window.addEventListener('popstate', () => {
         if (window.playersModule && !window.playersModule.isDestroyed) {
             const team = window.playersModule.getTeamFromRoute();
             if (team && team !== window.playersModule.currentTeam) {
-                console.log('🔙 Browser back/forward: switching to', team);
+  
                 window.playersModule.switchTeam(team, false);
             }
         } else {
@@ -1588,4 +1573,3 @@ if (typeof window !== 'undefined') {
     window.initPlayersModuleSafe = initPlayersModuleSafe; // For debugging
 }
 
-console.log('🔒 Players module management locked and ready');

@@ -17,21 +17,20 @@ if (typeof window.ContactModule === 'undefined') {
             // ✅ YOUR ACTUAL DEPLOYMENT URL - UPDATED
             this.GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/AKfycbyfpWaHtx9p6g6unLCfDY4j1cI-xTimkUI3_np-s5KDpv66IahI5Iey-GqvW2RIXIBj/exec';
             
-            console.log('📞 DVA Contact Module initializing...');
-            console.log('🔗 Google Sheets URL:', this.GOOGLE_SHEETS_URL);
+           
             this.init();
         }
 
         async init() {
             try {
-                console.log('🚀 Contact Module starting...');
+           
                 
                 await this.waitForContactHTML();
                 this.bindEvents();
                 this.initializeAnimations();
                 
                 this.isInitialized = true;
-                console.log('✅ Contact Module initialized successfully');
+            
                 
             } catch (error) {
                 console.error('❌ Contact Module initialization failed:', error);
@@ -40,7 +39,7 @@ if (typeof window.ContactModule === 'undefined') {
         }
 
         async waitForContactHTML() {
-            console.log('⏳ Waiting for Contact HTML elements...');
+         
             
             return new Promise((resolve, reject) => {
                 let attempts = 0;
@@ -54,7 +53,7 @@ if (typeof window.ContactModule === 'undefined') {
                     const formGroups = document.querySelectorAll('.form-group');
                     
                     if (form && contactMethods.length > 0 && formGroups.length > 0) {
-                        console.log(`✅ Contact HTML ready after ${attempts} attempts`);
+                     
                         resolve();
                     } else if (attempts >= maxAttempts) {
                         console.error('❌ Contact HTML not found after 3 seconds');
@@ -69,11 +68,11 @@ if (typeof window.ContactModule === 'undefined') {
         }
 
         bindEvents() {
-            console.log('🔗 Binding contact events...');
+            
             this.bindFormEvents();
             this.bindDirectContactEvents();
             this.bindValidationEvents();
-            console.log('✅ All contact events bound');
+        
         }
 
         // ✅ ENHANCED: Form event binding with URL protection
@@ -95,7 +94,7 @@ if (typeof window.ContactModule === 'undefined') {
                 form.setAttribute('method', 'POST'); // Ensure POST method
                 form.setAttribute('onsubmit', 'return false;'); // HTML prevention
                 
-                console.log('✅ Form submit event bound with URL protection');
+              
             }
             
             if (newMessageBtn) {
@@ -107,7 +106,7 @@ if (typeof window.ContactModule === 'undefined') {
 
         bindDirectContactEvents() {
             const methodBtns = document.querySelectorAll('.method-btn[data-contact]');
-            console.log(`📞 Found ${methodBtns.length} direct contact buttons`);
+            
             
             methodBtns.forEach((btn, index) => {
                 const contactType = btn.getAttribute('data-contact');
@@ -120,7 +119,7 @@ if (typeof window.ContactModule === 'undefined') {
 
         bindValidationEvents() {
             const inputs = document.querySelectorAll('.form-input, .form-select, .form-textarea');
-            console.log(`📝 Found ${inputs.length} form inputs for validation`);
+         
             
             inputs.forEach(input => {
                 input.addEventListener('blur', () => {
@@ -231,7 +230,7 @@ if (typeof window.ContactModule === 'undefined') {
         async handleFormSubmit() {
             if (this.isSubmitting) return;
             
-            console.log('📝 Processing form submission with Google Sheets integration...');
+        
             
             if (!this.validateForm()) {
                 this.showNotification('❌ Vui lòng kiểm tra lại thông tin đã nhập', 'error');
@@ -245,8 +244,7 @@ if (typeof window.ContactModule === 'undefined') {
                 // ✅ COLLECT FORM DATA
                 this.collectFormData();
                 
-                console.log('📋 Form data collected:', this.formData);
-                console.log('🔗 Sending to Google Sheets URL:', this.GOOGLE_SHEETS_URL);
+              
                 
                 // ✅ SUBMIT TO GOOGLE APPS SCRIPT USING FORMDATA
                 const formData = new FormData();
@@ -254,25 +252,24 @@ if (typeof window.ContactModule === 'undefined') {
                 // Map all form fields to FormData (matching Google Sheets headers)
                 Object.keys(this.formData).forEach(key => {
                     formData.append(key, this.formData[key]);
-                    console.log(`   📝 ${key}: ${this.formData[key]}`);
+                
                 });
 
-                console.log('📤 Submitting FormData to Google Apps Script...');
+            
 
                 const response = await fetch(this.GOOGLE_SHEETS_URL, {
                     method: 'POST',
                     body: formData  // FormData, no headers needed
                 });
 
-                console.log('📡 Response status:', response.status);
-                console.log('📡 Response OK:', response.ok);
+               
 
                 if (!response.ok) {
                     throw new Error(`HTTP ${response.status}: ${response.statusText}`);
                 }
 
                 const result = await response.json();
-                console.log('📊 Response data:', result);
+       
                 
                 if (result.result !== 'success') {
                     throw new Error(result.error || result.message || 'Server returned error');
@@ -285,9 +282,7 @@ if (typeof window.ContactModule === 'undefined') {
                 this.showSuccessMessage();
                 this.showNotification('✅ Đã gửi thành công! Cảm ơn bạn đã liên hệ DVA.', 'success');
                 
-                console.log('✅ Form submitted successfully to Google Sheets');
-                console.log('📊 Saved to row:', result.row);
-                console.log('⏰ Timestamp:', result.timestamp);
+            
                 
             } catch (error) {
                 console.error('❌ Form submission failed:', error);
@@ -301,7 +296,7 @@ if (typeof window.ContactModule === 'undefined') {
                 this.cleanUrlAfterSubmission();
                 
                 // Fallback to email
-                console.log('🔄 Using email fallback...');
+               
                 this.sendViaEmail();
                 this.showNotification('📧 Đã chuyển sang email backup. Vui lòng gửi email để hoàn tất!', 'info');
                 
@@ -323,7 +318,7 @@ if (typeof window.ContactModule === 'undefined') {
                 // Replace current history entry without adding new one
                 if (window.history && window.history.replaceState) {
                     window.history.replaceState({}, document.title, cleanUrl);
-                    console.log('🧹 URL cleaned:', cleanUrl);
+         
                 }
                 
             } catch (error) {
@@ -353,7 +348,7 @@ if (typeof window.ContactModule === 'undefined') {
                 source: 'DVA Contact Form'                              // Column I: source
             };
             
-            console.log('📋 Form data mapped to Google Sheets format:', this.formData);
+           
         }
 
         // ✅ EMAIL FALLBACK
@@ -388,7 +383,7 @@ ${this.formData.requirements}
             
             setTimeout(() => {
                 window.open(mailtoLink);
-                console.log('📧 Email fallback opened');
+            
             }, 1000);
             
             this.copyToClipboard(emailBody);
@@ -397,7 +392,7 @@ ${this.formData.requirements}
         copyToClipboard(text) {
             if (navigator.clipboard) {
                 navigator.clipboard.writeText(text).then(() => {
-                    console.log('📋 Email content copied to clipboard');
+            
                     setTimeout(() => {
                         this.showNotification('📋 Nội dung đã sao chép vào clipboard', 'success');
                     }, 2000);
@@ -454,7 +449,7 @@ showSuccessMessage() {
         // Auto scroll to top
         window.scrollTo({ top: 0, behavior: 'smooth' });
         
-        console.log('✅ Enhanced success message displayed with auto-generated buttons');
+        
     } else {
         this.showNotification('✅ Form submitted successfully!', 'success');
     }
@@ -525,7 +520,7 @@ ensureSuccessButtons() {
         // Add hover effects
         this.addButtonHoverEffects();
         
-        console.log('✅ Success buttons auto-generated and added');
+    
     } else {
         console.error('❌ Success card content not found');
     }
@@ -573,7 +568,7 @@ bindSuccessEvents() {
     const newContactBtn = document.getElementById('new-contact-btn');
     if (newContactBtn) {
         newContactBtn.addEventListener('click', () => {
-            console.log('📝 New contact button clicked');
+          
             this.resetForm();
         });
     }
@@ -581,7 +576,7 @@ bindSuccessEvents() {
     const goHomeBtn = document.getElementById('go-home-btn');
     if (goHomeBtn) {
         goHomeBtn.addEventListener('click', () => {
-            console.log('🏠 Go home button clicked');
+         
             this.goToHomePage();
         });
     }
@@ -610,7 +605,7 @@ bindSuccessEvents() {
     };
     document.addEventListener('keydown', this.escapeKeyHandler);
     
-    console.log('✅ Success events bound to auto-generated buttons');
+ 
 }
 
 
@@ -696,7 +691,7 @@ bindSuccessEvents() {
                     window.location.href = '/';
                 }
                 
-                console.log('🏠 Navigating to home page with clean URL...');
+       
             }, 100);
         }
 
@@ -735,11 +730,11 @@ bindSuccessEvents() {
             // Reset form data
             this.formData = {};
             
-            console.log('🔄 Enhanced form reset completed with URL cleaning');
+            
         }
 
         handleDirectContact(contactType) {
-            console.log('📞 Handling direct contact:', contactType);
+        
             
             const contactActions = {
                 phone: {
@@ -876,7 +871,7 @@ bindSuccessEvents() {
                     '.intro-item, .contact-method, .form-group'
                 );
                 
-                console.log(`🎬 Setting up scroll animations for ${animatedElements.length} elements`);
+            
                 
                 animatedElements.forEach(el => {
                     el.classList.add('animate-on-scroll');
@@ -903,7 +898,7 @@ bindSuccessEvents() {
         }
 
         cleanup() {
-    console.log('🧹 Cleaning up Contact Module...');
+    
     this.isInitialized = false;
     
     const notifications = document.querySelectorAll('.dva-notification');
@@ -929,10 +924,10 @@ bindSuccessEvents() {
 
     // EXPOSE CLASS GLOBALLY
     window.ContactModule = ContactModule;
-    console.log('✅ DVA ContactModule class defined successfully');
+  
 
 } else {
-    console.log('⚠️ ContactModule already exists, skipping redefinition');
+    
 }
 
 // ===== MODULE INITIALIZATION ===== //
@@ -943,7 +938,7 @@ document.addEventListener('navigationChange', (e) => {
     if (currentPage === 'contact') {
         setTimeout(() => {
             if (!window.contactModuleInstance && window.ContactModule) {
-                console.log('🚀 Creating DVA Contact module instance');
+                
                 window.contactModuleInstance = new window.ContactModule();
             }
         }, 200);
@@ -959,10 +954,10 @@ document.addEventListener('navigationChange', (e) => {
 if (window.location.hash.includes('#/contact')) {
     setTimeout(() => {
         if (window.ContactModule && !window.contactModuleInstance) {
-            console.log('🔄 Direct DVA Contact initialization');
+        
             window.contactModuleInstance = new window.ContactModule();
         }
     }, 500);
 }
 
-console.log('📞 DVA Contact Module loaded successfully');
+

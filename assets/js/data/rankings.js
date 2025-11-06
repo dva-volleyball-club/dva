@@ -104,8 +104,5 @@ if (typeof window.rankingsData === 'undefined') {
     window.rankingsData = rankingsData;
     window.rankingPositionColors = positionColors;
 
-    console.log('✅ Rankings data loaded:', {
-        middle: Object.keys(rankingsData.middle.positions).length + ' positions',
-        advanced: Object.keys(rankingsData.advanced.positions).length + ' positions'
-    });
+    
 }

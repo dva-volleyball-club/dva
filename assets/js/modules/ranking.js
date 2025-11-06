@@ -12,7 +12,7 @@ if (typeof window.RankingModule === 'undefined') {
             this.currentPosition = 'all';
             this.isInitialized = false;
 
-            console.log('🏆 Ranking Module initializing...');
+           
             this.init();
         }
 
@@ -29,7 +29,7 @@ if (typeof window.RankingModule === 'undefined') {
                 this.animateStats();
 
                 this.isInitialized = true;
-                console.log('✅ Ranking Module initialized successfully');
+               
 
             } catch (error) {
                 console.error('❌ Ranking Module initialization failed:', error);
@@ -55,7 +55,7 @@ if (typeof window.RankingModule === 'undefined') {
             return new Promise((resolve) => {
                 const checkData = () => {
                     if (window.rankingsData && window.rankingPositionColors) {
-                        console.log('✅ Rankings data found');
+                       
                         resolve();
                     } else {
                         // Create fallback data if not found
@@ -86,7 +86,7 @@ if (typeof window.RankingModule === 'undefined') {
                             };
                         }
                         
-                        console.log('⚠️ Using fallback rankings data');
+                      
                         resolve();
                     }
                 };
@@ -106,9 +106,9 @@ if (typeof window.RankingModule === 'undefined') {
                     const rankingTabs = document.querySelectorAll('.ranking-tab');
 
                     if (rankingGrid) {
-                        console.log('✅ Ranking grid found');
+                        
                         if (rankingTabs.length === 0) {
-                            console.log('⚠️ No ranking tabs found, creating fallback');
+                            
                         }
                         resolve();
                     } else if (attempts >= maxAttempts) {
@@ -132,7 +132,7 @@ if (typeof window.RankingModule === 'undefined') {
                 fallbackGrid.id = 'rankings-grid';
                 fallbackGrid.className = 'rankings-grid-fallback';
                 rankingSection.appendChild(fallbackGrid);
-                console.log('✅ Fallback ranking grid created');
+                
             }
         }
 
@@ -143,7 +143,7 @@ if (typeof window.RankingModule === 'undefined') {
             
             if (parts[0] === 'ranking' && parts[1]) {
                 this.currentDivision = parts[1];
-                console.log(`🎯 Initial division from URL: ${this.currentDivision}`);
+               
             }
 
             // Update tab states
@@ -151,7 +151,7 @@ if (typeof window.RankingModule === 'undefined') {
         }
 
         bindEvents() {
-            console.log('🔗 Binding ranking events...');
+           
 
             // Division tabs - NO SCROLL TO TOP
             document.querySelectorAll('.ranking-tab').forEach(tab => {
@@ -161,7 +161,7 @@ if (typeof window.RankingModule === 'undefined') {
                     
                     const division = tab.getAttribute('data-division');
                     if (division && division !== this.currentDivision) {
-                        console.log(`🔄 Switching to ${division} division (NO SCROLL)`);
+                        
                         
                         // Update URL without causing page reload
                         const newUrl = `#/ranking/${division}`;
@@ -184,17 +184,17 @@ if (typeof window.RankingModule === 'undefined') {
             // Listen for router navigation events
             document.addEventListener('rankingDivisionRoute', (e) => {
                 const { division } = e.detail;
-                console.log('📡 Router division event:', division);
+              
                 this.switchDivisionNoScroll(division);
             });
 
-            console.log('✅ Ranking events bound');
+       
         }
 
         switchDivisionNoScroll(division) {
             if (division === this.currentDivision) return;
 
-            console.log(`🔄 Switching to ${division} division (preserving scroll)`);
+          
 
             // Remember scroll position
             const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
@@ -213,7 +213,7 @@ if (typeof window.RankingModule === 'undefined') {
                 window.scrollTo(0, currentScroll);
             }, 50);
 
-            console.log(`✅ Switched to ${division} (scroll preserved at ${currentScroll}px)`);
+            
         }
 
         updateTabStates() {
@@ -227,7 +227,7 @@ if (typeof window.RankingModule === 'undefined') {
         filterByPosition(position) {
             if (position === this.currentPosition) return;
 
-            console.log(`🎯 Filtering by position: ${position}`);
+          
 
             // Update button states
             document.querySelectorAll('.position-btn').forEach(btn => {
@@ -240,7 +240,7 @@ if (typeof window.RankingModule === 'undefined') {
         }
 
         renderRankings() {
-            console.log(`🎨 Rendering rankings for ${this.currentDivision} - ${this.currentPosition}`);
+           
 
             const grid = document.getElementById('rankings-grid');
             if (!grid) {
@@ -469,30 +469,29 @@ if (typeof window.RankingModule === 'undefined') {
         }
 
         cleanup() {
-            console.log('🧹 Cleaning up Ranking Module...');
+            
             this.isInitialized = false;
         }
     }
 
     // EXPOSE CLASS GLOBALLY
     window.RankingModule = RankingModule;
-    console.log('✅ DVA RankingModule class defined successfully');
+    
 
 } else {
-    console.log('⚠️ RankingModule already exists, skipping redefinition');
+    
 }
 
 // ===== MODULE INITIALIZATION ===== //
 
-// Enhanced Module Management
-console.log('📜 Ranking.js loaded');
+
 
 // Listen for navigation events
 document.addEventListener('navigationChange', (e) => {
     const currentPage = e.detail?.page;
 
     if (currentPage === 'ranking') {
-        console.log('🏆 Ranking page detected, initializing module...');
+       
         
         setTimeout(() => {
             if (!window.rankingModule || !window.rankingModule.isInitialized) {
@@ -517,7 +516,7 @@ document.addEventListener('navigationChange', (e) => {
 // Initialize if already on ranking page
 function tryInitRanking() {
     if (window.location.hash.includes('#/ranking') && (!window.rankingModule || !window.rankingModule.isInitialized)) {
-        console.log('🏆 Direct ranking access detected');
+     
         if (window.RankingModule) {
             window.rankingModule = new window.RankingModule();
         }

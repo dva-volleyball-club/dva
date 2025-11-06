@@ -19,7 +19,7 @@ if (typeof window.InformationModule === 'undefined') {
             this.tabButtons = [];
             this.contentContainers = [];
             
-            console.log('🏐 Information Module Ultimate Edition initializing...');
+       
             this.init();
         }
 
@@ -31,7 +31,7 @@ if (typeof window.InformationModule === 'undefined') {
                 this.initializeFeatures();
                 
                 this.isInitialized = true;
-                console.log('✅ Information Module Ultimate Edition initialized successfully');
+               
                 
                 // DISPATCH MODULE READY EVENT
                 document.dispatchEvent(new CustomEvent('informationModuleReady', {
@@ -60,7 +60,7 @@ if (typeof window.InformationModule === 'undefined') {
                     const informationContainer = document.querySelector('.dva-information');
 
                     if (tabs.length >= 3 && contents.length >= 3 && informationContainer) {
-                        console.log('✅ All information elements found and verified');
+                 
                         this.tabButtons = Array.from(tabs);
                         this.contentContainers = Array.from(contents);
                         this.container = informationContainer;
@@ -91,12 +91,12 @@ if (typeof window.InformationModule === 'undefined') {
             this.moduleContainer.classList.add('module-isolated');
             this.moduleContainer.setAttribute('data-information-module', 'active');
             
-            console.log('🎯 Information module scope established');
+          
         }
 
         // ✅ BULLETPROOF EVENT BINDING FOR INFORMATION TABS
         bindEvents() {
-            console.log('🔗 Binding bulletproof information tab events...');
+          
 
             // CLEAR EXISTING LISTENERS
             this.clearEventListeners();
@@ -114,7 +114,7 @@ if (typeof window.InformationModule === 'undefined') {
                     e.stopPropagation();
                     
                     const targetTab = newButton.getAttribute('data-tab');
-                    console.log(`🎯 Information tab clicked: ${targetTab}`);
+                
                     
                     if (targetTab && targetTab !== this.currentTab) {
                         this.switchTab(targetTab);
@@ -125,7 +125,7 @@ if (typeof window.InformationModule === 'undefined') {
                 newButton.addEventListener('click', handler, { passive: false });
                 this.eventListeners.push({ element: newButton, event: 'click', handler });
 
-                console.log(`✅ Information Tab ${index + 1} (${newButton.getAttribute('data-tab')}) bound successfully`);
+             
             });
 
             // ALSO BIND TO QUERY SELECTORS AS BACKUP
@@ -136,7 +136,7 @@ if (typeof window.InformationModule === 'undefined') {
                         e.preventDefault();
                         const targetTab = tab.getAttribute('data-tab');
                         if (targetTab) {
-                            console.log(`🔄 Backup handler for: ${targetTab}`);
+                        
                             this.switchTab(targetTab);
                         }
                     };
@@ -146,7 +146,7 @@ if (typeof window.InformationModule === 'undefined') {
                 }
             });
 
-            console.log(`✅ Information tab events bound successfully - ${this.eventListeners.length} listeners total`);
+     
         }
 
         // ✅ INITIALIZE FEATURES
@@ -159,21 +159,21 @@ if (typeof window.InformationModule === 'undefined') {
                 this.testTabFunctionality();
             }, 500);
             
-            console.log('✅ Information features initialized');
+
         }
 
         // ✅ TEST TAB FUNCTIONALITY
         testTabFunctionality() {
-            console.log('🧪 Testing information tab functionality...');
+     
             
             const tabs = document.querySelectorAll('.req-tab[data-tab]');
             tabs.forEach((tab, index) => {
                 const tabName = tab.getAttribute('data-tab');
-                console.log(`Tab ${index + 1}: ${tabName} - Listeners: ${this.eventListeners.filter(l => l.element === tab).length}`);
+ 
             });
             
             if (tabs.length >= 3 && this.eventListeners.length >= 3) {
-                console.log('✅ Tab functionality test PASSED');
+          
             } else {
                 console.warn('⚠️ Tab functionality test FAILED - rebinding events');
                 this.bindEvents();
@@ -183,17 +183,16 @@ if (typeof window.InformationModule === 'undefined') {
         // ✅ ENHANCED TAB SWITCHING
         switchTab(targetTab) {
             if (targetTab === this.currentTab) {
-                console.log(`⚠️ Already on ${targetTab} tab`);
+               
                 return;
             }
 
-            console.log(`🔄 Switching to ${targetTab} tab`);
+       
 
             this.currentTab = targetTab;
             this.updateTabStates();
             this.updateContentVisibility();
 
-            console.log(`✅ Switched to ${targetTab} tab successfully`);
         }
 
         // ✅ UPDATE TAB STATES WITH VISUAL FEEDBACK
@@ -220,7 +219,7 @@ if (typeof window.InformationModule === 'undefined') {
                 }
             });
             
-            console.log(`✅ Tab states updated - Active: ${this.currentTab}`);
+          
         }
 
         // ✅ UPDATE CONTENT VISIBILITY
@@ -231,7 +230,7 @@ if (typeof window.InformationModule === 'undefined') {
                 if (content.id === this.currentTab) {
                     content.classList.add('active');
                     content.style.display = 'block';
-                    console.log(`✅ Content ${this.currentTab} is now visible`);
+                   
                 } else {
                     content.classList.remove('active');
                     content.style.display = 'none';
@@ -241,7 +240,7 @@ if (typeof window.InformationModule === 'undefined') {
 
         // ✅ CREATE EMERGENCY FIX IF ELEMENTS NOT FOUND
         createEmergencyFix() {
-            console.log('🚨 Creating emergency information tab fix...');
+        
             
             setTimeout(() => {
                 const tabs = document.querySelectorAll('.req-tab');
@@ -266,8 +265,7 @@ if (typeof window.InformationModule === 'undefined') {
                             if (targetContent) {
                                 targetContent.classList.add('active');
                             }
-                            
-                            console.log(`🚨 Emergency fix: Switched to ${targetTab}`);
+                          
                         });
                     });
                     
@@ -275,7 +273,7 @@ if (typeof window.InformationModule === 'undefined') {
                     tabs[0]?.classList.add('active');
                     contents[0]?.classList.add('active');
                     
-                    console.log('✅ Emergency information tab fix applied');
+                
                 }
             }, 200);
         }
@@ -288,12 +286,12 @@ if (typeof window.InformationModule === 'undefined') {
                 }
             });
             this.eventListeners = [];
-            console.log('🧹 Information event listeners cleared');
+          
         }
 
         // ✅ CLEANUP WITH PERSISTENCE PROTECTION
         cleanup() {
-            console.log('🧹 Cleaning up Information module...');
+         
 
             this.clearEventListeners();
 
@@ -313,7 +311,7 @@ if (typeof window.InformationModule === 'undefined') {
             this.animationTimers = [];
 
             this.isInitialized = false;
-            console.log('✅ Information module cleanup completed');
+           
         }
 
         // ✅ PUBLIC METHODS
@@ -339,7 +337,7 @@ if (typeof window.InformationModule === 'undefined') {
 
         // ✅ FORCE TAB REBIND (EMERGENCY METHOD)
         forceTabRebind() {
-            console.log('🚨 Force rebinding information tabs...');
+           
             this.clearEventListeners();
             
             // Re-get tab references
@@ -348,7 +346,7 @@ if (typeof window.InformationModule === 'undefined') {
             // Re-bind events
             this.bindEvents();
             
-            console.log('✅ Tab rebinding completed');
+          
         }
 
         async reinitialize() {
@@ -361,35 +359,35 @@ if (typeof window.InformationModule === 'undefined') {
 
     // EXPOSE CLASS GLOBALLY
     window.InformationModule = InformationModule;
-    console.log('✅ Ultimate InformationModule class defined successfully');
+    
 
 } else {
-    console.log('⚠️ InformationModule already exists, skipping redefinition');
+   
 }
 
 // ✅ ENHANCED MODULE INITIALIZATION WITH NAVIGATION RESISTANCE
 document.addEventListener('navigationChange', (e) => {
     const currentPage = e.detail?.page;
-    console.log('📍 Navigation change detected for Information:', currentPage);
+
 
     if (currentPage === 'information') {
         setTimeout(() => {
             if (!window.informationModuleInstance && window.InformationModule) {
-                console.log('🚀 Creating ultimate information module instance');
+               
                 try {
                     window.informationModuleInstance = new window.InformationModule();
                 } catch (error) {
                     console.error('❌ Failed to create Information module instance:', error);
                 }
             } else if (window.informationModuleInstance && !window.informationModuleInstance.isModuleInitialized()) {
-                console.log('🔄 Reinitializing information module');
+             
                 window.informationModuleInstance.reinitialize();
             } else if (window.informationModuleInstance) {
                 // TEST AND FIX TABS IF NEEDED
                 setTimeout(() => {
                     const tabs = document.querySelectorAll('.req-tab[data-tab]');
                     if (tabs.length > 0 && window.informationModuleInstance.eventListeners.length === 0) {
-                        console.log('🔧 Tabs found but no listeners - rebinding');
+                        
                         window.informationModuleInstance.forceTabRebind();
                     }
                 }, 200);
@@ -402,7 +400,7 @@ document.addEventListener('navigationChange', (e) => {
 if (window.location.hash.includes('#/information')) {
     const initTimer = setTimeout(() => {
         if (window.InformationModule && !window.informationModuleInstance) {
-            console.log('🔄 Direct information initialization');
+           
             try {
                 window.informationModuleInstance = new window.InformationModule();
             } catch (error) {
@@ -428,7 +426,7 @@ if (window.location.hash.includes('#/information')) {
 // ✅ INSTANT FIX FOR INFORMATION TABS (BACKUP)
 window.InformationTabsFix = {
     init() {
-        console.log('🔧 Information Tabs Instant Fix initializing...');
+       
         
         setTimeout(() => {
             const tabs = document.querySelectorAll('.req-tab[data-tab]');
@@ -454,7 +452,7 @@ window.InformationTabsFix = {
                             targetContent.style.display = 'block';
                         }
                         
-                        console.log(`✅ Instant fix: Switched to ${targetTab}`);
+                       
                     });
                 });
                 
@@ -465,7 +463,7 @@ window.InformationTabsFix = {
                     contents[0].style.display = 'block';
                 }
                 
-                console.log('✅ Information tabs instant fix applied successfully!');
+             
             }
         }, 100);
     }
@@ -476,4 +474,4 @@ document.addEventListener('DOMContentLoaded', () => {
     window.InformationTabsFix.init();
 });
 
-console.log('📜 Ultimate Bulletproof Information.js loaded successfully');
+

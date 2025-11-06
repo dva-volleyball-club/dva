@@ -24,9 +24,9 @@
         if ('getPlayersByTeam' in window) delete window.getPlayersByTeam;
         if ('getAllPlayers' in window) delete window.getAllPlayers;
         if ('getPlayerById' in window) delete window.getPlayerById;
-        console.log('🧹 DVA Players: Forced cleanup completed');
+       
     } catch (e) {
-        console.log('🧹 DVA Players: Cleanup attempted');
+      
     }
     
     // ===============================================
@@ -1907,7 +1907,7 @@
     // ===============================================
 
     const validatePlayersData = () => {
-        console.log('🔍 DVA Players: Running data validation...');
+      
         
         let totalPlayers = 0;
         let errors = [];
@@ -1963,10 +1963,7 @@
         }
         
         if (errors.length === 0) {
-            console.log('✅ DVA Players Data Validation PASSED');
-            console.log(`📊 Total: ${totalPlayers} players loaded successfully`);
-            console.log(`📊 Teams: ${Object.keys(window.playersData).length}`);
-            console.log(`📊 Countries: ${[...new Set(window.getAllPlayers().map(p => p.country))].length}`);
+           
         }
         
         return {
@@ -1992,14 +1989,7 @@
         // Expose validation results
         window.dvaPlayersValidation = validation;
         
-        // Log success message
-        console.log('🏐✅ DVA Volleyball Players Database loaded successfully!');
-        console.log('📊 Quick Stats:', {
-            'Middle Team': window.playersData.middle.length + ' players',
-            'Advanced Team': window.playersData.advanced.length + ' players',
-            'Total Countries': validation.stats.countries,
-            'Default Team': 'Advanced (Elite Division)'
-        });
+        
         
     }, 100);
 
@@ -2013,9 +2003,9 @@ if (!window.dvaPlayersLoaded) {
     window.dvaPlayersLoaded = true;
     window.dvaPlayersVersion = '2.0.0';
     window.dvaPlayersLoadedAt = new Date().toISOString();
-    console.log('🔒 DVA Players Database locked and secured');
+  
 } else {
-    console.log('⚠️ DVA Players Database already loaded, version:', window.dvaPlayersVersion || 'unknown');
+    
 }
 
 // End of file

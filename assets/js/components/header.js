@@ -22,7 +22,7 @@ class HeaderComponent {
 
     async render() {
         // FORCE sử dụng inline header thay vì load file
-        console.log('🚀 Using inline header with all 8 menu items...');
+        
         this.renderInlineHeader();
         
         setTimeout(() => {
@@ -30,7 +30,7 @@ class HeaderComponent {
             this.setupScrollEffects();
             this.debugMobileMenu();
             this.isInitialized = true;
-            console.log('✅ Header component loaded with mobile menu');
+            
         }, 100);
     }
 
@@ -201,20 +201,20 @@ class HeaderComponent {
         const headerContainer = document.getElementById('header-container');
         if (headerContainer) {
             headerContainer.innerHTML = headerHTML;
-            console.log('✅ Inline header with 8 menu items created');
+            
         } else {
             // Create container if not exists
             const container = document.createElement('div');
             container.id = 'header-container';
             container.innerHTML = headerHTML;
             document.body.prepend(container);
-            console.log('✅ Header container created with inline header');
+            
         }
     }
 
     // ... (rest of your methods remain exactly the same)
     bindAllEvents() {
-        console.log('🔗 Binding all header events...');
+     
         
         // Mobile menu events - QUAN TRỌNG NHẤT
         this.bindMobileMenuEvents();
@@ -228,7 +228,7 @@ class HeaderComponent {
         // Global events
         this.bindGlobalEvents();
         
-        console.log('✅ All header events bound successfully');
+      
     }
 
     bindMobileMenuEvents() {
@@ -237,13 +237,8 @@ class HeaderComponent {
         const mobileCloseBtn = document.getElementById('mobile-close-btn');
         const mobileBackdrop = document.querySelector('.mobile-nav-backdrop');
 
-        console.log('📱 Binding mobile menu events...');
-        console.log('Elements found:', {
-            button: !!mobileMenuBtn,
-            overlay: !!mobileOverlay,
-            closeBtn: !!mobileCloseBtn,
-            backdrop: !!mobileBackdrop
-        });
+      
+       
 
         // Mobile menu toggle
         if (mobileMenuBtn) {
@@ -263,7 +258,7 @@ class HeaderComponent {
             mobileCloseBtn.addEventListener('click', (e) => {
                 e.preventDefault();
                 e.stopPropagation();
-                console.log('❌ Mobile close button clicked!');
+          
                 this.closeMobileMenu();
             });
         }
@@ -272,7 +267,7 @@ class HeaderComponent {
         if (mobileBackdrop) {
             mobileBackdrop.addEventListener('click', (e) => {
                 e.preventDefault();
-                console.log('🖱️ Mobile backdrop clicked!');
+       
                 this.closeMobileMenu();
             });
         }
@@ -285,7 +280,7 @@ class HeaderComponent {
     // ... (all other methods remain the same)
 
     toggleMobileMenu() {
-        console.log('🔄 Toggling mobile menu. Current state:', this.mobileMenuOpen);
+      
         
         if (this.mobileMenuOpen) {
             this.closeMobileMenu();
@@ -295,7 +290,7 @@ class HeaderComponent {
     }
 
     openMobileMenu() {
-        console.log('📂 Opening mobile menu...');
+ 
         
         const mobileBtn = document.getElementById('mobile-menu-btn');
         const mobileOverlay = document.getElementById('mobile-nav-overlay');
@@ -307,8 +302,7 @@ class HeaderComponent {
             mobileBtn.classList.add('active');
             mobileOverlay.classList.add('active');
             
-            console.log('Button classes:', mobileBtn.className);
-            console.log('Overlay classes:', mobileOverlay.className);
+
             
             // Prevent body scroll
             document.body.style.overflow = 'hidden';
@@ -317,11 +311,11 @@ class HeaderComponent {
             
             // Check if all menu items are visible - ✅ NOW SHOWS 8 ITEMS
             const menuItems = document.querySelectorAll('.mobile-nav-item');
-            console.log(`📋 Menu items found: ${menuItems.length}/8 expected`);
+    
             menuItems.forEach((item, index) => {
                 const text = item.querySelector('.mobile-nav-text')?.textContent;
                 const page = item.getAttribute('data-page');
-                console.log(`${index + 1}. ${text} (${page})`);
+         
             });
             
             // Focus management
@@ -329,8 +323,7 @@ class HeaderComponent {
             if (closeBtn) {
                 setTimeout(() => closeBtn.focus(), 300);
             }
-            
-            console.log('✅ Mobile menu opened successfully');
+       
         } else {
             console.error('❌ Cannot open mobile menu - elements not found');
             console.error('Missing:', {
@@ -341,7 +334,7 @@ class HeaderComponent {
     }
 
     closeMobileMenu() {
-        console.log('📁 Closing mobile menu...');
+
         
         const mobileBtn = document.getElementById('mobile-menu-btn');
         const mobileOverlay = document.getElementById('mobile-nav-overlay');
@@ -361,7 +354,7 @@ class HeaderComponent {
             // Return focus to menu button
             mobileBtn.focus();
             
-            console.log('✅ Mobile menu closed successfully');
+     
         } else {
             console.error('❌ Cannot close mobile menu - elements not found');
         }
@@ -369,7 +362,7 @@ class HeaderComponent {
 
     // Debug function để kiểm tra mobile menu structure
     debugMobileMenu() {
-        console.log('🔧 DEBUGGING MOBILE MENU STRUCTURE...');
+  
         
         const overlay = document.getElementById('mobile-nav-overlay');
         const content = overlay?.querySelector('.mobile-nav-content');
@@ -379,22 +372,15 @@ class HeaderComponent {
         const items = overlay?.querySelectorAll('.mobile-nav-item');
         const footer = overlay?.querySelector('.mobile-nav-footer');
         
-        console.log('Mobile Menu Structure:');
-        console.log('├── Overlay:', !!overlay);
-        console.log('├── Content:', !!content);
-        console.log('├── Header:', !!header);
-        console.log('├── Body:', !!body);
-        console.log('├── Menu:', !!menu);
-        console.log('├── Items:', items?.length || 0, '/8 expected');
-        console.log('└── Footer:', !!footer);
+        
         
         if (items && items.length > 0) {
-            console.log('\n📋 All Menu Items:');
+          
             items.forEach((item, index) => {
                 const text = item.querySelector('.mobile-nav-text')?.textContent;
                 const page = item.getAttribute('data-page');
                 const icon = item.querySelector('.mobile-nav-icon')?.textContent;
-                console.log(`  ${index + 1}. ${icon} ${text} (${page})`);
+            
             });
         } else {
             console.error('❌ NO MENU ITEMS FOUND!');
@@ -403,10 +389,7 @@ class HeaderComponent {
         // Check CSS styles
         if (overlay) {
             const styles = window.getComputedStyle(overlay);
-            console.log('\nOverlay Styles:');
-            console.log('- Position:', styles.position);
-            console.log('- Z-index:', styles.zIndex);
-            console.log('- Display:', styles.display);
+         
         }
     }
 

@@ -26,12 +26,12 @@ if (typeof window.tournamentData === 'undefined') {
         teams: {
             'team-1': {
                 id: 'team-1',
-                name: 'Thunder Eagles',
-                shortName: 'TEA',
-                logo: 'assets/images/teams/thunder-eagles.png',
+                name: 'BVC',
+                shortName: 'BVC',
+                logo: 'assets/images/tournaments/standing/BVC.webp',
                 color: '#FF6B35',
-                captain: 'Nguyễn Quang Hưng',
-                coach: 'Trần Minh Hoàng',
+                captain: 'Đặng Văn Huy',
+                coach: 'Văn Phương',
                 wins: 6,
                 losses: 2,
                 setsWon: 18,
@@ -43,12 +43,12 @@ if (typeof window.tournamentData === 'undefined') {
             },
             'team-2': {
                 id: 'team-2',
-                name: 'Lightning Wolves',
-                shortName: 'LWO',
-                logo: 'assets/images/teams/lightning-wolves.png',
+                name: 'VĂN QUÁN',
+                shortName: 'VQ',
+                logo: 'assets/images/tournaments/standing/VQ.webp',
                 color: '#0066FF',
-                captain: 'Lê Minh Đức',
-                coach: 'Phạm Văn Tùng',
+                captain: 'Hải Đăng',
+                coach: 'Mốc Zen',
                 wins: 5,
                 losses: 3,
                 setsWon: 16,
@@ -56,16 +56,16 @@ if (typeof window.tournamentData === 'undefined') {
                 pointsFor: 380,
                 pointsAgainst: 360,
                 winRate: 62.5,
-                placement: 3 // THIRD PLACE
+                placement: 2 // THIRD PLACE
             },
             'team-3': {
                 id: 'team-3',
-                name: 'Storm Dragons',
-                shortName: 'SDR',
-                logo: 'assets/images/teams/storm-dragons.png',
+                name: 'AVC',
+                shortName: 'AVC',
+                logo: 'assets/images/tournaments/standing/AVC.webp',
                 color: '#10B981',
-                captain: 'Woohyeok Jang',
-                coach: 'Nguyễn Thành Long',
+                captain: 'Lê Xuân Khánh',
+                coach: 'Lê Xuân Khánh',
                 wins: 5,
                 losses: 3,
                 setsWon: 17,
@@ -73,16 +73,16 @@ if (typeof window.tournamentData === 'undefined') {
                 pointsFor: 395,
                 pointsAgainst: 345,
                 winRate: 62.5,
-                placement: 2 // RUNNER-UP
+                placement: 3 // RUNNER-UP
             },
             'team-4': {
                 id: 'team-4',
-                name: 'Fire Phoenix',
-                shortName: 'FPH',
-                logo: 'assets/images/teams/fire-phoenix.png',
+                name: 'SHARKS',
+                shortName: 'SHA',
+                logo: 'assets/images/tournaments/standing/SHARKS.webp',
                 color: '#F59E0B',
-                captain: 'Neo Jackson',
-                coach: 'Hoàng Văn Đức',
+                captain: 'Phạm Huy Giáp',
+                coach: 'Phạm Huy Giáp',
                 wins: 4,
                 losses: 4,
                 setsWon: 14,
@@ -94,12 +94,12 @@ if (typeof window.tournamentData === 'undefined') {
             },
             'team-5': {
                 id: 'team-5',
-                name: 'Ice Tigers',
-                shortName: 'ITI',
-                logo: 'assets/images/teams/ice-tigers.png',
+                name: 'DVA ADVANCED',
+                shortName: 'DA',
+                logo: 'assets/images/tournaments/standing/DVA.webp',
                 color: '#8B5CF6',
-                captain: 'Artiukh Lyubov',
-                coach: 'Trần Văn Minh',
+                captain: 'Hoàng Quốc Duy',
+                coach: 'Hoàng Minh Hiếu',
                 wins: 3,
                 losses: 5,
                 setsWon: 12,
@@ -111,12 +111,12 @@ if (typeof window.tournamentData === 'undefined') {
             },
             'team-6': {
                 id: 'team-6',
-                name: 'Wind Hawks',
-                shortName: 'WHA',
-                logo: 'assets/images/teams/wind-hawks.png',
+                name: 'NIPPON',
+                shortName: 'NIP',
+                logo: 'assets/images/tournaments/standing/NIPPON.webp',
                 color: '#EF4444',
-                captain: 'Yelzhas Dualatuly',
-                coach: 'Lê Thanh Sơn',
+                captain: 'Ngô Thành Công',
+                coach: 'Hà Minh Huy',
                 wins: 3,
                 losses: 5,
                 setsWon: 11,
@@ -128,12 +128,12 @@ if (typeof window.tournamentData === 'undefined') {
             },
             'team-7': {
                 id: 'team-7',
-                name: 'Earth Bears',
-                shortName: 'EBE',
-                logo: 'assets/images/teams/earth-bears.png',
+                name: 'DVA MIDDLE',
+                shortName: 'DM',
+                logo: 'assets/images/tournaments/standing/DVA.webp',
                 color: '#84CC16',
-                captain: 'Phạm Thị Thanh Bình',
-                coach: 'Nguyễn Văn An',
+                captain: 'Nguyễn Ngọc Bảo',
+                coach: 'Phạm Anh Quân',
                 wins: 2,
                 losses: 6,
                 setsWon: 9,
@@ -145,12 +145,12 @@ if (typeof window.tournamentData === 'undefined') {
             },
             'team-8': {
                 id: 'team-8',
-                name: 'Shadow Cats',
-                shortName: 'SCA',
-                logo: 'assets/images/teams/shadow-cats.png',
+                name: 'BUV',
+                shortName: 'BUV',
+                logo: 'assets/images/tournaments/standing/BUV.webp',
                 color: '#6B7280',
-                captain: 'Hoàng Quốc Duy',
-                coach: 'Vũ Thanh Long',
+                captain: 'Trần Hùng Cường',
+                coach: 'Lê Quang Duy',
                 wins: 1,
                 losses: 7,
                 setsWon: 7,
@@ -165,397 +165,376 @@ if (typeof window.tournamentData === 'undefined') {
         // COMPLETE 20 MATCHES (12 Group + 4 QF + 2 SF + 1 3rd + 1 Final)
         matches: {
             // GROUP STAGE - 12 MATCHES
+            // VQ-NIPPON
             'match-1': {
                 id: 'match-1',
                 stage: 'group',
                 round: 1,
-                date: '2025-11-15',
+                date: '2025-08-03',
                 time: '08:00',
-                team1: 'team-1',
-                team2: 'team-5',
-                score1: 3,
-                score2: 1,
+                team1: 'team-2',
+                team2: 'team-6',
+                score1: 2,
+                score2: 0,
                 sets: [
-                    { team1: 25, team2: 21 },
-                    { team1: 23, team2: 25 },
-                    { team1: 25, team2: 18 },
-                    { team1: 25, team2: 22 }
+                    { team1: 25, team2: 15 },
+                    { team1: 25, team2: 21 }
                 ],
                 status: 'completed',
-                mvp: 'Nguyễn Quang Hưng'
-            },
+                mvp: 'Cao Cường'
+            }, 
+            //BVC-DA
             'match-2': {
                 id: 'match-2',
                 stage: 'group',
                 round: 1,
-                date: '2025-11-15',
-                time: '09:30',
-                team1: 'team-2',
-                team2: 'team-6',
-                score1: 3,
+                date: '2025-08-03',
+                time: '08:00',
+                team1: 'team-1',
+                team2: 'team-5',
+                score1: 2,
                 score2: 0,
                 sets: [
-                    { team1: 25, team2: 18 },
-                    { team1: 25, team2: 20 },
-                    { team1: 25, team2: 16 }
+                    { team1: 25, team2: 15 },
+                    { team1: 25, team2: 20 }
                 ],
                 status: 'completed',
-                mvp: 'Lê Minh Đức'
+                mvp: 'Kim Phong'
             },
+            //SHARKS-BUV
             'match-3': {
                 id: 'match-3',
                 stage: 'group',
                 round: 1,
-                date: '2025-11-15',
-                time: '11:00',
-                team1: 'team-3',
-                team2: 'team-7',
-                score1: 3,
-                score2: 2,
+                date: '2025-08-03',
+                time: '09:00',
+                team1: 'team-4',
+                team2: 'team-8',
+                score1: 2,
+                score2: 0,
                 sets: [
-                    { team1: 25, team2: 23 },
-                    { team1: 22, team2: 25 },
-                    { team1: 20, team2: 25 },
-                    { team1: 25, team2: 18 },
-                    { team1: 15, team2: 12 }
+                    { team1: 25, team2: 14 },
+                    { team1: 25, team2: 19 }
                 ],
                 status: 'completed',
-                mvp: 'Woohyeok Jang'
+                mvp: 'Huy Giáp'
             },
+            //DM-AVC
             'match-4': {
                 id: 'match-4',
                 stage: 'group',
                 round: 1,
-                date: '2025-11-15',
-                time: '12:30',
-                team1: 'team-4',
-                team2: 'team-8',
-                score1: 3,
+                date: '2025-08-03',
+                time: '09:00',
+                team1: 'team-7',
+                team2: 'team-3',
+                score1: 2,
                 score2: 0,
                 sets: [
-                    { team1: 25, team2: 17 },
-                    { team1: 25, team2: 19 },
-                    { team1: 25, team2: 21 }
+                    { team1: 23, team2: 25 },
+                    { team1: 19, team2: 25 }
                 ],
                 status: 'completed',
-                mvp: 'Neo Jackson'
+                mvp: 'Phạm Anh Quân'
             },
+            //VQ-SHARKS
             'match-5': {
                 id: 'match-5',
                 stage: 'group',
-                round: 2,
-                date: '2025-11-15',
-                time: '14:00',
-                team1: 'team-1',
-                team2: 'team-6',
-                score1: 3,
-                score2: 1,
+                round: 1,
+                date: '2025-08-03',
+                time: '10:00',
+                team1: 'team-2',
+                team2: 'team-4',
+                score1: 2,
+                score2: 0,
                 sets: [
-                    { team1: 25, team2: 20 },
-                    { team1: 22, team2: 25 },
-                    { team1: 25, team2: 19 },
-                    { team1: 25, team2: 23 }
+                    { team1: 25, team2: 22 },
+                    { team1: 25, team2: 18 }
                 ],
                 status: 'completed',
-                mvp: 'Nguyễn Quang Hưng'
+                mvp: 'Đình Khang'
             },
+            //DA-DM
             'match-6': {
                 id: 'match-6',
                 stage: 'group',
                 round: 2,
-                date: '2025-11-15',
-                time: '15:30',
-                team1: 'team-2',
+                date: '2025-08-03',
+                time: '10:00',
+                team1: 'team-5',
                 team2: 'team-7',
-                score1: 3,
-                score2: 2,
+                score1: 2,
+                score2: 0,
                 sets: [
-                    { team1: 23, team2: 25 },
                     { team1: 25, team2: 21 },
-                    { team1: 25, team2: 23 },
-                    { team1: 20, team2: 25 },
-                    { team1: 15, team2: 10 }
+                    { team1: 26, team2: 24 }
                 ],
                 status: 'completed',
-                mvp: 'Lê Minh Đức'
+                mvp: 'Phạm Anh Quân'
             },
+            //NIPPON-BUV
             'match-7': {
                 id: 'match-7',
                 stage: 'group',
                 round: 2,
-                date: '2025-11-15',
-                time: '17:00',
-                team1: 'team-3',
+                date: '2025-08-03',
+                time: '11:00',
+                team1: 'team-6',
                 team2: 'team-8',
-                score1: 3,
-                score2: 1,
+                score1: 2,
+                score2: 0,
                 sets: [
-                    { team1: 25, team2: 18 },
-                    { team1: 23, team2: 25 },
-                    { team1: 25, team2: 21 },
-                    { team1: 25, team2: 19 }
+                    { team1: 25, team2: 19 },
+                    { team1: 25, team2: 24 }
                 ],
                 status: 'completed',
-                mvp: 'Woohyeok Jang'
+                mvp: 'Hà Minh Huy'
             },
+            //BVC-AVC
             'match-8': {
                 id: 'match-8',
                 stage: 'group',
                 round: 2,
-                date: '2025-11-15',
-                time: '18:30',
-                team1: 'team-4',
-                team2: 'team-5',
+                date: '2025-08-03',
+                time: '11:00',
+                team1: 'team-1',
+                team2: 'team-3',
                 score1: 2,
-                score2: 3,
+                score2: 0,
                 sets: [
-                    { team1: 25, team2: 23 },
-                    { team1: 22, team2: 25 },
-                    { team1: 25, team2: 20 },
-                    { team1: 23, team2: 25 },
-                    { team1: 12, team2: 15 }
+                    { team1: 25, team2: 21 },
+                    { team1: 25, team2: 20 }
                 ],
                 status: 'completed',
-                mvp: 'Artiukh Lyubov'
+                mvp: 'Kim Phong'
             },
+            //VQ-BUV
             'match-9': {
                 id: 'match-9',
                 stage: 'group',
                 round: 3,
-                date: '2025-11-15',
-                time: '20:00',
-                team1: 'team-1',
-                team2: 'team-2',
-                score1: 3,
-                score2: 2,
+                date: '2025-08-03',
+                time: '12:30',
+                team1: 'team-2',
+                team2: 'team-8',
+                score1: 2,
+                score2: 0,
                 sets: [
-                    { team1: 25, team2: 23 },
-                    { team1: 22, team2: 25 },
-                    { team1: 20, team2: 25 },
-                    { team1: 25, team2: 21 },
-                    { team1: 15, team2: 11 }
+                    { team1: 25, team2: 13 },
+                    { team1: 25, team2: 18 }
                 ],
                 status: 'completed',
-                mvp: 'Nguyễn Quang Hưng'
+                mvp: 'Đình Khang'
             },
+            //AVC-DM
             'match-10': {
                 id: 'match-10',
                 stage: 'group',
                 round: 3,
-                date: '2025-11-16',
-                time: '08:00',
+                date: '2025-08-03',
+                time: '12:30',
                 team1: 'team-3',
-                team2: 'team-4',
-                score1: 3,
+                team2: 'team-7',
+                score1: 2,
                 score2: 1,
                 sets: [
-                    { team1: 25, team2: 21 },
-                    { team1: 23, team2: 25 },
-                    { team1: 25, team2: 19 },
-                    { team1: 25, team2: 22 }
+                    { team1: 18, team2: 25 },
+                    { team1: 25, team2: 15 },
+                    { team1: 15, team2: 12 }
                 ],
                 status: 'completed',
-                mvp: 'Woohyeok Jang'
+                mvp: 'Lê Xuân Khánh'
             },
+            //SHARKS-NIPPON
             'match-11': {
                 id: 'match-11',
                 stage: 'group',
                 round: 3,
-                date: '2025-11-16',
-                time: '09:30',
-                team1: 'team-5',
-                team2: 'team-7',
-                score1: 3,
-                score2: 1,
+                date: '2025-08-03',
+                time: '13:30',
+                team1: 'team-4',
+                team2: 'team-6',
+                score1: 2,
+                score2: 0,
                 sets: [
-                    { team1: 25, team2: 22 },
-                    { team1: 23, team2: 25 },
-                    { team1: 25, team2: 19 },
-                    { team1: 25, team2: 21 }
+                    { team1: 25, team2: 21 },
+                    { team1: 25, team2: 22 }
                 ],
                 status: 'completed',
-                mvp: 'Artiukh Lyubov'
+                mvp: 'Huy Giáp'
             },
+            //BVC-DM
             'match-12': {
                 id: 'match-12',
                 stage: 'group',
                 round: 3,
-                date: '2025-11-16',
-                time: '11:00',
-                team1: 'team-6',
-                team2: 'team-8',
-                score1: 3,
-                score2: 2,
+                date: '2025-08-03',
+                time: '13:30',
+                team1: 'team-1',
+                team2: 'team-7',
+                score1: 2,
+                score2: 1,
                 sets: [
-                    { team1: 25, team2: 27 },
                     { team1: 25, team2: 20 },
                     { team1: 23, team2: 25 },
-                    { team1: 25, team2: 18 },
-                    { team1: 15, team2: 13 }
+                    { team1: 17, team2: 15 }
                 ],
                 status: 'completed',
-                mvp: 'Yelzhas Dualatuly'
+                mvp: 'Kim Phong'
             },
             
             // QUARTERFINALS - 4 MATCHES
+            //BVC-BUV
             'match-13': {
                 id: 'match-13',
                 stage: 'quarterfinal',
                 round: 1,
-                date: '2025-11-16',
-                time: '13:00',
+                date: '2025-08-03',
+                time: '14:30',
                 team1: 'team-1',
                 team2: 'team-8',
-                score1: 3,
+                score1: 2,
                 score2: 0,
                 sets: [
-                    { team1: 25, team2: 16 },
-                    { team1: 25, team2: 18 },
-                    { team1: 25, team2: 20 }
+                    { team1: 25, team2: 7 },
+                    { team1: 25, team2: 16 }
                 ],
                 status: 'completed',
-                mvp: 'Nguyễn Quang Hưng'
+                mvp: 'Đăng Hải'
             },
+            //VQ-DA
             'match-14': {
                 id: 'match-14',
                 stage: 'quarterfinal',
                 round: 1,
-                date: '2025-11-16',
+                date: '2025-08-03',
                 time: '14:30',
                 team1: 'team-2',
                 team2: 'team-7',
-                score1: 3,
-                score2: 1,
+                score1: 2,
+                score2: 0,
                 sets: [
-                    { team1: 25, team2: 22 },
-                    { team1: 23, team2: 25 },
-                    { team1: 25, team2: 19 },
-                    { team1: 25, team2: 21 }
+                    { team1: 25, team2: 20 },
+                    { team1: 25, team2: 22 }
                 ],
                 status: 'completed',
-                mvp: 'Lê Minh Đức'
+                mvp: 'Cao Cường'
             },
+            //AVC-NIPPON
             'match-15': {
                 id: 'match-15',
                 stage: 'quarterfinal',
                 round: 1,
-                date: '2025-11-16',
-                time: '16:00',
+                date: '2025-08-03',
+                time: '15:30',
                 team1: 'team-3',
                 team2: 'team-6',
-                score1: 3,
-                score2: 2,
+                score1: 2,
+                score2: 0,
                 sets: [
-                    { team1: 25, team2: 27 },
                     { team1: 25, team2: 20 },
-                    { team1: 23, team2: 25 },
-                    { team1: 25, team2: 18 },
-                    { team1: 15, team2: 13 }
+                    { team1: 25, team2: 22 }
                 ],
                 status: 'completed',
-                mvp: 'Woohyeok Jang'
+                mvp: 'Lê Xuân Khánh'
             },
+            //SHARKS-DA
             'match-16': {
                 id: 'match-16',
                 stage: 'quarterfinal',
                 round: 1,
-                date: '2025-11-16',
-                time: '17:30',
+                date: '2025-08-03',
+                time: '15:30',
                 team1: 'team-4',
                 team2: 'team-5',
-                score1: 1,
-                score2: 3,
+                score1: 2,
+                score2: 0,
                 sets: [
                     { team1: 25, team2: 23 },
-                    { team1: 20, team2: 25 },
-                    { team1: 22, team2: 25 },
-                    { team1: 18, team2: 25 }
+                    { team1: 25, team2: 19 }
                 ],
                 status: 'completed',
-                mvp: 'Artiukh Lyubov'
+                mvp: 'Phạm Huy Giáp'
             },
             
             // SEMIFINALS - 2 MATCHES
+            //VQ-AVC
             'match-17': {
                 id: 'match-17',
                 stage: 'semifinal',
                 round: 1,
-                date: '2025-11-17',
-                time: '10:00',
-                team1: 'team-1',
-                team2: 'team-2',
-                score1: 3,
-                score2: 2,
+                date: '2025-08-03',
+                time: '17:00',
+                team1: 'team-2',
+                team2: 'team-3',
+                score1: 2,
+                score2: 0,
                 sets: [
-                    { team1: 25, team2: 23 },
-                    { team1: 22, team2: 25 },
-                    { team1: 20, team2: 25 },
-                    { team1: 25, team2: 21 },
-                    { team1: 15, team2: 11 }
+                    { team1: 25, team2: 19 },
+                    { team1: 26, team2: 24 }
                 ],
                 status: 'completed',
-                mvp: 'Nguyễn Quang Hưng'
+                mvp: 'Đình Khang'
             },
+            //BVC-SHARKS
             'match-18': {
                 id: 'match-18',
                 stage: 'semifinal',
                 round: 1,
-                date: '2025-11-17',
-                time: '11:30',
-                team1: 'team-3',
-                team2: 'team-5',
-                score1: 3,
-                score2: 1,
+                date: '2025-08-03',
+                time: '17:00',
+                team1: 'team-1',
+                team2: 'team-4',
+                score1: 2,
+                score2: 0,
                 sets: [
-                    { team1: 25, team2: 21 },
-                    { team1: 23, team2: 25 },
-                    { team1: 25, team2: 19 },
+                    { team1: 25, team2: 9 },
                     { team1: 25, team2: 22 }
                 ],
                 status: 'completed',
-                mvp: 'Woohyeok Jang'
+                mvp: 'Đăng Hải'
             },
             
             // THIRD PLACE MATCH - 1 MATCH
+            //AVC-SHARKS
             'match-19': {
                 id: 'match-19',
                 stage: 'third-place',
                 round: 1,
-                date: '2025-11-17',
-                time: '14:00',
-                team1: 'team-2',
-                team2: 'team-5',
-                score1: 3,
-                score2: 1,
+                date: '2025-08-03',
+                time: '18:30',
+                team1: 'team-3',
+                team2: 'team-4',
+                score1: 2,
+                score2: 0,
                 sets: [
-                    { team1: 25, team2: 20 },
-                    { team1: 22, team2: 25 },
-                    { team1: 25, team2: 18 },
-                    { team1: 25, team2: 23 }
+                    { team1: 25, team2: 22 },
+                    { team1: 22, team2: 23 }
                 ],
                 status: 'completed',
-                mvp: 'Lê Minh Đức'
+                mvp: 'Lê Xuân Khánh'
             },
             
             // FINAL - 1 MATCH
+            //BVC-VQ
             'match-20': {
                 id: 'match-20',
                 stage: 'final',
                 round: 1,
-                date: '2025-11-17',
-                time: '16:00',
+                date: '2025-08-03',
+                time: '19:45',
                 team1: 'team-1',
-                team2: 'team-3',
-                score1: 3,
+                team2: 'team-2',
+                score1: 2,
                 score2: 1,
                 sets: [
-                    { team1: 25, team2: 22 },
                     { team1: 23, team2: 25 },
-                    { team1: 25, team2: 19 },
-                    { team1: 25, team2: 21 }
+                    { team1: 25, team2: 21 },
+                    { team1: 15, team2: 12 }
                 ],
                 status: 'completed',
-                mvp: 'Nguyễn Quang Hưng'
+                mvp: 'Đăng Hải'
             }
         },
 
@@ -565,21 +544,21 @@ if (typeof window.tournamentData === 'undefined') {
             team: {
                 champion: {
                     team: 'team-1', // Thunder Eagles
-                    prize: '$10,000',
+                    prize: '2.500.000 VND',
                     trophy: '🏆',
                     rank: 1,
                     achievement: 'Tournament Champions'
                 },
                 runnerUp: {
                     team: 'team-3', // Storm Dragons  
-                    prize: '$6,000',
+                    prize: '1.500.000 VND',
                     trophy: '🥈',
                     rank: 2,
                     achievement: 'Tournament Runners-up'
                 },
                 thirdPlace: {
                     team: 'team-2', // Lightning Wolves
-                    prize: '$3,500',
+                    prize: '500.000 VND',
                     trophy: '🥉',
                     rank: 3,
                     achievement: 'Third Place'
@@ -589,71 +568,71 @@ if (typeof window.tournamentData === 'undefined') {
             // INDIVIDUAL AWARDS - Complete Set (2 OH, 2 MB, 1 OP, 1 Setter, 1 Libero, 1 MVP)
             individual: {
                 'Best Outside Hitter 1': {
-                    player: 'Nguyễn Quang Hưng',
-                    team: 'team-1',
-                    avatar: 'assets/images/players/middle/NguyenQuangHungg.webp',
+                    player: 'Cao Cường',
+                    team: 'team-2',
+                    avatar: 'assets/images/tournaments/awards/CaoCuong.webp',
                     stats: '22.5 points/match, 65% attack efficiency',
-                    prize: '$800',
+                    prize: '200.000 VND',
                     icon: '⚡',
                     rank: 1
                 },
                 'Best Outside Hitter 2': {
-                    player: 'Yelzhas Dualatuly',
-                    team: 'team-6',
-                    avatar: 'assets/images/players/advanced/YelzhasDualatuly.webp',
+                    player: 'Kim Phong',
+                    team: 'team-1',
+                    avatar: 'assets/images/tournaments/awards/KimPhong.webp',
                     stats: '19.8 points/match, 58% attack efficiency',
-                    prize: '$600',
+                    prize: '200.000 VND',
                     icon: '⚡',
                     rank: 2
                 },
                 'Best Middle Blocker 1': {
-                    player: 'Woohyeok Jang',
-                    team: 'team-3',
-                    avatar: 'assets/images/players/advanced/JangWooheok.webp',
+                    player: 'Văn Phương',
+                    team: 'team-1',
+                    avatar: 'assets/images/tournaments/awards/VanPhuong.webp',
                     stats: '4.2 blocks/match, 72% attack efficiency',
-                    prize: '$800',
+                    prize: '200.000 VND',
                     icon: '🛡️',
                     rank: 1
                 },
                 'Best Middle Blocker 2': {
-                    player: 'Nguyễn Đình Vũ',
-                    team: 'team-1',
-                    avatar: 'assets/images/players/middle/NguyenDinhVu.webp',
+                    player: 'Đình Hưởng',
+                    team: 'team-3',
+                    avatar: 'assets/images/tournaments/awards/DinhHuong.webp',
                     stats: '3.8 blocks/match, 68% attack efficiency',
-                    prize: '$600',
+                    prize: '200.000 VND',
                     icon: '🛡️',
                     rank: 2
                 },
                 'Best Opposite Hitter': {
-                    player: 'Neo Jackson',
-                    team: 'team-4',
-                    avatar: 'assets/images/players/advanced/NeoJackson.webp',
+                    player: 'Đình Khang',
+                    team: 'team-2',
+                    avatar: 'assets/images/tournaments/awards/DinhKhang.webp',
                     stats: '20.3 points/match, 61% attack efficiency',
-                    prize: '$700',
+                    prize: '200.000 VND',
                     icon: '💥'
                 },
                 'Best Setter': {
-                    player: 'Lê Minh Đức',
-                    team: 'team-2',
-                    avatar: 'assets/images/players/middle/LeMinhDuc.webp',
+                    player: 'Văn Huy',
+                    team: 'team-1',
+                    avatar: 'assets/images/tournaments/awards/VanHuy.webp',
                     stats: '48.7 assists/match, 85% set accuracy',
-                    prize: '$700',
+                    prize: '200.000 VND',
                     icon: '🎯'
                 },
                 'Best Libero': {
-                    player: 'Phạm Thị Thanh Bình',
-                    team: 'team-7',
-                    avatar: 'assets/images/players/advanced/ThanhBinh.webp',
+                    player: 'Duy Phan',
+                    team: 'team-4',
+                    avatar: 'assets/images/tournaments/awards/DuyPhan.webp',
                     stats: '18.5 digs/match, 92% reception accuracy',
-                    prize: '$700',
+                    prize: '200.000 VND',
                     icon: '🥅'
                 },
                 'Tournament MVP': {
-                    player: 'Nguyễn Quang Hưng',
+                    player: 'Đăng Hải',
                     team: 'team-1',
-                    avatar: 'assets/images/players/middle/NguyenQuangHungg.webp',
+                    avatar: 'assets/images/tournaments/awards/DangHai.webp',
                     stats: 'Outstanding tournament performance',
-                    prize: '$1,500',
+                    prize: '300.000 VND',
                     icon: '👑',
                     special: true // SPECIAL MVP STYLING
                 }

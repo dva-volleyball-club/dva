@@ -326,11 +326,11 @@ class FooterComponent {
                 
                 // Add actual social media URLs
                 const socialUrls = {
-                    'Facebook': 'https://facebook.com/dvavolleyball',
-                    'Instagram': 'https://instagram.com/dvavolleyball', 
-                    'YouTube': 'https://youtube.com/dvavolleyball',
-                    'Twitter': 'https://twitter.com/dvavolleyball',
-                    'LinkedIn': 'https://linkedin.com/company/dvavolleyball'
+                    'Facebook': 'https://www.facebook.com/profile.php?id=61552198143397',
+                    'Instagram': 'https://www.instagram.com/nathan_hquoc/?igsh=aHA1ajI5c20xd2g%3D&utm_source=qr', 
+                    'YouTube': 'https://youtube.com',
+                    'Twitter': 'https://twitter.com',
+                    'LinkedIn': 'https://www.linkedin.com/in/ho%C3%A0ng-qu%E1%BB%91c-duy-7428b3330?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app'
                 };
                 
                 if (socialUrls[platform]) {

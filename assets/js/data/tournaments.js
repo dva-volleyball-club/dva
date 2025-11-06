@@ -550,14 +550,14 @@ if (typeof window.tournamentData === 'undefined') {
                     achievement: 'Tournament Champions'
                 },
                 runnerUp: {
-                    team: 'team-3', // Storm Dragons  
+                    team: 'team-2', // Storm Dragons  
                     prize: '1.500.000 VND',
                     trophy: '🥈',
                     rank: 2,
                     achievement: 'Tournament Runners-up'
                 },
                 thirdPlace: {
-                    team: 'team-2', // Lightning Wolves
+                    team: 'team-3', // Lightning Wolves
                     prize: '500.000 VND',
                     trophy: '🥉',
                     rank: 3,

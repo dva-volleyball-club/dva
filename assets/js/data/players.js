@@ -1777,7 +1777,7 @@
                 }
             },
             {
-                id: 33,
+                id: 34,
                 name: "Cao Minh Chiến",
                 shortName: "CMC",
                 number: 6,

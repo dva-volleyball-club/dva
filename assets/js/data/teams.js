@@ -151,10 +151,10 @@ if (typeof window.teamsData === 'undefined') {
                 },
                 {
                     id: 16,
-                    name: "Nguyễn Thế Anh",
+                    name: "Đặng Tuấn Anh",
                     number: 7,
                     position: "Outside Hitter",
-                    avatar: "assets/images/players/advanced/NguyenTheAnh.webp"
+                    avatar: "assets/images/players/advanced/DangTuanAnh.webp"
                 },
                 // 2 MIDDLE BLOCKERS
                 {
@@ -224,10 +224,10 @@ if (typeof window.teamsData === 'undefined') {
                 // 2 MIDDLE BLOCKERS
                 {
                     id: 17,
-                    name: "Nguyễn Đức Linh",
+                    name: "Trần Ngọc Lâm",
                     number: 19,
                     position: "Middle Blocker",
-                    avatar: "assets/images/players/advanced/NguyenDucLinh.webp" // Using existing
+                    avatar: "assets/images/players/advanced/TranNgocLam.webp" // Using existing
                 },
                 {
                     id: 18,
@@ -239,10 +239,10 @@ if (typeof window.teamsData === 'undefined') {
                 // 1 OPPOSITE HITTER
                 {
                     id: 19,
-                    name: "Lại Đức Hạnh",
+                    name: "Nguyễn Đình Quốc Khánh",
                     number: 16,
                     position: "Opposite Hitter",
-                    avatar: "assets/images/players/advanced/LaiDucHanh.webp"
+                    avatar: "assets/images/players/advanced/NguyenDinhQuocKhanh.webp"
                 },
                 // 1 SETTER
                 {
@@ -256,10 +256,10 @@ if (typeof window.teamsData === 'undefined') {
                 // 1 LIBERO
                 {
                     id: 21,
-                    name: "Đinh Huỳnh Đức",    
+                    name: "Nguyễn Thị Quỳnh Như",    
                     number: 5,
                     position: "Libero",
-                    avatar: "assets/images/players/advanced/DinhHuynhDuc.webp",
+                    avatar: "assets/images/players/advanced/NguyenThiQuynhNhu.webp",
                     isLibero: true
                 }
             ]

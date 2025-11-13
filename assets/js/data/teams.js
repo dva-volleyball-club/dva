@@ -14,17 +14,24 @@ if (typeof window.teamsData === 'undefined') {
                 // 2 OUTSIDE HITTERS
                 {
                     id: 1,
-                    name: "Nguyễn Quang Hưng",
+                    name: "Đồng Hữu Hiếu",
                     number: 9,
                     position: "Outside Hitter",
-                    avatar: "assets/images/players/advanced/NguyenQuangHung.webp"
+                    avatar: "assets/images/players/advanced/DongHuuHieu.webp"
                 },
                 {
                     id: 2,
-                    name: "Bùi Ngọc Chiến",
+                    name: "Dương Thế Ngọc",
                     number: 25,
                     position: "Outside Hitter",
-                    avatar: "assets/images/players/advanced/BuiNgocChien.webp"
+                    avatar: "assets/images/players/advanced/DuongTheNgoc.webp"
+                },
+                {
+                    id: 100,
+                    name: "Hoàng Việt Anh",
+                    number: 25,
+                    position: "Outside Hitter",
+                    avatar: "assets/images/players/advanced/HoangVietAnh.webp"
                 },
                 // 2 MIDDLE BLOCKERS
                 {
@@ -41,6 +48,13 @@ if (typeof window.teamsData === 'undefined') {
                     position: "Middle Blocker",
                     avatar: "assets/images/players/advanced/DoXuanDat.webp"
                 },
+                {
+                    id: 104,
+                    name: "Trần Ngọc Lâm",
+                    number: 20,
+                    position: "Middle Blocker",
+                    avatar: "assets/images/players/advanced/TranNgocLam.webp"
+                },
                 // 1 OPPOSITE HITTER
                 {
                     id: 5,
@@ -48,6 +62,13 @@ if (typeof window.teamsData === 'undefined') {
                     number: 6,
                     position: "Opposite Hitter",
                     avatar: "assets/images/players/advanced/LeHoangXuan.webp"
+                },
+                {
+                    id: 101,
+                    name: "Bùi Ngọc Chiến",
+                    number: 6,
+                    position: "Opposite Hitter",
+                    avatar: "assets/images/players/advanced/BuiNgocChien.webp"
                 },
                 // 1 SETTER
                 {
@@ -58,6 +79,13 @@ if (typeof window.teamsData === 'undefined') {
                     avatar: "assets/images/players/advanced/HoangQuocDuy.webp",
                     isCaptain: true
                 },
+                {
+                    id: 102,
+                    name: "Trịnh Duy Đông",
+                    number: 29,
+                    position: "Setter",
+                    avatar: "assets/images/players/advanced/TrinhDuyDong.webp",
+                },
                 // 1 LIBERO
                 {
                     id: 7,
@@ -65,6 +93,14 @@ if (typeof window.teamsData === 'undefined') {
                     number: 20,
                     position: "Libero",
                     avatar: "assets/images/players/advanced/NguyenTungDuong.webp",
+                    isLibero: true
+                },
+                {
+                    id: 103,
+                    name: "Trần Hoàng Khôi",
+                    number: 20,
+                    position: "Libero",
+                    avatar: "assets/images/players/advanced/TranHoangKhoi.webp",
                     isLibero: true
                 }
             ]

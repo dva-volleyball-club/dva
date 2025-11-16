@@ -10,10 +10,10 @@ if (typeof window.rankingsData === 'undefined') {
             totalPlayers: 35,
             positions: {
                 "Outside Hitter": [
-                    { id: 1, name: "Yelzhas Dualatuly", avatar: "assets/images/players/middle/YelzhasDualatuly.webp", number: 1, score: 98 },
-                    { id: 8, name: "Phùng Kiến Quốc", avatar: "assets/images/players/middle/PhungKienQuoc.webp", number: 14, score: 95 },
+                    { id: 1, name: "Victor Le Thibert", avatar: "assets/images/players/middle/VictorLeThibert.webp", number: 1, score: 98 },
+                    { id: 8, name: "Yelzhas Dualatuly", avatar: "assets/images/players/middle/YelzhasDualatuly.webp", number: 14, score: 95 },
                     { id: 35, name: "Artiukh Lyubov", avatar: "assets/images/players/middle/ArtiukhLyubov.webp", number: 9, score: 92 },
-                    { id: 37, name: "Nguyễn Ngọc Khánh Huy", avatar: "assets/images/players/middle/NguyenNgocKhanhHuy.webp", number: 12, score: 89 },
+                    { id: 37, name: "Phùng Kiến Quốc", avatar: "assets/images/players/middle/PhungKienQuoc.webp", number: 12, score: 89 },
                     { id: 39, name: "Thái Hoàng Quân", avatar: "assets/images/players/middle/ThaiHoangQuan.webp", number: 16, score: 86 }
                 ],
                 "Middle Blocker": [
@@ -31,7 +31,7 @@ if (typeof window.rankingsData === 'undefined') {
                 ],
                 "Setter": [
                     { id: 6, name: "Trịnh Duy Đông", avatar: "assets/images/players/advanced/TrinhDuyDong.webp", number: 29, score: 98 },
-                    { id: 45, name: "Sami Janjua", avatar: "assets/images/players/middle/SamiJanjua.webp", number: 3, score: 95 },
+                    { id: 45, name: "Sami Sam Janjua", avatar: "assets/images/players/middle/SamiSamJanjua.webp", number: 3, score: 95 },
                     { id: 46, name: "Hoàng Đình Trọng", avatar: "assets/images/players/middle/HoangDinhTrong.webp", number: 7, score: 91 },
                     { id: 47, name: "Vì Văn Tài", avatar: "assets/images/players/middle/ViVanTai.webp", number: 13, score: 88 },
                     { id: 48, name: "Hoàng Quốc Duy", avatar: "assets/images/players/advanced/HoangQuocDuy.webp", number: 17, score: 85 }
@@ -50,7 +50,7 @@ if (typeof window.rankingsData === 'undefined') {
             totalPlayers: 28,
             positions: {
                 "Outside Hitter": [
-                    { id: 3, name: "Đỗ Văn Đạt", avatar: "assets/images/players/advanced/DoXuanDat.webp", number: 9, score: 95 },
+                    { id: 3, name: "Đỗ Xuân Đạt", avatar: "assets/images/players/advanced/DoXuanDat.webp", number: 9, score: 95 },
                     { id: 29, name: "Hoàng Việt Anh", avatar: "assets/images/players/advanced/HoangVietAnh.webp", number: 9, score: 95 },
                     { id: 11, name: "Nguyễn Quang Hưng", avatar: "assets/images/players/advanced/NguyenQuangHung.webp", number: 27, score: 92 },
                     { id: 18, name: "Đặng Đình Bảo Thanh", avatar: "assets/images/players/advanced/DangDinhBaoThanh.webp", number: 18, score: 88 },

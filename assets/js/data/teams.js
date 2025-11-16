@@ -48,13 +48,13 @@ if (typeof window.teamsData === 'undefined') {
                     position: "Middle Blocker",
                     avatar: "assets/images/players/advanced/DoXuanDat.webp"
                 },
-                {
-                    id: 104,
-                    name: "Trần Ngọc Lâm",
-                    number: 20,
-                    position: "Middle Blocker",
-                    avatar: "assets/images/players/advanced/TranNgocLam.webp"
-                },
+                // {
+                //     id: 104,
+                //     name: "Trần Ngọc Lâm",
+                //     number: 20,
+                //     position: "Middle Blocker",
+                //     avatar: "assets/images/players/advanced/TranNgocLam.webp"
+                // },
                 // 1 OPPOSITE HITTER
                 {
                     id: 5,

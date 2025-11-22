@@ -1837,6 +1837,37 @@
                     blocks: 45,
                     assists: 12
                 }
+            },
+            {
+                id: 36,
+                name: "Hoàng Nam Giang",
+                shortName: "HNG",
+                number: 11,
+                position: "Outside Hitter",
+                positionCode: "OH",
+                height: "178cm",
+                reachHeight: "300cm",
+                address: "Nghệ An",
+                born: "1999",
+                age: 28,
+                avatar: "assets/images/players/advanced/HoangNamGiang.webp",
+                country: "Vietnam",
+                countryCode: "VN",
+                flag: "🇻🇳",
+                isCaptain: false,
+                isViceCaptain: false,
+                team: "advanced",
+                status: "active",
+                joinedYear: 2025,
+                experience: 3,
+                stats: {
+                    matches: 42,
+                    wins: 28,
+                    points: 287,
+                    aces: 34,
+                    blocks: 45,
+                    assists: 12
+                }
             }
 
 

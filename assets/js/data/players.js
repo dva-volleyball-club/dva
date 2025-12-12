@@ -1699,7 +1699,7 @@
                 positionCode: "OH",
                 height: "176cm",
                 reachHeight: "280cm",
-                address: "Moscow, Russia",
+                address: "Moscow",
                 born: "2006",
                 age: 19,
                 avatar: "assets/images/players/women/ArtiukhLyubov.webp",

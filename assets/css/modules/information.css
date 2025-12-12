@@ -256,6 +256,10 @@
     background: linear-gradient(135deg, #0066FF, #4A90E2);
     color: white;
 }
+.dva-information .level-badge.women {
+    background: linear-gradient(135deg, #0ece5b, #cf715c);
+    color: white;
+}
 
 .dva-information .time-info {
     display: flex;

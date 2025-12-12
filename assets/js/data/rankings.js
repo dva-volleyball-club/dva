@@ -12,7 +12,7 @@ if (typeof window.rankingsData === 'undefined') {
                 "Outside Hitter": [
                     { id: 1, name: "Victor Le Thibert", avatar: "assets/images/players/middle/VictorLeThibert.webp", number: 1, score: 98 },
                     { id: 8, name: "Yelzhas Dualatuly", avatar: "assets/images/players/middle/YelzhasDualatuly.webp", number: 14, score: 95 },
-                    { id: 35, name: "Artiukh Lyubov", avatar: "assets/images/players/middle/ArtiukhLyubov.webp", number: 9, score: 92 },
+                    { id: 35, name: "Artiukh Lyubov", avatar: "assets/images/players/women/ArtiukhLyubov.webp", number: 9, score: 92 },
                     { id: 37, name: "Phùng Kiến Quốc", avatar: "assets/images/players/middle/PhungKienQuoc.webp", number: 12, score: 89 },
                     { id: 39, name: "Thái Hoàng Quân", avatar: "assets/images/players/middle/ThaiHoangQuan.webp", number: 16, score: 86 }
                 ],
@@ -37,9 +37,8 @@ if (typeof window.rankingsData === 'undefined') {
                     { id: 48, name: "Hoàng Quốc Duy", avatar: "assets/images/players/advanced/HoangQuocDuy.webp", number: 17, score: 85 }
                 ],
                 "Libero": [
-                    { id: 7, name: "Phạm Thị Thanh Bình", avatar: "assets/images/players/advanced/PhamThiThanhBinh.webp", number: 20, score: 99 },
                     { id: 49, name: "Nguyễn Xuân Trường", avatar: "assets/images/players/advanced/NguyenXuanTruong.webp", number: 5, score: 96 },
-                    { id: 50, name: "Egshiglen Munkhbaatar", avatar: "assets/images/players/middle/MunkhbaatarEgshiglen.webp", number: 10, score: 92 }
+                    { id: 50, name: "Egshiglen Munkhbaatar", avatar: "assets/images/players/women/MunkhbaatarEgshiglen.webp", number: 10, score: 92 }
                 ]
                 
             }
@@ -80,8 +79,7 @@ if (typeof window.rankingsData === 'undefined') {
                 "Libero": [
                     { id: 14, name: "Nguyễn Tùng Dương", avatar: "assets/images/players/advanced/NguyenTungDuong.webp", number: 5, score: 97 },
                     { id: 21, name: "Nguyễn Xuân Trường", avatar: "assets/images/players/advanced/NguyenXuanTruong.webp", number: 15, score: 93 },
-                    { id: 24, name: "Trần Hoàng Khôi", avatar: "assets/images/players/advanced/TranHoangKhoi.webp", number: 6, score: 89 },
-                    { id: 28, name: "Phạm Thị Thanh Bình", avatar: "assets/images/players/advanced/PhamThiThanhBinh.webp", number: 10, score: 86 }
+                    { id: 24, name: "Trần Hoàng Khôi", avatar: "assets/images/players/advanced/TranHoangKhoi.webp", number: 6, score: 89 }
                 ]
                 
             }

@@ -47,7 +47,7 @@ class DVARouter {
                 css: 'assets/css/modules/players.css',
                 js: 'assets/js/modules/players.js',
                 data: ['assets/js/data/players.js'],
-                subRoutes: ['middle', 'advanced'],
+                subRoutes: ['middle', 'advanced','women'],
                 defaultSubRoute: 'advanced'
             },
             'ranking': { 

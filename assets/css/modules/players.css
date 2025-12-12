@@ -898,3 +898,58 @@
         font-size: 14px;
     }
 }
+.team-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  max-width: 100%;
+  flex-wrap: wrap;           /* cho phép xuống dòng */
+}
+
+.team-tab {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 24px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 16px;
+  color: #8B949E;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 200px;
+  justify-content: flex-start;
+}
+
+.team-tab.active {
+  background: rgba(255,107,53,0.15);
+  border-color: rgba(255,107,53,0.3);
+  color: #ffffff;
+}
+
+.team-tab-icon {
+  font-size: 2rem;
+}
+
+.team-tab-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.team-tab-subtitle {
+  font-size: 0.85rem;
+  opacity: 0.7;
+}
+
+/* Mobile: giảm padding, cho full width nếu cần */
+@media (max-width: 768px) {
+  .team-tabs {
+    gap: 12px;
+  }
+
+  .team-tab {
+    width: 100%;
+    justify-content: center;
+    text-align: left;
+  }
+}

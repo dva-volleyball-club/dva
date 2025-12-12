@@ -13,45 +13,42 @@
     </div>
 
     <!-- Team Selection - UPDATED BUTTONS ORDER -->
+    <!-- Team Selection -->
     <div class="team-selection"
-        style="padding: 40px 0; background: rgba(0, 0, 0, 0.2); border-bottom: 1px solid rgba(255, 255, 255, 0.08);">
+        style="padding:40px 0;background:rgba(0,0,0,0.2);border-bottom:1px solid rgba(255,255,255,0.08);">
         <div class="container"
-            style="max-width: 1200px; margin: 0 auto; padding: 0 24px;">
-            <div class="team-tabs"
-                style="display: flex; justify-content: center; gap: 24px; max-width: 600px; margin: 0 auto;">
+            style="max-width:1200px;margin:0 auto;padding:0 24px;">
 
-                <!-- ✅ ADVANCED TEAM BUTTON - NOW FIRST & ACTIVE BY DEFAULT -->
+            <div class="team-tabs">
+                <!-- Advanced -->
                 <button class="team-tab active" data-team="advanced"
-                    id="advanced-team-btn"
-                    style="display: flex; align-items: center; gap: 16px; padding: 20px 32px; 
-                background: rgba(255, 107, 53, 0.15); border: 1px solid rgba(255, 107, 53, 0.3); 
-                border-radius: 16px; color: white; cursor: pointer; transition: all 0.3s ease; min-width: 200px;">
-                    <span style="font-size: 2rem;">🌟</span>
+                    id="advanced-team-btn">
+                    <span class="team-tab-icon">🌟</span>
                     <div>
-                        <div
-                            style="font-size: 1.1rem; font-weight: 700;">Advanced
-                            Team</div>
-                        <div style="font-size: 0.85rem; opacity: 0.7;">Elite
-                            Division</div>
+                        <div class="team-tab-title">Men's Advanced </div>
+
                     </div>
                 </button>
 
-                <!-- ✅ MIDDLE TEAM BUTTON - NOW SECOND & INACTIVE BY DEFAULT -->
-                <button class="team-tab" data-team="middle" id="middle-team-btn"
-                    style="display: flex; align-items: center; gap: 16px; padding: 20px 32px; 
-                background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); 
-                border-radius: 16px; color: #8B949E; cursor: pointer; transition: all 0.3s ease; min-width: 200px;">
-                    <span style="font-size: 2rem;">⚡</span>
+                <!-- Middle -->
+                <button class="team-tab" data-team="middle"
+                    id="middle-team-btn">
+                    <span class="team-tab-icon">⚡</span>
                     <div>
-                        <div style="font-size: 1.1rem; font-weight: 700;">Middle
-                            Team</div>
-                        <div
-                            style="font-size: 0.85rem; opacity: 0.7;">Professional
-                            Division</div>
+                        <div class="team-tab-title">Men's Middle</div>
+
                     </div>
                 </button>
 
+                <!-- Women -->
+                <button class="team-tab" data-team="women" id="women-team-btn">
+                    <span class="team-tab-icon">💃</span>
+                    <div>
+                        <div class="team-tab-title">Women's Middle</div>
+                    </div>
+                </button>
             </div>
+
         </div>
     </div>
 

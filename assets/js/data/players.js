@@ -1691,7 +1691,7 @@
                 }
             },
             {
-                id: 200,
+                id: 301,
                 name: "Artiukh Lyubov",
                 shortName: "ART",
                 number: 4,
@@ -1722,7 +1722,7 @@
                 }
             },
             {
-                id: 202,
+                id: 302,
                 name: "Enkhtaivan Lkham",
                 shortName: "EL",
                 number: 17,
@@ -1753,7 +1753,7 @@
                 }
             },
             {
-                id: 15,
+                id: 303,
                 name: "Phạm Thị Đoan Trang",
                 shortName: "PDTD",
                 number: 16,
@@ -1784,7 +1784,7 @@
                 }
             },
             {
-                id: 17,
+                id: 304,
                 name: "Nguyễn Thị Quỳnh Như",
                 shortName: "NTQN",
                 number: 21,
@@ -1814,6 +1814,37 @@
                     assists: 12
                 }
             },
+            {
+                id: 305,
+                name: "Hoàng Mai Hạnh",
+                shortName: "HMH",
+                number: 18,
+                position: "Libero",
+                positionCode: "L",
+                height: "157cm",
+                reachHeight: "245cm",
+                address: "Hà Giang",
+                born: "2006",
+                age: 19,
+                avatar: "assets/images/players/women/HoangMaiHanh.webp",
+                country: "Vietnam",
+                countryCode: "VN",
+                flag: "🇻🇳",
+                isCaptain: false,
+                isViceCaptain: false,
+                team: "women",
+                status: "active",
+                joinedYear: 2025,
+                experience: 3,
+                stats: {
+                    matches: 42,
+                    wins: 28,
+                    points: 287,
+                    aces: 34,
+                    blocks: 45,
+                    assists: 12
+                }
+            }
         ]
     };
 

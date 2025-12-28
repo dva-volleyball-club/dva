@@ -19,13 +19,7 @@ if (typeof window.teamsData === 'undefined') {
                     position: "Outside Hitter",
                     avatar: "assets/images/players/advanced/DongHuuHieu.webp"
                 },
-                {
-                    id: 2,
-                    name: "Dương Thế Ngọc",
-                    number: 25,
-                    position: "Outside Hitter",
-                    avatar: "assets/images/players/advanced/DuongTheNgoc.webp"
-                },
+                
                 {
                     id: 100,
                     name: "Hoàng Việt Anh",
@@ -295,11 +289,93 @@ if (typeof window.teamsData === 'undefined') {
                     name: "Nguyễn Thị Quỳnh Như",    
                     number: 5,
                     position: "Libero",
-                    avatar: "assets/images/players/advanced/NguyenThiQuynhNhu.webp",
+                    avatar: "assets/images/players/women/NguyenThiQuynhNhu.webp",
                     isLibero: true
                 }
             ]
-        }
+        },
+        teamY: {
+            name: "Team Young",
+            rank: 5,
+            description: "Development Division - Rising talents",
+            color: "#cbcb1bff",
+            formation: "5-1",
+            players: [
+                // 2 OUTSIDE HITTERS
+                {
+                    id: 15,
+                    name: "Victor Le Thibert",
+                    number: 11,
+                    position: "Outside Hitter",
+                    avatar: "assets/images/players/middle/VictorLeThibert.webp"
+                },
+                {
+                    id: 16,
+                    name: "Yelzhas Dualatuly",
+                    number: 18,
+                    position: "Outside Hitter",
+                    avatar: "assets/images/players/middle/YelzhasDualatuly.webp"
+                },
+                // 2 MIDDLE BLOCKERS
+                {
+                    id: 17,
+                    name: "Woohyeok Jang",
+                    number: 17,
+                    position: "Middle Blocker",
+                    avatar: "assets/images/players/middle/WoohyeokJang.webp"
+                },
+                {
+                    id: 18,
+                    name: "Phùng Kiến Quốc",
+                    number: 20,
+                    position: "Middle Blocker",
+                    avatar: "assets/images/players/middle/PhungKienQuoc.webp"
+                },
+                // 1 OPPOSITE HITTER
+                {
+                    id: 19,
+                    name: "Mai Hoàng Anh",
+                    number: 26,
+                    position: "Opposite Hitter",
+                    avatar: "assets/images/players/middle/MaiHoangAnh.webp"
+                },
+                {
+                    id: 19,
+                    name: "Seung Gi Lee",
+                    number: 30,
+                    position: "Opposite Hitter",
+                    avatar: "assets/images/players/middle/SeungGiLee.webp"
+                },
+                // 1 SETTER
+                {
+                    id: 20,
+                    name: "Hoàng Quốc Duy",
+                    number: 2,
+                    position: "Setter",
+                    avatar: "assets/images/players/advanced/HoangQuocDuy.webp",
+                    
+                },
+                {
+                    id: 20,
+                    name: "Sami Sam Janjua",
+                    number: 3,
+                    position: "Setter",
+                    avatar: "assets/images/players/middle/SamiSamJanjua.webp",
+                    
+                },
+                // 1 LIBERO
+                {
+                    id: 21,
+                    name: "Đào Nhật Minh",    
+                    number: 18,
+                    position: "Libero",
+                    avatar: "assets/images/players/middle/DaoNhatMinh.webp",
+                    isLibero: true,
+                    isCaptain: true
+                }
+            ]
+        },
+        
     };
 
     window.teamsData = teamsData;
@@ -369,6 +445,27 @@ if (typeof window.leadershipData === 'undefined') {
                 school: "HORIZON High School",
                 role: "Assistant Leader & Captain"
             },
+        middleLeader2:
+            {
+                id: 104,
+                name: "Đào Nhật Minh",
+                title: "DVA Middle Assistant Leader & Team Captain RGSV School",
+                description: "Assistant leader of DVA Middle team and captain of RGSV School volleyball team, specializing in Outside Hitter position. Also can play other position. Hoping to gain experience.",
+                avatar: "assets/images/players/middle/DaoNhatMinh.webp",
+                achievements: [
+                    "+4 years of experience in volleyball specializing in Libero position",
+                    "RGSV School team captain",
+                    "Libero & Outside Hitter"
+                ],
+                social: {
+                    linkedin: "#",
+                    facebook: "#",
+                    email: "nhatminh@dva.volleyball"
+                },
+                specialty: "Outside Hitter",
+                school: "RGSV School",
+                role: "Assistant Leader & Captain"
+            }
     };
 
     window.leadershipData = leadershipData;

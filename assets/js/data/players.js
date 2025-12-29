@@ -1405,37 +1405,37 @@
                     assists: 12
                 }
             },
-            {
-                id: 29,
-                name: "Đặng Tuấn Anh",
-                shortName: "DTA",
-                number: 14,
-                position: "Outside Hitter",
-                positionCode: "OH",
-                height: "175cm",
-                reachHeight: "300cm",
-                address: "Hưng Yên",
-                born: "2005",
-                age: 20,
-                avatar: "assets/images/players/advanced/DangTuanAnh.webp",
-                country: "Vietnam",
-                countryCode: "VN",
-                flag: "🇻🇳",
-                isCaptain: false,
-                isViceCaptain: false,
-                team: "advanced",
-                status: "active",
-                joinedYear: 2025,
-                experience: 3,
-                stats: {
-                    matches: 42,
-                    wins: 28,
-                    points: 287,
-                    aces: 34,
-                    blocks: 45,
-                    assists: 12
-                }
-            },
+            // {
+            //     id: 29,
+            //     name: "Đặng Tuấn Anh",
+            //     shortName: "DTA",
+            //     number: 14,
+            //     position: "Outside Hitter",
+            //     positionCode: "OH",
+            //     height: "175cm",
+            //     reachHeight: "300cm",
+            //     address: "Hưng Yên",
+            //     born: "2005",
+            //     age: 20,
+            //     avatar: "assets/images/players/advanced/DangTuanAnh.webp",
+            //     country: "Vietnam",
+            //     countryCode: "VN",
+            //     flag: "🇻🇳",
+            //     isCaptain: false,
+            //     isViceCaptain: false,
+            //     team: "advanced",
+            //     status: "active",
+            //     joinedYear: 2025,
+            //     experience: 3,
+            //     stats: {
+            //         matches: 42,
+            //         wins: 28,
+            //         points: 287,
+            //         aces: 34,
+            //         blocks: 45,
+            //         assists: 12
+            //     }
+            // },
             {
                 id: 30,
                 name: "Trần Ngọc Lâm",
@@ -1653,37 +1653,37 @@
                     assists: 12
                 }
             },
-            {
-                id: 36,
-                name: "Hoàng Nam Giang",
-                shortName: "HNG",
-                number: 11,
-                position: "Outside Hitter",
-                positionCode: "OH",
-                height: "178cm",
-                reachHeight: "300cm",
-                address: "Nghệ An",
-                born: "1999",
-                age: 28,
-                avatar: "assets/images/players/advanced/HoangNamGiang.webp",
-                country: "Vietnam",
-                countryCode: "VN",
-                flag: "🇻🇳",
-                isCaptain: false,
-                isViceCaptain: false,
-                team: "advanced",
-                status: "active",
-                joinedYear: 2025,
-                experience: 3,
-                stats: {
-                    matches: 42,
-                    wins: 28,
-                    points: 287,
-                    aces: 34,
-                    blocks: 45,
-                    assists: 12
-                }
-            }
+            // {
+            //     id: 36,
+            //     name: "Hoàng Nam Giang",
+            //     shortName: "HNG",
+            //     number: 11,
+            //     position: "Outside Hitter",
+            //     positionCode: "OH",
+            //     height: "178cm",
+            //     reachHeight: "300cm",
+            //     address: "Nghệ An",
+            //     born: "1999",
+            //     age: 28,
+            //     avatar: "assets/images/players/advanced/HoangNamGiang.webp",
+            //     country: "Vietnam",
+            //     countryCode: "VN",
+            //     flag: "🇻🇳",
+            //     isCaptain: false,
+            //     isViceCaptain: false,
+            //     team: "advanced",
+            //     status: "active",
+            //     joinedYear: 2025,
+            //     experience: 3,
+            //     stats: {
+            //         matches: 42,
+            //         wins: 28,
+            //         points: 287,
+            //         aces: 34,
+            //         blocks: 45,
+            //         assists: 12
+            //     }
+            // }
 
 
         ],

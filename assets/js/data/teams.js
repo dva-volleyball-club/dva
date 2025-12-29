@@ -316,6 +316,13 @@ if (typeof window.teamsData === 'undefined') {
                     position: "Outside Hitter",
                     avatar: "assets/images/players/middle/YelzhasDualatuly.webp"
                 },
+                {
+                    id: 18,
+                    name: "Phùng Kiến Quốc",
+                    number: 20,
+                    position: "Outside Hitter",
+                    avatar: "assets/images/players/middle/PhungKienQuoc.webp"
+                },
                 // 2 MIDDLE BLOCKERS
                 {
                     id: 17,
@@ -326,10 +333,10 @@ if (typeof window.teamsData === 'undefined') {
                 },
                 {
                     id: 18,
-                    name: "Phùng Kiến Quốc",
+                    name: "Trần Tuấn Kiệt",
                     number: 20,
                     position: "Middle Blocker",
-                    avatar: "assets/images/players/middle/PhungKienQuoc.webp"
+                    avatar: "assets/images/players/middle/TranTuanKiet.webp"
                 },
                 // 1 OPPOSITE HITTER
                 {

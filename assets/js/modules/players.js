@@ -448,13 +448,137 @@ static mongolia() {
     </svg>`;
 }
 
-static japan() {
+// static japan() {
+//     return `<svg width="24" height="18" viewBox="0 0 24 18" xmlns="http://www.w3.org/2000/svg">
+//         <!-- White background -->
+//         <rect width="24" height="18" fill="#FFFFFF"/>
+        
+//         <!-- Red sun (Hinomaru) -->
+//         <circle cx="12" cy="9" r="4.5" fill="#BC002D"/>
+//     </svg>`;
+// }
+
+static england() {
     return `<svg width="24" height="18" viewBox="0 0 24 18" xmlns="http://www.w3.org/2000/svg">
         <!-- White background -->
         <rect width="24" height="18" fill="#FFFFFF"/>
         
-        <!-- Red sun (Hinomaru) -->
-        <circle cx="12" cy="9" r="4.5" fill="#BC002D"/>
+        <!-- Red Cross of St George -->
+        <!-- Vertical bar -->
+        <rect x="9.6" y="0" width="4.8" height="18" fill="#C8102E"/>
+        
+        <!-- Horizontal bar -->
+        <rect x="0" y="6.6" width="24" height="4.8" fill="#C8102E"/>
+    </svg>`;
+}
+
+static unitedKingdom() {
+    return `<svg width="24" height="18" viewBox="0 0 24 18" xmlns="http://www.w3.org/2000/svg">
+        <!-- Blue background -->
+        <rect width="24" height="18" fill="#012169"/>
+        
+        <!-- White diagonal crosses (St Patrick's and St Andrew's) -->
+        <path d="M 0,0 L 24,18 M 24,0 L 0,18" stroke="#FFFFFF" stroke-width="3"/>
+        
+        <!-- Red diagonal crosses (St Patrick's) -->
+        <path d="M 0,0 L 24,18" stroke="#C8102E" stroke-width="2"/>
+        <path d="M 24,0 L 0,18" stroke="#C8102E" stroke-width="2"/>
+        
+        <!-- White cross (St George's) -->
+        <path d="M 12,0 L 12,18 M 0,9 L 24,9" stroke="#FFFFFF" stroke-width="5"/>
+        
+        <!-- Red cross (St George's) -->
+        <path d="M 12,0 L 12,18 M 0,9 L 24,9" stroke="#C8102E" stroke-width="3"/>
+    </svg>`;
+}
+
+static southAfrica() {
+    return `<svg width="24" height="18" viewBox="0 0 24 18" xmlns="http://www.w3.org/2000/svg">
+        <!-- Red top section -->
+        <rect x="0" y="0" width="24" height="18" fill="#E03C31"/>
+        
+        <!-- Blue bottom section -->
+        <rect x="0" y="12" width="24" height="6" fill="#001489"/>
+        
+        <!-- Red top section (refined) -->
+        <rect x="0" y="0" width="24" height="6" fill="#E03C31"/>
+        
+        <!-- Green Y horizontal arms -->
+        <polygon points="12,0 24,0 24,6 12,6" fill="#007749"/>
+        <polygon points="12,12 24,12 24,18 12,18" fill="#007749"/>
+        
+        <!-- Green Y center stem -->
+        <polygon points="0,9 12,0 12,6 4.8,9 12,12 12,18 0,9" fill="#007749"/>
+        
+        <!-- Yellow Y borders (top) -->
+        <polygon points="0,9 12,0 12,1.5 2.4,9 12,16.5 12,18 0,9" fill="#FFB81C"/>
+        
+        <!-- Black triangle -->
+        <polygon points="0,9 8,1.8 8,16.2" fill="#000000"/>
+        
+        <!-- White Y outline (inner) -->
+        <polygon points="0,9 12,0 12,3 5.4,9 12,15 12,18 0,9" fill="#FFFFFF"/>
+        
+        <!-- Refined white section to create proper Y -->
+        <polygon points="12,3 24,3 24,6 12,6" fill="#FFFFFF"/>
+        <polygon points="12,12 24,12 24,15 12,15" fill="#FFFFFF"/>
+    </svg>`;
+}
+
+static nigeria() {
+    return `<svg width="24" height="18" viewBox="0 0 24 18" xmlns="http://www.w3.org/2000/svg">
+        <!-- Green stripe left -->
+        <rect x="0" y="0" width="8" height="18" fill="#008751"/>
+        
+        <!-- White center -->
+        <rect x="8" y="0" width="8" height="18" fill="#FFFFFF"/>
+        
+        <!-- Green stripe right -->
+        <rect x="16" y="0" width="8" height="18" fill="#008751"/>
+    </svg>`;
+}
+
+static australia() {
+    return `<svg width="24" height="18" viewBox="0 0 24 18" xmlns="http://www.w3.org/2000/svg">
+        <!-- Blue background -->
+        <rect width="24" height="18" fill="#012169"/>
+        
+        <!-- Union Jack in canton -->
+        <g>
+            <!-- White diagonal crosses -->
+            <path d="M 0,0 L 12,9 M 12,0 L 0,9" stroke="#FFFFFF" stroke-width="1.5"/>
+            
+            <!-- Red diagonal crosses -->
+            <path d="M 0,0 L 12,9" stroke="#C8102E" stroke-width="1"/>
+            <path d="M 12,0 L 0,9" stroke="#C8102E" stroke-width="1"/>
+            
+            <!-- White cross -->
+            <path d="M 6,0 L 6,9 M 0,4.5 L 12,4.5" stroke="#FFFFFF" stroke-width="2.5"/>
+            
+            <!-- Red cross -->
+            <path d="M 6,0 L 6,9 M 0,4.5 L 12,4.5" stroke="#C8102E" stroke-width="1.5"/>
+        </g>
+        
+        <!-- Large Commonwealth Star (7-pointed) -->
+        <g fill="#FFFFFF">
+            <path d="M 16.5,14 l 0.3,-1 l 0.3,1 l 1,0.2 l -0.8,0.6 l 0.3,1 l -0.8,-0.6 l -0.8,0.6 l 0.3,-1 l -0.8,-0.6 z" transform="scale(1.2)"/>
+        </g>
+        
+        <!-- Southern Cross constellation -->
+        <!-- Alpha Crucis (bottom) -->
+        <circle cx="19" cy="12" r="0.8" fill="#FFFFFF"/>
+        
+        <!-- Beta Crucis (left) -->
+        <circle cx="16" cy="9" r="0.7" fill="#FFFFFF"/>
+        
+        <!-- Gamma Crucis (top) -->
+        <circle cx="19" cy="5" r="0.7" fill="#FFFFFF"/>
+        
+        <!-- Delta Crucis (right) -->
+        <circle cx="22" cy="9" r="0.7" fill="#FFFFFF"/>
+        
+        <!-- Epsilon Crucis (smaller, center-left) -->
+        <circle cx="17.5" cy="8" r="0.5" fill="#FFFFFF"/>
     </svg>`;
 }
     
@@ -467,9 +591,28 @@ static japan() {
 
     
     static getFlag(country) {
-        const method = country.toLowerCase().replace(/\s+/g, '');
-        return this[method] ? this[method]() : this.default();
-    }
+    //console.log('🚩 Country:', country); // Xem giá trị thực tế
+    const flagMap = {
+        'Canada': FlagSVG.canada(),
+        'England': FlagSVG.england(),
+        'United Kingdom': FlagSVG.unitedKingdom(),
+        'South Africa': FlagSVG.southAfrica(),
+        'Nigeria': FlagSVG.nigeria(),
+        'Australia': FlagSVG.australia(),
+        'Brazil': FlagSVG.brazil(),
+        'Russia': FlagSVG.russia(),
+        'Korea': FlagSVG.korea(),
+        'Kazakhstan': FlagSVG.kazakhstan(),
+        'India': FlagSVG.india(),
+        'Mongolia': FlagSVG.mongolia(),
+        'Japan': FlagSVG.japan(),
+        'Pakistan': FlagSVG.pakistan(),
+        'Vietnam': FlagSVG.vietnam()
+    };
+    const flag = flagMap[country];
+    //console.log('🎌 Flag found:', flag ? 'YES' : 'NO'); // Check có tìm thấy không
+    return flag || FlagSVG.default();
+}
 }
 
 /**

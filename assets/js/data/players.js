@@ -822,7 +822,7 @@
                 number: 12,
                 position: "Outside Hitter",
                 positionCode: "OH",
-                height: "163cm",
+                height: "165cm",
                 reachHeight: "270cm",
                 address: "Hà Nội",
                 born: "2005",

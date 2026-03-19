@@ -819,7 +819,7 @@
                 id: 841,
                 name: "Anna Dinh",
                 shortName: "AD",
-                number: 12,
+                number: 7,
                 position: "Outside Hitter",
                 positionCode: "OH",
                 height: "165cm",

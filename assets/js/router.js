@@ -9,7 +9,8 @@ class DVARouter {
         this.currentRoute = '';
         this.currentSubRoute = '';
         this.defaultRoute = 'home';
-        this.basePath = '';
+        // Tự động nhận diện basePath (/dva trên GitHub Pages, '' trên localhost)
+        this.basePath = window.location.pathname.startsWith('/dva') ? '/dva' : '';
         this.loadedModules = new Set();
         this.activeCSS = new Set();
         this.cssLoadPromises = new Map();
@@ -128,22 +129,18 @@ class DVARouter {
                     path = link.getAttribute('data-page');
                 } else {
                     path = link.getAttribute('href');
-                    
                     if (path.startsWith('#/')) {
                         path = path.substring(2);
-                    } else if (path.startsWith('/')) {
-                        path = path.substring(1);
+                    } else {
+                        // Nếu link chứa sẵn basePath (/dva/register), bỏ basePath đi trước khi route
+                        if (this.basePath && path.startsWith(this.basePath)) {
+                        path = path.substring(this.basePath.length);
+                        }
+                        path = path.replace(/^\/+/, '');
                     }
-                }
+                    }
                 
                 this.navigate(path);
-            }
-        });
-
-        // Handle hash changes
-        window.addEventListener('hashchange', () => {
-            if (!this.isNavigating) {
-                this.handleRoute(this.getCurrentPath(), false);
             }
         });
 
@@ -151,17 +148,14 @@ class DVARouter {
     }
 
     navigate(path) {
-        if (this.isNavigating) {
-            
-            return;
-        }
-        
-       
-        
-        const cleanPath = path.replace(/^\/+/, '');
-        window.history.pushState({}, '', `#/${cleanPath}`);
-        this.handleRoute(cleanPath, true);
-    }
+  if (this.isNavigating) {
+    return;
+  }
+  const cleanPath = path.replace(/^\/+/, '');
+  const newUrl = `${this.basePath}/${cleanPath}`.replace(/\/+/g, '/');
+  window.history.pushState({}, '', newUrl);
+  this.handleRoute(cleanPath, true);
+}
 
     async handleRoute(path, addToHistory = true) {
         if (this.isNavigating) {
@@ -335,18 +329,18 @@ class DVARouter {
     }
 
     getCurrentPath() {
-        const hash = window.location.hash;
-        if (hash) {
-            return hash.substring(2);
-        }
-        
-        const pathname = window.location.pathname;
-        if (pathname && pathname !== '/' && pathname !== '/index.html') {
-            return pathname.substring(1);
-        }
-        
-        return '';
-    }
+  let pathname = window.location.pathname;
+
+  // Loại bỏ basePath (/dva) nếu có
+  if (this.basePath && pathname.startsWith(this.basePath)) {
+    pathname = pathname.substring(this.basePath.length);
+  }
+
+  // Loại bỏ index.html, các dấu gạch chéo ở đầu và cuối
+  pathname = pathname.replace(/^\/+|\/+$/g, '').replace(/^index\.html/, '');
+
+  return pathname || '';
+}
 
     // ... (rest of the methods remain the same as in your current router)
     

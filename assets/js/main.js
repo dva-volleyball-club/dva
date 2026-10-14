@@ -74,13 +74,13 @@ class DVAApp {
                             </p>
                             
                             <div class="hero-actions">
-                                <a href="#/register" class="btn-primary-hero">
+                                <a href="/register" class="btn-primary-hero">
                                     <span>Start Training</span>
                                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
                                         <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2"/>
                                     </svg>
                                 </a>
-                                <a href="#/tournament" class="btn-secondary-hero">
+                                <a href="/tournament" class="btn-secondary-hero">
                                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
                                         <polygon points="23 7 16 12 23 17 23 7" fill="currentColor"/>
                                         <rect x="1" y="5" width="15" height="14" rx="2" ry="2" stroke="currentColor" stroke-width="2" fill="none"/>

@@ -136,13 +136,14 @@ class DVARouter {
                         if (this.basePath && path.startsWith(this.basePath)) {
                         path = path.substring(this.basePath.length);
                         }
-                        path = path.replace(/^\/+/, '');
+                        path = path.replace(/\/$/, '') || '/';
                     }
                     }
                 
                 this.navigate(path);
             }
         });
+
 
       
     }
@@ -328,19 +329,19 @@ class DVARouter {
         });
     }
 
-    getCurrentPath() {
-  let pathname = window.location.pathname;
+  getCurrentPath() {
+        let path = window.location.pathname;
 
-  // Loại bỏ basePath (/dva) nếu có
-  if (this.basePath && pathname.startsWith(this.basePath)) {
-    pathname = pathname.substring(this.basePath.length);
-  }
+        // Loại bỏ basePath (/dva) nếu có
+        if (this.basePath && path.startsWith(this.basePath)) {
+            path = path.substring(this.basePath.length);
+        }
 
-  // Loại bỏ index.html, các dấu gạch chéo ở đầu và cuối
-  pathname = pathname.replace(/^\/+|\/+$/g, '').replace(/^index\.html/, '');
+        // Loại bỏ index.html, các dấu gạch chéo ở đầu và cuối
+        path = path.replace(/^\/+|\/+$/g, '').replace(/^index\.html/, '');
 
-  return pathname || '';
-}
+        return path || '';
+    }
 
     // ... (rest of the methods remain the same as in your current router)
     
@@ -777,21 +778,16 @@ class DVARouter {
 // Initialize router
 let dvaRouter;
 
-document.addEventListener('DOMContentLoaded', () => {
-    dvaRouter = new DVARouter();
-    
-    if (typeof window !== 'undefined') {
-        window.dvaRouter = dvaRouter;
+function initRouter() {
+    if (!window.dvaRouter) {
+        window.dvaRouter = new DVARouter();
     }
-    
-    
-});
+}
 
-if (document.readyState !== 'loading') {
-    dvaRouter = new DVARouter();
-    if (typeof window !== 'undefined') {
-        window.dvaRouter = dvaRouter;
-    }
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initRouter);
+} else {
+    initRouter();
 }
 
 if (typeof module !== 'undefined' && module.exports) {

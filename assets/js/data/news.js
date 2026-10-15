@@ -166,7 +166,7 @@ window.newsData = [
         date: "2026-05-17",
         time: "20:30",
         location: "Nhà thi đấu Thông Tin",
-        category: "Training",
+        category: "Tournament",
         tags: ["spike", "offense", "rally", "teamwork", "volleyball"],
         featured: false,
         author: "DVA Media Team",

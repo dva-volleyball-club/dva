@@ -245,7 +245,7 @@ if (typeof window.NewsModule === 'undefined') {
                         <div class="news-footer">
                             <span class="news-author">✍️ ${news.author}</span>
                             <button class="read-more-btn" onclick="newsModule.showNewsDetail(${news.id})">
-                                Đọc tiếp
+                                Read more
                                 <span class="btn-arrow">→</span>
                             </button>
                         </div>

@@ -7,7 +7,7 @@ if (typeof window.teamsData === 'undefined') {
         teamA: {
             name: "Team A",
             rank: 1,
-            description: "Elite Division - Our strongest lineup", 
+            description: "Elite Division - Our strongest lineup",
             color: "#FF6B35",
             formation: "6-2",
             players: [
@@ -19,7 +19,7 @@ if (typeof window.teamsData === 'undefined') {
                     position: "Outside Hitter",
                     avatar: "assets/images/players/advanced/DongHuuHieu.webp"
                 },
-                
+
                 {
                     id: 100,
                     name: "Hoàng Việt Anh",
@@ -156,7 +156,7 @@ if (typeof window.teamsData === 'undefined') {
                 // 1 LIBERO
                 {
                     id: 14,
-                    name: "Trần Hoàng Khôi",    
+                    name: "Trần Hoàng Khôi",
                     number: 2,
                     position: "Libero",
                     avatar: "assets/images/players/advanced/TranHoangKhoi.webp",
@@ -221,7 +221,7 @@ if (typeof window.teamsData === 'undefined') {
                 // 1 LIBERO
                 {
                     id: 21,
-                    name: "Nguyễn Xuân Trường",    
+                    name: "Nguyễn Xuân Trường",
                     number: 5,
                     position: "Libero",
                     avatar: "assets/images/players/advanced/NguyenXuanTruong.webp",
@@ -286,7 +286,7 @@ if (typeof window.teamsData === 'undefined') {
                 // 1 LIBERO
                 {
                     id: 21,
-                    name: "Nguyễn Thị Quỳnh Như",    
+                    name: "Nguyễn Thị Quỳnh Như",
                     number: 5,
                     position: "Libero",
                     avatar: "assets/images/players/women/NguyenThiQuynhNhu.webp",
@@ -360,7 +360,7 @@ if (typeof window.teamsData === 'undefined') {
                     number: 2,
                     position: "Setter",
                     avatar: "assets/images/players/advanced/HoangQuocDuy.webp",
-                    
+
                 },
                 {
                     id: 20,
@@ -368,12 +368,12 @@ if (typeof window.teamsData === 'undefined') {
                     number: 3,
                     position: "Setter",
                     avatar: "assets/images/players/middle/SamiSamJanjua.webp",
-                    
+
                 },
                 // 1 LIBERO
                 {
                     id: 21,
-                    name: "Đào Nhật Minh",    
+                    name: "Đào Nhật Minh",
                     number: 18,
                     position: "Libero",
                     avatar: "assets/images/players/middle/DaoNhatMinh.webp",
@@ -382,7 +382,7 @@ if (typeof window.teamsData === 'undefined') {
                 }
             ]
         },
-        
+
     };
 
     window.teamsData = teamsData;
@@ -399,7 +399,7 @@ if (typeof window.leadershipData === 'undefined') {
             avatar: "assets/images/players/advanced/HoangQuocDuy.webp",
             achievements: [
                 "3+ years in volleyball management",
-                "Always toward the community", 
+                "Always toward the community",
                 "Sports development advocate"
             ],
             social: {
@@ -407,6 +407,48 @@ if (typeof window.leadershipData === 'undefined') {
                 facebook: "#",
                 email: "quocduyhoang42@gmail.com"
             }
+        },
+        middleLeader2: {
+            id: 104,
+            name: "Lương Thế Phong",
+            birthYear: 2007,
+            title: "DVA Middle Assistant Leader",
+            description: "Versatile DVA Middle Assistant Leader with 3+ years of court experience, sharp tactical mindset, and impactful team leadership",
+            avatar: "assets/images/players/middle/LuongThePhong.webp",
+            achievements: [
+                "3+ years of experience",
+                "Sharp tactical mindset & court vision",
+                "Strong team management & positive spirit",
+                "Adaptable all-around player"
+            ],
+            social: {
+                linkedin: "#",
+                facebook: "#",
+                email: "thephong@dva.volleyball"
+            },
+            specialty: "Outside Hitter / Libero",
+            role: "Assistant Leader"
+        },
+        middleLeader: {
+            id: 103,
+            name: "Phùng Kiến Quốc",
+            title: "DVA Middle Assistant Leader & Team Captain",
+            description: "Assistant leader of DVA Middle team and captain of HORIZON High School volleyball team, specializing in Outside Hitter position",
+            avatar: "assets/images/players/middle/PhungKienQuoc.webp",
+            achievements: [
+                "DVA Middle assistant leader",
+                "HORIZON High School team captain",
+                "Outside Hitter",
+                "Youth team development leader"
+            ],
+            social: {
+                linkedin: "#",
+                facebook: "#",
+                email: "kienquoc@dva.volleyball"
+            },
+            specialty: "Outside Hitter",
+            school: "HORIZON High School",
+            role: "Assistant Leader & Captain"
         },
         contentCreator: {
             id: 101,
@@ -416,7 +458,7 @@ if (typeof window.leadershipData === 'undefined') {
             avatar: "assets/images/players/advanced/HoangMinhHieu.webp",
             achievements: [
                 "5+ years volleyball experience",
-                "Setter position", 
+                "Setter position",
                 "Creative content developer",
                 "Sports media creator"
             ],
@@ -429,50 +471,11 @@ if (typeof window.leadershipData === 'undefined') {
             specialty: "Setter Position",
             experience: "5+ years",
             role: "Content Creator & Player"
-        },
-    
-        middleLeader: {
-                id: 103,
-                name: "Phùng Kiến Quốc",
-                title: "DVA Middle Assistant Leader & Team Captain",
-                description: "Assistant leader of DVA Middle team and captain of HORIZON High School volleyball team, specializing in Outside Hitter position",
-                avatar: "assets/images/players/middle/PhungKienQuoc.webp",
-                achievements: [
-                    "DVA Middle assistant leader",
-                    "HORIZON High School team captain",
-                    "Outside Hitter",
-                    "Youth team development leader"
-                ],
-                social: {
-                    linkedin: "#",
-                    facebook: "#",
-                    email: "kienquoc@dva.volleyball"
-                },
-                specialty: "Outside Hitter",
-                school: "HORIZON High School",
-                role: "Assistant Leader & Captain"
-            },
-        middleLeader2:
-            {
-                id: 104,
-                name: "Đào Nhật Minh",
-                title: "DVA Middle Assistant Leader & Team Captain RGSV School",
-                description: "Assistant leader of DVA Middle team and captain of RGSV School volleyball team, specializing in Outside Hitter position. Also can play other position. Hoping to gain experience.",
-                avatar: "assets/images/players/middle/DaoNhatMinh.webp",
-                achievements: [
-                    "+4 years of experience in volleyball specializing in Libero position",
-                    "RGSV School team captain",
-                    "Libero & Outside Hitter"
-                ],
-                social: {
-                    linkedin: "#",
-                    facebook: "#",
-                    email: "nhatminh@dva.volleyball"
-                },
-                specialty: "Outside Hitter",
-                school: "RGSV School",
-                role: "Assistant Leader & Captain"
-            }
+        }
+        
+        
+
+        
     };
 
     window.leadershipData = leadershipData;
@@ -482,7 +485,7 @@ if (typeof window.leadershipData === 'undefined') {
 if (typeof window.teamPositionColors === 'undefined') {
     const teamPositionColors = {
         'Setter': '#3B82F6',
-        'Outside Hitter': '#EF4444',   
+        'Outside Hitter': '#EF4444',
         'Middle Blocker': '#10B981',
         'Opposite Hitter': '#F59E0B',
         'Libero': '#8B5CF6'
@@ -495,7 +498,7 @@ if (typeof window.teamPositionColors === 'undefined') {
 if (typeof window.formationInfo === 'undefined') {
     const formationInfo = {
         '6-2': 'Two setters with 6 attackers when setters are in back row',
-        '5-1': 'One setter with 5 attackers - most common formation', 
+        '5-1': 'One setter with 5 attackers - most common formation',
         '4-2': 'Two setters always in front row with 4 attackers'
     };
 

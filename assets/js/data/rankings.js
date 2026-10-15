@@ -20,8 +20,7 @@ if (typeof window.rankingsData === 'undefined') {
                     { id: 3, name: "Nông Văn Thuận", avatar: "assets/images/players/middle/NongVanThuan.webp", number: 4, score: 97 },
                     { id: 4, name: "Ali Janjua", avatar: "assets/images/players/middle/AliJanjua.webp", number: 20, score: 94 },
                     { id: 36, name: "Woohyeok Jang", avatar: "assets/images/players/middle/WoohyeokJang.webp", number: 8, score: 91 },
-                    { id: 38, name: "Trần Tuấn Kiệt", avatar: "assets/images/players/middle/TranTuanKiet.webp", number: 15, score: 88 },
-                    { id: 40, name: "Nguyễn Quang Minh", avatar: "assets/images/players/middle/NguyenQuangMinh.webp", number: 19, score: 85 }
+                    { id: 38, name: "Trần Tuấn Kiệt", avatar: "assets/images/players/middle/TranTuanKiet.webp", number: 15, score: 88 }
                 ],
                 "Opposite Hitter": [
                     { id: 5, name: "Ngô Lý Quang Huy", avatar: "assets/images/players/middle/NgoLyQuangHuy.webp", number: 6, score: 99 },

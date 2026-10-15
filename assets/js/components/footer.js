@@ -327,7 +327,7 @@ class FooterComponent {
                 // Add actual social media URLs
                 const socialUrls = {
                     'Facebook': 'https://www.facebook.com/profile.php?id=61552198143397',
-                    'Instagram': 'https://www.instagram.com/nathan_hquoc/?igsh=aHA1ajI5c20xd2g%3D&utm_source=qr', 
+                    'Instagram': 'https://www.instagram.com/_nathan.hq_/', 
                     'YouTube': 'https://youtube.com',
                     'Twitter': 'https://twitter.com',
                     'LinkedIn': 'https://www.linkedin.com/in/ho%C3%A0ng-qu%E1%BB%91c-duy-7428b3330?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app'
